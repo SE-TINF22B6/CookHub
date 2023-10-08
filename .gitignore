@@ -128,3 +128,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# backend
+/Backend/API/obj
+/Backend/API/bin
