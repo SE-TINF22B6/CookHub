@@ -57,6 +57,8 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 > Our UML diagram:
 
+> ![Use case diagram](use-case-diagram.drawio.svg)
+
 > To check the userstorys please check the issues tagged with userstorys -> https://github.com/SE-TINF22B6/CookHub/issues
 
 #### 2.1 Overview 
