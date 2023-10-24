@@ -66,13 +66,14 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > Include one or more **UML use case** diagram(s) and necessary description to specify the major use cases of your application.
 
 #### 2.2 Name of Feature 1 / Use Case 1
-> Specify this feature / use case by:
-> - Relevant **user stories (their links or labels)**
-> - **UI mockups**
-> - **UML behavior diagrams** and necessary text specification
-> - **Preconditions**. *A precondition of a use case is the state of the system that must be present prior to a use case being performed.*
-> - Postconditions. *A postcondition of a use case is a list of possible states the system can be in immediately after a use case has finished.*
-> - **Estimated efforts (high, medium, low)**
+
+> **Creating Landing Page Mockup**
+> As a user, i want to be greeted with an frendly, appealing, modern looking page when visiting the website for the first time.
+> - [Relevant **user stories (their links or labels)**](https://github.com/SE-TINF22B6/CookHub/issues/10)
+> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
+> - **Preconditions**: Backend servers has to be active.
+> - **Postconditions**: All outgoing routes of functions has to work correctly.
+> - **Estimated efforts**: low
 
 
 #### 2.3 Name of Feature 2 / Use Case 2
