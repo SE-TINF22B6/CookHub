@@ -67,11 +67,11 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 #### 2.2 Name of Feature 1 / Use Case 1
 
-> __**Creating Landing Page Mockup**__
+> __**Creating Landing for user to LogIn / Log Out / Create an Account**__
 
-> As a user, i want to be greeted with an frendly, appealing, modern looking page when visiting the website for the first time.
+> As a user, i want to be greeted with frendly, appealing, modern looking pages when visiting the website for the and be able to log into my account / creating an account / logging out.
 
-> - **user stories**: (https://github.com/SE-TINF22B6/CookHub/issues/10)
+> - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/10, https://github.com/SE-TINF22B6/CookHub/issues/11, https://github.com/SE-TINF22B6/CookHub/issues/13 
 > - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
