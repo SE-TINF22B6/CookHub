@@ -53,11 +53,10 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > These references are intended to provide additional context and understanding for the technologies and terminologies used in this document.
 
 ### 2. Functional requirements
->  This section contains all the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements and testers to test that the system satisfies those requirements.  
->  This section is typically organized by feature, but alternative organization methods may also be appropriate, for example, organization by user or organization by subsystem.
+[INFO!] This section contains all the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements and testers to test that the system satisfies those requirements. This section is typically organized by feature, but alternative organization methods may also be appropriate, for example, organization by user or organization by subsystem.
 
-> [!NOTE]
-> You can insert links to your UML diagrams and user stories, or labels of user stories into this document.
+> Our UML diagram: 
+> To check the userstorys please check the issues tagged with userstorys -> https://github.com/SE-TINF22B6/CookHub/issues
 
 #### 2.1 Overview 
 > A brief description of the functionality of your application.  
