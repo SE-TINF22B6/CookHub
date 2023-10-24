@@ -65,9 +65,9 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > A brief description of the functionality of your application.  
 > Include one or more **UML use case** diagram(s) and necessary description to specify the major use cases of your application.
 
-#### 2.2 Name of Feature 1 / Use Case 1
+#### 2.2 Pages / Logging Function
 
-> __**Creating Landing for user to LogIn / Log Out / Create an Account**__
+> __**Creating Landing Page for user to LogIn / Log Out / Create an Account**__
 
 > As a user, i want to be greeted with frendly, appealing, modern looking pages when visiting the website for the and be able to log into my account / creating an account / logging out.
 
@@ -75,11 +75,29 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
-> - **Estimated efforts**: low
+> - **Estimated efforts**: middle
 
 
-#### 2.3 Name of Feature 2 / Use Case 2
-... ...
+#### 2.3 Pages for Recipes / Recipes can be manipulated by user
+
+> __**Creating Pages for user to find / create / save recipes**__
+
+> - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/16, https://github.com/SE-TINF22B6/CookHub/issues/35, https://github.com/SE-TINF22B6/CookHub/issues/38, https://github.com/SE-TINF22B6/CookHub/issues/34
+> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
+> - **Preconditions**: Backend servers has to be active, LogIn/LangingPages must be active.
+> - **Postconditions**: All outgoing routes of functions has to work correctly.
+> - **Estimated efforts**: middle
+
+
+#### 2.4 Administration / Gets Admin full control of Data
+
+> __**Creating Pages for admin area**__
+
+> - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/37, https://github.com/SE-TINF22B6/CookHub/issues/40
+> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
+> - **Preconditions**: Backend servers has to be active, DB must be connected.
+> - **Postconditions**: All outgoing routes of functions has to work correctly.
+> - **Estimated efforts**: high
 
 ### 3. Nonfunctional requirements
 
