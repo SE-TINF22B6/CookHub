@@ -132,3 +132,6 @@ dist
 # backend
 /Backend/API/obj
 /Backend/API/bin
+/.idea
+/Backend/.idea
+/Frontend/.idea
