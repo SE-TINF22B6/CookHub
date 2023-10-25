@@ -4,8 +4,12 @@ import pic1 from './assets/Landingpage_noodles_in_bowl.svg';
 import pic2 from './assets/Landingpage_noodles_with_basi.svg';
 import pic3 from './assets/Landingpage_meat_pieces.svg';
 import './Frontend.css';
+import {LoginClient} from "./clients/login-client";
 
 function App() {
+
+  const loginClient = new LoginClient();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -26,6 +30,7 @@ function App() {
                 href="https://hurensohn.solutions/de-de/index.html"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => loginClient.sendLoginRequest('admin@cookhub.com', 'admin').then(result => console.log(result))}
             >
                 Login
             </a>
