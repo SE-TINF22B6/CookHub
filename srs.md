@@ -1,4 +1,5 @@
-# CookHub
+# <img width="120" alt="image" src="https://raw.githubusercontent.com/SE-TINF22B6/CookHub/8b8579618a8ca42574a1d62143f580aa174b024f/Frontend/src/assets/Logo_no_background.svg"> 
+
 ## Software Requirements Specification
 > This template is a simplified version based on the documentation templates from IBM Rational Unified Process (RUP).
 ### 1. Introduction
