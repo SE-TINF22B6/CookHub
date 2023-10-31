@@ -57,7 +57,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 [!INFO] *This section contains all the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements and testers to test that the system satisfies those requirements. This section is typically organized by feature, but alternative organization methods may also be appropriate, for example, organization by user or organization by subsystem.*
 
 > Our UML diagram:
-
+>
 > ![Use case diagram](../Project_Doc/Diagrams/use-case-diagram.drawio.svg)
 
 > To check the userstorys please check the issues tagged with userstorys -> https://github.com/SE-TINF22B6/CookHub/issues
@@ -94,6 +94,18 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 > <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/44140964-f86b-40cb-845a-27e0cbe30951">
 
+> Login activity diagram:
+>
+> ![Login activity diagram](../Project_Doc/Diagrams/login-activity-diagram.drawio.svg)
+
+> Logout activity diagram:
+>
+> ![Logout activity diagram](../Project_Doc/Diagrams/logout-activity-diagram.drawio.svg)
+
+> Login sequence diagram:
+>
+> ![Login sequence diagram](../Project_Doc/Diagrams/login-sequence-diagram.drawio.svg)
+
 
 #### 2.3 Pages for Recipes / Recipes can be manipulated by user
 
@@ -105,6 +117,13 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
 
+> Activity diagram for creating and saving a recipe:
+>
+> ![Create recipe activity diagram](../Project_Doc/Diagrams/create-recipe-diagram.drawio.svg)
+
+> Sequence diagram for generating a recipe text with OpenAI:
+>
+> ![OpenAI sequence diagram](../Project_Doc/Diagrams/openai-sequence-diagram.drawio.svg)
 
 #### 2.4 Administration / Gets Admin full control of Data
 
