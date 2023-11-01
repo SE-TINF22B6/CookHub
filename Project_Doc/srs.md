@@ -73,21 +73,21 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > - **Preconditions**: Backend servers has to be active.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
->
+
 > ✅ Landing page mockup
 > 
 > <img width="300" alt="image" src="https://user-images.githubusercontent.com/113697513/275525934-9e7bbf26-015a-4791-bb94-356ba798c309.png">
-> 
+
 > ✅ Login page mockup
 > 
 > <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/13b1630f-871c-4630-96b0-4e31cd8bc50d">
->
+
 > ✅ Profile page mockup
-
-> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/ac9bf059-7373-41b5-a60e-8050ce79b08c">
 >
-> ✅ Settings page mockup
+> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/b060bac8-b410-4a78-9c0a-72c7b17a7b9b">
 
+> ✅ Settings page mockup
+>
 > <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/44140964-f86b-40cb-845a-27e0cbe30951">
 
 > ✅ Login activity diagram:
