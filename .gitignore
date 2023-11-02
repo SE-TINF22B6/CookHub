@@ -137,3 +137,7 @@ dist
 /Frontend/.idea
 /Backend/Tests/bin
 /Backend/Tests/obj
+/Backend/DataAccess/bin
+/Backend/DataAccess/obj
+/Backend/Services/bin
+/Backend/Services/obj
