@@ -1,7 +1,7 @@
 # CookHub
 
 ## Project links
-* [srs.md](https://github.com/SE-TINF22B6/CookHub/blob/main/srs.md)
+* [srs.md](https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md)
 * [Figma -> Landing page, login page, profile page](https://www.figma.com/file/YHS8HmBRaxqjHzQbqMhtNq/CookHub?type=design&node-id=0-1&mode=design&t=vMBnJrB1Yd5jKPKg-0)
 * [Figma -> Settings page](https://www.figma.com/file/iW8TJhQ7snE6523q0IxiQS/Untitled?type=design&node-id=0-1&mode=design&t=2PGnPwCH4JaiCH0N-0)
 

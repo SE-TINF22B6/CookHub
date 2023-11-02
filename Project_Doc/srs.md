@@ -56,8 +56,8 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 ### 2. Functional requirements
 [!INFO] *This section contains all the software requirements to a level of detail sufficient to enable designers to design a system to satisfy those requirements and testers to test that the system satisfies those requirements. This section is typically organized by feature, but alternative organization methods may also be appropriate, for example, organization by user or organization by subsystem.*
 
-> Our UML diagram:
-
+> ✅ UML diagram:
+>
 > ![Use case diagram](../Project_Doc/Diagrams/use-case-diagram.drawio.svg)
 
 > To check the userstorys please check the issues tagged with userstorys -> https://github.com/SE-TINF22B6/CookHub/issues
@@ -66,38 +66,44 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > A brief description of the functionality of your application.  
 > Include one or more **UML use case** diagram(s) and necessary description to specify the major use cases of your application.
 
-#### 2.2 Pages / Logging Function
-
-> __**Creating Landing Page for user to LogIn / Log Out / Create an Account**__
-
-> As a user, i want to be greeted with frendly, appealing, modern looking pages when visiting the website for the and be able to log into my account / creating an account / logging out.
+#### 2.2 User Interface & Account Management
 
 > - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/10, https://github.com/SE-TINF22B6/CookHub/issues/11, https://github.com/SE-TINF22B6/CookHub/issues/13 
 > - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
->
-> ✅ Created login page via figma
+
+> ✅ Landing page mockup
 > 
 > <img width="300" alt="image" src="https://user-images.githubusercontent.com/113697513/275525934-9e7bbf26-015a-4791-bb94-356ba798c309.png">
-> 
-> ✅ Created login page via figma
+
+> ✅ Login page mockup
 > 
 > <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/13b1630f-871c-4630-96b0-4e31cd8bc50d">
->
-> ✅ Created profile page via figma
 
-> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/ac9bf059-7373-41b5-a60e-8050ce79b08c">
+> ✅ Profile page mockup
 >
-> ✅ Created settings page via figma
+> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/b060bac8-b410-4a78-9c0a-72c7b17a7b9b">
 
+> ✅ Settings page mockup
+>
 > <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/44140964-f86b-40cb-845a-27e0cbe30951">
 
+> ✅ Login activity diagram:
+>
+> ![Login activity diagram](../Project_Doc/Diagrams/login-activity-diagram.drawio.svg)
 
-#### 2.3 Pages for Recipes / Recipes can be manipulated by user
+> ✅ Logout activity diagram:
+>
+> ![Logout activity diagram](../Project_Doc/Diagrams/logout-activity-diagram.drawio.svg)
 
-> __**Creating Pages for user to find / create / save recipes**__
+> ✅ Login sequence diagram:
+>
+> ![Login sequence diagram](../Project_Doc/Diagrams/login-sequence-diagram.drawio.svg)
+
+
+#### 2.3 Recipes Management
 
 > - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/16, https://github.com/SE-TINF22B6/CookHub/issues/35, https://github.com/SE-TINF22B6/CookHub/issues/38, https://github.com/SE-TINF22B6/CookHub/issues/34
 > - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
@@ -105,10 +111,15 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
 
+> ✅ Activity diagram for creating and saving a recipe:
+>
+> ![Create recipe activity diagram](../Project_Doc/Diagrams/create-recipe-diagram.drawio.svg)
 
-#### 2.4 Administration / Gets Admin full control of Data
+> ✅ Sequence diagram for generating a recipe text with OpenAI:
+>
+> ![OpenAI sequence diagram](../Project_Doc/Diagrams/openai-sequence-diagram.drawio.svg)
 
-> __**Creating Pages for admin area**__
+#### 2.4 Data Administration
 
 > - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/37, https://github.com/SE-TINF22B6/CookHub/issues/40
 > - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
