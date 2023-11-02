@@ -135,3 +135,5 @@ dist
 /.idea
 /Backend/.idea
 /Frontend/.idea
+/Backend/Tests/bin
+/Backend/Tests/obj
