@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './assets/Logo_no_background.svg';
 import './Frontend.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from "./LandingPage";
 import LoginPage from "./LoginPage";
 
