@@ -1,9 +1,18 @@
-.App {
-  text-align: center;
+*{
   background-color: #38527D;
-  font-family: Brush Script MT, Brush Script Std, cursive;
 }
 
+.App {
+  text-align: center;
+
+}
+a{
+  color: black;
+}
+
+a:hover{
+  color: aliceblue;
+}
 .App-logo {
   height: 20vmin;
   pointer-events: none;
@@ -17,17 +26,47 @@
 
 .App-header {
   min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin-right: 25%;
+  margin-left: 200px;
   font-size: calc(10px + 2vmin);
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  float: left;
   color: black;
+
+}
+
+.App-header ul{
+  margin-top: 50px;
+}
+
+.App-header ul li{
+  list-style-type: none;
+  display: inline;
+  margin: 15px 10px 0px 74px;
+}
+
+.App-header ul li:last-child{
+  list-style-type: none;
+  display: inline;
+  margin-right: 100px;
 }
 
 .Login-link {
   color: greenyellow;
   font-family: Arial;
+  display: inline-block;
+  padding: 5px 40px 0px 40px;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  margin-bottom: 360px;
+  margin-top: 50px;
+  margin-left: 450px;
+  border: solid 1px black;
 }
 
 .Landingpage_noodles_in_bowl {
@@ -44,12 +83,8 @@
     height: 15vmin;
     pointer-events: none;
 }
-
-.body {
-  width: 1000px;
-  height: 1000px;
-  position: relative;
-
+.body{
+  font-family: Brush Script MT, Brush Script Std, cursive;
 }
 
 
