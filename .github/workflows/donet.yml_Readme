@@ -1,0 +1,15 @@
+- Executes the following steps:
+	**Restore dependencies**
+	- Execute the 'dotnet restore' command to update dependencies
+	**Build**
+	- Execute 'dotnet build' command to build (compile) project
+	**Test**
+	- execute command 'dotnet test --no-build --verbosity normal' to run all tests
+ - config file for frontend action: /.github/workflows/node.js.yml
+   Executes the following steps:
+	Run npm ci
+	- Run 'npm ci' to install dependencies (faster version of npm install)
+	Run npm run build --if-present
+	- Run 'npm run build --if-present' to build project
+	Run npm test
+	- Run 'npm test' to run all tests
