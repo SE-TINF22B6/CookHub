@@ -3,16 +3,16 @@ using NHibernate;
 
 namespace DataAccess.Repository;
 
-public class TestRepository
+public class UserRepository
 {
     private readonly ISessionFactory _factory;
 
-    public TestRepository(ISessionFactory factory)
+    public UserRepository(ISessionFactory factory)
     {
         _factory = factory;
     }
 
-    public void Create(TestEntity entity)
+    public void Create(User entity)
     {
         using var session = _factory.OpenSession();
         using var transaction = session.BeginTransaction();
@@ -22,31 +22,31 @@ public class TestRepository
         transaction.Commit();
     }
     
-    public TestEntity Get(string email)
+    public User Get(string email)
     {
         using var session = _factory.OpenSession();
         using var transaction = session.BeginTransaction();
 
-        var entity = session.Get<TestEntity>(email);
+        var entity = session.Get<User>(email);
         
         transaction.Commit();
         
         return entity;
     }
 
-    public List<TestEntity> GetAll()
+    public List<User> GetAll()
     {
         using var session = _factory.OpenSession();
         using var transaction = session.BeginTransaction();
 
-        var entities = session.Query<TestEntity>().ToList();
+        var entities = session.Query<User>().ToList();
 
         transaction.Commit();
 
         return entities;
     }
 
-    public void Update(TestEntity entity)
+    public void Update(User entity)
     {
         using var session = _factory.OpenSession();
         using var transaction = session.BeginTransaction();
@@ -56,7 +56,7 @@ public class TestRepository
         transaction.Commit();
     }
 
-    public void Delete(TestEntity entity)
+    public void Delete(User entity)
     {
         using var session = _factory.OpenSession();
         using var transaction = session.BeginTransaction();

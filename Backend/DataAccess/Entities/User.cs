@@ -1,7 +1,7 @@
 namespace DataAccess.Entities;
 
-public class TestEntity
+public class User
 {
     public virtual string Email { get; set; }
-    public virtual string Password { get; set; }
+    public virtual string PasswordHash { get; set; }
 }

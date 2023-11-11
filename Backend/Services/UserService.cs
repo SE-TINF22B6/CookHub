@@ -2,11 +2,11 @@
 
 namespace Services;
 
-public class TestService
+public class UserService
 {
-    private readonly TestRepository _repository;
+    private readonly UserRepository _repository;
 
-    public TestService(TestRepository repository)
+    public UserService(UserRepository repository)
     {
         _repository = repository;
     }
