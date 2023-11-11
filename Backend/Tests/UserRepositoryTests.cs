@@ -12,7 +12,7 @@ public class UserRepositoryTests : IDisposable
 {
     private const string TestDatabaseFileName = "test-database.db";
     private readonly ISessionFactory _testDatabaseFactory;
-    private readonly UserRepository _repository;
+    private readonly IRepository<User> _repository;
 
     public UserRepositoryTests()
     {
