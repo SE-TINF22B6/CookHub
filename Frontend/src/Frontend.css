@@ -55,7 +55,55 @@ a:hover{
 
 .Login-link {
   color: greenyellow;
-  font-family: Arial;
+  font-family: Arial, serif;
+  display: inline-block;
+  padding: 5px 40px 0px 40px;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  margin-bottom: 360px;
+  margin-top: 50px;
+  margin-left: 450px;
+  border: solid 1px black;
+}
+
+.FAQs-link {
+  color: greenyellow;
+  font-family: Arial, serif;
+  display: inline-block;
+  padding: 5px 40px 0px 40px;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  margin-bottom: 360px;
+  margin-top: 50px;
+  margin-left: 450px;
+  border: solid 1px black;
+}
+
+.About-link {
+  color: greenyellow;
+  font-family: Arial, serif;
+  display: inline-block;
+  padding: 5px 40px 0px 40px;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  margin-bottom: 360px;
+  margin-top: 50px;
+  margin-left: 450px;
+  border: solid 1px black;
+}
+
+.Impressum-link {
+  color: greenyellow;
+  font-family: Arial, serif;
   display: inline-block;
   padding: 5px 40px 0px 40px;
   text-decoration: none;

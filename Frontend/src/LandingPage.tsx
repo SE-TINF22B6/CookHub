@@ -11,11 +11,15 @@ export default function LandingPage() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
                 <ul>
-                    <li><a href='login'>FAQ's</a></li>
-                    <li><a href='login'>About us</a></li>
-                    <li><a href='login'>Impressum</a></li>
+                    <li><a href='login'>Login</a></li>
+                    <li><a href='faqs'>FAQ's</a></li>
+                    <li><a href='about'>About us</a></li>
+                    <li><a href='impressum'>Impressum</a></li>
                 </ul>
-               <a className="Login-link" target="_self" href='login'>Login</a>
+                <a className='Login-link' target="_self" href='login'>Login</a>
+                <a className='FAQs-link' target="_self" href='faqs'>FAQ's</a>
+                <a className='About-link' target="_self" href='about'>About us</a>
+                <a className='Impressum-link' target="_self" href='impressum'>Impressum</a>
             </header>
             <div className="body">
                 <h2>
