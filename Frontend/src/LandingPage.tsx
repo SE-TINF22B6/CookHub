@@ -16,7 +16,6 @@ export default function LandingPage() {
                     <li><a className='Impressum-link' target="_self" href='impressum'>Impressum</a></li>
                 </ul>
                 <a className='Login-link' target="_self" href='login'>Login</a>
-
             </header>
             <div className="body">
                 <h2>

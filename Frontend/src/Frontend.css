@@ -44,7 +44,7 @@ a:hover{
 .App-header ul li{
   list-style-type: none;
   display: inline;
-  margin: 15px 10px 0px 74px;
+  margin: 15px 10px 74px;
 }
 
 .App-header ul li:last-child{
@@ -57,11 +57,10 @@ a:hover{
   color: greenyellow;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 0px 40px;
+  padding: 5px 40px 40px;
   text-decoration: none;
   border-radius: 30px;
   cursor: pointer;
-  border: none;
   font-weight: bold;
   margin-bottom: 360px;
   margin-top: 50px;
@@ -73,11 +72,10 @@ a:hover{
   color: greenyellow;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 0px 40px;
+  padding: 5px 40px 40px;
   text-decoration: none;
   border-radius: 30px;
   cursor: pointer;
-  border: none;
   font-weight: bold;
   margin-bottom: 360px;
   margin-top: 50px;
@@ -89,11 +87,10 @@ a:hover{
   color: greenyellow;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 0px 40px;
+  padding: 5px 40px 40px;
   text-decoration: none;
   border-radius: 30px;
   cursor: pointer;
-  border: none;
   font-weight: bold;
   margin-bottom: 360px;
   margin-top: 50px;
@@ -105,11 +102,10 @@ a:hover{
   color: greenyellow;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 0px 40px;
+  padding: 5px 40px 40px;
   text-decoration: none;
   border-radius: 30px;
   cursor: pointer;
-  border: none;
   font-weight: bold;
   margin-bottom: 360px;
   margin-top: 50px;
@@ -132,7 +128,7 @@ a:hover{
     pointer-events: none;
 }
 .body{
-  font-family: Brush Script MT, Brush Script Std, cursive;
+  font-family: Verdana;
 }
 
 
