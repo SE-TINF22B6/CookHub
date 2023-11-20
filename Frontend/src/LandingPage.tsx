@@ -11,6 +11,7 @@ export default function LandingPage() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
                 <ul>
+
                     <li><a className='FAQs-link' target="_self" href='faqs'>FAQ's</a></li>
                     <li><a className='About-link' target="_self" href='about'>About us</a></li>
                     <li><a className='Impressum-link' target="_self" href='impressum'>Impressum</a></li>
