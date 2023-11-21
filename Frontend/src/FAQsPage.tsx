@@ -52,9 +52,12 @@ export default function FAQsPage(){
 
                 <img src={logo} className="App-logo" alt="logo"/>
 
-                <li><a href='login'>Login</a></li>
-                <li><a href='about'>About us</a></li>
-                <li><a href='impressum'>Impressum</a></li>
+                <ul>
+                    <li><a className='LandingPage' target="_self" href='/'>Welcome</a></li>
+                    <li><a href='/login'>Login</a></li>
+                    <li><a href='/about'>About us</a></li>
+                    <li><a href='/impressum'>Impressum</a></li>
+                </ul>
 
 
             </div>

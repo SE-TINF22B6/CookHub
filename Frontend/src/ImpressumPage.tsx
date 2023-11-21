@@ -39,11 +39,16 @@ export default function ImpressumPage(){
                 <h3>Urheberrecht</h3>
                 <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. ...</p>
 
-                <img src={logo} className="App-logo" alt="logo"/>
+                <img src={logo} className="App-logo" alt="logo" width="500" height="500"/>
 
-                <li><a href='login'>Login</a></li> <li>
-                <a href='faqs'>FAQ's</a></li>
-                <li><a href='about'>About us</a></li>
+                <ul>
+                    <li><a className='LandingPage' target="_self" href='/'>Welcome</a></li>
+                    <li><a href='/login'>Login</a></li>
+                    <li><a href='/faqs'>FAQ's</a></li>
+                    <li><a href='/about'>About us</a></li>
+                </ul>
+
+
             </div>
 
         </div>
