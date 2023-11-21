@@ -29,8 +29,8 @@ export default function LoginPage(){
 
                 <form>
                     <label>
-                        Name:
-                        <input type="text" name="name" />
+                        Email:
+                        <input type="text" name="email" />
                     </label>
                     <br/>
                     <label>
