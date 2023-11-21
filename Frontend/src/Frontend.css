@@ -98,6 +98,10 @@ a:hover{
   border: solid 1px black;
 }
 
+ul>li{
+  list-style: none;
+}
+
 .Impressum-link {
   color: greenyellow;
   font-family: Arial, serif;
@@ -128,7 +132,7 @@ a:hover{
     pointer-events: none;
 }
 .body{
-  font-family: Verdana;
+  font-family: Verdana Geneva Tahoma sans-serif;
 }
 
 

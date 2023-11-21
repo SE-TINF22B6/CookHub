@@ -1,4 +1,4 @@
-import logo from "./assets/Logo_no_background.svg";
+import team from "./assets/CookHub_Team_&_Roles.png";
 import React from "react";
 
 export default function AboutUsPage(){
@@ -10,11 +10,14 @@ export default function AboutUsPage(){
             <div className="body">
                 <h1>About us</h1>
                 <br/>
-                <img src={logo} className="App-logo" alt="logo"/>
+                <img src={team} className="Team_Roles" alt="team" width="1000" height="500"/>
                 <br/>
-                <li><a href='login'>Login</a></li> <li>
-                <a href='faqs'>FAQ's</a></li>
-                <li><a href='about'>About us</a></li>
+                <ul>
+                    <li><a className='LandingPage' target="_self" href='/'>Welcome</a></li>
+                    <li><a href='/login'>Login</a></li>
+                    <li><a href='/faqs'>FAQ's</a></li>
+                    <li><a href='/impressum'>Impressum</a></li>
+                </ul>
             </div>
 
         </div>
