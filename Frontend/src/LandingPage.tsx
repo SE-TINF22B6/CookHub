@@ -30,7 +30,7 @@ export default function LandingPage() {
                     Ready for the adventure in your kitchen?
                     Let's cook together!<br/>
 
-                    <a className="Start-Journey" target="_self" href='/login'>Start Journey</a>
+                    <a className="Login-link" target="_self" href='/login'>Start Journey</a>
                 </p>
             </div>
             <div className="Landingpage_images">

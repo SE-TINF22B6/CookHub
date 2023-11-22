@@ -54,18 +54,22 @@ a:hover{
   margin-right: 2rem;
 }
 
+
+
 .Login-link {
-  color:  #C9FE71;
-  font-family: Arial, serif;
+  background-color: #C9FE71;
+  color: #38527D;
+  font-size: 20px;
+  font-weight: 400;
   display: inline-block;
-  padding: 1rem 1rem 1rem;
+  padding: 1rem 2rem 1rem;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
+  margin-left: 15rem;
+  border: solid 1px black;
 
 }
 
@@ -151,25 +155,6 @@ ul>li{
     margin-left: 5rem;
     width: 720px;
 }
-
-
-
-.Start-Journey {
-  background-color: #C9FE71;
-  color: #38527D;
-  font-size: 20px;
-  font-weight: 400;
-  display: inline-block;
-  padding: 1rem 2rem 1rem;
-  text-decoration: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 3rem;
-  margin-top: 7rem;
-  margin-left: 15rem;
-  border: solid 1px black;
-}
-
 
 
 
