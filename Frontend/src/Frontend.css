@@ -25,12 +25,12 @@ a:hover{
 }
 
 .App-header {
-  min-height: 50vh;
-  margin-right: 25%;
-  margin-left: 200px;
-  font-size: calc(10px + 2vmin);
+  min-height: 28vh;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  font-size: 20px;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   width: 100%;
   float: left;
   color: black;
@@ -38,64 +38,65 @@ a:hover{
 }
 
 .App-header ul{
-  margin-top: 50px;
+  margin-top: 2rem;
+  margin-left: -2rem;
 }
 
 .App-header ul li{
   list-style-type: none;
   display: inline;
-  margin: 15px 10px 74px;
+  margin: 2rem 2rem 3rem;
 }
 
 .App-header ul li:last-child{
   list-style-type: none;
   display: inline;
-  margin-right: 100px;
+  margin-right: 2rem;
 }
 
 .Login-link {
-  color: greenyellow;
+  color:  #C9FE71;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 40px;
+  padding: 1rem 1rem 1rem;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: 360px;
-  margin-top: 50px;
-  margin-left: 450px;
-  border: solid 1px black;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
 }
 
 .FAQs-link {
-  color: greenyellow;
+  color:  #C9FE71;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 40px;
+  padding: 1rem 2rem 1rem;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: 360px;
-  margin-top: 50px;
-  margin-left: 450px;
-  border: solid 1px black;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
 }
 
 .About-link {
-  color: greenyellow;
+  color:  #C9FE71;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 40px;
+  padding: 1rem 2rem 1rem;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: 360px;
-  margin-top: 50px;
-  margin-left: 450px;
-  border: solid 1px black;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
 }
 
 ul>li{
@@ -103,37 +104,119 @@ ul>li{
 }
 
 .Impressum-link {
-  color: greenyellow;
+  color:  #C9FE71;
   font-family: Arial, serif;
   display: inline-block;
-  padding: 5px 40px 40px;
+  padding: 1rem 1rem 1rem;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: 360px;
-  margin-top: 50px;
-  margin-left: 450px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
+}
+
+
+
+.Landingpage_title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 78px;
+  color: #C9FE71;
+  text-shadow: 2px 2px 4px #000000;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  margin-left: 5rem;
+}
+
+.body {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 3px black;
+
+    }
+
+
+.Landingpage_text {
+
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 3px black;
+    text-align: left;
+    margin-left: 5rem;
+    width: 720px;
+}
+
+
+
+.Start-Journey {
+  background-color: #C9FE71;
+  color: #38527D;
+  font-size: 20px;
+  font-weight: 400;
+  display: inline-block;
+  padding: 1rem 2rem 1rem;
+  text-decoration: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 3rem;
+  margin-top: 7rem;
+  margin-left: 15rem;
   border: solid 1px black;
 }
 
-.Landingpage_noodles_in_bowl {
+
+
+
+.Landingpage_images {
+  display: block;
+  margin-left: 30rem;
+  margin-top: -60rem;
+}
+
+.Upper_pics {
+  margin-right: 10rem;
+
+}
+
+.Chef_Carlo {
   height: 15vmin;
   pointer-events: none;
 }
 
-.Landingpage_meat_pieces {
-  height: 14vmin;
+
+.Landingpage_noodles_in_bowl {
+  height: 15vmin;
   pointer-events: none;
+
+}
+
+.Lower_pics {
+
+
+}
+
+.Landingpage_meat_pieces {
+  height: 15vmin;
+  pointer-events: none;
+  display: inline-block;
+  margin-bottom: -10rem;
 }
 
 .Landingpage_noodles_with_basi {
     height: 15vmin;
     pointer-events: none;
+    margin-left: 50rem;
+    margin-top: 5rem;
+    display: inline-block;
 }
-.body{
-  font-family: Verdana Geneva Tahoma sans-serif;
-}
+
+
 
 
 
