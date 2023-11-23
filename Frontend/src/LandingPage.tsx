@@ -1,6 +1,3 @@
-import pic1 from "./assets/Landingpage_noodles_in_bowl.svg";
-import pic2 from "./assets/Landingpage_noodles_with_basi.svg";
-import pic3 from "./assets/Landingpage_meat_pieces.svg";
 import chef from "./assets/Chef_Carlo_without_background (1).png";
 import React from "react";
 import './Frontend.css';
@@ -34,18 +31,7 @@ export default function LandingPage() {
                 </p>
             </div>
             <div className="Landingpage_images">
-                <div className="Upper_pics">
-                    <ul>
-                        <li><img src={chef} className="Chef_Carlo" alt="chef"/></li>
-                        <li><img src={pic1} className="Landingpage_noodles_in_bowl" alt="bowl"/></li>
-                    </ul>
-                </div>
-                <div className="Lower_pics">
-                    <ul>
-                        <li><img src={pic2} className="Landingpage_noodles_with_basi" alt="basel"/></li>
-                        <li><img src={pic3} className="Landingpage_meat_pieces" alt="meat"/></li>
-                    </ul>
-                </div>
+                <img src={chef} className="Chef_Carlo" alt="chef"/>
             </div>
 
         </div>
