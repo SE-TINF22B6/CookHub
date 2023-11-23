@@ -136,11 +136,11 @@ ul>li{
   margin-left: 5rem;
 }
 
-.body {
+body {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 1.5rem;
     text-shadow: 2px 2px 3px black;
-
+    overflow-x: hidden;
     }
 
 
@@ -164,45 +164,12 @@ ul>li{
   margin-top: -60rem;
 }
 
-.Upper_pics {
-  margin-right: 10rem;
-
-}
 
 .Chef_Carlo {
-  height: 15vmin;
+  height: 60vmin;
   pointer-events: none;
+  margin-left: 20rem;
 }
-
-
-.Landingpage_noodles_in_bowl {
-  height: 15vmin;
-  pointer-events: none;
-
-}
-
-.Lower_pics {
-
-
-}
-
-.Landingpage_meat_pieces {
-  height: 15vmin;
-  pointer-events: none;
-  display: inline-block;
-  margin-bottom: -10rem;
-}
-
-.Landingpage_noodles_with_basi {
-    height: 15vmin;
-    pointer-events: none;
-    margin-left: 50rem;
-    margin-top: 5rem;
-    display: inline-block;
-}
-
-
-
 
 
 
