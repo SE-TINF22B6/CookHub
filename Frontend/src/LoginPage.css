@@ -2,6 +2,7 @@
     overflow-x: hidden;
 }
 
+
 .LoginPageHeadline {
     font-size: 3.5rem;
     text-shadow: 2px 2px 3px black;
@@ -20,6 +21,10 @@
 
 }
 
+.StartAdventure {
+    font-size: 4rem;
+}
+
 
 .LoginPageText {
     font-size: 1rem;
@@ -27,6 +32,7 @@
 
 .EnterInformation {
     color: #ffffff;
+    margin-top: 5rem;
 }
 
 

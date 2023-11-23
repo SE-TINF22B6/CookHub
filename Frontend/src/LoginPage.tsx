@@ -24,11 +24,11 @@ export default function LoginPage() {
                 <div className="row">
 
                     <div className="col-6">
-                        <h1 className="StartAdventure">Start your Adventure!</h1><br/><br/>
+                        {/*<h1 className="StartAdventure">Start your Eatventure!</h1><br/><br/>*/}
 
                         <div className="EnterInformation">
 
-                            <form className={"container col-md-7"}>
+                            <form className={"container col-md-6"}>
                                 <div className="InputMail">
                                     <label form="exampleInputEmail1" className="form-label">Email address</label>
                                     <input type="email" className="form-control" id="exampleInputEmail1"
@@ -56,12 +56,13 @@ export default function LoginPage() {
 
                         <div className='speech-bubble'>
                             <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Ready</span> to dive into a world of culinary delights? <br/>
-                            <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Log in</span> to CookHub to unlock your access to a treasure trove of recipes,
+                            <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Log in</span> to get access to a treasure trove of recipes,
                             cooking tips, and foodie inspiration. <br/>
                             <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Join</span> our community of cooking enthusiasts
                             and elevate your kitchen experience. Whether it's your first time here or you're
                             returning for more culinary adventures, we're thrilled to have you aboard. <br/> <br/>
-                            <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Let's get coooooking!</span>
+                            <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Let's get coooooking!
+                            </span>
                         </div>
 
                         <h2 className="LoginPageText">
