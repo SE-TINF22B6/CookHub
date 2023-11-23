@@ -8,6 +8,9 @@ import FAQsPage from "./FAQsPage";
 import ImpressumPage from "./ImpressumPage";
 
 
+
+
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +21,7 @@ function App() {
                 <Route path='/about' element={<AboutUsPage/>} />
                 <Route path='/faqs' element={<FAQsPage/>} />
                 <Route path='/impressum' element={<ImpressumPage/>} />
+                <Route path='/journey' element={<LoginPage/>} />
             </Routes>
         </BrowserRouter>
     </div>
