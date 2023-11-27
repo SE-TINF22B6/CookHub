@@ -1,4 +1,4 @@
-import logo from "./assets/Logo_no_background.svg";
+import logo from "../assets/Logo_no_background.svg";
 import React from "react";
 
 export default function LoginPage(){
