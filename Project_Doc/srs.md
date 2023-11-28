@@ -133,6 +133,9 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > It is not necessary to cover all of the following categories, but focus on what your project will implement.  
 > If some nonfunctional requirements are described as user stories in your backlog, add their **links** in this section, or any information to guide the reader find them in your backlog, such as a **label** of those relevant user stories.
 
+![image](https://github.com/SE-TINF22B6/CookHub/assets/115070676/265f85d0-f123-4d38-95e7-e1260036a7bd)
+
+
 > Categories: Usability, Reliability, Performance, Efficiency, Integrity, Maintainability, Flexibility, Testability, Reusability, Security.  
 
 
