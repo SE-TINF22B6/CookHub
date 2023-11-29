@@ -1,0 +1,291 @@
+.bodyframeChild,
+.favorite {
+  position: absolute;
+  border-radius: var(--br-11xl);
+}
+.bodyframeChild {
+  top: 0;
+  left: 0;
+  border: 6px solid var(--color-steelblue-100);
+  box-sizing: border-box;
+  width: 493px;
+  height: 607px;
+}
+.favorite {
+  top: 12px;
+  left: 13px;
+  background-color: var(--color-steelblue-100);
+  width: 466px;
+  height: 584px;
+}
+.bodyframeItem {
+  position: absolute;
+  top: 491.5px;
+  left: 8.5px;
+  border-top: 5px solid var(--color-steelblue-200);
+  box-sizing: border-box;
+  width: 498px;
+  height: 5px;
+}
+.bodyframe {
+  position: absolute;
+  top: 387px;
+  left: 184px;
+  width: 493px;
+  height: 607px;
+}
+.delete {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-ibm-plex-sans);
+  color: var(--gray-900);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 98px;
+  flex-shrink: 0;
+}
+.iconoutlinearrowRight {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.icon {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.buttonprimarywithIcon,
+.deleteParent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.deleteParent {
+  width: 125px;
+  flex-direction: row;
+  gap: var(--gap-4xs);
+}
+.buttonprimarywithIcon {
+  border-radius: var(--br-41xl);
+  background-color: #fe7171;
+  flex-direction: column;
+  padding: var(--padding-base);
+  box-sizing: border-box;
+}
+.btnDeleteAll,
+.buttonprimarywithIcon,
+.deleteinputWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 186px;
+  height: 62px;
+}
+.btnDeleteAll {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+}
+.buttonName,
+.buttonprimarywithIcon1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttonName {
+  position: relative;
+  font-size: var(--font-size-sm);
+  line-height: 22px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-ibm-plex-sans);
+  color: var(--gray-900);
+  text-align: center;
+  width: 98px;
+  flex-shrink: 0;
+}
+.buttonprimarywithIcon1 {
+  border-radius: var(--br-41xl);
+  background-color: var(--color-yellowgreen);
+  flex-direction: column;
+  padding: var(--padding-base);
+  box-sizing: border-box;
+}
+.btnSaveRezipe,
+.buttonprimarywithIcon1,
+.txtBackToProfileWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 193px;
+  height: 59.4px;
+}
+.btnSaveRezipe {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  left: 217px;
+}
+.btnRedGreen {
+  position: absolute;
+  top: 901px;
+  left: 227px;
+  width: 410px;
+  height: 62px;
+}
+.inputingredients,
+.inputingredientsChild {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 198px;
+  height: 206px;
+}
+.inputingredientsChild {
+  background-color: #d9d9d9;
+}
+.inputingredients {
+  margin: 0;
+}
+.inputinstructionFormgroup {
+  width: 401px;
+  position: absolute;
+  top: 225px;
+  left: 3px;
+}
+.bodyinputs,
+.headerChild {
+  position: absolute;
+  top: 421px;
+  left: 227px;
+  width: 404px;
+  height: 431px;
+}
+.headerChild {
+  top: 31px;
+  left: 37px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-steelblue-100);
+  width: 460px;
+  height: 208px;
+}
+.myRecipe {
+  position: absolute;
+  top: 35.2px;
+  left: 48px;
+  letter-spacing: 6px;
+  line-height: 23px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 388px;
+  height: 166px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1px #000;
+  transform: rotate(-7.58deg);
+  transform-origin: 0 0;
+}
+.headerItem {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  border-radius: var(--br-11xl);
+  border: 6px solid var(--color-steelblue-100);
+  box-sizing: border-box;
+  width: 468px;
+  height: 227px;
+}
+.hamburgy1Icon {
+  position: absolute;
+  top: 152px;
+  left: 46px;
+  width: 195.3px;
+  height: 111.2px;
+  object-fit: cover;
+}
+.header {
+  position: absolute;
+  top: 128px;
+  left: 166px;
+  width: 475px;
+  height: 208px;
+}
+.shushiface1Icon,
+.sushiface2Icon,
+.sushiface3Icon {
+  position: absolute;
+  top: 422px;
+  left: 25px;
+  width: 152px;
+  height: 194px;
+  object-fit: cover;
+}
+.shushiface1Icon,
+.sushiface3Icon {
+  top: 866px;
+  left: 688px;
+  width: 218px;
+  height: 176px;
+}
+.shushiface1Icon {
+  top: 0;
+  left: 477px;
+  width: 205px;
+  height: 175px;
+}
+.sushirolls {
+  position: absolute;
+  top: 6px;
+  left: -25px;
+  width: 906px;
+  height: 1042px;
+}
+.buttonName1 {
+  position: relative;
+  line-height: 22px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 98px;
+  flex-shrink: 0;
+}
+.fontAwesomeRemovebgPreviewIcon {
+  position: absolute;
+  top: 14px;
+  left: 26.9px;
+  width: 35.9px;
+  height: 32px;
+  object-fit: cover;
+}
+.btnBackToProfile {
+  position: absolute;
+  top: 277px;
+  left: 437px;
+  width: 193px;
+  height: 59.4px;
+  text-align: right;
+  font-size: var(--font-size-sm);
+  color: var(--gray-900);
+}
+.addnewrecipe {
+  background-color: var(--color-steelblue-200);
+  width: 860px;
+  height: 1024px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 60px;
+  color: var(--color-yellowgreen);
+  font-family: var(--font-ibm-plex-sans);
+}
