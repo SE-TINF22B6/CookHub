@@ -1,19 +1,34 @@
-.ProfilePage {
-    overflow-x: hidden;
+*{
+    padding: 0;
+    margin: 0;
 }
 
-.App-header {
+html {
+    height: 100%;
+}
 
+.ProfilePage {
+    overflow-x: hidden;
+    height: 100%;
+    background-image: url("../assets/ProfilePage/Background.png");
+    background-repeat: no-repeat;
+}
+
+.Container {
+    display: flex;
 }
 
 .App-logo {
+    margin-right: 5rem;
+}
+
+.AvatarUsernameHolder {
 
 }
 
-.topBackground {
-
+.p-3 {
+    margin-left: 5rem;
 }
-
 
 .Buttons {
 
