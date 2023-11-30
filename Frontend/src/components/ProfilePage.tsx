@@ -11,7 +11,7 @@ export default function ProfilePage() {
             <header className="App-header">
 
                 <div className="topBackground">
-                    <img src={topBackground}/>
+                    <img src={topBackground} alt="background"/>
                 </div>
 
                 <img src={logo} className="App-logo" alt="logo"/>
