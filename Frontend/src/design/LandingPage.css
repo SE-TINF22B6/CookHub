@@ -120,7 +120,14 @@ ul>li{
 
 
 .LandingPage {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
   background-color: #38527D;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
 }
 
 

@@ -2,6 +2,9 @@
 .ProfilePage {
     background-image: url("../assets/ProfilePage/Background.png");
     height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
