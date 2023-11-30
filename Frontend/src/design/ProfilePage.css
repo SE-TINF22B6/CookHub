@@ -1,7 +1,3 @@
-*{
-    background-color: transparent;
-}
-
 
 .ProfilePage {
     background-image: url("../assets/ProfilePage/Background.png");
@@ -10,7 +6,6 @@
     background-size: cover;
     background-attachment: fixed;
     overflow-x: hidden;
-    background-color: transparent !important;
 }
 
 .Header {
