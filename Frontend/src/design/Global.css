@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap");
+body {
+    margin: 0;
+    line-height: normal;
+}
+:root {
+    /* fonts */
+    --inter-semi-bold-16: Inter;
+    --font-ibm-plex-sans: "IBM Plex Sans";
+
+    /* font sizes */
+    --inter-semi-bold-16-size: 16px;
+    --font-size-sm: 14px;
+
+    /* Colors */
+    --base-black: #000;
+    --color-steelblue-100: #3d63a4;
+    --color-steelblue-200: #38527d;
+    --color-yellowgreen: #c9fe71;
+    --gray-900: #18181b;
+
+    /* Gaps */
+    --gap-4xs: 9px;
+
+    /* Paddings */
+    --padding-base: 16px;
+
+    /* Border radiuses */
+    --br-41xl: 60px;
+    --br-11xl: 30px;
+}

@@ -1,0 +1,210 @@
+.bodyframe-child,
+.favorite {
+    position: absolute;
+    border-radius: var(--br-11xl);
+}
+.bodyframe-child {
+    top: 0;
+    left: 0;
+    border: 6px solid var(--color-steelblue-100);
+    box-sizing: border-box;
+    width: 493px;
+    height: 607px;
+}
+.favorite {
+    top: 12px;
+    left: 13px;
+    background-color: var(--color-steelblue-100);
+    width: 466px;
+    height: 584px;
+}
+.bodyframe-item {
+    position: absolute;
+    top: 491.5px;
+    left: 8.5px;
+    border-top: 5px solid var(--color-steelblue-200);
+    box-sizing: border-box;
+    width: 498px;
+    height: 5px;
+}
+.bodyframe {
+    position: absolute;
+    top: 387px;
+    left: 184px;
+    width: 493px;
+    height: 607px;
+}
+.btn-delete-all,
+.deleteinput-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 186px;
+    height: 62px;
+}
+.btn-delete-all {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+}
+.btn-save-rezipe,
+.txt-back-to-profile-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 193px;
+    height: 59.4px;
+}
+.btn-save-rezipe {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    left: 217px;
+}
+.btn-red-green {
+    position: absolute;
+    top: 901px;
+    left: 227px;
+    width: 410px;
+    height: 62px;
+}
+.inputingredients,
+.inputingredients-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 198px;
+    height: 206px;
+}
+.inputingredients-child {
+    background-color: #d9d9d9;
+}
+.inputingredients {
+    margin: 0;
+}
+.inputinstruction-formgroup {
+    width: 401px;
+    position: absolute;
+    top: 225px;
+    left: 3px;
+}
+.bodyinputs,
+.header-child {
+    position: absolute;
+    top: 421px;
+    left: 227px;
+    width: 404px;
+    height: 431px;
+}
+.header-child {
+    top: 31px;
+    left: 37px;
+    border-radius: var(--br-11xl);
+    background-color: var(--color-steelblue-100);
+    width: 460px;
+    height: 208px;
+}
+.my-recipe {
+    position: absolute;
+    top: 35.2px;
+    left: 48px;
+    letter-spacing: 6px;
+    line-height: 23px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 388px;
+    height: 166px;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke: 1px #000;
+    transform: rotate(-7.58deg);
+    transform-origin: 0 0;
+}
+.header-item {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    border-radius: var(--br-11xl);
+    border: 6px solid var(--color-steelblue-100);
+    box-sizing: border-box;
+    width: 468px;
+    height: 227px;
+}
+.hamburgy-1-icon {
+    position: absolute;
+    top: 152px;
+    left: 46px;
+    width: 195.3px;
+    height: 111.2px;
+    object-fit: cover;
+}
+.header,
+.sushiface2-icon {
+    position: absolute;
+    top: 128px;
+    left: 166px;
+    width: 475px;
+    height: 208px;
+}
+.sushiface2-icon {
+    top: 422px;
+    left: 25px;
+    width: 152px;
+    height: 194px;
+    object-fit: cover;
+}
+.shushiface1-icon,
+.sushiface3-icon {
+    position: absolute;
+    top: 866px;
+    left: 688px;
+    width: 218px;
+    height: 176px;
+    object-fit: cover;
+}
+.shushiface1-icon {
+    top: 0;
+    left: 477px;
+    width: 205px;
+    height: 175px;
+}
+.sushirolls {
+    position: absolute;
+    top: 6px;
+    left: -25px;
+    width: 906px;
+    height: 1042px;
+}
+.font-awesome-removebg-preview-icon {
+    position: absolute;
+    top: 14px;
+    left: 26.9px;
+    width: 35.9px;
+    height: 32px;
+    object-fit: cover;
+}
+.btn-back-to-profile {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 277px;
+    left: 437px;
+    width: 193px;
+    height: 59.4px;
+}
+.addnewrecipe {
+    background-color: var(--color-steelblue-200);
+    width: 860px;
+    height: 1024px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 60px;
+    color: var(--color-yellowgreen);
+    font-family: var(--font-ibm-plex-sans);
+}

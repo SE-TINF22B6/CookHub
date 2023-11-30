@@ -1,0 +1,37 @@
+.button-name {
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+}
+.iconoutlinearrow-right {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.icon {
+    flex-direction: row;
+}
+.button-name-parent,
+.buttonprimarywith-icon,
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-name-parent {
+    flex-direction: row;
+    gap: var(--gap-4xs);
+}
+.buttonprimarywith-icon {
+    background-color: var(--base-black);
+    width: 190px;
+    flex-direction: column;
+    padding: var(--padding-base);
+    box-sizing: border-box;
+    text-align: right;
+    font-size: var(--inter-semi-bold-16-size);
+    color: #fff;
+    font-family: var(--inter-semi-bold-16);
+}
