@@ -6,9 +6,7 @@ import LoginPage from "./components/LoginPage";
 import AboutUsPage from "./components/AboutUsPage";
 import FAQsPage from "./FAQsPage";
 import ImpressumPage from "./components/ImpressumPage";
-
-
-
+import ProfilePage from "./components/ProfilePage";
 
 
 function App() {
@@ -22,6 +20,7 @@ function App() {
                 <Route path='/faqs' element={<FAQsPage/>} />
                 <Route path='/impressum' element={<ImpressumPage/>} />
                 <Route path='/journey' element={<LoginPage/>} />
+                <Route path='/profile' element={<ProfilePage/>} />
             </Routes>
         </BrowserRouter>
     </div>
