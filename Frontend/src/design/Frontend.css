@@ -1,11 +1,5 @@
 *{
-  padding: 0;
-  margin: 0;
   background-color: #38527D;
-}
-
-html {
-  height: 100%;
 }
 
 .App {
@@ -128,6 +122,10 @@ ul>li{
 
 }
 
+
+.LandingPage {
+  background-color: #38527D;
+}
 
 
 .Landingpage_title {

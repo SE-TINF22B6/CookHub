@@ -4,9 +4,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import AboutUsPage from "./components/AboutUsPage";
-import FAQsPage from "./FAQsPage";
+import FAQsPage from "./components/FAQsPage";
 import ImpressumPage from "./components/ImpressumPage";
 import ProfilePage from "./components/ProfilePage";
+import SettingsPage from "./components/SettingsPage";
+import RecipePage from "./components/RecipePage";
+import RecipeCreator from "./components/RecipeCreator";
+import RecipeBrowser from "./components/RecipeBrowser";
 
 
 function App() {
@@ -21,6 +25,10 @@ function App() {
                 <Route path='/impressum' element={<ImpressumPage/>} />
                 <Route path='/journey' element={<LoginPage/>} />
                 <Route path='/profile' element={<ProfilePage/>} />
+                <Route path='/settings' element={<SettingsPage/>} />
+                <Route path='/recipe' element={<RecipePage/>} />
+                <Route path='/create' element={<RecipeCreator/>} />
+                <Route path='/browse' element={<RecipeBrowser/>} />
             </Routes>
         </BrowserRouter>
     </div>

@@ -5,6 +5,7 @@ import "../design/LoginPage.css"
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 
 
+
 export default function LoginPage() {
     return (
         <div className="LoginPage">

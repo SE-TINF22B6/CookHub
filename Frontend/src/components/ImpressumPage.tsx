@@ -1,5 +1,6 @@
 import logo from "../assets/Logo_no_background.svg";
 import React from "react";
+import "../design/ImpressumPage.css"
 
 export default function ImpressumPage(){
     return(
