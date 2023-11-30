@@ -12,22 +12,43 @@ html {
     height: 100%;
     background-image: url("../assets/ProfilePage/Background.png");
     background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-.Container {
+.Header {
+
+}
+
+.ContainerTop {
     display: flex;
+    margin-top: 6rem;
+    Background-color: transparent;
+
+}
+
+.Stack1 {
+    Background-color: transparent;
+}
+
+.Stack2 {
+    Background-color: transparent;
 }
 
 .App-logo {
+    width: 120%;
+    height: 120%;
     margin-right: 5rem;
 }
 
 .AvatarUsernameHolder {
-
+    width: 120%;
+    height: 120%;
+    margin-left: 3rem;
 }
 
 .p-3 {
-    margin-left: 5rem;
+    margin-left: 10rem;
 }
 
 .Buttons {
@@ -35,10 +56,12 @@ html {
 }
 
 .LogoutButton {
-
+    width: 120%;
+    height: 120%;
 }
 
 .SettingsButton {
-
+    width: 120%;
+    height: 120%;
 
 }
