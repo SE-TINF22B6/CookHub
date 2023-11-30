@@ -1,19 +1,12 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-
-html {
-    height: 100%;
-}
 
 .ProfilePage {
-    overflow-x: hidden;
-    height: 100%;
     background-image: url("../assets/ProfilePage/Background.png");
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    overflow-x: hidden;
+    background-color: transparent !important;
 }
 
 .Header {
@@ -22,9 +15,9 @@ html {
 
 .ContainerTop {
     display: flex;
-    margin-top: 6rem;
-    Background-color: transparent;
-
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Stack1 {
@@ -35,15 +28,16 @@ html {
     Background-color: transparent;
 }
 
-.App-logo {
-    width: 120%;
-    height: 120%;
+.App-logo_ProfilePage {
+    width: 100%;
+    height: 100%;
     margin-right: 5rem;
+    Background-color: transparent;
 }
 
 .AvatarUsernameHolder {
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
     margin-left: 3rem;
 }
 
@@ -56,12 +50,35 @@ html {
 }
 
 .LogoutButton {
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
 }
 
 .SettingsButton {
-    width: 120%;
-    height: 120%;
+    width: 100%;
+    height: 100%;
+
+}
+
+.ContainerBottom {
+    display: flex;
+    margin-top: 6rem;
+    Background-color: transparent;
+
+}
+
+.Stack3 {
+    display: flex;
+}
+
+.HistoryCard {
+
+}
+
+.FavoritesCard {
+
+}
+
+.OwnRecipesCard {
 
 }

@@ -9,17 +9,20 @@ import avatarUsernameHolder from "../assets/ProfilePage/AvatarUsernameHolder.png
 import logoutBTN from "../assets/ProfilePage/Logout.png";
 import settingsBTN from "../assets/ProfilePage/Settings.png";
 import frameCards from "../assets/ProfilePage/FrameCardsCenter.png";
+import historyCard from "../assets/ProfilePage/History.png";
+import favoritesCard from "../assets/ProfilePage/Favorites.png";
+import OwnRecipeCard from "../assets/ProfilePage/OwnRecipes.png";
 
 export default function ProfilePage() {
     return (
-        <div className="ProfilePage">
+        <div className="ProfilePage" style={{backgroundColor: "transparent"}} >
 
-                <Container fluid="md" className="ContainerTop" style={{backgroundColor:"transparent"}}>
+                <Container fluid="md" className="ContainerTop" >
                     <Row>
                         <Col>
-                            <Stack className="Stack1" direction="horizontal" gap={4}>
+                            <Stack className="Stack1" direction="horizontal" gap={4} >
                                 <div className="p-1">
-                                    <a href="/"><img src={logo} className="App-logo" alt="logo"/></a>
+                                    <a href="/"><img src={logo} className="App-logo_ProfilePage" alt="logo" /></a>
                                 </div>
                                 <div className="p-2">
                                     <img src={avatarUsernameHolder} className="AvatarUsernameHolder" alt="Avatar&Username Background"/>
@@ -39,13 +42,36 @@ export default function ProfilePage() {
                     </Row>
                 </Container>
 
-                <Container fluid="md" className="ContainerMid">
+                <Container fluid="md" className="ContainerBottom" >
                     <Row>
                         <Col>
-                            <img src={frameCards} alt="frameCards"/>
+                            <div id="parent">
+                                <div id="child">
+
+                                <Stack className="Stack3" direction="horizontal" gap={4}>
+                                    <div className="CardHolder-1">
+                                        <img src={historyCard} className="HistoryCard" alt="History Card"/>
+                                    </div>
+                                    <div className="CardHolder-2">
+                                        <img src={favoritesCard} className="FavoritesCard" alt="Favorites Card"/>
+                                    </div>
+                                    <div className="CardHolder-3">
+                                        <img src={OwnRecipeCard} className="OwnRecipeCard" alt="Own Recipe Card"/>
+                                    </div>
+                                </Stack>
+                                </div>
+
+                                <img src={frameCards} alt="frameCards"/>
+                            </div>
                         </Col>
                     </Row>
                 </Container>
+
+
+
+
+
+
 
 
 
