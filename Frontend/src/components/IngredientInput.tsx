@@ -21,7 +21,7 @@ export default function IngredientInput({addIngredient}:{addIngredient:Function}
                     onChange={e => (setNewIngredient(e.target.value))}
                     onKeyDown={e =>
                         {
-                            if(e.key == "Enter") {
+                            if(e.key === "Enter") {
                                 addNewIngredient();
                             }
                         }
