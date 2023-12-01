@@ -1,12 +1,20 @@
 import Ingredient from "./Ingredient";
 
-export default function IngredientList({ingredients}:{ingredients:Array<string>}) {
+interface IngredientArray {
+    ingredients: { id: number, value: string }[];
+    deleteTodo: (id: number) => void;
+
+}
+
+export default function IngredientList(ingredients: IngredientArray) {
+
+
     return (
         <div>
             <ul>
                 {
-                    ingredients.map(ingredient =>
-                        <Ingredient ingredient={ingredient}></Ingredient>
+                    ingredients.ingredients.map(ingredient =>
+                        <Ingredient key={ingredient.id} id={ingredient.id} value={ingredient.value} onDelete={ingredients.deleteTodo}></Ingredient>
                     )
                 }
             </ul>

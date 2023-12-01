@@ -2,12 +2,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import {useState} from "react";
-export default function IngredientInput({addIngredient}:{addIngredient:Function}){
+
+interface IngredientInputIF{
+    addIngredient: (value:string) => void;
+}
+export default function IngredientInput(addFunction : IngredientInputIF){
 
     const [newIngredient, setNewIngredient] = useState<string>("");
 
     function addNewIngredient(){
-        addIngredient(newIngredient);
+        addFunction.addIngredient(newIngredient);
         setNewIngredient("");
     }
     return(

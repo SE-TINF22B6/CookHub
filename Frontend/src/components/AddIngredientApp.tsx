@@ -3,18 +3,30 @@ import IngredientList from "./IngredientList";
 import IngredientInput from "./IngredientInput";
 
 
-function TodoApp(){
 
+interface Ingredient{
+    id:number;
+    value:string;
+}
 
-    const [ingredients, setIngredients] = useState<Array<string>>([])
+function TodoApp() {
 
-    function addIngredient(newIngredient:string){
-        setIngredients([...ingredients,newIngredient])
+    const [ingredients, setIngredients] = useState<Ingredient[]>([])
+
+    function addIngredient(newValue: string) {
+        if (newValue){
+            setIngredients([...ingredients, {id:Date.now(), value:newValue }])
+        }
     }
-    return(
+
+    function deleteIngredient(id: number) {
+       setIngredients(ingredients.filter(ingredient => ingredient.id !== id))
+    }
+
+    return (
         <div>
             <IngredientInput addIngredient={addIngredient}></IngredientInput>
-            <IngredientList ingredients={ingredients}></IngredientList>
+            <IngredientList ingredients={ingredients} deleteTodo={deleteIngredient}></IngredientList>
         </div>
     )
 }
