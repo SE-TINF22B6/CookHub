@@ -1,4 +1,14 @@
-.RecipeCreator {
-    overflow-x: hidden;
-    Background-color: #38527D;
+.formContainer{
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    height: 15vh;
+}
+.topContainer{
+    width: 50%;
+    height: 15vh;
+    margin-top: 5%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid black;
 }
