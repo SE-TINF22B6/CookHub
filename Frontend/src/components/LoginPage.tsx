@@ -49,8 +49,8 @@ export default function LoginPage() {
                                 </div>
                                 <div style={{fontSize: 12}}>{message}</div>
 
-                                <a className="SubmitLogin"
-                                   onClick={() => new UserClient().sendLoginRequest(email, password).then(response => setMessage(JSON.parse(response)))}> Submit </a>
+                                <input type="button" className="SubmitLogin" value="Submit"
+                                   onClick={() => new UserClient().sendLoginRequest(email, password).then(response => setMessage(JSON.parse(response)))}/>
                             </form>
 
                             <br/>
