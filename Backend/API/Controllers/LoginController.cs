@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services;
 
 namespace API.Controllers;
 
@@ -6,20 +7,18 @@ namespace API.Controllers;
 [Route("[controller]")]
 public class LoginController : ControllerBase
 {
-    private LoginDataModel _adminLoginData = new LoginDataModel
+    private readonly UserService _userService;
+
+    public LoginController(UserService userService)
     {
-        Email = "admin@cookhub.com",
-        Password = "admin"
-    };
+        _userService = userService;
+    }
     
     [HttpPost]
     public string Login([FromBody] LoginDataModel loginData)
     {
-        if (loginData.Email == _adminLoginData.Email && loginData.Password == _adminLoginData.Password)
-        {
-            return "you are logged in";
-        }
+        var isValidUserData = _userService.TryValidateUserData(loginData.Email, loginData.Password);
 
-        return "wrong login data";
+        return isValidUserData ? "login data correct" : "login data incorrect";
     }
 }

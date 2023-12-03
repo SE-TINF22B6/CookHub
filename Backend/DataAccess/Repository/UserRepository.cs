@@ -5,7 +5,7 @@ namespace DataAccess.Repository;
 
 public class UserRepository : IRepository<User>
 {
-    public ISessionFactory Factory { get; set; }
+    public ISessionFactory Factory { get; }
 
     public UserRepository(ISessionFactory factory)
     {

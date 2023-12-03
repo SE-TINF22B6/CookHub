@@ -1,15 +1,20 @@
-﻿using DataAccess.Repository;
+﻿using DataAccess.Entities;
+using DataAccess.Repository;
 
 namespace Services;
 
 public class UserService
 {
-    private readonly UserRepository _repository;
+    private readonly IRepository<User> _repository;
 
-    public UserService(UserRepository repository)
+    public UserService(IRepository<User> repository)
     {
         _repository = repository;
     }
-    
-    // TODO: add methods
+
+    public bool TryValidateUserData(string email, string password)
+    {
+        var user = _repository.Get(email);
+        return user != null && user.PasswordHash == password;
+    }
 }

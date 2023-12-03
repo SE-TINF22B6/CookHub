@@ -16,12 +16,12 @@ public interface IRepository<TEntity>
         transaction.Commit();
     }
     
-    public TEntity Get(string email)
+    public TEntity? Get(object key)
     {
         using var session = Factory.OpenSession();
         using var transaction = session.BeginTransaction();
 
-        var entity = session.Get<TEntity>(email);
+        var entity = session.Get<TEntity>(key);
         
         transaction.Commit();
         

@@ -8,8 +8,8 @@ namespace DataAccess;
 
 public class DataAccess
 {
-    public ISessionFactory Factory { get; } = Fluently.Configure()
-        .Database(PostgreSQLConfiguration.Standard.ConnectionString("Server=localhost;Port=5432;User Id=postgres;Password=password;Database=cookhub;"))
+    public static ISessionFactory CreateSessionFactory(string connectionString) => Fluently.Configure()
+        .Database(PostgreSQLConfiguration.Standard.ConnectionString(connectionString))
         .Mappings(configuration =>
         {
             configuration.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly());
