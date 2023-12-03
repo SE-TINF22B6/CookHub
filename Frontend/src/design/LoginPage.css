@@ -1,0 +1,105 @@
+.LoginPage {
+    overflow-x: hidden;
+}
+
+
+.LoginPageHeadline {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 3px black;
+    margin-top: 3rem;
+}
+
+.PleaseEnterYourLoginDetails {
+    font-size: 1rem;
+}
+
+.LoginPageBody {
+    color: #C9FE71;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 3px black;
+
+}
+
+.StartAdventure {
+    font-size: 4rem;
+}
+
+
+.LoginPageText {
+    font-size: 1rem;
+}
+
+.EnterInformation {
+    color: #ffffff;
+    margin-top: 5rem;
+}
+
+
+.SubmitLogin {
+    background-color: #C9FE71;
+    color: #38527D;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    padding: 1rem 2rem 1rem;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border: solid 1px black;
+    margin-top: 2rem;
+}
+
+.SubmitButton {
+    font-size: 1rem;
+    color: #C9FE71;
+
+    padding: 1rem 1rem 1rem;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.Chef-Carlo2 {
+    height: 30vmin;
+    pointer-events: none;
+    margin-top: 5rem;
+}
+
+body {
+    background: dimgrey;
+    perspective: 35em;
+}
+
+.speech-bubble {
+    position: relative;
+    margin: .5em auto;
+    padding: 1em;
+    width: 35rem; height: 18rem;
+    border-radius: .25em;
+    transform: rotate(-4deg) rotateY(15deg);
+    background: #629bdd;
+    font: 1.3rem Century Gothic, Verdana, sans-serif;
+    text-align: center;
+    color: black;
+}
+
+.speech-bubble:before, .speech-bubble:after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+}
+.speech-bubble:after {
+    top: 0; right: 0; bottom: 0; left: 0;
+    border-radius: inherit;
+    transform: rotate(2deg) translate(.35em, -.15em) scale(1.02);
+    background: lightgrey;
+}
+.speech-bubble:before {
+    border: solid 0 transparent;
+    border-right: solid 3.5em #f4fbfe;
+    border-bottom: solid .25em #629bdd;
+    bottom: .25em; left: 1.25em;
+    width: 0; height: 1em;
+    transform: rotate(45deg) skewX(75deg);
+}

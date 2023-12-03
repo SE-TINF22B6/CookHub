@@ -74,21 +74,37 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
 
-> ✅ Landing page mockup
-> 
-> <img width="300" alt="image" src="https://user-images.githubusercontent.com/113697513/275525934-9e7bbf26-015a-4791-bb94-356ba798c309.png">
+ ✅ (1) Landing page mockup,  (2) After implementation  with HTML & CSS
+ <table>
+  <tr>
+    <td><img width="300" alt="image" src="https://user-images.githubusercontent.com/113697513/275525934-9e7bbf26-015a-4791-bb94-356ba798c309.png"/></td>
+    <td><img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/a27b547c-a738-48cf-bd7d-9455cd8cc907"/></td>
+  </tr>
+ </table>
 
-> ✅ Login page mockup
-> 
-> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/13b1630f-871c-4630-96b0-4e31cd8bc50d">
+ ✅ (1) Login page mockup, (2) After implementation with HTML & CSS
+ <table>
+  <tr>
+    <td><img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/13b1630f-871c-4630-96b0-4e31cd8bc50d"></td>
+    <td><img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/002ac023-5d97-4068-861a-8f949ca99303"/></td>
+  </tr>
+ </table>
 
-> ✅ Profile page mockup
->
-> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/b060bac8-b410-4a78-9c0a-72c7b17a7b9b">
+✅ (1) Profile page mockup
+ <table>
+  <tr>
+    <td><img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/b060bac8-b410-4a78-9c0a-72c7b17a7b9b"><td>
+  </tr>
+ </table>
 
-> ✅ Settings page mockup
->
-> <img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/44140964-f86b-40cb-845a-27e0cbe30951">
+✅ (1) Settings page mockup
+ <table>
+  <tr>
+    <td><img width="300" alt="image" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/8461f6eb-6f9a-49c3-9892-d92973e83742"></td>
+  </tr>
+ </table>
+
+
 
 > ✅ Login activity diagram:
 >
@@ -129,9 +145,8 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 ### 3. Nonfunctional requirements
 
-> [!IMPORTANT]  
-> It is not necessary to cover all of the following categories, but focus on what your project will implement.  
-> If some nonfunctional requirements are described as user stories in your backlog, add their **links** in this section, or any information to guide the reader find them in your backlog, such as a **label** of those relevant user stories.
+![image](https://github.com/SE-TINF22B6/CookHub/assets/115070676/265f85d0-f123-4d38-95e7-e1260036a7bd)
+
 
 > Categories: Usability, Reliability, Performance, Efficiency, Integrity, Maintainability, Flexibility, Testability, Reusability, Security.  
 

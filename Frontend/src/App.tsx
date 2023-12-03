@@ -1,11 +1,12 @@
 import React from 'react';
-import './Frontend.css';
+import './design/Frontend.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LandingPage from "./LandingPage";
-import LoginPage from "./LoginPage";
-import AboutUsPage from "./AboutUsPage";
+import LandingPage from "./components/LandingPage";
+import LoginPage from "./components/LoginPage";
+import AboutUsPage from "./components/AboutUsPage";
 import FAQsPage from "./FAQsPage";
-import ImpressumPage from "./ImpressumPage";
+import ImpressumPage from "./components/ImpressumPage";
+import RecipeCreator from "./components/RecipeCreator";
 
 
 
@@ -22,6 +23,7 @@ function App() {
                 <Route path='/faqs' element={<FAQsPage/>} />
                 <Route path='/impressum' element={<ImpressumPage/>} />
                 <Route path='/journey' element={<LoginPage/>} />
+                <Route path='/recipeCreate' element={<RecipeCreator/>} />
             </Routes>
         </BrowserRouter>
     </div>
