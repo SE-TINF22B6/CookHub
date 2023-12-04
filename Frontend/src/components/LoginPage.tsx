@@ -1,8 +1,9 @@
 import logo from "../assets/Logo_no_background.svg";
 import React from "react";
-import "../design/Frontend.css"
+import "../design/LandingPage.css"
 import "../design/LoginPage.css"
 import chef from "../assets/Chef_Carlo_without_background (1).png";
+
 
 
 export default function LoginPage() {
