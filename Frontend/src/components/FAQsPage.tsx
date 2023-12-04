@@ -1,7 +1,7 @@
-import logo from "./assets/Logo_no_background.svg";
+import logo from "../assets/Logo_no_background.svg";
 import React from "react";
 import Accordion from "react-bootstrap/Accordion"
-import "./design/FAQs.css";
+import "../design/FAQs.css";
 
 export default function FAQsPage() {
     return (

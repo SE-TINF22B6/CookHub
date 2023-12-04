@@ -1,6 +1,6 @@
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import React from "react";
-import '../design/Frontend.css';
+import '../design/LandingPage.css';
 import logo from "../assets/Logo_no_background.svg";
 
 export default function LandingPage() {
