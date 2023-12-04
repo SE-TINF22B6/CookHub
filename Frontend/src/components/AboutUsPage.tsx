@@ -2,7 +2,6 @@ import team from "../assets/CookHub_Team_&_Roles.png";
 import '../design/AboutUsPage.css';
 import React from "react";
 import logo from "../assets/Logo_no_background.svg";
-import 
 
 export default function AboutUsPage(){
     return(
