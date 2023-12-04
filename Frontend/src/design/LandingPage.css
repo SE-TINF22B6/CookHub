@@ -61,12 +61,12 @@ a:hover{
   display: inline-block;
   padding: 1rem 2rem 1rem;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   margin-bottom: 3rem;
   margin-top: 7rem;
   margin-left: 12vw;
-  border: solid 1px black;
+  border: solid 2px black;
 
 }
 

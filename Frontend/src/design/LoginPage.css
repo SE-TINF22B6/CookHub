@@ -1,4 +1,5 @@
 .LoginPage {
+    position: absolute;
     overflow-x: hidden;
     Background-color: #38527D;
     height: 100vh;
@@ -7,19 +8,31 @@
     padding: 0;
     background-repeat: no-repeat;
     background-size: cover;
+}
 
+.AppHeader {
+    position: relative;
+}
+
+.containerLoginPageBodyAndText-Center {
+    display: flex;
+    position: relative;
+    top: -5vh;
+    left: 10vw;
+    height: 100vh;
+    width: 100vw;
 }
 
 
-.LoginPageHeadline {
-    font-size: 3.5rem;
-    text-shadow: 2px 2px 3px black;
-    margin-top: 3rem;
-}
+/*.LoginPageHeadline {*/
+/*    font-size: 3.5rem;*/
+/*    text-shadow: 2px 2px 3px black;*/
+/*    margin-top: 3rem;*/
+/*}*/
 
-.PleaseEnterYourLoginDetails {
-    font-size: 1rem;
-}
+/*.PleaseEnterYourLoginDetails {*/
+/*    font-size: 1rem;*/
+/*}*/
 
 .LoginPageBody {
     color: #C9FE71;
@@ -40,21 +53,21 @@
 
 .EnterInformation {
     color: #ffffff;
-    margin-top: 5rem;
+    margin-top: 10vh;
+    font-size: 2rem;
 }
 
 
 .SubmitLogin {
     background-color: #C9FE71;
     color: #38527D;
-    font-size: 20px;
     font-weight: 400;
     display: inline-block;
     padding: 1rem 2rem 1rem;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
-    border: solid 1px black;
+    border: solid 2px black;
     margin-top: 2rem;
 }
 
