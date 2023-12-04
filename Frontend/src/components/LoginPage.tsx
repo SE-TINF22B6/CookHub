@@ -67,9 +67,7 @@ export default function LoginPage() {
                             </span>
                         </div>
 
-                        <h2 className="LoginPageText">
-
-                        </h2>
+                        <h2 className="LoginPageText"> </h2>
 
                         <div className="Loginpage_images">
                             <img src={chef} className="Chef-Carlo2" alt="chef" />
