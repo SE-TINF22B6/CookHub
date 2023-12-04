@@ -1,4 +1,5 @@
 import team from "../assets/CookHub_Team_&_Roles.png";
+import '../design/AboutUsPage.css';
 import React from "react";
 
 export default function AboutUsPage(){

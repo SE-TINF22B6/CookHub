@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+
+/* Es kann sein, dass globale Einstellungen nicht überall aktiv sind sowie
+an manchen Stellen nicht überschrieben werden können. Vorsicht also mit dem
+Setzen dieser. */
+
