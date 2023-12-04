@@ -1,7 +1,11 @@
-import team from "../assets/CookHub_Team_&_Roles.png";
 import '../design/AboutUsPage.css';
-import React from "react";
+import * as React from 'react';
+import Grid from '@mui/material/Grid';
+import Item from '@mui/material/Grid';
 import logo from "../assets/Logo_no_background.svg";
+import Team_listed from "../assets/AboutUs/Team_listed.png";
+import CookHub_Team_H1 from "../assets/AboutUs/CookHub_Team_H1.png";
+import team_gear from "../assets/AboutUs/team_gears.png";
 
 export default function AboutUsPage(){
     return(
@@ -9,7 +13,9 @@ export default function AboutUsPage(){
 
 
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
+                <a className='Home-link' target="_self" href='/'>
+                    <img src={logo} className="App-logo" alt="logo"/>
+                </a>
                 <ul>
                     <a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a>
                     <a className='About-link' target="_self" href='/about'>About us</a>
@@ -17,18 +23,27 @@ export default function AboutUsPage(){
                 </ul>
             </header>
 
-
             <div className="body">
 
-                <img src={team} className="Team_Roles" alt="team" width="1000" height="500"/>
-                <br/>
-                <ul>
-                    <li><a className='LandingPage' target="_self" href='/'>Welcome</a></li>
-                    <li><a href='/login'>Login</a></li>
-                    <li><a href='/faqs'>FAQ's</a></li>
-                    <li><a href='/impressum'>Impressum</a></li>
-                </ul>
+                <Grid container spacing = {0}>
+
+                    <Item className="leftSide" item xl={6}>
+                        <Grid className="Team_H1" item md={12}>
+                            <img src={CookHub_Team_H1} className="H1" alt="team" width="700vw" height="200vw"/>
+                        </Grid>
+                        <Grid className="Team_listed" item md={12}>
+                            <img src={Team_listed} className="Team_Roles" alt="team" width="700vw" height="200vw"/>
+                        </Grid>
+                    </Item>
+
+                    <Item className="rightSide" item xl={6}>
+                        <img src={team_gear} className={"team_gear"} alt="team" width="600vw" height="350vw"/>
+                    </Item>
+
+                </Grid>
+
             </div>
+
 
         </div>
     );
