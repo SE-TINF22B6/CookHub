@@ -2,7 +2,6 @@ import '../design/AboutUsPage.css';
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid';
-import logo from "../assets/Logo_no_background.svg";
 import Team_listed from "../assets/AboutUs/Team_listed.png";
 import CookHub_Team_H1 from "../assets/AboutUs/CookHub_Team_H1.png";
 import team_gear from "../assets/AboutUs/team_gears.png";
@@ -10,18 +9,6 @@ import team_gear from "../assets/AboutUs/team_gears.png";
 export default function AboutUsPage(){
     return(
         <div className="AboutUsPage">
-
-
-            <header className="App-header">
-                <a className='Home-link' target="_self" href='/'>
-                    <img src={logo} className="App-logo" alt="logo"/>
-                </a>
-                <ul>
-                    <a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a>
-                    <a className='About-link' target="_self" href='/about'>About us</a>
-                    <a className='Impressum-link' target="_self" href='/impressum'>Impressum</a>
-                </ul>
-            </header>
 
             <div className="body">
 

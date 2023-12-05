@@ -1,4 +1,3 @@
-import logo from "../assets/Logo_no_background.svg";
 import * as React from 'react';
 import "../design/ImpressumPage.css"
 
@@ -7,17 +6,6 @@ export default function ImpressumPage(){
     return(
 
         <div className="ImpressumPage">
-
-            <header className="App-header">
-                <a className='Home-link' target="_self" href='/'>
-                    <img src={logo} className="App-logo" alt="logo"/>
-                </a>
-                <ul>
-                    <a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a>
-                    <a className='About-link' target="_self" href='/about'>About us</a>
-                    <a className='Impressum-link' target="_self" href='/impressum'>Impressum</a>
-                </ul>
-            </header>
 
             <div className="body">
 
@@ -29,7 +17,7 @@ export default function ImpressumPage(){
                         <h2>Angaben gemäß § 5 TMG:</h2>
                         <br/>
                         <p>
-                            Male Stick<br />
+                            Mr. Anderson<br />
                             Musterstraße 123<br />
                             76222 Karlsruhe</p>
                         <br/><br/>
@@ -37,7 +25,7 @@ export default function ImpressumPage(){
                         <h2>Kontakt:</h2>
                         <br/>
                         <p>Telefon: 01234 56789<br />
-                            E-Mail: <a href="mailto:male.stick@softwareengineering.com">male.stick@softwareengineering</a></p>
+                            E-Mail: <a href="mailto:mr.anderson@softwareengineering.com">mr.anderson@softwareengineering</a></p>
                         <br/>
 
                         <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h2>

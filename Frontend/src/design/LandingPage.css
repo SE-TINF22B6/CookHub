@@ -2,9 +2,7 @@
   text-align: center;
 
 }
-a{
-  color: black;
-}
+
 
 a:hover{
   color: aliceblue;
@@ -31,24 +29,61 @@ a:hover{
   width: 100%;
   float: left;
   color: black;
-
+  overflow-x: hidden;
 }
 
-.App-header ul{
+
+.LandingPage {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #38527D;
+  height: 100vh;
+  width: 100vw;
+}
+
+.LandingBody {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #38527D;
+  overflow-x: hidden;
+}
+
+
+.Landingpage_title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  font-size: 78px;
+  color: #C9FE71;
+  text-shadow: 2px 2px 4px #000000;
+  text-align: left;
+  margin-left: 10vw;
+}
+
+
+.Landingpage_text {
+  font-weight: 400;
+  font-size: 2vh;
   margin-top: 2rem;
-  margin-left: -2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 3px black;
+  text-align: left;
+  margin-left: 10vw;
+  width: 35vw;
+  height: 20vh;
 }
 
-.App-header ul li{
-  list-style-type: none;
-  display: inline;
-  margin: 2rem 2rem 3rem;
-}
 
-.App-header ul li:last-child{
-  list-style-type: none;
-  display: inline;
-  margin-right: 2rem;
+
+
+.Chef_Carlo {
+  height: 60vmin;
+  pointer-events: none;
+  margin-left: 20vw;
+  margin-top: -6vh;
 }
 
 
@@ -119,68 +154,6 @@ ul>li{
 
 }
 
-
-.LandingPage {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  background-color: #38527D;
-  height: 100vh;
-  width: 100vw;
-
-
-}
-
-
-.Landingpage_title {
-  font-family: "IBM Plex Sans", sans-serif;
-  font-weight: 400;
-  font-size: 78px;
-  color: #C9FE71;
-  text-shadow: 2px 2px 4px #000000;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  text-align: left;
-  margin-left: 10vw;
-}
-
-body {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-size: 1.5rem;
-    text-shadow: 2px 2px 3px black;
-    overflow-x: hidden;
-    }
-
-
-.Landingpage_text {
-
-    font-weight: 400;
-    font-size: 2vh;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-    text-shadow: 2px 2px 3px black;
-    text-align: left;
-    margin-left: 10vw;
-    width: 35vw;
-    height: 20vh;
-}
-
-
-
-.Landingpage_images {
-  display: block;
-  margin-left: 30rem;
-  margin-top: -60rem;
-}
-
-
-.Chef_Carlo {
-  height: 60vmin;
-  pointer-events: none;
-  margin-left: 20vw;
-  margin-top: -6vh;
-}
 
 
 

@@ -14,9 +14,13 @@
 }
 
 .body {
+    position: relative;
+    display: flex;
+    top: 10vh;
     width: 100%;
     text-align: center;
-margin-top: -5vh;
+    justify-content: center;
+
 }
 
 .content {
