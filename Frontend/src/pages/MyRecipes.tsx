@@ -7,7 +7,12 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Rating from "../components/Rating";
+import FloatingActionButtons from "../components/FloatingActionButtons";
+import InfoTable from "../components/InfoTable";
+import BtnAdvntrz from "../assets/Logos_Icons/Button_Adventurize_it.png"
+
 import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
+import Button from '@mui/material/Button';
 
 
 const DemoPaper = styled(Paper)(({ theme }) => ({
@@ -48,11 +53,11 @@ export default function MyRecipes() {
                         </Item>
                     </Grid>
 
-                    <Grid className="Row1_right" xs={4}>
+                    <Grid className="Row1_right" lg={4}>
                         <Item>
                             <Stack direction="row" spacing={2}>
                                 <DemoPaper className="InfoCardPaper" square={false}>
-                                    <h2>InfoCard</h2>
+                                    <h1>Info Card</h1>
                                 </DemoPaper>
                             </Stack>
                         </Item>
@@ -61,30 +66,44 @@ export default function MyRecipes() {
 
                     <Grid className="Row2_left" lg={10}>
                         <Item>
-                           <Rating />
-
+                            <Stack direction="row" spacing={2}>
+                                <Item><Rating /></Item>
+                                <Item><FloatingActionButtons /></Item>
+                            </Stack>
                         </Item>
                     </Grid>
-                    <Grid className="Row2_right" xs={2}>
+                    <Grid className="Row2_right" lg={2}>
+                        <Stack direction="row" spacing={2}>
+                            <Item>
+                                <Button className="MakeShoppingList" variant="contained" color="success">
+                                    Make Shopping List
+                                </Button>
+                            </Item>
+                            <Item>
+                                <a className="AdvBtn" href={'/adventure'}>
+                                    <img src={BtnAdvntrz} className="AdvBtn_self" alt="AdventurizeIt" style={{textShadow: '2px 2px #000000'} } />
+                                </a>
+                            </Item>
+                        </Stack>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid className="ContainerMid" container spacing={1}>
+
+                    <Grid className="Row3_full" lg={12}>
                         <Item>
-                            <div className="RecipeIngredients">
-                                <h2>Ingredients</h2>
-                                <p>Recipe Ingredients</p>
-                                <div className="RecipeText">
-                                    <p>Recipe Text</p>
+                            <Stack direction="row" spacing={2}>
+                                <div className="InfoTable">
+                                    <InfoTable />
                                 </div>
-                            </div>
+                            </Stack>
                         </Item>
                     </Grid>
-
-
-
-
-
-
 
 
                 </Grid>
+
             </Box>
         </div>
     );

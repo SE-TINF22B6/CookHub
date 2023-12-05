@@ -67,19 +67,84 @@
 }
 
 .Row2_left {
-
+    position: relative;
+    display: flex;
+    left: 16vw;
+    top: -0;
 
 }
+
+
+.MakeShoppingList {
+    position: relative;
+    display: flex;
+    top: -10vh;
+    left: 7vw;
+    justify-content: center;
+    width: 10vw;
+    height: 6vh;
+    box-shadow: black 2px 2px 10px;
+}
+
+.AdvBtn {
+    position: relative;
+    display: flex;
+    top: -10vh;
+    left: 10vw;
+    justify-content: center;
+    width: 10vw;
+    height: 5vh;
+    box-shadow: black 1px 1px 10px;
+}
+
+.AdvBtn_self {
+    position: relative;
+    display: flex;
+    top: 0vh;
+    left: 0vw;
+    justify-content: center;
+    width: 10vw;
+    height: 6vh;
+}
+
+
 
 .Row2_right {
-
+    position: relative;
     display: flex;
     top: 0;
-    right: 0;
+    right: 20vw;
+    height: 20%;
+    width: 20%;
 
 }
 
-.RecipeIngredients {
+.InfoTable {
+    position: relative;
+    display: flex;
+    top: 0vh;
+    left: -8vw;
+    height: 90vh;
+    width: 45vw;
+    justify-content: center;
+    box-shadow: 4px 4px #000000;
+}
 
+.row3_full {
+    position: relative;
+    display: flex;
+    top: 0vh;
+    left: 0;
 
+    justify-content: center;
+    box-shadow: 4px 4px #000000;
+}
+
+.InfoTable {
+    position: relative;
+    display: flex;
+    top: 0vh;
+    left: 25vw;
+    justify-content: center;
+    box-shadow: 4px 4px #000000;
 }

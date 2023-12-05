@@ -14,6 +14,7 @@ import MyRecipes from "./pages/MyRecipes";
 import FindRecipes from "./pages/FindRecipes";
 import MyAccount from "./pages/MyAccount";
 import Logout from "./pages/Logout";
+import AdventureZone from "./pages/AdventureZone";
 
 
 const AppBarConditional = () => {
@@ -47,6 +48,7 @@ function App() {
                 <Route path='/createrecipe' element={<CreateRecipe/>} />
                 <Route path='/myaccount' element={<MyAccount/>} />
                 <Route path='/logout' element={<Logout/>} />
+                <Route path='/adventurezone' element={<AdventureZone/>} />
             </Routes>
         </BrowserRouter>
     </div>
