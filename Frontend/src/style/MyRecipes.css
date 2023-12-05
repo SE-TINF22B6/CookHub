@@ -100,8 +100,8 @@
 .AdvBtn_self {
     position: relative;
     display: flex;
-    top: 0vh;
-    left: 0vw;
+    top: 0;
+    left: 0;
     justify-content: center;
     width: 10vw;
     height: 6vh;
@@ -122,7 +122,7 @@
 .InfoTable {
     position: relative;
     display: flex;
-    top: 0vh;
+    top: 0;
     left: -8vw;
     height: 90vh;
     width: 45vw;
@@ -133,7 +133,7 @@
 .row3_full {
     position: relative;
     display: flex;
-    top: 0vh;
+    top: 0;
     left: 0;
 
     justify-content: center;
@@ -143,7 +143,7 @@
 .InfoTable {
     position: relative;
     display: flex;
-    top: 0vh;
+    top: 0;
     left: 25vw;
     justify-content: center;
     box-shadow: 4px 4px #000000;
