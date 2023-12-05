@@ -1,4 +1,4 @@
-import '../design/AboutUsPage.css';
+import '../style/AboutUs.css';
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid';
@@ -6,7 +6,7 @@ import Team_listed from "../assets/AboutUs/Team_listed.png";
 import CookHub_Team_H1 from "../assets/AboutUs/CookHub_Team_H1.png";
 import team_gear from "../assets/AboutUs/team_gears.png";
 
-export default function AboutUsPage(){
+export default function AboutUs(){
     return(
         <div className="AboutUsPage">
 

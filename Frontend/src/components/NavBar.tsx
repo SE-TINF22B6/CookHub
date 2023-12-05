@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../design/ButtonAppBar.css';
+import '../style/NavBar.css';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,7 +14,7 @@ import MenuListComposition from "./MenuListComposition";
 import {Link} from "react-router-dom";
 
 
-export default function ButtonAppBar() {
+export default function NavBar() {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -54,9 +54,9 @@ export default function ButtonAppBar() {
                                 },
                             }}
                         >
-                            <Button className='MyRecipes' target="_self" href='/recipes'>My Recipes</Button>
-                            <Button className='RecipesBrowser' target="_self" href='/recipesbrowser'>Recipes Browser</Button>
-                            <Button className='RecipeCreator' target="_self" href='/recipeCreate'>Recipe Creator</Button>
+                            <Button className='MyRecipes' target="_self" href='/myrecipes'>My Recipes</Button>
+                            <Button className='FindRecipes' target="_self" href='/findrecipes'>Find Recipes</Button>
+                            <Button className='CreateRecipe' target="_self" href='/recipeCreate'>Create Recipe</Button>
                             <Button className='AboutUs' target="_self" href='/about'>About Us</Button>
                             <Button className='FAQs' target="_self" href='/faqs'>FAQs</Button>
                             <Button className='Impressum' target="_self" href='/impressum'>Impressum</Button>

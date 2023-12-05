@@ -1,0 +1,85 @@
+.RecipePage {
+    position: absolute;
+    overflow-x: hidden;
+    Background-color: #38527D;
+    height: 100vh;
+    width: 100vw;
+}
+
+.NameOfDish {
+    position: relative;
+    display: flex;
+    top: 5vh;
+    left: 9vw;
+    justify-content: left;
+
+}
+
+
+.ContainerTop {
+    position: relative;
+    display: flex;
+    top: 0;
+    left: -8vw;
+    height: 100vh;
+    width: 80vw;
+    color: #C9FE71;
+
+}
+
+.Row1_left {
+
+}
+
+.RecipeImage {
+    position: relative;
+    display: flex;
+    top: 10vh;
+    left: 5vw;
+    height: 60vh;
+    width: 45vw;
+    margin: auto;
+    justify-content: center;
+    box-shadow: 4px 4px #000000;
+}
+
+.Row1_right {
+
+}
+
+.InfoCardPaper{
+    position: relative;
+    display: flex;
+    top: 10vh;
+    margin: auto;
+    justify-content: center;
+}
+
+.InfoCard {
+    position: relative;
+    display: flex;
+    top: 10vh;
+    margin: auto;
+    justify-content: center;
+    height: 60vh;
+    width: 45vw;
+    box-shadow: 4px 4px #000000;
+}
+
+.Row2_left {
+
+
+}
+
+.Row2_right {
+
+    display: flex;
+    top: 0;
+    right: 0;
+
+}
+
+.RecipeIngredients {
+
+
+}

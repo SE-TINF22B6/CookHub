@@ -1,7 +1,7 @@
 import React from "react";
-import "../design/RecipeBrowser.css";
+import "../style/FindRecipes.css";
 
-export default function RecipeBrowser() {
+export default function FindRecipes() {
     return (
 
         <div className="RecipeBrowser" >

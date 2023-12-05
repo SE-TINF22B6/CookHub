@@ -3,10 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import logo from "../assets/Hotdog.svg";
-import "../design/RecipeCreator.css";
-import AddIngredientApp from "./AddIngredientApp";
+import "../style/CreateRecipe.css";
+import AddIngredientApp from "../components/AddIngredientApp";
 
-export default function RecipeCreator() {
+export default function CreateRecipe() {
     return (
         <div>
             <Container>

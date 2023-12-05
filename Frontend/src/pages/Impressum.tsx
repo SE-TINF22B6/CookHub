@@ -1,7 +1,7 @@
 import * as React from 'react';
-import "../design/ImpressumPage.css"
+import "../style/Impressum.css"
 
-export default function ImpressumPage(){
+export default function Impressum(){
 
     return(
 

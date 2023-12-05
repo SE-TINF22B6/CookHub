@@ -1,7 +1,7 @@
 import React from "react";
-import "../design/SettingsPage.css";
+import "../style/Settings.css";
 
-export default function SettingsPage() {
+export default function Settings() {
     return (
 
         <div className="SettingsPage" >

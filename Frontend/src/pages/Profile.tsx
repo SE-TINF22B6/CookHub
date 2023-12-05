@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
-import "../design/ProfilePage.css";
+import "../style/Profile.css";
 import logo from "../assets/Logo_no_background.svg"
 import avatarUsernameHolder from "../assets/ProfilePage/AvatarUsernameHolder.png"
 import logoutBTN from "../assets/ProfilePage/Logout.png";
@@ -13,7 +13,7 @@ import historyCard from "../assets/ProfilePage/History.png";
 import favoritesCard from "../assets/ProfilePage/Favorites.png";
 import OwnRecipeCard from "../assets/ProfilePage/OwnRecipes.png";
 
-export default function ProfilePage() {
+export default function Profile() {
     return (
         <div className="ProfilePage" style={{backgroundColor: "transparent"}} >
 
@@ -30,7 +30,7 @@ export default function ProfilePage() {
                                 <div className="p-3">
                                     <Stack className="Stack2" gap={2}>
                                         <div className="p-2">
-                                            <a href="/logout"><img src={logoutBTN} className="LogoutButton" alt="logout button"/></a>
+                                            <a href="/Frontend/src/pages/Logout"><img src={logoutBTN} className="LogoutButton" alt="logout button"/></a>
                                         </div>
                                         <div className="p-2">
                                             <a href="/settings"><img src={settingsBTN} className="SettingsButton" alt="settings button"/></a>
