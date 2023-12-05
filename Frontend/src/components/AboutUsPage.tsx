@@ -11,11 +11,8 @@ export default function AboutUsPage(){
     return(
         <div className="AboutUsPage">
 
-
             <header className="App-header">
-                <a className='Home-link' target="_self" href='/'>
-                    <img src={logo} className="App-logo" alt="logo"/>
-                </a>
+                <img src={logo} className="App-logo" alt="logo"/>
                 <ul>
                     <a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a>
                     <a className='About-link' target="_self" href='/about'>About us</a>

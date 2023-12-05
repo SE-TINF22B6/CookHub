@@ -1,0 +1,49 @@
+.AppBar{
+    background-color: #C9FE71;
+
+}
+
+.ToolBar {
+
+
+}
+
+.Logo {
+
+}
+
+.LinksPages {
+
+}
+
+.ButtonGroup {
+
+}
+
+.ButtonGroup .MyRecipes {
+
+}
+
+.MenuIcon {
+    position: relative;
+}
+
+.MenuPopover {
+    position: absolute;
+    top: 100%;
+
+    z-index: 5;
+}
+
+.MenuPopover .MenuListComposition {
+    z-index: 4;
+}
+
+.LoginButton {
+
+}
+
+.Avatar {
+
+}
+

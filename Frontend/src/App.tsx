@@ -11,6 +11,7 @@ import ProfilePage from "./components/ProfilePage";
 import SettingsPage from "./components/SettingsPage";
 import RecipePage from "./components/RecipePage";
 import RecipeBrowser from "./components/RecipeBrowser";
+import HeaderTest from "./components/HeaderTest";
 
 
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/recipe' element={<RecipePage/>} />
                 <Route path='/browse' element={<RecipeBrowser/>} />
                 <Route path='/recipeCreate' element={<RecipeCreator/>} />
+                <Route path='/header' element={<HeaderTest/>} />
             </Routes>
         </BrowserRouter>
     </div>
