@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -40,7 +41,7 @@ export default function MenuListComposition() {
     // return focus to the button when we transitioned from !open -> open
     const prevOpen = React.useRef(open);
     React.useEffect(() => {
-        if (prevOpen.current === true && open === false) {
+        if (prevOpen.current && !open) {
             anchorRef.current!.focus();
         }
 
@@ -53,10 +54,10 @@ export default function MenuListComposition() {
         <Stack direction="row" spacing={2} >
             <Paper>
                 <MenuList>
-                    <MenuItem>Profile</MenuItem>
-                    <MenuItem>My account</MenuItem>
-                    <MenuItem>Settings</MenuItem>
-                    <MenuItem>Logout</MenuItem>
+                    <MenuItem component={Link} to="/profile">Profile</MenuItem>
+                    <MenuItem component={Link} to="/account">My account</MenuItem>
+                    <MenuItem component={Link} to="/settings">Settings</MenuItem>
+                    <MenuItem component={Link} to="/logout">Logout</MenuItem>
                 </MenuList>
             </Paper>
             <div>

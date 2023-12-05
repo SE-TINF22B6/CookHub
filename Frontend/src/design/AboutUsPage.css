@@ -13,6 +13,9 @@
 }
 
 .body {
+    position: relative;
+    display: flex;
+    top: 20vh;
     height: 100vh;
     width: 80vw;
 

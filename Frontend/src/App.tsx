@@ -1,6 +1,7 @@
 import React from 'react';
 import './design/LandingPage.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
+import ButtonAppBar from "./components/ButtonAppBar";
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
 import AboutUsPage from "./components/AboutUsPage";
@@ -11,14 +12,27 @@ import ProfilePage from "./components/ProfilePage";
 import SettingsPage from "./components/SettingsPage";
 import RecipePage from "./components/RecipePage";
 import RecipeBrowser from "./components/RecipeBrowser";
-import HeaderTest from "./components/HeaderTest";
+import MyAccount from "./components/MyAccount";
+import Logout from "./components/Logout";
 
+
+const AppBarConditional = () => {
+    const location = useLocation();
+    const excludedRoutes = ['/', '/login', '/logout'];
+
+    if (excludedRoutes.includes(location.pathname)) {
+        return null; // Zeigt nichts an, wenn die Route eine der ausgeschlossenen Routen ist
+    }
+
+    return <ButtonAppBar />;
+};
 
 
 function App() {
   return (
     <div className="App">
         <BrowserRouter>
+            <AppBarConditional />
             <Routes>
                 <Route path='/' element={<LandingPage/>} />
                 <Route path='/login' element={<LoginPage/>} />
@@ -31,7 +45,8 @@ function App() {
                 <Route path='/recipe' element={<RecipePage/>} />
                 <Route path='/browse' element={<RecipeBrowser/>} />
                 <Route path='/recipeCreate' element={<RecipeCreator/>} />
-                <Route path='/header' element={<HeaderTest/>} />
+                <Route path='/myaccount' element={<MyAccount/>} />
+                <Route path='/logout' element={<Logout/>} />
             </Routes>
         </BrowserRouter>
     </div>
