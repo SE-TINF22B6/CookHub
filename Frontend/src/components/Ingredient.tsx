@@ -5,6 +5,7 @@ interface Ingredient{
     id:number;
     value: string;
     onDelete : (id:number) => void;
+
 }
 
 export default function Ingredient(ingredient: Ingredient){
