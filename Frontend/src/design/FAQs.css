@@ -1,5 +1,14 @@
 .FAQPage {
     background-color: #38527D;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.App-header {
+    background-color: #38527D;
+    color: #C9FE71;
+    min-width: 100vw;
 }
 
 .container-lg {
@@ -8,7 +17,10 @@
 
 .accordion-header {
     color: #C9FE71;
+    background-color: #38527D;
+    border-color: #C9FE71;
 }
+
 
 .accordion-body {
 

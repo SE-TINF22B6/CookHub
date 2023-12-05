@@ -9,6 +9,7 @@ a{
 a:hover{
   color: aliceblue;
 }
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;
@@ -60,12 +61,12 @@ a:hover{
   display: inline-block;
   padding: 1rem 2rem 1rem;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   margin-bottom: 3rem;
   margin-top: 7rem;
-  margin-left: 15rem;
-  border: solid 1px black;
+  margin-left: 12vw;
+  border: solid 2px black;
 
 }
 
@@ -124,9 +125,9 @@ ul>li{
   margin: 0;
   padding: 0;
   background-color: #38527D;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+
 
 }
 
@@ -140,7 +141,7 @@ ul>li{
   margin-top: 2rem;
   margin-bottom: 2rem;
   text-align: left;
-  margin-left: 5rem;
+  margin-left: 10vw;
 }
 
 body {
@@ -154,13 +155,15 @@ body {
 .Landingpage_text {
 
     font-weight: 400;
+    font-size: 2vh;
     margin-top: 2rem;
     margin-bottom: 2rem;
     color: #ffffff;
     text-shadow: 2px 2px 3px black;
     text-align: left;
-    margin-left: 5rem;
-    width: 720px;
+    margin-left: 10vw;
+    width: 35vw;
+    height: 20vh;
 }
 
 
@@ -175,7 +178,8 @@ body {
 .Chef_Carlo {
   height: 60vmin;
   pointer-events: none;
-  margin-left: 20rem;
+  margin-left: 20vw;
+  margin-top: -6vh;
 }
 
 

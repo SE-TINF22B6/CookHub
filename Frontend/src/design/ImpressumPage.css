@@ -1,3 +1,31 @@
 .ImpressumPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Startet die Ausrichtung vom Anfang */
+    overflow-x: hidden;
     background-color: #38527D;
+    background-size: cover;
+    min-height: 100vh; /* Mindesthöhe, um den gesamten Bildschirm abzudecken */
+    width: 100vw;
 }
+
+.App-header {
+
+}
+
+.body {
+    width: 100%;
+    text-align: center;
+margin-top: -5vh;
+}
+
+.content {
+    color: #C9FE71;
+    font-size: 25px;
+}
+
+
+
+
+
+
