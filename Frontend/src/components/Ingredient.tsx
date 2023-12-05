@@ -1,14 +1,14 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 
-interface Ingredient{
+interface IngredientIF{
     id:number;
     value: string;
     onDelete : (id:number) => void;
 
 }
 
-export default function Ingredient(ingredient: Ingredient){
+export default function Ingredient(ingredient: IngredientIF){
 
 
     return(
