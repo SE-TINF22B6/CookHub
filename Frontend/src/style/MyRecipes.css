@@ -1,150 +1,253 @@
-.RecipePage {
-    position: absolute;
-    overflow-x: hidden;
-    Background-color: #38527D;
-    height: 100vh;
-    width: 100vw;
+:root{
+    --main-radius: 5px;
+    --main-padding: 5px;
 }
 
-.NameOfDish {
+.RecipePage {
+    display: grid;
+    height: 100%;
+    width: 100%;
+
+    background-color: #38527D;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    text-transform: Uppercase;
+    color: #000000;
+
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+
+}
+
+
+.MenuShowcaseImage {
+    position: relative;
+    display: flex;
+    top: 6vh;
+    left: 7vw;
+    height: 95%;
+    width: 95%;
+    box-shadow: 5px 5px #000000;
+}
+
+.MenuName {
     position: relative;
     display: flex;
     top: 5vh;
-    left: 9vw;
-    justify-content: left;
-
+    left: 15vw;
 }
 
-
-.ContainerTop {
-    position: relative;
+.InfoTable {
     display: flex;
-    top: 0;
-    left: -8vw;
-    height: 100vh;
-    width: 80vw;
-    color: #C9FE71;
-
-}
-
-.Row1_left {
-
-}
-
-.RecipeImage {
     position: relative;
-    display: flex;
-    top: 10vh;
-    left: 5vw;
-    height: 60vh;
-    width: 45vw;
-    margin: auto;
-    justify-content: center;
-    box-shadow: 4px 4px #000000;
-}
-
-.Row1_right {
-
-}
-
-.InfoCardPaper{
-    position: relative;
-    display: flex;
-    top: 10vh;
-    margin: auto;
-    justify-content: center;
-}
-
-.InfoCard {
-    position: relative;
-    display: flex;
-    top: 10vh;
-    margin: auto;
-    justify-content: center;
-    height: 60vh;
-    width: 45vw;
-    box-shadow: 4px 4px #000000;
-}
-
-.Row2_left {
-    position: relative;
-    display: flex;
-    left: 16vw;
-    top: -0;
-
-}
-
-
-.MakeShoppingList {
-    position: relative;
-    display: flex;
-    top: -10vh;
+    top: 5vh;
     left: 7vw;
-    justify-content: center;
-    width: 10vw;
-    height: 6vh;
-    box-shadow: black 2px 2px 10px;
 }
+
 
 .AdvBtn {
     position: relative;
     display: flex;
-    top: -10vh;
-    left: 10vw;
-    justify-content: center;
-    width: 10vw;
-    height: 5vh;
-    box-shadow: black 1px 1px 10px;
+    bottom: 7vh;
+    left: 3vw;
+}
+
+
+.StickyNote {
+    position: relative;
+    display: flex;
+    bottom: 0;
+    right: 0;
+
+}
+
+.MakeShoppingList{
+    position: relative;
+    display: flex;
+    top:10vh;
+    right: 6vw;
+    z-index: 6;
+}
+
+
+
+
+
+
+
+
+.HeaderContainerL {
+    position: relative;
+    top: 5vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background: #C9FE71;
+    grid-area: HeaderContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+.HeaderContainerR {
+
+    display: flex;
+    background: #C9FE71;
+    grid-area: HeaderContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+
+.ImageContainer {
+    height: 100%;
+    width: 100%;
+    grid-area: ImageContainer;
+    border-radius: var(--main-radius);
+    display: flex;
+    padding-top: var(--main-padding);
+}
+
+
+.AdvBtn_self {
+    display: flex;
+
+}
+
+.FloatingActionButtons {
+    display: flex;
+
+}
+
+
+
+
+
+
+
+.NameOfDish {
+    display: flex;
+    left: 5vw;
+}
+.OuterDish {
+    display: flex;
+}
+
+.TopStackLeft {
+    display: flex;
+
+}
+.LeftBox {
+    display: flex;
+
+}
+.StickyCards_Container {
+    display: flex;
+
+
+}
+.StickyNoteCont {
+     display: flex;
+
+ }
+
+
+
+
+
+
+
+
+
+.RightBox {
+    display: flex;
+    grid-auto-flow: column;
+}
+
+
+.InfoCardContainer {
+    display: flex;
+    background: #C9FE71;
+    grid-area: InfoCardContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+
+.InfoTableContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #C9FE71;
+    grid-area: InfoTableContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+
+}
+
+
+
+
+.StickyCards_Container {
+    display: flex;
+    background: #C9FE71;
+    grid-area: StickyCards_Container;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .RecipePage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "HeaderContainerL"
+            "ImageContainer"
+            "InfoTableContainer"
+            "InfoCardContainer"
+            "StickyCards_Container";
+    }
+}
+
+
+
+.RecipeImage {
+display: flex;
+}
+
+
+.PaperStack {
+    display: flex;
+}
+
+.InfoCardPaper {
+    background: #000000;
 }
 
 .AdvBtn_self {
-    position: relative;
-    display: flex;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    width: 10vw;
-    height: 6vh;
-}
-
-
-
-.Row2_right {
-    position: relative;
-    display: flex;
-    top: 0;
-    right: 20vw;
-    height: 20%;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
     width: 20%;
-
+    height: 60%;
 }
 
-.InfoTable {
-    position: relative;
-    display: flex;
-    top: 0;
-    left: -8vw;
-    height: 90vh;
-    width: 45vw;
-    justify-content: center;
-    box-shadow: 4px 4px #000000;
+
+
+
+.HeaderContainerL {
+    top:10vh;
 }
 
-.row3_full {
-    position: relative;
-    display: flex;
-    top: 0;
-    left: 0;
-
-    justify-content: center;
-    box-shadow: 4px 4px #000000;
+.TopStackLeft {
+    top: 10vh;
+    height: 100vh;
 }
 
-.InfoTable {
-    position: relative;
-    display: flex;
-    top: 0;
-    left: 25vw;
-    justify-content: center;
-    box-shadow: 4px 4px #000000;
+.LeftBox {
+    top: 10vh;
+    height: 100vh;
 }
