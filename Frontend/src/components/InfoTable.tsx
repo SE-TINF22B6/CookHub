@@ -36,10 +36,10 @@ const rows = [
 
 export default function InfoTable() {
     return (
-        <TableContainer component={Paper} sx={{minWidth: 1000, minHeight: 500}}>
-            <Table sx={{ minWidth: 150}} aria-label="simple table">
+        <TableContainer component={Paper} sx={{minWidth: 1090, minHeight: 400}}>
+            <Table sx={{ minWidth: 200,}} aria-label="simple table">
                 <TableHead>
-                    <TableRow>
+                    <TableRow sx={{ backgroundColor: '#c7fc70' }}>
                         <TableCell>Ingredient</TableCell>
                         <TableCell align="right">Quantity</TableCell>
                         <TableCell align="right">Usage</TableCell>
