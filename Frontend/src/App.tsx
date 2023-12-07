@@ -1,6 +1,7 @@
 import React from 'react';
 import './style/Welcome.css';
 import {BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import NavBar from "./components/NavBar";
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
@@ -15,44 +16,46 @@ import FindRecipes from "./pages/FindRecipes";
 import MyAccount from "./pages/MyAccount";
 import Logout from "./pages/Logout";
 import AdventureZone from "./pages/AdventureZone";
+import PleaseLogin from "./pages/PleaseLogin";
 
 
-const AppBarConditional = () => {
-    const location = useLocation();
-    const excludedRoutes = ['/', '/login', '/logout'];
+interface RequireAuthProps {
+    children: React.ReactNode;
+}
 
-    if (excludedRoutes.includes(location.pathname)) {
-        return null; // Zeigt nichts an, wenn die Route eine der ausgeschlossenen Routen ist
-    }
+const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
+    const loginStatus = false;
 
-    return <NavBar />;
-};
+    return loginStatus ? <>{children}</> : <Navigate to="/please-login" />;
+}
+
 
 
 function App() {
-  return (
-    <div className="App">
-        <BrowserRouter>
-            <AppBarConditional />
-            <Routes>
-                <Route path='/' element={<Welcome/>} />
-                <Route path='/login' element={<Login/>} />
-                <Route path='/about' element={<AboutUs/>} />
-                <Route path='/faqs' element={<FAQsPage/>} />
-                <Route path='/impressum' element={<Impressum/>} />
-                <Route path='/journey' element={<Login/>} />
-                <Route path='/profile' element={<Profile/>} />
-                <Route path='/settings' element={<Settings/>} />
-                <Route path='/myrecipes' element={<MyRecipes/>} />
-                <Route path='/findrecipes' element={<FindRecipes/>} />
-                <Route path='/createrecipe' element={<CreateRecipe/>} />
-                <Route path='/myaccount' element={<MyAccount/>} />
-                <Route path='/logout' element={<Logout/>} />
-                <Route path='/adventurezone' element={<AdventureZone/>} />
-            </Routes>
-        </BrowserRouter>
-    </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <NavBar />
+                <Routes>
+                    <Route path='/' element={<Welcome/>} />
+                    <Route path='/login' element={<Login/>} />
+                    <Route path='/about' element={<AboutUs/>} />
+                    <Route path='/faqs' element={<FAQsPage/>}/>
+                    <Route path='/impressum' element={<Impressum/>}/>
+                    <Route path='/please-login' element={<PleaseLogin/>} />
+
+                    <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
+                    <Route path='/settings' element={<RequireAuth><Settings/></RequireAuth>}/>
+                    <Route path='/myrecipes' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
+                    <Route path='/findrecipes' element={<RequireAuth><FindRecipes/></RequireAuth>}/>
+                    <Route path='/recipeCreate' element={<RequireAuth><CreateRecipe/></RequireAuth>}/>
+                    <Route path='/myaccount' element={<RequireAuth><MyAccount/></RequireAuth>}/>
+                    <Route path='/logout' element={<RequireAuth><Logout/></RequireAuth>}/>
+                    <Route path='/adventurezone' element={<RequireAuth><AdventureZone/></RequireAuth>}/>
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
