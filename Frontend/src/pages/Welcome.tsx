@@ -1,11 +1,11 @@
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import React from "react";
-import '../design/LandingPage.css';
+import '../style/Welcome.css';
 import logo from "../assets/Logo_no_background.svg";
 import Item from "@mui/material/Grid";
 import Grid from "@mui/material/Grid";
 
-export default function LandingPage() {
+export default function Welcome() {
     return (
         <div className="LandingPage">
             <header className="App-header">

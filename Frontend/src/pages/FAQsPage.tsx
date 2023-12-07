@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion"
-import "../design/FAQs.css";
+import "../style/FAQs.css";
 
 export default function FAQsPage() {
     return (

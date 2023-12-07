@@ -10,8 +10,21 @@
     background-size: cover;
 }
 
-.AppHeader {
+.LoginHeader {
     position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.App-Logo {
+    box-shadow: #c7fc71 0 0 10px;
+}
+
+.LoginHeaderRight {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .containerLoginPageBodyAndText-Center {
@@ -23,16 +36,6 @@
     width: 100vw;
 }
 
-
-/*.LoginPageHeadline {*/
-/*    font-size: 3.5rem;*/
-/*    text-shadow: 2px 2px 3px black;*/
-/*    margin-top: 3rem;*/
-/*}*/
-
-/*.PleaseEnterYourLoginDetails {*/
-/*    font-size: 1rem;*/
-/*}*/
 
 .LoginPageBody {
     color: #C9FE71;
@@ -60,7 +63,7 @@
 
 .SubmitLogin {
     background-color: #C9FE71;
-    color: #38527D;
+    color: #000000;
     font-weight: 400;
     display: inline-block;
     padding: 1rem 2rem 1rem;
@@ -99,10 +102,10 @@ body {
     width: 35rem; height: 18rem;
     border-radius: .25em;
     transform: rotate(-4deg) rotateY(15deg);
-    background: #629bdd;
+    background: #c7fc71;
     font: 1.3rem Century Gothic, Verdana, sans-serif;
     text-align: center;
-    color: black;
+    color: #ffffff;
 }
 
 .speech-bubble:before, .speech-bubble:after {
@@ -114,12 +117,13 @@ body {
     top: 0; right: 0; bottom: 0; left: 0;
     border-radius: inherit;
     transform: rotate(2deg) translate(.35em, -.15em) scale(1.02);
-    background: lightgrey;
+    background: #262525;
+    box-shadow: 0 0 .5em rgb(199, 252, 113);
 }
 .speech-bubble:before {
     border: solid 0 transparent;
-    border-right: solid 3.5em #f4fbfe;
-    border-bottom: solid .25em #629bdd;
+    border-right: solid 3.5em #000000;
+    border-bottom: solid .25em #c7fc71;
     bottom: .25em; left: 1.25em;
     width: 0; height: 1em;
     transform: rotate(45deg) skewX(75deg);

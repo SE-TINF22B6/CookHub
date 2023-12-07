@@ -1,0 +1,253 @@
+:root{
+    --main-radius: 5px;
+    --main-padding: 5px;
+}
+
+.RecipePage {
+    display: grid;
+    height: 100%;
+    width: 100%;
+
+    background-color: #38527D;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    text-transform: Uppercase;
+    color: #000000;
+
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+
+}
+
+
+.MenuShowcaseImage {
+    position: relative;
+    display: flex;
+    top: 6vh;
+    left: 7vw;
+    height: 95%;
+    width: 95%;
+    box-shadow: 5px 5px #000000;
+}
+
+.MenuName {
+    position: relative;
+    display: flex;
+    top: 5vh;
+    left: 15vw;
+}
+
+.InfoTable {
+    display: flex;
+    position: relative;
+    top: 5vh;
+    left: 7vw;
+}
+
+
+.AdvBtn {
+    position: relative;
+    display: flex;
+    bottom: 7vh;
+    left: 3vw;
+}
+
+
+.StickyNote {
+    position: relative;
+    display: flex;
+    bottom: 0;
+    right: 0;
+
+}
+
+.MakeShoppingList{
+    position: relative;
+    display: flex;
+    top:10vh;
+    right: 6vw;
+    z-index: 6;
+}
+
+
+
+
+
+
+
+
+.HeaderContainerL {
+    position: relative;
+    top: 5vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background: #C9FE71;
+    grid-area: HeaderContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+.HeaderContainerR {
+
+    display: flex;
+    background: #C9FE71;
+    grid-area: HeaderContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+
+.ImageContainer {
+    height: 100%;
+    width: 100%;
+    grid-area: ImageContainer;
+    border-radius: var(--main-radius);
+    display: flex;
+    padding-top: var(--main-padding);
+}
+
+
+.AdvBtn_self {
+    display: flex;
+
+}
+
+.FloatingActionButtons {
+    display: flex;
+
+}
+
+
+
+
+
+
+
+.NameOfDish {
+    display: flex;
+    left: 5vw;
+}
+.OuterDish {
+    display: flex;
+}
+
+.TopStackLeft {
+    display: flex;
+
+}
+.LeftBox {
+    display: flex;
+
+}
+.StickyCards_Container {
+    display: flex;
+
+
+}
+.StickyNoteCont {
+     display: flex;
+
+ }
+
+
+
+
+
+
+
+
+
+.RightBox {
+    display: flex;
+    grid-auto-flow: column;
+}
+
+
+.InfoCardContainer {
+    display: flex;
+    background: #C9FE71;
+    grid-area: InfoCardContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+
+.InfoTableContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #C9FE71;
+    grid-area: InfoTableContainer;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+
+}
+
+
+
+
+.StickyCards_Container {
+    display: flex;
+    background: #C9FE71;
+    grid-area: StickyCards_Container;
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .RecipePage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "HeaderContainerL"
+            "ImageContainer"
+            "InfoTableContainer"
+            "InfoCardContainer"
+            "StickyCards_Container";
+    }
+}
+
+
+
+.RecipeImage {
+display: flex;
+}
+
+
+.PaperStack {
+    display: flex;
+}
+
+.InfoCardPaper {
+    background: #000000;
+}
+
+.AdvBtn_self {
+    border-radius: var(--main-radius);
+    padding-top: var(--main-padding);
+    width: 20%;
+    height: 60%;
+}
+
+
+
+
+.HeaderContainerL {
+    top:10vh;
+}
+
+.TopStackLeft {
+    top: 10vh;
+    height: 100vh;
+}
+
+.LeftBox {
+    top: 10vh;
+    height: 100vh;
+}

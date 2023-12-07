@@ -1,13 +1,13 @@
 import logo from "../assets/Logo_no_background.svg";
-import "../design/LandingPage.css"
+import "../style/Welcome.css"
 import React, {useState} from "react";
-import "../design/LoginPage.css"
+import "../style/Login.css"
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import {UserClient} from "../clients/UserClient";
 import Item from '@mui/material/Grid'
 import Grid from '@mui/material/Grid'
 
-export default function LoginPage() {
+export default function Login() {
 
     let email = '';
     let password = '';
@@ -17,16 +17,26 @@ export default function LoginPage() {
         <div className="LoginPage">
 
 
-            <header className="App-header">
-                <a href="/">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                </a>
+            <header className="LoginHeader">
 
-                <ul>
-                    <li><a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a></li>
-                    <li><a className='About-link' target="_self" href='/about'>About us</a></li>
-                    <li><a className='Impressum-link' target="_self" href='/impressum'>Impressum</a></li>
-                </ul>
+                <Grid container spacing={2}>
+                    <Grid item xs={3}>
+                        <Item>
+                            <a className="LoginHeaderLeft" href="/">
+                                <img src={logo} className="App-logo" alt="logo" />
+                            </a>
+                        </Item>
+                    </Grid>
+                    <Grid item xs={9}>
+                        <Item>
+                            <div className="LoginHeaderRight" style={{flexDirection: 'row'}}>
+                                <a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a>
+                                <a className='About-link' target="_self" href='/about'>About us</a>
+                                <a className='Impressum-link' target="_self" href='/impressum'>Impressum</a>
+                            </div>
+                        </Item>
+                    </Grid>
+                </Grid>
             </header>
 
 
@@ -66,13 +76,13 @@ export default function LoginPage() {
                     <Grid item xs={3}>
                         <Item>
                             <div className='speech-bubble'>
-                                <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Ready</span> to dive into a world of culinary delights? <br/>
-                                <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Log in</span> to get access to a treasure trove of recipes,
+                                <span style={{color:'#C9FE71', backgroundColor:'#262525FF', fontWeight:'bold', textShadow: '3'}}>Ready</span> to dive into a world of culinary delights? <br/>
+                                <span style={{color:'#C9FE71', backgroundColor:'#262525FF', fontWeight:'bold'}}>Log in</span> to get access to a treasure trove of recipes,
                                 cooking tips, and foodie inspiration. <br/>
-                                <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Join</span> our community of cooking enthusiasts
+                                <span style={{color:'#C9FE71', backgroundColor:'#262525FF', fontWeight:'bold'}}>Join</span> our community of cooking enthusiasts
                                 and elevate your kitchen experience. Whether it's your first time here or you're
                                 returning for more culinary adventures, we're thrilled to have you aboard. <br/> <br/>
-                                <span style={{color:'#C9FE71', backgroundColor:'lightgrey', fontWeight:'bold'}}>Let's get coooooking!
+                                <span style={{color:'#C9FE71', backgroundColor:'#262525FF', fontWeight:'bold'}}>Let's get coooooking!
                             </span>
                             </div>
 
