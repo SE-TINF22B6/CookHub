@@ -10,11 +10,17 @@
     margin-top: 10vh;
     flex-direction: row;;
     justify-content: space-evenly;
+    align-items: center;
 }
+
 #LoginPageBodyLeft {
     display: flex;
     position: relative;
-    margin-top: 10vh;
+    background-image: url("../assets/Logos_Icons/CookHub_Frame_unfilled_no_background.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 75vh;
 }
 
 #LoginPageBodyRight {
@@ -35,9 +41,12 @@
 }
 
 .EnterInformation {
+    position: relative;
     color: #ffffff;
     font-size: 2rem;
     min-width: 50rem;
+    top: 20%;
+
 }
 
 .SubmitLogin {
@@ -100,3 +109,4 @@
     width: 0; height: 1em;
     transform: rotate(45deg) skewX(75deg);
 }
+

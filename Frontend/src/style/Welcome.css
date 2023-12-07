@@ -6,6 +6,10 @@ a:hover{
   color: aliceblue;
 }
 
+ul>li{
+  list-style: none;
+}
+
 .App-logo {
   height: 20vmin;
   pointer-events: none;
@@ -17,6 +21,7 @@ a:hover{
   padding: 0;
   background-color: #38527D;
   min-height: 100vh;
+  max-height: 100vh;
 }
 
 .LandingBody {
@@ -32,7 +37,7 @@ a:hover{
 .Landingpage_title {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
-  font-size: 78px;
+  font-size: 7vh;
   color: #C9FE71;
   text-shadow: 2px 2px 4px #000000;
   text-align: left;
@@ -52,17 +57,10 @@ a:hover{
   height: 20vh;
 }
 
-.Chef_Carlo {
-  height: 60vmin;
-  pointer-events: none;
-  margin-left: 20vw;
-  margin-top: -6vh;
-}
-
 .Login-link {
   background-color: #C9FE71;
   color: #38527D;
-  font-size: 20px;
+  font-size: 3vh;
   font-weight: 400;
   display: inline-block;
   padding: 1rem 2rem 1rem;
@@ -75,63 +73,59 @@ a:hover{
   border: solid 2px black;
 }
 
-.FAQs-link {
-  color:  #C9FE71;
-  font-family: Arial, serif;
-  display: inline-block;
-  padding: 1rem 2rem 1rem;
-  text-decoration: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
-}
-
-.About-link {
-  color:  #C9FE71;
-  font-family: Arial, serif;
-  display: inline-block;
-  padding: 1rem 2rem 1rem;
-  text-decoration: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
-}
-
-ul>li{
-  list-style: none;
-}
-
-.Impressum-link {
-  color:  #C9FE71;
-  font-family: Arial, serif;
-  display: inline-block;
-  padding: 1rem 1rem 1rem;
-  text-decoration: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
+.ChefAndBackground {
+  background-image: url("../assets/Logos_Icons/CookHub_Logo_Frameless.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
 
 }
 
+.Chef {
+  position: relative;
+  display: block;
+  width: 40vw;
+  height: auto;
+  pointer-events: none;
+  margin: auto;
+  top: 8vh;
+  max-width: 750px;
+  max-height: 750px;
+}
 
+/* Media Query für schmalere Bildschirme */
+@media (max-width: 768px) { /* 768px ist ein gängiger Breakpoint für Tablets */
 
+  .LandingBody {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
+  .Landingpage_title,
+  .Landingpage_text,
+  .Login-link {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Zentriert den Text */
+    width: auto; /* Setzt die Breite auf Auto, um volle Breite des Containers zu nutzen */
+  }
 
-/*Makes the logo spin:
-/*@keyframes App-logo-spin {*/
-/*  from {*/
-/*    transform: rotate(0deg);*/
-/*  }*/
-/*  to {*/
-/*    transform: rotate(360deg);*/
-/*  }*/
-/*}*/
+  .Login-link {
+    margin-bottom: 3rem; /* Hält bestehenden unteren Abstand bei */
+  }
+
+  .ChefAndBackground {
+    order: 2;
+    margin-top: 4rem;
+  }
+
+  .Chef {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    max-width: 100%;
+    margin-top: 8rem;
+  }
+}
