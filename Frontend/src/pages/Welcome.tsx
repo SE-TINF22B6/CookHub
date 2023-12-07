@@ -31,8 +31,8 @@ export default function Welcome() {
                     </Grid>
 
                     <Grid item md={6}>
-                        <Item>
-                            <img src={chef} className="Chef" alt="chef" width="500vw" height="500vw"/>
+                        <Item className="ChefAndBackground">
+                            <img src={chef} className="Chef" alt="chef"/>
                         </Item>
 
                     </Grid>
