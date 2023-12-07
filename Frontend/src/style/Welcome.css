@@ -1,8 +1,6 @@
 .App {
   text-align: center;
-
 }
-
 
 a:hover{
   color: aliceblue;
@@ -13,44 +11,23 @@ a:hover{
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  min-height: 28vh;
-  margin-right: 3rem;
-  margin-left: 3rem;
-  font-size: 20px;
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  float: left;
-  color: black;
-  overflow-x: hidden;
-}
-
-
-.LandingPage {
+#LandingPage {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   background-color: #38527D;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
 }
 
 .LandingBody {
+  display: flex;
+  margin-top: 15vh;
   width: 100%;
   height: 100%;
   justify-content: center;
   flex-direction: column;
   background-color: #38527D;
-  overflow-x: hidden;
 }
-
 
 .Landingpage_title {
   font-family: "IBM Plex Sans", sans-serif;
@@ -61,7 +38,6 @@ a:hover{
   text-align: left;
   margin-left: 10vw;
 }
-
 
 .Landingpage_text {
   font-weight: 400;
@@ -76,17 +52,12 @@ a:hover{
   height: 20vh;
 }
 
-
-
-
 .Chef_Carlo {
   height: 60vmin;
   pointer-events: none;
   margin-left: 20vw;
   margin-top: -6vh;
 }
-
-
 
 .Login-link {
   background-color: #C9FE71;
@@ -102,7 +73,6 @@ a:hover{
   margin-top: 7rem;
   margin-left: 12vw;
   border: solid 2px black;
-
 }
 
 .FAQs-link {
@@ -117,7 +87,6 @@ a:hover{
   margin-bottom: 2rem;
   margin-top: 2rem;
   margin-left: 2rem;
-
 }
 
 .About-link {
@@ -132,7 +101,6 @@ a:hover{
   margin-bottom: 2rem;
   margin-top: 2rem;
   margin-left: 2rem;
-
 }
 
 ul>li{
