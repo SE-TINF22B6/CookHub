@@ -2,7 +2,7 @@
 .MainContainer {
     display: flex;
     flex-direction: column;
-    margin: 0; /* Entfernt den Rand um den Container */
+    margin: 0;
     background-color: #38527D;
     min-height: 100vh;
     min-width: 100%;
@@ -52,7 +52,7 @@
 
 .split-container-4x4 {
     display: flex;
-    margin: 0; /* Entfernt den Rand um den Flex-Container */
+    margin: 0;
 
 }
 
@@ -67,8 +67,8 @@
     box-sizing: border-box;
     padding: 10px;
     margin: 5px 0;
-    display: flex; /* Stellt sicher, dass Flexbox-Verhalten angewendet wird */
-    justify-content: center; /* Zentriert die Inhalte vertikal */
+    display: flex;
+    justify-content: center;
 }
 
 .RecipeImage {
