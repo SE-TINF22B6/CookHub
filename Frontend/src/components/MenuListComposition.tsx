@@ -51,13 +51,21 @@ export default function MenuListComposition() {
 
     return (
 
-        <Stack direction="row" spacing={2} >
+        <Stack direction="row" spacing={1} >
             <Paper>
                 <MenuList>
-                    <MenuItem component={Link} to="/profile">Profile</MenuItem>
-                    <MenuItem component={Link} to="/account">My account</MenuItem>
-                    <MenuItem component={Link} to="/settings">Settings</MenuItem>
-                    <MenuItem component={Link} to="/logout">Logout</MenuItem>
+                    <MenuItem component={Link} to="/profile">👥 Profile</MenuItem>
+                    <MenuItem component={Link} to="/account">🔓 My account</MenuItem>
+                    <MenuItem component={Link} to="/settings">🔩 Settings</MenuItem>
+                    <MenuItem component={Link} to="/messages">📧 Messages</MenuItem>
+                    <MenuItem component={Link} to="/logout">🅾 Logout</MenuItem>
+                    ---------
+                    <MenuItem component={Link} to="/myrecipes">📓 My Recipes</MenuItem>
+                    <MenuItem component={Link} to="/findrecipes">🔎 Find Recipes</MenuItem>
+                    <MenuItem component={Link} to="/recipeCreate">🧪 Create Recipe</MenuItem>
+                    <MenuItem component={Link} to="/about">About Us</MenuItem>
+                    <MenuItem component={Link} to="/faqs">FAQs</MenuItem>
+                    <MenuItem component={Link} to="/impressum">Impressum</MenuItem>
                 </MenuList>
             </Paper>
             <div>
@@ -100,6 +108,13 @@ export default function MenuListComposition() {
                                         <MenuItem onClick={handleClose}>My account</MenuItem>
                                         <MenuItem onClick={handleClose}>Settings</MenuItem>
                                         <MenuItem onClick={handleClose}>Logout</MenuItem>
+                                        <MenuItem onClick={handleClose}>Messages</MenuItem>
+                                        <MenuItem onClick={handleClose}>My Recipes</MenuItem>
+                                        <MenuItem onClick={handleClose}>Find Recipes</MenuItem>
+                                        <MenuItem onClick={handleClose}>Create Recipe</MenuItem>
+                                        <MenuItem onClick={handleClose}>About Us</MenuItem>
+                                        <MenuItem onClick={handleClose}>FAQs</MenuItem>
+                                        <MenuItem onClick={handleClose}>Impressum</MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
 

@@ -97,3 +97,36 @@ body {
     width: 100%;
   }
 }
+
+
+                                            // Hide Media Querys //
+
+
+/* If the screen size is 600px wide or less, hide the element */
+@media screen and (max-width: 600px) {
+  .example {
+    display: none;
+  }
+}
+
+
+                                            // Change Font Size //
+
+
+/* If screen size is more than 600px wide, set the font-size of <div> to 80px */
+@media screen and (min-width: 600px) {
+  .example {
+    font-size: 80px;
+  }
+}
+
+/* If screen size is 600px wide, or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  .example {
+    font-size: 30px;
+  }
+}
+
+
+
+src: https://www.w3schools.com/css/css3_mediaqueries_ex.asp
