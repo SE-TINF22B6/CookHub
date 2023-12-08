@@ -1,11 +1,9 @@
 .AppBar{
     background-color: #C9FE71;
-
 }
 
 .ToolBar {
-
-
+    box-shadow: 1px 1px #C9FE71;
 }
 
 .Logo {
