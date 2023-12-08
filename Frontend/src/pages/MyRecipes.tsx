@@ -8,6 +8,25 @@ import Item from "@mui/material/Grid";
 import RD from "../helpers/RecipesDB_Simulator";
 
 
+// Just a try to get the data from the DB_Fetcher
+ let recipe = RD.map((recipe) => {
+    console.log(recipe);
+    console.log(recipe.name);
+    console.log(recipe.preparationTime);
+    console.log(recipe.cookingTime);
+    console.log(recipe.difficulty);
+    console.log(recipe.ingredients);
+    console.log(recipe.instructions);
+    console.log(recipe.rating);
+    return recipe.toString();
+} );
+
+console.log(recipe);
+
+
+const name = "Klassische Ramensuppe";
+
+
 
 
 export default function MyRecipes() {
@@ -23,7 +42,7 @@ export default function MyRecipes() {
                     fontSize: "50px",
                     fontFamily: "Arial",
                     fontWeight: "bold"
-                }}>🗇 {RD.name} ➪ </h1>
+                }}>🗇 {name} ➪ </h1>
             </div>
 
             <div className="split-container-4x4">
