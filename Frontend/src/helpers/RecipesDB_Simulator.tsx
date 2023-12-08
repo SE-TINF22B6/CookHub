@@ -1,6 +1,3 @@
-import react from 'react';
-
-
 const recipes = "";
 
 export default function RecipesDB_Simulator() {
