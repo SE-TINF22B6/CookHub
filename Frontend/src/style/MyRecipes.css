@@ -7,19 +7,15 @@
     display: grid;
     height: 100%;
     width: 100%;
-
     background-color: #38527D;
-
     font-family: "Inter", sans-serif;
     font-weight: 800;
     text-transform: Uppercase;
     color: #000000;
-
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     background-size: cover;
-
 }
 
 
@@ -28,8 +24,8 @@
     display: flex;
     top: 6vh;
     left: 7vw;
-    height: 95%;
-    width: 95%;
+    max-width: 100%;
+    height: auto;
     box-shadow: 5px 5px #000000;
 }
 
@@ -53,6 +49,7 @@
     display: flex;
     bottom: 7vh;
     left: 3vw;
+    text-shadow: 2px 2px #000000;
 }
 
 
@@ -149,9 +146,9 @@
 
 }
 .StickyNoteCont {
-     display: flex;
+    display: flex;
 
- }
+}
 
 
 
@@ -216,7 +213,7 @@
 
 
 .RecipeImage {
-display: flex;
+    display: flex;
 }
 
 
