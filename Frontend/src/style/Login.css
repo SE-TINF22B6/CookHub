@@ -1,17 +1,18 @@
 #LoginPage {
     overflow-x: hidden;
     Background-color: #38527D;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #LoginPageBody {
     display: flex;
     position: relative;
     margin-top: 10vh;
-    flex-direction: row;;
+    flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
+
 
 #LoginPageBodyLeft {
     display: flex;
@@ -22,6 +23,38 @@
     background-repeat: no-repeat;
     height: 75vh;
 }
+
+.InputMail, .InputPassword {
+    font-size: 2rem;
+    align-items: center;
+
+}
+
+.InputMail input, .InputPassword input {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 1rem;
+}
+
+.InputMail label, .InputPassword label {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .InputMail, .InputPassword {
+        font-size: 1rem;
+    }
+
+    .InputMail input, .InputPassword input {
+        max-width: 300px;
+    }
+
+    .InputMail label, .InputPassword label {
+        font-size: 1rem;
+    }
+}
+
 
 #LoginPageBodyRight {
     display: flex;
@@ -62,12 +95,34 @@
     margin-top: 2rem;
 }
 
+@media (max-width: 768px) {
+    .SubmitLogin {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .SubmitButton {
+        font-size: 16px;
+    }
+}
+
 .SubmitButton {
     font-size: 1rem;
     color: #C9FE71;
     padding: 1rem 1rem 1rem;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .SubmitLogin {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .SubmitButton {
+        font-size: 14px;
+    }
 }
 
 .Chef-Carlo2 {
