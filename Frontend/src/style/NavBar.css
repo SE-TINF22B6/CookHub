@@ -45,3 +45,18 @@
 
 }
 
+@media only screen and (max-width: 600px){
+    .LinksPages,
+    .ButtonGroup,
+    .MenuIcon,
+    .LoginButton,
+    .Avatar {
+        display: none;
+    }
+
+}
+
+
+
+
+
