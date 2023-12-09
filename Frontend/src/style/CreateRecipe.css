@@ -1,28 +1,53 @@
-.createRecipeContainer{
+#createRecipe_grid-container{
     width: 100%;
     height: 100vh;
     background-color: #38517d;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
     overflow-x: hidden;
 }
 
-.topContainer, .formContainer{
+
+.subContainer_left{
+    grid-column: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.topContainer {
     flex-grow: 1;
     width: 50%;
     margin-right: auto;
     margin-left: auto;
     border: 1px solid black;
+    background-color: #C9FE71;
 }
 
-.topContainer{
+.subContainer_right{
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
     background-color: #C9FE71;
-    flex-grow: 1;
+}
+
+.formContainer {
+    width: 50%;
+    border: 1px solid black;
+    background-color: #C9FE71;
 }
 
 .textArea{
     width: 100%;
     height: 100%;
-    flex-grow: 1;
 }
