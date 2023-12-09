@@ -1,14 +1,28 @@
-.formContainer{
-    margin-right: auto;
-    margin-left: auto;
-    width: 50%;
-    height: 15vh;
+.createRecipeContainer{
+    width: 100%;
+    height: 100vh;
+    background-color: #38517d;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: hidden;
 }
-.topContainer{
+
+.topContainer, .formContainer{
+    flex-grow: 1;
     width: 50%;
-    height: 15vh;
-    margin-top: 5%;
     margin-right: auto;
     margin-left: auto;
     border: 1px solid black;
+}
+
+.topContainer{
+    background-color: #C9FE71;
+    flex-grow: 1;
+}
+
+.textArea{
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
 }
