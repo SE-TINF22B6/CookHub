@@ -9,7 +9,7 @@ export default function CreateRecipe() {
 
             <div id="grid-container" style={{backgroundColor: "#38517d"}}>
 
-                <div className="createRecipeContainer_left"style={{backgroundColor: "#38517d"}}>
+                <div className="createRecipeContainer_left" style={{backgroundColor: "#38517d"}}>
                     <div className={"topContainer"}>
                         <br/><br/>
                         <h1>MY NEW RECIPE</h1>
