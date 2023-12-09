@@ -7,6 +7,9 @@
     grid-template-rows: 1fr;
     align-items: center;
     overflow-x: hidden;
+    background-image: url("../assets/Loginpage_avocado.svg");
+    background-repeat: no-repeat;
+    background-size: 50%;
 }
 
 /* ---------------------------------*/
@@ -30,6 +33,10 @@
     background-color: #C9FE71;
 }
 
+.SimplePaper{
+    position: absolute;
+}
+
 /* ---------------------------------*/
 
 .subContainer_right{
@@ -38,17 +45,22 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+
     align-items: center;
-    border: 1px solid black;
+    border: 2px solid black;
+    box-shadow: black;
     background-color: #C9FE71;
 }
 
 /* ---------------------------------*/
+
+
+
+
 .formContainer {
     width: 50%;
-    border: 1px solid black;
     background-color: #C9FE71;
+
 }
 
 .subC_right_1 {
@@ -56,13 +68,13 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
 .subC_right_2 {
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -70,7 +82,8 @@
 }
 
 .textArea{
-    width: 100%;
+    width: 50rem;
     height: 100%;
+
 }
 /* ---------------------------------*/

@@ -1,11 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/CreateRecipe.css";
+import SubBtn from "../assets/fillElements/BTN_ SAVE REZIPE.png";
+import GrumpyShshi from "../assets/newRecipe/ShushiFace1.png";
+import AnotherSushi from "../assets/newRecipe/SushiFace2.png";
 import AddIngredientApp from "../components/AddIngredientApp";
 import FormPropsTextFields from "../components/FormPropsTextFields";
 import SimplePaper from "../components/SimplePaper";
 
 
-export default function CreateRecipe() {
+export default function FoodForge() {
     return (
 
         <div  id="createRecipe_grid-container" style={{backgroundColor: "#38517d"}} >
@@ -15,17 +18,21 @@ export default function CreateRecipe() {
 
                 <div className={"topContainer"}>
                     <br/><br/>
-                    <h1>MY NEW INGREDIENTS</h1>
-                        <AddIngredientApp/>
+                    <br/><br/>
+                    <AddIngredientApp/>
 
                     <div className="Paper">
                         <SimplePaper/>
+                        <img src={GrumpyShshi} alt="picShu"/>
+                        <img src={AnotherSushi} alt="picsha" style={{position: 'absolute'}}/>
                     </div>
                 </div>
             </div>
 
 
-            <div className="subContainer_right" >
+            <div className="subContainer_right">
+                <br/><br/>
+                <h1 style={{top: '5rem'}}>FOOD FORGE</h1>
 
 
 
@@ -35,11 +42,15 @@ export default function CreateRecipe() {
                         <FormPropsTextFields/>
                     </div>
                     <div className={"subC_right_2"}>
+                        Please enter the instructions for your recipe here:
                         <textarea className="textArea"></textarea>
+
+                        <a className="SubmitButton" style={{fontSize: 20}} href='/foodforge'>
+                            <img src={SubBtn} alt="SubmitButton" style={{width: '100%', border: '2px black'}}/>
+                        </a>
                     </div>
 
                 </div>
-
 
 
             </div>

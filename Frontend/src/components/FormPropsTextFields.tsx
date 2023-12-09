@@ -28,7 +28,7 @@ export default function FormPropsTextFields() {
                     <TextField
                         // Textfeld 5
                         id="filled-helperText"
-                        label="Helper text"
+                        label="≈ costs to expect (€)"
                         defaultValue=""
                         variant="filled"
                         helperText=""
@@ -39,7 +39,7 @@ export default function FormPropsTextFields() {
                     <TextField
                         // Textfeld 2
                         id="filled-number"
-                        label="Preparation Time"
+                        label="Preparation Time (min)"
                         type="number"
                         InputLabelProps={{
                             shrink: true,
@@ -49,7 +49,7 @@ export default function FormPropsTextFields() {
                     <TextField
                         // Textfeld 3
                         id="filled-number"
-                        label="Cooking Time"
+                        label="Cooking Time (min)"
                         type="number"
                         InputLabelProps={{
                             shrink: true,
