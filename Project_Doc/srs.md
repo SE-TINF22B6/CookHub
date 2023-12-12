@@ -104,6 +104,42 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
   </tr>
  </table>
 
+ #### Snapshot (currentVersion_frontend_implemented) dec23
+
+ ✅ (1) Welcome page, (2) Login page
+ <table>
+  <tr>
+    <img width="1904" alt="welcome_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/6d9f2c06-513e-425d-9bad-73f8e5889e1b">
+    <img width="1900" alt="login_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/66d90d96-a39a-4885-bcb0-26ff22498f6d">
+  </tr>
+ </table>
+
+ ✅ (3) FoodForge page, (4) MyRecipes page
+ <table>
+  <tr>
+    <img width="1905" alt="foodForge_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/7ca4c5b4-3b77-4b81-8953-afe7a0a82552">
+    <img width="1904" alt="myRecipes_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/3c54b047-57ea-4548-95dc-747bb5ea88d6">
+  </tr>
+ </table>
+
+
+✅ (5) Profile page, (6) AboutUs page
+ <table>
+  <tr>
+    <img width="1901" alt="profile_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/c4b448cd-f941-4a21-b232-0274c6012db4">
+    <img width="1901" alt="aboutUs_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/8b81e352-e3d2-41e6-a62c-025dfa7dd7aa">
+  </tr>
+ </table>
+
+
+✅ (7) FAQs page, (8) Impressum page
+ <table>
+  <tr>
+    <img width="1904" alt="faqs_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/c516b2be-eaf2-4d4e-80c0-c38ef83aff41">
+    <img width="1904" alt="impressum_page" src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/1a6b5e98-4c1d-4c84-81ed-eed7cb980386">
+  </tr>
+ </table>
+
 
 
 > ✅ Login activity diagram:
