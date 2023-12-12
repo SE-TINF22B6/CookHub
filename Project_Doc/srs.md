@@ -165,8 +165,11 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 >There have been many testings with differnet prompts, command sizes and directions. To have a look on one of our first prototypes you can check our [wiki page](https://github.com/SE-TINF22B6/CookHub/wiki/adventurize-it-%E2%92%B8).
 >But after OpenAIs release of specialized, own preseted GPT-models we worked on an upgraded version of our recipe-converted.
 >
->Here is a short Overview of the new Setup and a showcase of conversion:
+>Here is a short [Overview](https://github.com/SE-TINF22B6/CookHub/wiki/adventurize-it-%E2%92%B8-%5B-v0.7-%5D) of the new Setup and below the generated recipe:
 >
+>![image](https://github.com/SE-TINF22B6/CookHub/assets/113697513/b4d7d2aa-ec3e-4c92-9949-fcd588edd688)
+>
+>Legal notice: We may still have to have the legal provisions regarding copyright checked by our legal department.
 
 ### 2.5 Data Administration
 
