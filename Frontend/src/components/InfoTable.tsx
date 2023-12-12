@@ -6,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 function createData(
     ingredient: string,
@@ -34,10 +36,19 @@ const rows = [
 
 ];
 
+
 export default function InfoTable() {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
-        <TableContainer component={Paper} sx={{minWidth: 1090, minHeight: 400}}>
-            <Table sx={{ minWidth: 200,}} aria-label="simple table">
+        <TableContainer component={Paper}
+                        sx={{
+                            minWidth: isSmallScreen ? 300 : 800, // Kleinere Mindestbreite für kleine Bildschirme
+                            minHeight: 400
+                        }}
+        >
+            <Table sx={{ minWidth: 200 }} aria-label="simple table">
                 <TableHead>
                     <TableRow sx={{ backgroundColor: '#c7fc70' }}>
                         <TableCell>Ingredient</TableCell>

@@ -1,65 +1,86 @@
-.LoginPage {
-    position: absolute;
+#LoginPage {
     overflow-x: hidden;
     Background-color: #38527D;
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
+}
+
+#LoginPageBody {
+    display: flex;
+    position: relative;
+    margin-top: 10vh;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+#LoginPageBodyLeft {
+    display: flex;
+    position: relative;
+    background-image: url("../assets/Logos_Icons/CookHub_Frame_unfilled_no_background.png");
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    height: 75vh;
 }
 
-.LoginHeader {
-    position: relative;
+.InputMail, .InputPassword {
+    font-size: 2rem;
+    align-items: center;
+
+}
+
+.InputMail input, .InputPassword input {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 1rem;
+}
+
+.InputMail label, .InputPassword label {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .InputMail, .InputPassword {
+        font-size: 1rem;
+    }
+
+    .InputMail input, .InputPassword input {
+        max-width: 300px;
+    }
+
+    .InputMail label, .InputPassword label {
+        font-size: 1rem;
+    }
+}
+
+
+#LoginPageBodyRight {
     display: flex;
-    flex-direction: row;
-}
-
-.App-Logo {
-    box-shadow: #c7fc71 0 0 10px;
-}
-
-.LoginHeaderRight {
     position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-.containerLoginPageBodyAndText-Center {
-    display: flex;
-    position: relative;
-    top: -5vh;
-    left: 10vw;
-    height: 100vh;
-    width: 100vw;
-}
-
-
-.LoginPageBody {
     color: #C9FE71;
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 1.5rem;
     text-shadow: 2px 2px 3px black;
-
 }
 
 .StartAdventure {
     font-size: 4rem;
 }
 
-
 .LoginPageText {
     font-size: 1rem;
 }
 
 .EnterInformation {
+    position: relative;
     color: #ffffff;
-    margin-top: 10vh;
     font-size: 2rem;
-}
+    min-width: 50rem;
+    top: 20%;
 
+}
 
 .SubmitLogin {
     background-color: #C9FE71;
@@ -74,25 +95,40 @@
     margin-top: 2rem;
 }
 
+@media (max-width: 768px) {
+    .SubmitLogin {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    .SubmitButton {
+        font-size: 16px;
+    }
+}
+
 .SubmitButton {
     font-size: 1rem;
     color: #C9FE71;
-
     padding: 1rem 1rem 1rem;
     text-decoration: none;
-
     cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .SubmitLogin {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .SubmitButton {
+        font-size: 14px;
+    }
 }
 
 .Chef-Carlo2 {
     height: 30vmin;
     pointer-events: none;
     margin-top: 5rem;
-}
-
-body {
-    background: dimgrey;
-    perspective: 35em;
 }
 
 .speech-bubble {
@@ -128,3 +164,4 @@ body {
     width: 0; height: 1em;
     transform: rotate(45deg) skewX(75deg);
 }
+

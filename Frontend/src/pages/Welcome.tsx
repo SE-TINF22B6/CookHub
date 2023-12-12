@@ -1,21 +1,13 @@
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import React from "react";
 import '../style/Welcome.css';
-import logo from "../assets/Logo_no_background.svg";
 import Item from "@mui/material/Grid";
 import Grid from "@mui/material/Grid";
 
 export default function Welcome() {
     return (
-        <div className="LandingPage">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <ul>
-                    <a className='FAQs-link' target="_self" href='/faqs'>FAQ's</a>
-                    <a className='About-link' target="_self" href='/about'>About us</a>
-                    <a className='Impressum-link' target="_self" href='/impressum'>Impressum</a>
-                </ul>
-            </header>
+
+        <div id="LandingPage">
 
             <div className="LandingBody">
 
@@ -39,8 +31,8 @@ export default function Welcome() {
                     </Grid>
 
                     <Grid item md={6}>
-                        <Item>
-                            <img src={chef} className="Chef" alt="chef" width="500vw" height="500vw"/>
+                        <Item className="ChefAndBackground">
+                            <img src={chef} className="Chef" alt="chef"/>
                         </Item>
 
                     </Grid>

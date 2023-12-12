@@ -1,253 +1,121 @@
-:root{
-    --main-radius: 5px;
-    --main-padding: 5px;
-}
 
-.RecipePage {
-    display: grid;
-    height: 100%;
-    width: 100%;
-
-    background-color: #38527D;
-
-    font-family: "Inter", sans-serif;
-    font-weight: 800;
-    text-transform: Uppercase;
-    color: #000000;
-
-    overflow-x: hidden;
+.MainContainer {
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    padding: 0;
-    background-size: cover;
+    background-color: #38527D;
+    min-height: 100vh;
+    min-width: 100%;
+    overflow-x: hidden;
 
 }
 
 
-.MenuShowcaseImage {
+.header {
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 2%;
+    background-color: #38527D;
+    width: 100vw;
+}
+
+
+.CardHeader {
+    justify-self: center;
+
+}
+
+.Wrapper {
+    display: flex;
+    position: relative;
+    justify-content: space-evenly;
+    top: 3vh;
+    right: 1vw;
+}
+
+
+.box-a {
+    display: flex;
+    position: relative;
+}
+
+.box-b {
+    display: flex;
+    position: relative;
+}
+
+.Anleitung {
+    Margin-top: 5rem;
+}
+
+
+
+.split-container-4x4 {
+    display: flex;
+    margin: 0;
+
+}
+
+.leftSide {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.leftSide-Top {
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.RecipeImage {
     position: relative;
     display: flex;
-    top: 6vh;
-    left: 7vw;
-    height: 95%;
-    width: 95%;
+    height: auto;
     box-shadow: 5px 5px #000000;
+    width: 87%;
+    margin: auto;
 }
 
-.MenuName {
-    position: relative;
-    display: flex;
-    top: 5vh;
-    left: 15vw;
+
+.leftSide-Bottom {
+
 }
 
 .InfoTable {
     display: flex;
     position: relative;
-    top: 5vh;
-    left: 7vw;
+    width: 85%;
+    margin: auto;
+    box-shadow: black 5px 5px;
 }
 
 
-.AdvBtn {
+.rightSide {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    display: flex;
-    bottom: 7vh;
-    left: 3vw;
+    background-image: url("../assets/fillElements/GreenCard256.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+    width: 50%;
+    right: 3rem;
+    top: 0;
 }
 
-
-.StickyNote {
+.card {
+    display: flex;
     position: relative;
-    display: flex;
-    bottom: 0;
-    right: 0;
-
-}
-
-.MakeShoppingList{
-    position: relative;
-    display: flex;
-    top:10vh;
-    right: 6vw;
-    z-index: 6;
+    top: 0;
+    background-color: #C9FE71;
 }
 
 
 
 
 
-
-
-
-.HeaderContainerL {
-    position: relative;
-    top: 5vh;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    background: #C9FE71;
-    grid-area: HeaderContainer;
-    border-radius: var(--main-radius);
-    padding-top: var(--main-padding);
-}
-
-.HeaderContainerR {
-
-    display: flex;
-    background: #C9FE71;
-    grid-area: HeaderContainer;
-    border-radius: var(--main-radius);
-    padding-top: var(--main-padding);
-}
-
-
-.ImageContainer {
-    height: 100%;
-    width: 100%;
-    grid-area: ImageContainer;
-    border-radius: var(--main-radius);
-    display: flex;
-    padding-top: var(--main-padding);
-}
-
-
-.AdvBtn_self {
-    display: flex;
-
-}
-
-.FloatingActionButtons {
-    display: flex;
-
-}
-
-
-
-
-
-
-
-.NameOfDish {
-    display: flex;
-    left: 5vw;
-}
-.OuterDish {
-    display: flex;
-}
-
-.TopStackLeft {
-    display: flex;
-
-}
-.LeftBox {
-    display: flex;
-
-}
-.StickyCards_Container {
-    display: flex;
-
-
-}
-.StickyNoteCont {
-     display: flex;
-
- }
-
-
-
-
-
-
-
-
-
-.RightBox {
-    display: flex;
-    grid-auto-flow: column;
-}
-
-
-.InfoCardContainer {
-    display: flex;
-    background: #C9FE71;
-    grid-area: InfoCardContainer;
-    border-radius: var(--main-radius);
-    padding-top: var(--main-padding);
-}
-
-
-.InfoTableContainer {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    background: #C9FE71;
-    grid-area: InfoTableContainer;
-    border-radius: var(--main-radius);
-    padding-top: var(--main-padding);
-
-}
-
-
-
-
-.StickyCards_Container {
-    display: flex;
-    background: #C9FE71;
-    grid-area: StickyCards_Container;
-    border-radius: var(--main-radius);
-    padding-top: var(--main-padding);
-}
-
-
-
-@media only screen and (max-width: 600px) {
-    .RecipePage {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas:
-            "HeaderContainerL"
-            "ImageContainer"
-            "InfoTableContainer"
-            "InfoCardContainer"
-            "StickyCards_Container";
-    }
-}
-
-
-
-.RecipeImage {
-display: flex;
-}
-
-
-.PaperStack {
-    display: flex;
-}
-
-.InfoCardPaper {
-    background: #000000;
-}
-
-.AdvBtn_self {
-    border-radius: var(--main-radius);
-    padding-top: var(--main-padding);
-    width: 20%;
-    height: 60%;
-}
-
-
-
-
-.HeaderContainerL {
-    top:10vh;
-}
-
-.TopStackLeft {
-    top: 10vh;
-    height: 100vh;
-}
-
-.LeftBox {
-    top: 10vh;
-    height: 100vh;
-}
