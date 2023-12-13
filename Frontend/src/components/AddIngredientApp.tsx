@@ -24,7 +24,7 @@ function TodoApp() {
     }
 
     return (
-        <div>
+        <div >
             <IngredientInput addIngredient={addIngredient}></IngredientInput>
             <IngredientList ingredients={ingredients} deleteTodo={deleteIngredient}></IngredientList>
         </div>

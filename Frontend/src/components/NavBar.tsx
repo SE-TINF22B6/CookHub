@@ -56,7 +56,7 @@ export default function NavBar() {
                         >
                             <Button className='MyRecipes' target="_self" href='/myrecipes'>My Recipes</Button>
                             <Button className='FindRecipes' target="_self" href='/findrecipes'>Find Recipes</Button>
-                            <Button className='CreateRecipe' target="_self" href='/recipeCreate'>Create Recipe</Button>
+                            <Button className='FoodForge' target="_self" href='/foodforge'>Food Forge</Button>
                             <Button className='AboutUs' target="_self" href='/about'>About Us</Button>
                             <Button className='FAQs' target="_self" href='/faqs'>FAQs</Button>
                             <Button className='Impressum' target="_self" href='/impressum'>Impressum</Button>

@@ -16,8 +16,7 @@ const recipeData = [
 
 
 const RecipesDB_Fetcher = () => {
-
-    // Lobic for fetching demanded recipes from database
+    // Logic for fetching demanded recipes from database
     // save them in recipes array
 
     return 1;

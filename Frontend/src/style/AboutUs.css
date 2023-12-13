@@ -6,36 +6,60 @@
     margin: 0;
     padding: 0;
     background-color: #38527D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-header {
-
-}
-
-.body {
+.bodyAboutUs {
     position: relative;
     display: flex;
-    top: 20vh;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
     width: 80vw;
-
 }
 
-.leftSide {
 
+.Team_Roles, .CarlosTeamMember {
+    max-width: 100%;
+    height: auto;
 }
 
-.Team_Roles {
-    height: 28vh;
-    width: 45vw;
-    margin-left: 7vw;
+
+@media screen and (max-width: 768px) {
+    .bodyAboutUs {
+        flex-direction: column;
+        width: 90vw;
+    }
+
+    .leftSideUs, .rightSideUs {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Team_Roles {
+        margin: 0;
+    }
+
+    .team_gear {
+        margin: 0;
+    }
 }
 
-.rightSide {
 
-}
+@media screen and (max-width: 480px) {
+    .bodyAboutUs {
+        width: 95vw;
+    }
 
-.team_gear {
-    margin-left: 10vw;
-    margin-top: 5vh;
+    .leftSideUs, .rightSideUs {
+        width: 100%;
+    }
+
+    .Team_Roles, .team_gear {
+        margin: 0;
+    }
 }

@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import AboutUs from "./pages/AboutUs";
 import FAQsPage from "./pages/FAQsPage";
 import Impressum from "./pages/Impressum";
-import CreateRecipe from "./pages/CreateRecipe";
+import FoodForge from "./pages/FoodForge";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import MyRecipes from "./pages/MyRecipes";
@@ -60,7 +60,7 @@ function App() {
                     <Route path='/settings' element={<RequireAuth><Settings/></RequireAuth>}/>
                     <Route path='/myrecipes' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
                     <Route path='/findrecipes' element={<RequireAuth><FindRecipes/></RequireAuth>}/>
-                    <Route path='/recipeCreate' element={<RequireAuth><CreateRecipe/></RequireAuth>}/>
+                    <Route path='/foodforge' element={<RequireAuth><FoodForge/></RequireAuth>}/>
                     <Route path='/myaccount' element={<RequireAuth><MyAccount/></RequireAuth>}/>
                     <Route path='/logout' element={<RequireAuth><Logout/></RequireAuth>}/>
                     <Route path='/adventurezone' element={<RequireAuth><AdventureZone/></RequireAuth>}/>
