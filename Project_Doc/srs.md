@@ -205,7 +205,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 >
 >![image](https://github.com/SE-TINF22B6/CookHub/assets/113697513/b4d7d2aa-ec3e-4c92-9949-fcd588edd688)
 >
->Legal notice: We may still have to have the legal provisions regarding copyright checked by our legal department. 🙄
+>Legal notice: We'll probably have to talk to our legal department again about copyright. cough*
 
 ### 2.5 Data Administration
 
