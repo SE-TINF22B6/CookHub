@@ -249,8 +249,13 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 ### 4.4 Security
 > Data Encryption: All sensitive user data must be encrypted.
 > Authentication: Secure authentication mechanisms (username + pw) must be implemented to protect user accounts.
+>
+### 4.5 Risk Analysis
+>
+> ![image](https://github.com/SE-TINF22B6/CookHub/assets/113697513/a5afc1ba-3f32-4de1-aa95-1b47a60bf81a)
 
-# ##4.5 Compliance
+
+# ##4.6 Compliance
 > GDPR: The platform must comply with GDPR regulations, affecting how user data can be stored and processed.
 
 *This section aims to outline the technical constraints that will affect the development and operation of CookHub. Acknowledging these constraints is crucial for the successful implementation of the system.*
