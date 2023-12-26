@@ -28,9 +28,9 @@
 .Wrapper {
     display: flex;
     position: relative;
-    justify-content: space-evenly;
+    justify-content: center;
     top: 3vh;
-    right: 1vw;
+    left: 20%
 }
 
 
@@ -39,13 +39,17 @@
     position: relative;
 }
 
-.box-b {
+.Ingredients {
     display: flex;
     position: relative;
+    flex-direction: column;
+
 }
 
-.Anleitung {
-    Margin-top: 5rem;
+.Instruction {
+    Margin-top: 7rem;
+    padding-left: 3vw;
+    padding-right: 3vw;
 }
 
 

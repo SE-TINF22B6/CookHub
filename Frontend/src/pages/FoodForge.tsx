@@ -1,12 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../style/CreateRecipe.css";
+import "../style/FoodForge.css";
 import SubBtn from "../assets/fillElements/BTN_ SAVE REZIPE.png";
-import GrumpyShshi from "../assets/newRecipe/ShushiFace1.png";
-import AnotherSushi from "../assets/newRecipe/SushiFace2.png";
+import CookPot from "../assets/newRecipe/Cook_Pot.png";
+import CookPotCover from "../assets/newRecipe/Cook_Pot_Cover.png";
 import AddIngredientApp from "../components/AddIngredientApp";
 import FormPropsTextFields from "../components/FormPropsTextFields";
-import SimplePaper from "../components/SimplePaper";
-
+import Slider from "../components/Slider";
 
 export default function FoodForge() {
     return (
@@ -17,35 +16,31 @@ export default function FoodForge() {
 
 
                 <div className={"topContainer"}>
-                    <br/><br/>
+                    <img src={CookPotCover} alt="picShu" style={{position: 'relative', width: '90%'}}/>
                     <br/><br/>
                     <AddIngredientApp/>
-
-                    <div className="Paper">
-                        <SimplePaper/>
-                        <img src={GrumpyShshi} alt="picShu"/>
-                        <img src={AnotherSushi} alt="picsha" style={{position: 'absolute'}}/>
-                    </div>
+                    <img src={CookPot} alt="picShu" style={{position: 'relative', width: '90%'}}/>
                 </div>
             </div>
 
 
             <div className="subContainer_right">
-                <br/><br/>
+            <br/><br/>
                 <h1 style={{top: '5rem'}}>FOOD FORGE</h1>
-
-
 
                 <div className={"formContainer"}>
 
                     <div className={"subC_right_1"}>
                         <FormPropsTextFields/>
+                        <Slider/>
                     </div>
+                    <br/><br/>
+
                     <div className={"subC_right_2"}>
                         Please enter the instructions for your recipe here:
                         <textarea className="textArea"></textarea>
 
-                        <a className="SubmitButton" style={{fontSize: 20}} href='/foodforge'>
+                        <a className="SubmitButton" style={{fontSize: 20}} href='/myRecipes'>
                             <img src={SubBtn} alt="SubmitButton" style={{width: '100%', border: '2px black'}}/>
                         </a>
                     </div>

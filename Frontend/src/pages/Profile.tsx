@@ -45,29 +45,28 @@ export default function Profile() {
                 <Container fluid="md" className="ContainerBottom" >
                     <Row>
                         <Col>
-                            <div id="parent">
-                                <div id="child">
+                            <div id="cardsContainer">
 
-                                <Stack className="Stack3" direction="horizontal" gap={4}>
-                                    <div className="CardHolder-1">
-                                        <img src={historyCard} className="HistoryCard" alt="History Card"/>
-                                    </div>
-                                    <div className="CardHolder-2">
-                                        <img src={favoritesCard} className="FavoritesCard" alt="Favorites Card"/>
-                                    </div>
-                                    <div className="CardHolder-3">
-                                        <img src={OwnRecipeCard} className="OwnRecipeCard" alt="Own Recipe Card"/>
-                                    </div>
-                                </Stack>
+                                <img className="frameOfCards" src={frameCards} alt="frameCards"/>
+
+                                <div id="threeCards">
+                                    <Stack className="Stack3" direction="horizontal" gap={4}>
+                                        <div className="CardHolder-1">
+                                            <img src={historyCard} className="HistoryCard" alt="History Card"/>
+                                        </div>
+                                        <div className="CardHolder-2">
+                                            <img src={favoritesCard} className="FavoritesCard" alt="Favorites Card"/>
+                                        </div>
+                                        <div className="CardHolder-3">
+                                            <img src={OwnRecipeCard} className="OwnRecipeCard" alt="Own Recipe Card"/>
+                                        </div>
+                                    </Stack>
                                 </div>
 
-                                <img src={frameCards} alt="frameCards"/>
                             </div>
                         </Col>
                     </Row>
-                </Container>
-
-
+            </Container>
 
         </div>
     );
