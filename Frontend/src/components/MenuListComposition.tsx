@@ -60,8 +60,8 @@ export default function MenuListComposition() {
                     <MenuItem component={Link} to="/messages">📧 Messages</MenuItem>
                     <MenuItem component={Link} to="/logout">🅾 Logout</MenuItem>
                     ---------
-                    <MenuItem component={Link} to="/myrecipes">📓 My Recipes</MenuItem>
                     <MenuItem component={Link} to="/findrecipes">🔎 Find Recipes</MenuItem>
+                    <MenuItem component={Link} to="/myrecipes">📓 My Recipes</MenuItem>
                     <MenuItem component={Link} to="/foodforge">🧪 Food Forge</MenuItem>
                     <MenuItem component={Link} to="/about">About Us</MenuItem>
                     <MenuItem component={Link} to="/faqs">FAQs</MenuItem>

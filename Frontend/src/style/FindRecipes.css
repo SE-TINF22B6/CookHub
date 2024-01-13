@@ -1,6 +1,38 @@
-.RecipeBrowser {
-    overflow-x: hidden;
-    Background-color: #38527D;
-    height: 100vh;
+.RecipeBrowser-Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
+    height: 100vh;
+    background-color: #38527D;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    margin-top: 5vh;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.cards-container {
+    position: relative;
+    top: 5vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background-color: white;
+    width: calc(33.33% - 20px);
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
