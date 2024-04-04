@@ -17,17 +17,17 @@ function generateCards(numCards: number) {
 }
 
 
-// export default function FindRecipes() {
-//     let cards = generateCards(12);
-//     return (
-//         <div className="RecipeBrowser-Container">
-//             <div className="header">
-//                 <h1>RECIPE BROWSER</h1>
-//                 <input type="text" placeholder="Search" id="outlined-basic" className="search-input"/>
-//             </div>
-//             <Row className="cards-container">
-//                  {cards}
-//             </Row>
-//         </div>
-//     );
-// }
+export default function FindRecipes() {
+    let cards = generateCards(12);
+    return (
+        <div className="RecipeBrowser-Container">
+            <div className="header">
+                <h1>RECIPE BROWSER</h1>
+                <input type="text" placeholder="Search" id="outlined-basic" className="search-input"/>
+            </div>
+            <Row className="cards-container">
+                {cards}
+            </Row>
+        </div>
+    );
+}
