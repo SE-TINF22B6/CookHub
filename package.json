@@ -5,8 +5,5 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.19",
     "react-bootstrap": "^2.9.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
