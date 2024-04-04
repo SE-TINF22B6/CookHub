@@ -27,7 +27,7 @@ export default function FindRecipes() {
                 <input type="text" placeholder="Search" id="outlined-basic" className="search-input"/>
             </div>
             <Row className="cards-container">
-                {cards}
+
             </Row>
         </div>
     );
