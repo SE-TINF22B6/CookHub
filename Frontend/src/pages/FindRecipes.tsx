@@ -1,4 +1,3 @@
-import Grid from '@mui/material/Grid';
 import React from "react";
 import "../style/FindRecipes.css";
 import Col from "react-bootstrap/Col";
