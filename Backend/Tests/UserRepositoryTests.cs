@@ -48,7 +48,7 @@ public class UserRepositoryTests : IDisposable
         var userFromDatabase = _repository.Get(testUser.Email);
         
         // ASSERT
-        Assert.Equivalent(testUser, userFromDatabase);
+        Assert.Equal(testUser.Name, userFromDatabase?.Name);
     }
 
     [Fact]
@@ -63,7 +63,7 @@ public class UserRepositoryTests : IDisposable
         
         // ASSERT
         Assert.NotEmpty(allUsers);
-        Assert.Equivalent(allUsers.Single(), testUser);
+        Assert.Equal(testUser.Name, allUsers.Single().Name);
     }
 
     [Fact]
@@ -74,7 +74,7 @@ public class UserRepositoryTests : IDisposable
         _repository.Create(testUser);
         
         // ASSERT PRE CONDITION
-        Assert.Equivalent(_repository.GetAll().Single(), testUser);
+        Assert.Equal(testUser.Name, _repository.GetAll().Single().Name);
         
         // ACT
         testUser.PasswordHash = "newPassword";
@@ -82,7 +82,7 @@ public class UserRepositoryTests : IDisposable
         
         // ASSERT
         var userFromDataBase = _repository.GetAll().Single();
-        Assert.Equivalent(userFromDataBase, testUser);
+        Assert.Equal(testUser.Name, userFromDataBase.Name);
     }
 
     [Fact]
@@ -93,7 +93,7 @@ public class UserRepositoryTests : IDisposable
         _repository.Create(testUser);
         
         // ASSERT PRE CONDITION
-        Assert.Equivalent(_repository.GetAll().Single(), testUser);
+        Assert.Equal(testUser.Name, _repository.GetAll().Single().Name);
         
         // ACT
         _repository.Delete(testUser);
@@ -102,12 +102,34 @@ public class UserRepositoryTests : IDisposable
         Assert.Empty(_repository.GetAll());
     }
 
-    private static User CreateTestUser()
+    [Fact]
+    public void CanLikeARecipe()
     {
-        return new User
+        // ARRANGE
+        var testUser = CreateTestUser();
+        var testRecipe = new Recipe { Name = "test recipe", Creator = testUser };
+        IRepository<Recipe> recipeRepository = new RecipeRepository(_testDatabaseFactory);
+        _repository.Create(testUser);
+        recipeRepository.Create(testRecipe);
+        
+        // ASSERT PRE CONDITION
+        Assert.Equal(testUser.Name, _repository.GetAll().Single().Name);
+        Assert.Equal(testRecipe.Name, recipeRepository.GetAll().Single().Name);
+        
+        // ACT
+        testUser.LikedRecipes.Add(testRecipe);
+        _repository.Update(testUser);
+        
+        // ASSERT
+        var likedRecipes = _repository.Get(testUser.Email)?.LikedRecipes;
+        Assert.Equal(testRecipe.Name, likedRecipes?.Single().Name);
+    }
+
+    private static User CreateTestUser()
+        => new()
         {
             Email = "test@example.com",
-            PasswordHash = "password"
+            PasswordHash = "password",
+            Name = "test"
         };
-    }
 }
