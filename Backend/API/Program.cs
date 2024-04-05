@@ -23,7 +23,12 @@ builder.Services.AddCors(options =>
 
 // dependency injection:
 builder.Services.AddTransient<UserService>();
+builder.Services.AddTransient<RecipeService>();
+builder.Services.AddTransient<IngredientService>();
 builder.Services.AddTransient<IRepository<User>, UserRepository>();
+builder.Services.AddTransient<IRepository<Recipe>, RecipeRepository>();
+builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
+builder.Services.AddTransient<IRepository<Authentication>, AuthenticationRepository>();
 builder.Services.AddSingleton(DataAccess.DataAccess.CreateSessionFactory("Server=localhost;Port=5432;User Id=postgres;Password=password;Database=cookhub;"));
 
 var app = builder.Build();

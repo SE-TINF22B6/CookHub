@@ -9,7 +9,7 @@ namespace DataAccess;
 public class DataAccess
 {
     public static ISessionFactory CreateSessionFactory(string connectionString) => Fluently.Configure()
-        .Database(PostgreSQLConfiguration.Standard.ConnectionString(connectionString))
+        .Database(PostgreSQLConfiguration.PostgreSQL83.ConnectionString(connectionString))
         .Mappings(configuration =>
         {
             configuration.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly());
