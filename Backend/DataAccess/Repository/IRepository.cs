@@ -2,6 +2,9 @@ using NHibernate;
 
 namespace DataAccess.Repository;
 
+/// <summary>
+/// Provides CRUD methods for database entities of the type <typeparamref name="TEntity"/>
+/// </summary>
 public interface IRepository<TEntity>
 {
     protected ISessionFactory Factory { get; }

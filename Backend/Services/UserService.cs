@@ -3,6 +3,9 @@ using DataAccess.Repository;
 
 namespace Services;
 
+/// <summary>
+/// Class that handles user logic
+/// </summary>
 public class UserService
 {
     private readonly IRepository<User> _repository;

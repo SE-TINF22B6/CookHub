@@ -3,6 +3,7 @@ using NHibernate;
 
 namespace DataAccess.Repository;
 
+/// <inheritdoc/>
 public class UserRepository : IRepository<User>
 {
     public ISessionFactory Factory { get; }
