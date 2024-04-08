@@ -4,11 +4,11 @@ using NHibernate;
 namespace DataAccess.Repository;
 
 /// <inheritdoc/>
-public class IngredientRepository : IRepository<Ingredient>
+public class AuthenticationRepository : IRepository<Authentication>
 {
     public ISessionFactory Factory { get; }
 
-    public IngredientRepository(ISessionFactory factory)
+    public AuthenticationRepository(ISessionFactory factory)
     {
         Factory = factory;
     }
