@@ -227,7 +227,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 >To ensure a positive visual experience, the website should be designed with a clean and intuitive layout, maintaining consistent branding elements and responsive design principles. Utilizing high-quality visuals, interactive elements and a consistent color scheme will also enhance the aesthetic appeal and user engagement.
 
-### Breaking changes should be easily identified by test
+### Breaking changes should be easily identified by tests
 
 >To ensure the success of our cooking website project, we will prioritize a comprehensive testing strategy aimed at identifying and mitigating breaking changes swiftly. This will involve implementing robust automated tests that cover various aspects of our system, including recipe functionalities, user interactions, and backend operations. Additionally, we will establish a clear process for continuous integration and deployment, ensuring that any changes are thoroughly tested before being deployed to production. By maintaining a strong focus on testability, we aim to deliver a reliable and stable platform that consistently meets the needs of our users.
 
