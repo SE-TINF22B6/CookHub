@@ -223,8 +223,19 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 ![image](https://github.com/SE-TINF22B6/CookHub/assets/115070676/265f85d0-f123-4d38-95e7-e1260036a7bd)
 
+### The user should have no problems in using the website
 
-> Categories: Usability, Reliability, Performance, Efficiency, Integrity, Maintainability, Flexibility, Testability, Reusability, Security.  
+>Given the constraints of a study project with limited access to large testing groups, our team will lean on alternative strategies to ensure a seamless user experience (UX) for our cooking website. We will prioritize the creation of a clear, intuitive user interface, utilizing best practices in UX design to mitigate potential issues. To compensate for the lack of extensive testing resources, we will engage in heuristic evaluations within the team, simulate user scenarios, and perhaps utilize small peer groups for feedback. This approach will help us identify and address usability issues effectively within our resource constraints.
+>
+>`UX Principles:`
+>
+> <img src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/859271cd-2a1b-4d1e-8cb1-d795d699d1af" alt="principles" width="400" />
+>
+
+
+> Categories: Usability, Reliability, Performance, Efficiency, Integrity, Maintainability, Flexibility, Testability, Reusability, Security.
+
+
 
 
 ## 4. Technical constraints
