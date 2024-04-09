@@ -189,6 +189,10 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 >As soon as our community and our recipe database has reached a certain size to kick off a monitarization model we will start to offer
 >more additional features to make CookHub the place to go if you want to prepare another meal.
 >
+>#### How the user can use Adventurize it Ⓒ
+>
+>The user can simply call up a recipe of their choice where a button is then available that sends this recipe to OpenAI via API. The data sent contains a ready-made prompt for the AI. User-specific parameters are also conceivable as a future feature. Initially, this feature will be available to any user who has an account and is logged in. However, as soon as the number of users is large enough, the feature will only be available in a paid model.
+>
 >#### Technology
 >
 >In the background, we will integrate the OpenAI API into our project, which will be pre-trained and pre-tested by our team to meet the special requirements.
