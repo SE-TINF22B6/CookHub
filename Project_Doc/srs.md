@@ -69,7 +69,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 ### 2.2 User Interface & Account Management
 
 > - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/10, https://github.com/SE-TINF22B6/CookHub/issues/11, https://github.com/SE-TINF22B6/CookHub/issues/13 
-> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
+> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/UML-Diagram/uml-class-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
@@ -158,7 +158,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 ### 2.3 Recipes Management
 
 > - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/16, https://github.com/SE-TINF22B6/CookHub/issues/35, https://github.com/SE-TINF22B6/CookHub/issues/38, https://github.com/SE-TINF22B6/CookHub/issues/34
-> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
+> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/UML-Diagram/uml-class-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active, LogIn/LangingPages must be active.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: middle
@@ -210,7 +210,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 ### 2.5 Data Administration
 
 > - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/37, https://github.com/SE-TINF22B6/CookHub/issues/40
-> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/use-case-diagram.drawio.svg
+> - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/UML-Diagram/uml-class-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active, DB must be connected.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: high
