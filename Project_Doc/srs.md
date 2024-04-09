@@ -223,6 +223,10 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 ![image](https://github.com/SE-TINF22B6/CookHub/assets/115070676/265f85d0-f123-4d38-95e7-e1260036a7bd)
 
+### The user should have a positive experience when using the web site
+
+>To ensure a positive visual experience, the website should be designed with a clean and intuitive layout, maintaining consistent branding elements and responsive design principles. Utilizing high-quality visuals, interactive elements and a consistent color scheme will also enhance the aesthetic appeal and user engagement.
+
 ### The user should have no problems in using the website
 
 >Given the constraints of a study project with limited access to large testing groups, our team will lean on alternative strategies to ensure a seamless user experience (UX) for our cooking website. We will prioritize the creation of a clear, intuitive user interface, utilizing best practices in UX design to mitigate potential issues. To compensate for the lack of extensive testing resources, we will engage in heuristic evaluations within the team, simulate user scenarios, and perhaps utilize small peer groups for feedback. This approach will help us identify and address usability issues effectively within our resource constraints.
