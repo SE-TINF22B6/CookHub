@@ -6,6 +6,7 @@ import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
 import Stack from "@mui/material/Stack";
 import Item from "@mui/material/Grid";
 import RD from "../helpers/RecipesDB_Simulator";
+import Grid from "@mui/material/Grid";
 
 
 // Just a try to get the data from the DB_Fetcher
@@ -55,7 +56,7 @@ export default function MyRecipes() {
                     <div className="leftSide-Bottom">
                         <div className="InfoTable"> <InfoTable/> </div>
 
-                        {/* TODO: Logic to fill InfoTable and erich it with the data from OpenAPI*/}
+                        {/* TODO: Logic to fill InfoTable and enrich it with the data from OpenAPI*/}
 
                     </div>
                 </div>
@@ -64,71 +65,89 @@ export default function MyRecipes() {
 
                     <Stack spacing={2}>
                         <br/><br/>
-                        <Item className="CardHeader">
-
-                        </Item>
                         <Item>
                             <div className="Wrapper">
-                                <div className="box a">
-                                    <Rating/>
 
+                                <Stack direction="row" spacing={0} >
 
+                                    <div className="box a">
+                                        {/* TODO: implement logic to get data from db in Rating.tsx */}
+                                        <Rating/>
+                                        <br/><br/>
+                                        <span style={{color: "black"}}>
 
-                                    <span style={{ color: "black"}}>
-                                        <p>Preparation Time: {}</p>
-                                        <p>Cooking Time: 15min</p>
-                                        <p>Difficulty: Easy</p>
-                                        <p>Rating: 4.5</p>
-                                    </span>
-                                    <br/>
-                                </div>
+                                            {/* TODO: implement logic to get data from db */}
+                                            <p>Preparation Time: {}</p>
+                                            <p>Cooking Time: 15min</p>
+                                            <p>Difficulty: Easy</p>
+                                            <p>Rating: 4.5</p>
+                                        </span>
+                                        <br/>
+                                    </div>
 
-
-                                <div className="box b">
-
-                                    <h2>Zutaten:</h2>
-                                    <ul>
-                                        <li>120 g Pilze</li>
-                                        <li>2,0 cm Ingwer</li>
-                                        <li>2 Knoblauchzehen</li>
-                                        <li>2 Pak Choi</li>
-                                        <li>1 Frühlingszwiebel</li>
-                                        <li>4 Eier</li>
-                                        <li>2 EL Sesamöl</li>
-                                        <li>50 g Misopaste</li>
-                                        <li>2 EL Sojasauce</li>
-                                        <li>1 EL Apfelessig</li>
-                                        <li>1,5 l Gemüsebrühe</li>
-                                        <li>250 g Ramen-Nudeln</li>
-                                        <li>1 EL Sesamsamen</li>
-                                    </ul>
-                                </div>
+                                </Stack>
                             </div>
                         </Item>
+
                         <Item>
-                            <div className="Anleitung">
-                                <h2>Anleitung:</h2>
-                                <ol>
-                                    <li><strong>Gemüse vorbereiten:</strong> Pilze vierteln; Ingwer und Knoblauch fein
-                                        hacken. Pak Choi in Streifen und Frühlingszwiebel in Ringe schneiden.
-                                    </li>
-                                    <li><strong>Eier kochen:</strong> Eier 6 Minuten kochen, dann pellen und halbieren.
-                                    </li>
-                                    <li><strong>Anbraten:</strong> Sesamöl in einem Topf erhitzen. Ingwer und Knoblauch
-                                        anbraten.
-                                    </li>
-                                    <li><strong>Brühe zubereiten:</strong> Pilze, Misopaste, Sojasauce, Apfelessig und
-                                        Gemüsebrühe in den Topf geben. Zum Kochen bringen und 5 Minuten köcheln lassen.
-                                    </li>
-                                    <li><strong>Nudeln hinzufügen:</strong> Ramen-Nudeln und Pak Choi hinzufügen, 2 Minuten
-                                        kochen.
-                                    </li>
-                                    <li><strong>Servieren:</strong> Suppe in Schüsseln verteilen. Je eine halbe Ei
-                                        hinzufügen, mit
-                                        Frühlingszwiebelringen und Sesamsamen garnieren.
-                                    </li>
-                                </ol>
-                            </div>
+                            <Grid container spacing={2}>
+                                <Grid item xs={3}>
+                                    <Item>
+                                        <div className="Ingredients" style={{top:'12vh'}}>
+                                            <h2>Ingredients:</h2>
+                                            <br/>
+                                            {/* TODO: implement logic to get ingredients of recipe out of db */}
+                                            <ul>
+                                                <li>120 g Pilze</li>
+                                                <li>2,0 cm Ingwer</li>
+                                                <li>2 Knoblauchzehen</li>
+                                                <li>2 Pak Choi</li>
+                                                <li>1 Frühlingszwiebel</li>
+                                                <li>4 Eier</li>
+                                                <li>2 EL Sesamöl</li>
+                                                <li>50 g Misopaste</li>
+                                                <li>2 EL Sojasauce</li>
+                                                <li>1 EL Apfelessig</li>
+                                                <li>1,5 l Gemüsebrühe</li>
+                                                <li>250 g Ramen-Nudeln</li>
+                                                <li>1 EL Sesamsamen</li>
+                                            </ul>
+                                        </div>
+                                    </Item>
+                                </Grid>
+                                <Grid item xs={9}>
+                                    <Item>
+                                        <div className="Instruction">
+                                            <h2>Instruction:</h2>
+                                            <br/><br/>
+
+                                            {/* TODO: implement logic to get instruction of recipe out of db */}
+
+                                            <strong>Gemüse vorbereiten:</strong><br/>
+                                            Pilze vierteln; Ingwer und Knoblauch fein hacken.
+                                            Pak Choi in Streifen und Frühlingszwiebel in Ringe
+                                            schneiden. <br/>
+
+                                            <strong>Eier kochen:</strong><br/>
+                                            Eier 6 Minuten kochen, dann pellen und halbieren.<br/>
+
+                                            <strong>Anbraten:</strong><br/>
+                                            Sesamöl in einem Topf erhitzen. Ingwer und Knoblauch anbraten.<br/>
+
+                                            <strong>Brühe zubereiten:</strong><br/>
+                                            Pilze, Misopaste, Sojasauce, Apfelessig und Gemüsebrühe in den Topf geben.
+                                            Zum Kochen bringen und 5 Minuten köcheln lassen.<br/>
+
+                                            <strong>Nudeln hinzufügen:</strong><br/>
+                                            Ramen-Nudeln und Pak Choi hinzufügen, 2 Minuten kochen.<br/>
+
+                                            <strong>Servieren:</strong><br/>
+                                            Suppe in Schüsseln verteilen. Je eine halbe Ei hinzufügen, mit
+                                            Frühlingszwiebelringen und Sesamsamen garnieren.<br/>
+                                        </div>
+                                    </Item>
+                                </Grid>
+                            </Grid>
                         </Item>
                     </Stack>
                     <div>
