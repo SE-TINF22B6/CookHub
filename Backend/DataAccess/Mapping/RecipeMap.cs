@@ -16,6 +16,6 @@ public class RecipeMap : ClassMap<Recipe>
         Map(recipe => recipe.InstructionText);
         Map(recipe => recipe.AdventureText);
         Map(recipe => recipe.CreationDate);
-        HasMany<Ingredient>(recipe => recipe.Ingredients).Cascade.SaveUpdate().Not.LazyLoad();
+        HasManyToMany<Ingredient>(recipe => recipe.Ingredients).Table("recipe_ingredients").Cascade.SaveUpdate().Not.LazyLoad();
     }
 }
