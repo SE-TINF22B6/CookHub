@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import CreateRecipeBlank from '../components/CreateRecipeBlank'; // Stelle sicher, dass der Pfad korrekt ist
+import CreateRecipeBlank from '../components/CreateRecipeBlank';
 
 export default function FormPropsTextFields() {
     return (
