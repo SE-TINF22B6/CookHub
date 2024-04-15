@@ -17,14 +17,31 @@ public class RecipeController: ControllerBase
     {
         _recipeService = recipeService;
     }
-
+    
+    /// <summary>
+    /// Gets a recipe by ID
+    /// </summary>
     [HttpGet("{id}")]
-    public IActionResult GetRecipe(int id)
+    public IActionResult GetRecipe(int? id)
     {
-        var recipe = _recipeService.GetRecipeById(id);
+        if (id == null)
+        {
+            return BadRequest("ID cannot be null.");
+        }
+
+        var recipe = _recipeService.GetRecipeById(id.Value);
+    
+        if (recipe == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+
         return Ok(recipe);
     }
     
+    /// <summary>
+    /// Gets recipes by search term in their name
+    /// </summary>
     [HttpGet("byname/{name}")]
     public IActionResult GetRecipeByName(string name)
     {
@@ -32,6 +49,9 @@ public class RecipeController: ControllerBase
         return Ok(recipes);
     }
 
+    /// <summary>
+    /// Gets recipe by Ingredient
+    /// </summary>
     [HttpGet("byingredient")]
     public IActionResult GetRecipesByIngredients([FromQuery] List<string> ingredients)
     {

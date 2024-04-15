@@ -15,15 +15,11 @@ public class RecipeService
         _repository = repository;
     }
 
-    public Recipe GetRecipeById(int id)
+    public Recipe? GetRecipeById(int id)
     {
         var recipe =_repository.Get(id);
-        if (recipe != null)
-        {
-            return recipe;
-        }
-
-        throw new Exception("Recipe not found");
+        return recipe;
+      
     }
     
     public List<Recipe> GetRecipesByName(string name)
