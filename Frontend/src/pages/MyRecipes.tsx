@@ -145,7 +145,7 @@ export default function MyRecipes() {
                                             Suppe in Schüsseln verteilen. Je eine halbe Ei hinzufügen, mit
                                             Frühlingszwiebelringen und Sesamsamen garnieren.<br/>
                                         </div>
-                                        <a href={"https://www.lieferando.de/"} target={"_blank"}>
+                                        <a href={"https://www.lieferando.de/"} target={"_blank"} rel={"noreferrer"}>
                                         <button id={"rageQuitButton"}>
                                             Rage Quit
                                         </button>
