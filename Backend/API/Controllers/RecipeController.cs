@@ -1,3 +1,4 @@
+using DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -16,6 +17,14 @@ public class RecipeController: ControllerBase
     public RecipeController(RecipeService recipeService)
     {
         _recipeService = recipeService;
+    }
+    
+    
+    [HttpGet]
+    public ActionResult<IEnumerable<Recipe>> GetAllIngredients()
+    {
+        var ingredients = _recipeService.GetAllRecipesAsync();
+        return Ok(ingredients);
     }
     
     /// <summary>

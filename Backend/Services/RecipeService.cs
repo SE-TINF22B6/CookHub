@@ -14,6 +14,11 @@ public class RecipeService
     {
         _repository = repository;
     }
+    
+    public List<Recipe> GetAllRecipesAsync()
+    {
+        return _repository.GetAll();
+    }
 
     public Recipe? GetRecipeById(int id)
     {
