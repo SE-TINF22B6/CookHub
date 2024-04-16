@@ -15,7 +15,7 @@ public class RecipeService
         _repository = repository;
     }
     
-    public List<Recipe> GetAllRecipesAsync()
+    public List<Recipe> GetAllRecipes()
     {
         return _repository.GetAll();
     }

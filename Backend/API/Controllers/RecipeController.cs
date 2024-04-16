@@ -19,11 +19,13 @@ public class RecipeController: ControllerBase
         _recipeService = recipeService;
     }
     
-    
+    /// <summary>
+    /// Gets a List with all recipes
+    /// </summary>
     [HttpGet]
     public ActionResult<IEnumerable<Recipe>> GetAllIngredients()
     {
-        var ingredients = _recipeService.GetAllRecipesAsync();
+        var ingredients = _recipeService.GetAllRecipes();
         return Ok(ingredients);
     }
     
