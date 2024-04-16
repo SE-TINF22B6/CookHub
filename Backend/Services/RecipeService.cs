@@ -14,4 +14,28 @@ public class RecipeService
     {
         _repository = repository;
     }
+    
+    public List<Recipe> GetAllRecipes()
+    {
+        return _repository.GetAll();
+    }
+
+    public Recipe? GetRecipeById(int id)
+    {
+        var recipe =_repository.Get(id);
+        return recipe;
+      
+    }
+    
+    public List<Recipe> GetRecipesByName(string name)
+    {
+        var allRecipes = _repository.GetAll();
+        return allRecipes.Where(r => r.Name.Contains(name)).ToList();
+    }
+
+    public List<Recipe> GetRecipesByIngredients(List<string> ingredients)
+    {
+        var allRecipes = _repository.GetAll();
+        return allRecipes.Where(r => r.Ingredients.Any(i => ingredients.Contains(i.Name))).ToList();
+    }
 }
