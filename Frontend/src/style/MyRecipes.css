@@ -119,6 +119,13 @@
     background-color: #C9FE71;
 }
 
+#rageQuitButton{
+    background-color: #38527D;
+    border-radius: 30px;
+    width: 200px;
+    height: 50px;
+    border-color: white;
+}
 
 
 
