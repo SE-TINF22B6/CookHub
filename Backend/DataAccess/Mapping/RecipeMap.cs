@@ -17,8 +17,8 @@ public class RecipeMap : ClassMap<Recipe>
         Map(recipe => recipe.Difficulty);
         Map(recipe => recipe.Description);
         Map(recipe => recipe.InstructionText);
-        Map(recipe => recipe.AdventureText);
         Map(recipe => recipe.CreationDate);
         HasMany<Ingredient>(recipe => recipe.Ingredients).Cascade.All().Inverse().Not.LazyLoad();
+        HasMany<AdventureText>(recipe => recipe.AdventureTexts).Cascade.All().Not.LazyLoad();
     }
 }

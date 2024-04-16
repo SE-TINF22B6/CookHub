@@ -12,7 +12,7 @@ public class Recipe
     public virtual int Difficulty { get; set; }
     public virtual string Description { get; set; } = "";
     public virtual string InstructionText { get; set; } = "";
-    public virtual string AdventureText { get; set; } = "";
     public virtual DateTime CreationDate { get; set; } = DateTime.Now.ToUniversalTime();
     public virtual ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+    public virtual ICollection<AdventureText> AdventureTexts { get; set; } = new List<AdventureText>();
 }
