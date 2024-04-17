@@ -7,7 +7,7 @@ public enum RecipeCategory
     Breakfast,
     Burger,
     Chicken,
-    Desert,
+    Dessert,
     Fish,
     Grill,
     Italian,
