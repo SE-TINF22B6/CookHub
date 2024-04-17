@@ -1,4 +1,5 @@
 using DataAccess.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -32,7 +33,7 @@ public class IngredientController: ControllerBase
     
     
     /// <summary>
-    /// Gets a ingredient by ID
+    /// Gets an ingredient by ID
     /// </summary>
     [HttpGet("{id}")]
     public IActionResult GetIngredient(int? id)
@@ -41,22 +42,60 @@ public class IngredientController: ControllerBase
         {
             return BadRequest("ID cannot be null.");
         }
-
         var ingredient = _ingredientService.GetIngredientById(id.Value);
     
         if (ingredient == null)
         {
             return NotFound("Ingredient not found.");
         }
-
         return Ok(ingredient);
     }
 
+    /// <summary>
+    /// Gets all ingredients by Search Term (Name)
+    /// </summary>
     [HttpGet("byname/{name}")]
     public IActionResult GetIngredientByName(string name)
     {
             var ingredients = _ingredientService.GetIngredientByName(name);
             return Ok(ingredients);
+    }
+    
+    /// <summary>
+    /// Create a new Ingredient
+    /// </summary>
+    [HttpPost]
+    public IActionResult CreateIngredient(Ingredient ingredient)
+    {
+        if (ingredient == null)
+        {
+            return BadRequest("Ingredient data is missing.");
+        }
+        if (string.IsNullOrWhiteSpace(ingredient.Name))
+        {
+            return BadRequest("Ingredient name is required.");
+        }
+
+        _ingredientService.CreateIngredient(ingredient);
+
+        return CreatedAtAction(nameof(GetIngredient), new { id = ingredient.Id }, ingredient);
+    }
+
+    /// <summary>
+    /// Delete an Ingredient by ID
+    /// </summary>
+    [HttpDelete("{id}")]
+    public IActionResult DeleteIngredient(int id)
+    {
+        try
+        {
+            _ingredientService.DeleteIngredient(id);
+            return Ok("Ingredient successfully deleted");
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(ex.Message);
+        }
     }
 
 }
