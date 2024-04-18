@@ -13,6 +13,6 @@ public class Recipe
     public virtual string InstructionText { get; set; } = "";
     public virtual DateTime CreationDate { get; set; } = DateTime.Now.ToUniversalTime();
     public virtual ICollection<RecipeCategory> Categories { get; set; } = new List<RecipeCategory>();
-    public virtual ICollection<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
+    public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
     public virtual ICollection<string> AdventureTexts { get; set; } = new List<string>();
 }

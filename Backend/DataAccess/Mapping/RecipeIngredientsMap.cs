@@ -8,8 +8,8 @@ public class RecipeIngredientsMap : ClassMap<RecipeIngredient>
     public RecipeIngredientsMap()
     {
         CompositeId()
-            .KeyReference(x => x.Recipe)
-            .KeyReference(x => x.Ingredient);
+            .KeyReference(x => x.Recipe, "recipe_id")
+            .KeyReference(x => x.Ingredient, "ingredient_id");
         Map(x => x.Quantity);
         Map(x => x.UnitOfMeasure);
     }
