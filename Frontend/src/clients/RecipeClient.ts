@@ -9,7 +9,7 @@ export class RecipeClient {
          }
          const recipes = await response.json();
          console.log(recipes);
-
+         return recipes;
          }catch (error){
              console.log(error);
          }
@@ -23,6 +23,7 @@ export class RecipeClient {
         }
         const recipes = await response.json();
         console.log(recipes);
+        return recipes;
 
          }catch (error){
              console.log(error);
