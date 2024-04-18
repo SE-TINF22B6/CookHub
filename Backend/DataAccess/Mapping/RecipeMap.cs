@@ -12,10 +12,13 @@ public class RecipeMap : ClassMap<Recipe>
         References<User>(recipe => recipe.Creator).Column("CreatorEmail");
         Map(recipe => recipe.PictureUrl);
         Map(recipe => recipe.PrepTime);
+        Map(recipe => recipe.CookingTime);
+        Map(recipe => recipe.Difficulty);
         Map(recipe => recipe.Description);
         Map(recipe => recipe.InstructionText);
-        Map(recipe => recipe.AdventureText);
         Map(recipe => recipe.CreationDate);
-        HasManyToMany<Ingredient>(recipe => recipe.Ingredients).Table("recipe_ingredients").Cascade.SaveUpdate().Not.LazyLoad();
+        HasMany(recipe => recipe.Categories).Cascade.All().Element("category");
+        HasMany(recipe => recipe.Ingredients).Cascade.All().Inverse().Not.LazyLoad();
+        HasMany(recipe => recipe.AdventureTexts).Cascade.All().Element("text");
     }
 }

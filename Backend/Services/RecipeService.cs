@@ -36,6 +36,6 @@ public class RecipeService
     public List<Recipe> GetRecipesByIngredients(List<string> ingredients)
     {
         var allRecipes = _repository.GetAll();
-        return allRecipes.Where(r => r.Ingredients.Any(i => ingredients.Contains(i.Name))).ToList();
+        return allRecipes.Where(r => r.Ingredients.Any(i => ingredients.Contains(i.Ingredient.Name))).ToList();
     }
 }
