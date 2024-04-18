@@ -88,4 +88,18 @@ public class RecipeController: ControllerBase
         
         return CreatedAtAction(nameof(GetRecipe), new { id = recipe.Id }, recipe);
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteRecipe(int id)
+    {
+        try
+        {
+            _recipeService.DeleteRecipe(id);
+            return Ok("Recipe successfully deleted");
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(ex.Message);
+        }
+    }
 }

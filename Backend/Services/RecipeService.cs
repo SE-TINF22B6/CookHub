@@ -49,4 +49,15 @@ public class RecipeService
         
         _repository.Create(recipe);
     }
+    
+    public void DeleteRecipe(int id)
+    {
+        var recipe = _repository.Get(id);
+        if (recipe == null)
+        {
+            throw new InvalidOperationException("Recipe not found.");
+        }
+
+        _repository.Delete(recipe);
+    }
 }
