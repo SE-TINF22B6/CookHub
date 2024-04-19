@@ -13,10 +13,10 @@ export default function FindRecipes() {
         setData(await client.getRecipeByName(name));
     }
 
-    async function findAll() {
+/*    async function findAll() {
         const client = new RecipeClient();
         setData(await client.getAllRecipes());
-    }
+    }*/
 
     function handleSubmit(event: any) {
         event.preventDefault();
