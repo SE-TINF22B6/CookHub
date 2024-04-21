@@ -13,10 +13,12 @@ namespace API.Controllers;
 public class RecipeController: ControllerBase
 {
     private readonly RecipeService _recipeService;
+    private readonly AdventurizeService _adventurizeService;
 
-    public RecipeController(RecipeService recipeService)
+    public RecipeController(RecipeService recipeService, AdventurizeService adventurizeService)
     {
         _recipeService = recipeService;
+        _adventurizeService = adventurizeService;
     }
     
     /// <summary>
@@ -32,7 +34,7 @@ public class RecipeController: ControllerBase
     /// <summary>
     /// Gets a recipe by ID
     /// </summary>
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public IActionResult GetRecipe(int? id)
     {
         if (id == null)
@@ -68,5 +70,20 @@ public class RecipeController: ControllerBase
     {
         var recipes = _recipeService.GetRecipesByIngredients(ingredients);
         return Ok(recipes);
+    }
+
+    [HttpGet("adventurize/{id:int}")]
+    public async Task<IActionResult> AdventurizeRecipe(int id)
+    {
+        var recipe = _recipeService.GetRecipeById(id);
+
+        if (recipe == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+        
+        var (success, message) = await _adventurizeService.TryCreateAdventureTextAsync(recipe.ToString());
+
+        return success ? Ok(message) : Problem(message);
     }
 }

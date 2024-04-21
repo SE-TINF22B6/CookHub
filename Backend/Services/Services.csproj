@@ -10,4 +10,8 @@
       <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Betalgo.OpenAI" Version="8.1.1" />
+    </ItemGroup>
+
 </Project>

@@ -9,7 +9,7 @@ public class RecipeMap : ClassMap<Recipe>
     {
         Id(recipe => recipe.Id);
         Map(recipe => recipe.Name).Not.Nullable();
-        References<User>(recipe => recipe.Creator).Column("CreatorEmail");
+        References<User>(recipe => recipe.Creator).Column("CreatorEmail").Not.LazyLoad();
         Map(recipe => recipe.PictureUrl);
         Map(recipe => recipe.PrepTime);
         Map(recipe => recipe.CookingTime);
@@ -17,8 +17,8 @@ public class RecipeMap : ClassMap<Recipe>
         Map(recipe => recipe.Description);
         Map(recipe => recipe.InstructionText);
         Map(recipe => recipe.CreationDate);
-        HasMany(recipe => recipe.Categories).Cascade.All().Element("category");
+        HasMany(recipe => recipe.Categories).Cascade.All().Element("category").Not.LazyLoad();
         HasMany(recipe => recipe.Ingredients).Cascade.All().Inverse().Not.LazyLoad();
-        HasMany(recipe => recipe.AdventureTexts).Cascade.All().Element("text");
+        HasMany(recipe => recipe.AdventureTexts).Cascade.All().Element("text").Not.LazyLoad();
     }
 }
