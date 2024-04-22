@@ -9,7 +9,7 @@ public class RecipeMap : ClassMap<Recipe>
     {
         Id(recipe => recipe.Id);
         Map(recipe => recipe.Name).Not.Nullable();
-        References<User>(recipe => recipe.Creator).Column("CreatorEmail");
+        References<User>(recipe => recipe.Creator).Column("CreatorEmail").Not.LazyLoad();
         Map(recipe => recipe.PictureUrl);
         Map(recipe => recipe.PrepTime);
         Map(recipe => recipe.CookingTime);

@@ -69,4 +69,37 @@ public class RecipeController: ControllerBase
         var recipes = _recipeService.GetRecipesByIngredients(ingredients);
         return Ok(recipes);
     }
+    
+    /// <summary>
+    /// Create new recipe
+    /// </summary>
+    [HttpPost]
+    public IActionResult CreateRecipe(Recipe recipe)
+    {
+        if (recipe == null)
+        {
+            return BadRequest("Recipe data is missing.");
+        }
+        if (string.IsNullOrWhiteSpace(recipe.Name))
+        {
+            return BadRequest("Recipe name is required.");
+        }
+        _recipeService.CreateRecipe(recipe);
+        
+        return CreatedAtAction(nameof(GetRecipe), new { id = recipe.Id }, recipe);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteRecipe(int id)
+    {
+        try
+        {
+            _recipeService.DeleteRecipe(id);
+            return Ok("Recipe successfully deleted");
+        }
+        catch (InvalidOperationException ex)
+        {
+            return NotFound(ex.Message);
+        }
+    }
 }
