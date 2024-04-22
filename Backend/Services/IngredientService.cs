@@ -30,8 +30,9 @@ public class IngredientService
     public List<Ingredient> GetIngredientByName(string name)
     {
         var ingredients = _repository.GetAll();
-        return ingredients.Where(r => r.Name.Contains(name)).ToList();
+        return ingredients.Where(r => r.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
     }
+
     
     public void CreateIngredient(Ingredient ingredient)
     {
