@@ -80,3 +80,50 @@ preview__time{
     margin-bottom: 2rem;
     width: 90%;
 }
+
+.preview__user-generated{
+
+}
+
+/*
+!* HTML: <div class="ribbon">Your text content</div> *!
+.ribbon {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+.ribbon {
+    --f: .5rem; !* control the folded part*!
+    --r: 3rem; !* control the ribbon shape *!
+
+    position: relative;
+    right: -10px;
+    top: calc(-3*var(--f));
+    padding: .2em;
+    background: #C8CF02;
+    border-right: var(--f) solid #0005;
+    border-bottom: var(--r) solid #0000;
+    clip-path: polygon(calc(100% - var(--f)) 0,0 0,0 calc(100% - var(--r)),calc(50% - var(--f)/2) 100%,calc(100% - var(--f)) calc(100% - var(--r)),calc(100% - var(--f)) var(--f),100% var(--f));
+}*/
+/* HTML: <div class="ribbon">Your text content</div> */
+.ribbon {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+.ribbon {
+    --f: .65em; /* control the folded part */
+
+    position: relative;
+    top: -3rem;
+    right: 0;
+    line-height: 1.4;
+    padding-inline: 1lh;
+    padding-bottom: var(--f);
+    border-image: conic-gradient(#0008 0 0) 51%/var(--f);
+    clip-path: polygon(
+            100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
+    transform: translate(calc((1 - cos(45deg))*100%), -100%) rotate(45deg);
+    transform-origin: 0% 100%;
+    background-color: #C8CF02; /* the main color  */
+}
