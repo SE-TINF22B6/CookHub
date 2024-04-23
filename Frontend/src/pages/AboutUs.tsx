@@ -1,6 +1,5 @@
 import '../style/AboutUs.css';
 import * as React from 'react';
-import Grid from '@mui/material/Grid';
 import Team_listed from "../assets/AboutUs/Team_listed.png";
 import CookHub_Team_H1 from "../assets/AboutUs/CookHub_Team_H1.png";
 import Carlos from "../assets/AboutUs/Chef_Carlo_with_background.png";
