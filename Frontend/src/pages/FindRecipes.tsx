@@ -62,25 +62,7 @@ export default function FindRecipes() {
                                         <p className="preview__publisher">{recipe.description}</p>
                                         <div className="preview__user-generated">
                                             {recipe.creator ?
-                                                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="100" cy="100" r="90" fill="url(#grad1)"/>
-                                                    <defs>
-                                                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                            <stop offset="0%"
-                                                                  style={{stopColor: "#C9FE71", stopOpacity: 1}}/>
-                                                            <stop offset="100%" style={{
-                                                                stopColor: "rgb(0,128,128)",
-                                                                stopOpacity: 1
-                                                            }}/>
-                                                        </linearGradient>
-                                                    </defs>
-                                                    <text x="100" y="115" font-family="Verdana" font-size="20"
-                                                          fill="#ffffff"
-                                                          text-anchor="middle">Adventurized
-                                                    </text>
-                                                    <path d="M100,60 L105,80 L100,75 L95,80 Z" fill="#ffffff"/>
-                                                    <rect x="97.5" y="60" width="5" height="20" fill="#ffffff"/>
-                                                </svg> :
+                                                <div className="ribbon">Adventurized</div> :
                                                 <p>Not Adventurized</p>
                                             }
                                         </div>
