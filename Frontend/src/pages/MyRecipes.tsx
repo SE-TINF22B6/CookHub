@@ -24,15 +24,11 @@ import Grid from "@mui/material/Grid";
 
 console.log(recipe);
 
-
 const name = "Klassische Ramensuppe";
-
-
 
 
 export default function MyRecipes() {
     return (
-
 
         <div className="MainContainer">
 
@@ -53,13 +49,14 @@ export default function MyRecipes() {
                     <div className="leftSide-Top">
                         <img className="RecipeImage" src={Ramen} alt="Gute_Rahmenbedingungen"/>
                     </div>
+
                     <div className="leftSide-Bottom">
                         <div className="InfoTable"> <InfoTable/> </div>
-
                         {/* TODO: Logic to fill InfoTable and enrich it with the data from OpenAPI*/}
-
                     </div>
+
                 </div>
+
 
                 <div className="rightSide">
 
@@ -68,14 +65,15 @@ export default function MyRecipes() {
                         <Item>
                             <div className="Wrapper">
 
-                                <Stack direction="row" spacing={0} >
+                                <Stack direction="row" spacing={0}>
 
                                     <div className="box a">
+
                                         {/* TODO: implement logic to get data from db in Rating.tsx */}
                                         <Rating/>
-                                        <br/><br/>
+                                        <br/>
+                                        <br/>
                                         <span style={{color: "black"}}>
-
                                             {/* TODO: implement logic to get data from db */}
                                             <p>Preparation Time: {}</p>
                                             <p>Cooking Time: 15min</p>
@@ -93,7 +91,7 @@ export default function MyRecipes() {
                             <Grid container spacing={2}>
                                 <Grid item xs={3}>
                                     <Item>
-                                        <div className="Ingredients" style={{top:'12vh'}}>
+                                        <div className="Ingredients" style={{top: '12vh'}}>
                                             <h2>Ingredients:</h2>
                                             <br/>
                                             {/* TODO: implement logic to get ingredients of recipe out of db */}
@@ -146,9 +144,9 @@ export default function MyRecipes() {
                                             Frühlingszwiebelringen und Sesamsamen garnieren.<br/>
                                         </div>
                                         <a href={"https://www.lieferando.de/"} target={"_blank"} rel={"noreferrer"}>
-                                        <button id={"rageQuitButton"}>
-                                            Rage Quit
-                                        </button>
+                                            <button id={"rageQuitButton"}>
+                                                Rage Quit
+                                            </button>
                                         </a>
                                     </Item>
                                 </Grid>
