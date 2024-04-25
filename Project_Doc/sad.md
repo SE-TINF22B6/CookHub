@@ -21,11 +21,12 @@ The lack of scalability is a consequence of the highly coupled layers. Any chang
 #### 1.3 Definitions, Acronyms and Abbreviations
 > Definitions of all terms, acronyms, and abbreviations required to properly interpret this document.
 #### 1.4 References
-> A complete list of all documents referenced -- hyperlinks to those documents.
 ##### Tactics: 
 https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md#3-nonfunctional-requirements
 ##### Testing & CI/CD:
 https://github.com/SE-TINF22B6/CookHub/discussions/45
+##### OpenAI sequence diagram:
+https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md#23-recipes-management
 
 ### 2. Architecture tactics
 #### Usability and UX:
@@ -35,10 +36,14 @@ In order to enhance usability, styles for each page were organised in a separate
 Our architecture is not optimal for testability, so we must put more effort in this area.
 To improve testability, we have implemented design principles in the backend. For example dependency injection, which ensure that classes can be tested independently by replacing dependencies with mocked objects.
   All tests are automatically executed with our CI/CD pipelines in response to any changes made to the code. To make sure breacking changes are identified as soon as possible
+
 ### 3. Architecture design
+
 #### Sequence diagram of the OpenAI API access:
 ![image](https://github.com/SE-TINF22B6/CookHub/raw/main/Project_Doc/Diagrams/openai-sequence-diagram.drawio.svg)
-> - component diagrams and/or package diagrams, and necessary description
+
+#### Package diagram
+![image](https://raw.githubusercontent.com/SE-TINF22B6/CookHub/6359bde867a9dcb0d8e79b7a5503971673a0f6c6/Project_Doc/Diagrams/package-diagram.drawio.svg)
 
 #### 3.1 Overview 
 > A summary of the architecture design -- highlights.  
