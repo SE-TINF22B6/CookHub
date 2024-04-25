@@ -5,6 +5,7 @@ import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
 import Rating from "../components/Rating";
 import RD from "../helpers/RecipesDB_Simulator";
 import InfoTable from "../components/InfoTable";
+import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
 
 
 // Just a try to get the data from the DB_Fetcher
@@ -168,6 +169,11 @@ export default function MyRecipes() {
                             Suppe in Schüsseln verteilen. Je eine halbe Ei hinzufügen, mit
                             Frühlingszwiebelringen und Sesamsamen garnieren.<br/>
                         </div>
+
+                        <br/>
+                        <br/>
+
+                        <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" width={"200"}/>
 
                     </div>
 
