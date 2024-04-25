@@ -36,9 +36,8 @@ Our architecture is not optimal for testability, so we must put more effort in t
 To improve testability, we have implemented design principles in the backend. For example dependency injection, which ensure that classes can be tested independently by replacing dependencies with mocked objects.
   All tests are automatically executed with our CI/CD pipelines in response to any changes made to the code. To make sure breacking changes are identified as soon as possible
 ### 3. Architecture design
-> This section specifies the architecture design in various views.
-> Minimum requirement:
-> - sequence diagram on a component level and necessary description
+#### Sequence diagram of the OpenAI API access:
+![image](https://github.com/SE-TINF22B6/CookHub/raw/main/Project_Doc/Diagrams/openai-sequence-diagram.drawio.svg)
 > - component diagrams and/or package diagrams, and necessary description
 
 #### 3.1 Overview 
