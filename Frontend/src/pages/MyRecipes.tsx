@@ -4,6 +4,7 @@ import "../style/MyRecipes.css";
 import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
 import Rating from "../components/Rating";
 import RD from "../helpers/RecipesDB_Simulator";
+import InfoTable from "../components/InfoTable";
 
 
 // Just a try to get the data from the DB_Fetcher
@@ -48,8 +49,14 @@ export default function MyRecipes() {
                     </div>
 
                     <div className="leftSide-Bottom">
+                        <h2 style={{
+                            textShadow: "2px 2px #C9FE71",
+                            color: "#000000",
+                            fontSize: "40px",
+                            fontFamily: "Arial",
+                            fontWeight: "bold"}}>Adventurized Versions:</h2>
                         {/* TODO: Fill table with list of adventurized versions*/}
-
+                        <InfoTable/>
                     </div>
 
                 </div>
