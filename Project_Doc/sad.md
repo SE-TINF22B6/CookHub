@@ -45,6 +45,11 @@ To improve testability, we have implemented design principles in the backend. Fo
 #### Package diagram
 ![image](https://raw.githubusercontent.com/SE-TINF22B6/CookHub/6359bde867a9dcb0d8e79b7a5503971673a0f6c6/Project_Doc/Diagrams/package-diagram.drawio.svg)
 
+#### Component diagram
+![image](https://raw.githubusercontent.com/SE-TINF22B6/CookHub/efa0b47abc95072286463ddcf41b16e0a9d15486/Project_Doc/Diagrams/component_diagram.drawio.svg)
+
+
+
 #### 3.1 Overview 
 > A summary of the architecture design -- highlights.  
 
