@@ -1,132 +1,93 @@
-
 .MainContainer {
     display: flex;
     flex-direction: column;
-    margin: 0;
     background-color: #38527D;
     min-height: 100vh;
-    min-width: 100%;
-    overflow-x: hidden;
-
+    padding-top: 10px;
 }
-
 
 .header {
-    text-align: left;
-    margin-left: 5%;
-    margin-top: 2%;
+    width: 100%;
+    padding: 20px;
     background-color: #38527D;
-    width: 100vw;
+    color: #000000;
+    font-size: 50px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px #C9FE71;
+    box-sizing: border-box;
 }
-
-
-.CardHeader {
-    justify-self: center;
-
-}
-
-.Wrapper {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    top: 3vh;
-    left: 20%
-}
-
-
-.box-a {
-    display: flex;
-    position: relative;
-}
-
-.Ingredients {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-
-}
-
-.Instruction {
-    Margin-top: 7rem;
-    padding-left: 3vw;
-    padding-right: 3vw;
-}
-
-
 
 .split-container-4x4 {
     display: flex;
-    margin: 0;
-
+    flex-grow: 1;
+    margin: 20px;
 }
 
 .leftSide {
-    flex: 1;
-    margin: 0;
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
-.leftSide-Top {
-    box-sizing: border-box;
-    padding: 10px;
-    margin: 5px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.RecipeImage {
-    position: relative;
-    display: flex;
-    height: auto;
-    box-shadow: 5px 5px #000000;
-    width: 87%;
-    margin: auto;
-}
-
-
+.leftSide-Top,
 .leftSide-Bottom {
-
+    flex: 1;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
-.InfoTable {
-    display: flex;
-    position: relative;
-    width: 85%;
-    margin: auto;
-    box-shadow: black 5px 5px;
+#RecipeImage {
+    max-width: 95%;
+    max-height: 95%;
+    box-shadow: 5px 5px #000000;
 }
-
 
 .rightSide {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 0.8fr 1.7fr;
+    grid-gap: 20px;
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url("../assets/fillElements/InfoCard_Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
     display: flex;
     flex-direction: column;
-    position: relative;
-    background-image: url("../assets/fillElements/InfoCard_Background.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    min-height: 100vh;
-    width: 50%;
-    right: 3rem;
-    top: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    max-height: 100%;
 }
 
-.card {
-    display: flex;
-    position: relative;
-    top: 0;
-    background-color: #C9FE71;
+#Ingredients,
+#Instruction {
+    width: 100%;
 }
 
-#rageQuitButton{
-    background-color: #38527D;
+#rageQuitButton {
+    background-color: #f1444a;
+    color: white;
     border-radius: 30px;
+    border: none;
     width: 200px;
     height: 50px;
-    border-color: white;
+    cursor: pointer;
 }
 
+@media only screen and (max-width: 768px) {
+    .split-container-4x4 {
+        flex-direction: column;
+    }
 
-
-
+    .leftSide, .rightSide {
+        width: 100%;
+    }
+}
