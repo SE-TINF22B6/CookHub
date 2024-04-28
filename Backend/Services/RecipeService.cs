@@ -38,4 +38,26 @@ public class RecipeService
         var allRecipes = _repository.GetAll();
         return allRecipes.Where(r => r.Ingredients.Any(i => ingredients.Contains(i.Ingredient.Name))).ToList();
     }
+    
+    public void CreateRecipe(Recipe recipe)
+    {
+        var existingRecipe = _repository.GetAll().FirstOrDefault(i => i.Name.Equals(recipe.Name, StringComparison.OrdinalIgnoreCase));
+        if (existingRecipe != null)
+        {
+            throw new InvalidOperationException("An recipe with the same name already exists.");
+        }
+        
+        _repository.Create(recipe);
+    }
+    
+    public void DeleteRecipe(int id)
+    {
+        var recipe = _repository.Get(id);
+        if (recipe == null)
+        {
+            throw new InvalidOperationException("Recipe not found.");
+        }
+
+        _repository.Delete(recipe);
+    }
 }

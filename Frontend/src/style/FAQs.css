@@ -1,33 +1,37 @@
 .FAQPage {
     background-color: #38527D;
     overflow-x: hidden;
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .QA {
     position: relative;
     display: flex;
-    top: 10vh;
-    height: 100vh;
+    flex-direction: column;
     width: 80vw;
+    max-width: 800px;
     margin: auto;
-    justify-content: center;
-
-
-}
-
-.container-lg {
-    color: #C9FE71;
+    overflow-y: auto;
 }
 
 .accordion-header {
+    width: 100%;
     color: #C9FE71;
     background-color: #38527D;
-    border-color: #C9FE71;
+    border-bottom: 1px solid #C9FE71;
 }
 
-
 .accordion-body {
+    width: 100%;
+    padding: 10px;
+    color: #C9FE71;
+    background-color: #293242;
+}
 
+.accordion-item {
+    border-color: #C9FE71;
 }

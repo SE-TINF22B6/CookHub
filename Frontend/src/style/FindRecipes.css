@@ -1,6 +1,129 @@
-.RecipeBrowser {
-    overflow-x: hidden;
+html {
     Background-color: #38527D;
-    height: 100vh;
-    width: 100vw;
+}
+
+.searchForm{
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+.search {
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10rem;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+    transition: all 0.3s;
+}
+.search:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 0.7rem 3rem rgba(97, 85, 81, 0.08);
+}
+.search__field {
+    border: none;
+    background: none;
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.7rem;
+    width: 30rem;
+}
+.search__field:focus {
+    outline: none;
+}
+.search__field::-moz-placeholder {
+    color: #d3c7c3;
+}
+.search__field::placeholder {
+    color: #d3c7c3;
+}
+.btn__search {
+    width: 30%;
+    padding: 2%;
+    background-image: linear-gradient(to right bottom, #C9FE71, #38527D);
+    border-radius: 10rem;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.recipeContainer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.preview {
+    background-color: #6384ba;
+    border-radius: 10rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.preview__data{
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+preview__time{
+    display: flex;
+    flex-direction: column;
+}
+
+.results {
+    list-style: none;
+    margin-bottom: 2rem;
+    width: 90%;
+}
+
+.preview__user-generated{
+
+}
+
+/*
+!* HTML: <div class="ribbon">Your text content</div> *!
+.ribbon {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+.ribbon {
+    --f: .5rem; !* control the folded part*!
+    --r: 3rem; !* control the ribbon shape *!
+
+    position: relative;
+    right: -10px;
+    top: calc(-3*var(--f));
+    padding: .2em;
+    background: #C8CF02;
+    border-right: var(--f) solid #0005;
+    border-bottom: var(--r) solid #0000;
+    clip-path: polygon(calc(100% - var(--f)) 0,0 0,0 calc(100% - var(--r)),calc(50% - var(--f)/2) 100%,calc(100% - var(--f)) calc(100% - var(--r)),calc(100% - var(--f)) var(--f),100% var(--f));
+}*/
+/* HTML: <div class="ribbon">Your text content</div> */
+.ribbon {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+.ribbon {
+    --f: .65em; /* control the folded part */
+
+    position: relative;
+    top: -3rem;
+    right: 0;
+    line-height: 1.4;
+    padding-inline: 1lh;
+    padding-bottom: var(--f);
+    border-image: conic-gradient(#0008 0 0) 51%/var(--f);
+    clip-path: polygon(
+            100% calc(100% - var(--f)),100% 100%,calc(100% - var(--f)) calc(100% - var(--f)),var(--f) calc(100% - var(--f)), 0 100%,0 calc(100% - var(--f)),999px calc(100% - var(--f) - 999px),calc(100% - 999px) calc(100% - var(--f) - 999px));
+    transform: translate(calc((1 - cos(45deg))*100%), -100%) rotate(45deg);
+    transform-origin: 0% 100%;
+    background-color: #C8CF02; /* the main color  */
 }

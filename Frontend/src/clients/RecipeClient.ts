@@ -4,6 +4,8 @@ export class RecipeClient {
      public async getRecipeByName(name: string) {
          try {
          const response = await fetch(`https://localhost:44328/Recipe/byname/${name}`);
+         /*const response = await fetch(`https://localhost:7274/Recipe/byname/${name}`);*/
+
          if (!response.ok) {
              throw new Error(response.statusText);
          }

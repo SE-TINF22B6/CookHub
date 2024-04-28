@@ -6,14 +6,10 @@ export default function Impressum(){
     return(
 
         <div className="ImpressumPage">
-
             <div className="body">
-
                     <div className="content">
-
                         <h1>Impressum</h1>
                         <br/><br/>
-
                         <h2>Angaben gemäß § 5 TMG:</h2>
                         <br/>
                         <p>

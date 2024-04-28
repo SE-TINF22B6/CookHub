@@ -55,9 +55,7 @@ export default function MenuListComposition() {
             <Paper>
                 <MenuList>
                     <MenuItem component={Link} to="/profile">👥 Profile</MenuItem>
-                    <MenuItem component={Link} to="/account">🔓 My account</MenuItem>
                     <MenuItem component={Link} to="/settings">🔩 Settings</MenuItem>
-                    <MenuItem component={Link} to="/messages">📧 Messages</MenuItem>
                     <MenuItem component={Link} to="/logout">🅾 Logout</MenuItem>
                     ---------
                     <MenuItem component={Link} to="/myrecipes">📓 My Recipes</MenuItem>
@@ -105,10 +103,8 @@ export default function MenuListComposition() {
                                         onKeyDown={handleListKeyDown}
                                     >
                                         <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                        <MenuItem onClick={handleClose}>My account</MenuItem>
                                         <MenuItem onClick={handleClose}>Settings</MenuItem>
                                         <MenuItem onClick={handleClose}>Logout</MenuItem>
-                                        <MenuItem onClick={handleClose}>Messages</MenuItem>
                                         <MenuItem onClick={handleClose}>My Recipes</MenuItem>
                                         <MenuItem onClick={handleClose}>Find Recipes</MenuItem>
                                         <MenuItem onClick={handleClose}>Create Recipe</MenuItem>
