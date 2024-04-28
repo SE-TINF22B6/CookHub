@@ -13,6 +13,7 @@ public static class ConfigService
     {
         if (!File.Exists(ConfigFileName))
         {
+            Config = new Config();
             CreateNewConfigFile();
             return;
         }
@@ -21,6 +22,7 @@ public static class ConfigService
 
         if (configContent.IsEmpty())
         {
+            Config = new Config();
             CreateNewConfigFile();
             return;
         }
@@ -30,7 +32,6 @@ public static class ConfigService
 
     private static void CreateNewConfigFile()
     {
-        Config = new Config();
         using var streamWriter = File.CreateText(ConfigFileName);
         streamWriter.Write(JsonConvert.SerializeObject(Config, Formatting.Indented));
         streamWriter.Flush();
