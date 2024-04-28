@@ -41,8 +41,7 @@ public class AdventurizeService
                 ChatMessage.FromSystem(SystemInstructions),
                 ChatMessage.FromUser(recipeInstructions)
             },
-            Model = Models.Gpt_3_5_Turbo,
-            MaxTokens = 50//optional
+            Model = Models.Gpt_3_5_Turbo
         });
 
         return completionResult.Successful

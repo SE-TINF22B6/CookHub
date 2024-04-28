@@ -142,3 +142,4 @@ dist
 /Backend/Services/bin
 /Backend/Services/obj
 /Backend/Backend.sln.DotSettings.user
+/Backend/config.json
