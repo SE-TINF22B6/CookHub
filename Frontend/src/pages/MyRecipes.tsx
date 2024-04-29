@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
 import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
 import Rating from "../components/Rating";
-import RD from "../helpers/RecipesDB_Simulator";
+
 import InfoTable from "../components/InfoTable";
 import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
 import {useParams} from "react-router-dom";
@@ -14,7 +14,7 @@ import {RecipeClient} from "../clients/RecipeClient";
 export default function MyRecipes() {
     let {slug} = useParams();
     const [data, setData] = useState<any>(null);
-    const result:any[] = [];
+
 
 
 
@@ -108,7 +108,7 @@ export default function MyRecipes() {
                     <br/>
                     {/* TODO: implement logic to get ingredients of recipe out of db */}
                     <ul>
-                        {data.ingredients.length != 0 ?
+                        {data.ingredients.length !== 0 ?
                             data.ingredients.map((item:any) =>{
                                 return <li>item</li>
                             }) : <li>No Ingredients available</li>
