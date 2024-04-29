@@ -1,19 +1,19 @@
-import {FormControl, InputLabel, NativeSelect} from "@mui/material";
+import {FormControl, InputLabel, NativeSelect, ToggleButton} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
 import Placeholder from "../assets/fillElements/placeholder.png";
-import Rating from "../components/Rating";
-
 import InfoTable from "../components/InfoTable";
 import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
 import {useParams} from "react-router-dom";
 import {RecipeClient} from "../clients/RecipeClient";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 
 
 export default function MyRecipes() {
     let {slug} = useParams();
     const [data, setData] = useState<any>(null);
+    const [selected, setSelected] = React.useState(false);
 
 
 
@@ -58,10 +58,8 @@ export default function MyRecipes() {
 
                 <div id={"Top-Right-Container"}>
 
-                    <h1>🗇 {data.name}</h1>
+                    <h1>🗇 {data.name} </h1>
 
-                    {/* TODO: Replace star rating with heart/thumb */}
-                    <Rating/>
                     <br/>
                     <span className={"infoText"}>
                             {/* TODO: implement logic to get data from db */}
@@ -69,6 +67,17 @@ export default function MyRecipes() {
                             <p>Cooking Time: {data.cookingTime}</p>
                             <p>Difficulty: {data.difficulty}</p>
                             <p>Rating: 4.5</p>
+                        <p> Like:
+                        <ToggleButton
+                            value="check"
+                            color="warning"
+                            selected={selected}
+                            onChange={() => {
+                                setSelected(!selected);
+                            }}
+                        >
+                        <FavoriteIcon />
+                    </ToggleButton></p>
                         </span>
                     <br/>
                 </div>
