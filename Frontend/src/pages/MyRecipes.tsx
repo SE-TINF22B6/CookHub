@@ -1,7 +1,7 @@
 import {FormControl, InputLabel, NativeSelect} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
-import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
+import Placeholder from "../assets/fillElements/placeholder.png";
 import Rating from "../components/Rating";
 
 import InfoTable from "../components/InfoTable";
@@ -53,7 +53,7 @@ export default function MyRecipes() {
             <div id={"Top-Container"}>
 
                 <div id={"Top-Left-Container"}>
-                    <img id="RecipeImage" src={data.pictureUrl? data.pictureUrl: Ramen} alt="Gute_Rahmenbedingungen"/>
+                    <img id="RecipeImage" src={data.pictureUrl? data.pictureUrl: Placeholder} alt="Gute_Rahmenbedingungen"/>
                 </div>
 
                 <div id={"Top-Right-Container"}>

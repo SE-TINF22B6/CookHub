@@ -1,5 +1,6 @@
 html {
     Background-color: #38527D;
+    overflow-x:hidden;
 }
 
 .searchForm{
@@ -55,6 +56,14 @@ html {
     display: flex;
     justify-content: center;
     padding: 10px;
+}
+.recipeContainer:hover  {
+    transform: scale(1.05);
+}
+
+.recipeContainer a{
+    text-decoration: none;
+    color: black;
 }
 .preview {
     background-color: #6384ba;
