@@ -14,7 +14,6 @@ import Settings from "./pages/Settings";
 import MyRecipes from "./pages/MyRecipes";
 import FindRecipes from "./pages/FindRecipes";
 import Logout from "./pages/Logout";
-import AdventureZone from "./pages/AdventureZone";
 import PleaseLogin from "./pages/PleaseLogin";
 
 
@@ -54,14 +53,12 @@ function App() {
                     <Route path='/faqs' element={<FAQsPage/>}/>
                     <Route path='/impressum' element={<Impressum/>}/>
                     <Route path='/please-login' element={<PleaseLogin/>} />
-
                     <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
                     <Route path='/settings' element={<RequireAuth><Settings/></RequireAuth>}/>
-                    <Route path='/myrecipes' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
+                    <Route path='/myrecipes/:slug' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
                     <Route path='/findrecipes' element={<RequireAuth><FindRecipes/></RequireAuth>}/>
                     <Route path='/foodforge' element={<RequireAuth><FoodForge/></RequireAuth>}/>
                     <Route path='/logout' element={<RequireAuth><Logout/></RequireAuth>}/>
-                    <Route path='/adventurezone' element={<RequireAuth><AdventureZone/></RequireAuth>}/>
                 </Routes>
             </BrowserRouter>
         </div>

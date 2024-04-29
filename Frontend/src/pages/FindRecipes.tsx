@@ -50,7 +50,8 @@ export default function FindRecipes() {
                     return (
                         <div className="recipeContainer">
                             <ul className="results">
-                                <li className="preview" key={index}>
+                                <a href={`http://localhost:3000/myrecipes/${recipe.id}`}>
+                                    <li className="preview" key={index}>
                                     <img src={chef} alt="Test"/>
                                     <div className="preview__data">
                                         <h4 className="preview__title">{recipe.name}</h4>
@@ -69,6 +70,7 @@ export default function FindRecipes() {
 
                                     </div>
                                 </li>
+                                </a>
                             </ul>
                         </div>
                     )

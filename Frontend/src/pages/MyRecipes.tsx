@@ -1,32 +1,51 @@
 import {FormControl, InputLabel, NativeSelect} from "@mui/material";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
 import Ramen from "../assets/recipes/recipe_Ramen_01_23.jpg";
 import Rating from "../components/Rating";
 import RD from "../helpers/RecipesDB_Simulator";
 import InfoTable from "../components/InfoTable";
 import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
+import {useParams} from "react-router-dom";
+import {RecipeClient} from "../clients/RecipeClient";
 
-
-// Just a try to get the data from the DB_Fetcher
-let recipe = RD.map((recipe) => {
-    console.log(recipe);
-    console.log(recipe.name);
-    console.log(recipe.preparationTime);
-    console.log(recipe.cookingTime);
-    console.log(recipe.difficulty);
-    console.log(recipe.ingredients);
-    console.log(recipe.instructions);
-    console.log(recipe.rating);
-    return recipe.toString();
-});
-
-console.log(recipe);
-
-const name = "Klassische Ramensuppe";
 
 
 export default function MyRecipes() {
+    let {slug} = useParams();
+    const [data, setData] = useState<any>(null);
+    const result:any[] = [];
+
+
+
+    useEffect(() => {
+        async function findRecipe(slug:string|undefined) {
+            try {
+                let client: RecipeClient = new RecipeClient();
+                setData(await client.getRecipeById(Number(slug)));
+            } catch (error) {
+                console.log("Fehler beim Laden des Rezeptes: ", error);
+            }
+        }
+
+        if (slug) {
+            findRecipe(slug);
+        }
+
+    }, [slug]);
+
+    useEffect(() => {
+        if(data){
+            console.log(data);
+        }
+
+    }, [data]);
+
+    if (!data) {
+        return <div>Loading...</div>;
+    }
+
+
     return (
 
         <div className="MainContainer">
@@ -34,21 +53,21 @@ export default function MyRecipes() {
             <div id={"Top-Container"}>
 
                 <div id={"Top-Left-Container"}>
-                    <img id="RecipeImage" src={Ramen} alt="Gute_Rahmenbedingungen"/>
+                    <img id="RecipeImage" src={data.pictureUrl? data.pictureUrl: Ramen} alt="Gute_Rahmenbedingungen"/>
                 </div>
 
                 <div id={"Top-Right-Container"}>
 
-                    <h1>🗇 {name} </h1>
+                    <h1>🗇 {data.name}</h1>
 
                     {/* TODO: Replace star rating with heart/thumb */}
                     <Rating/>
                     <br/>
                     <span className={"infoText"}>
                             {/* TODO: implement logic to get data from db */}
-                        <p>Preparation Time: {}</p>
-                            <p>Cooking Time: 15min</p>
-                            <p>Difficulty: Easy</p>
+                        <p>Preparation Time: {data.prepTime}</p>
+                            <p>Cooking Time: {data.cookingTime}</p>
+                            <p>Difficulty: {data.difficulty}</p>
                             <p>Rating: 4.5</p>
                         </span>
                     <br/>
@@ -89,19 +108,12 @@ export default function MyRecipes() {
                     <br/>
                     {/* TODO: implement logic to get ingredients of recipe out of db */}
                     <ul>
-                        <li>120 g Pilze</li>
-                        <li>2,0 cm Ingwer</li>
-                        <li>2 Knoblauchzehen</li>
-                        <li>2 Pak Choi</li>
-                        <li>1 Frühlingszwiebel</li>
-                        <li>4 Eier</li>
-                        <li>2 EL Sesamöl</li>
-                        <li>50 g Misopaste</li>
-                        <li>2 EL Sojasauce</li>
-                        <li>1 EL Apfelessig</li>
-                        <li>1,5 l Gemüsebrühe</li>
-                        <li>250 g Ramen-Nudeln</li>
-                        <li>1 EL Sesamsamen</li>
+                        {data.ingredients.length != 0 ?
+                            data.ingredients.map((item:any) =>{
+                                return <li>item</li>
+                            }) : <li>No Ingredients available</li>
+                        }
+
                     </ul>
                 </div>
 
@@ -109,27 +121,11 @@ export default function MyRecipes() {
                     <h2>Instruction:</h2>
                     <br/>
                     <span id="InstructionText" style={{color: "black"}}>
-                            <strong>Gemüse vorbereiten:</strong><br/>
-                            Pilze vierteln; Ingwer und Knoblauch fein hacken.
-                            Pak Choi in Streifen und Frühlingszwiebel in Ringe
-                            schneiden. <br/>
-
-                            <strong>Eier kochen:</strong><br/>
-                            Eier 6 Minuten kochen, dann pellen und halbieren.<br/>
-
-                            <strong>Anbraten:</strong><br/>
-                            Sesamöl in einem Topf erhitzen. Ingwer und Knoblauch anbraten.<br/>
-
-                            <strong>Brühe zubereiten:</strong><br/>
-                            Pilze, Misopaste, Sojasauce, Apfelessig und Gemüsebrühe in den Topf geben.
-                            Zum Kochen bringen und 5 Minuten köcheln lassen.<br/>
-
-                            <strong>Nudeln hinzufügen:</strong><br/>
-                            Ramen-Nudeln und Pak Choi hinzufügen, 2 Minuten kochen.<br/>
-
-                            <strong>Servieren:</strong><br/>
-                            Suppe in Schüsseln verteilen. Je eine halbe Ei hinzufügen, mit
-                            Frühlingszwiebelringen und Sesamsamen garnieren.
+                            {data.instructionText?
+                                data.ingredients.map((item:any) =>{
+                                    return <p>item</p>
+                                }) : <p>No Instruction available</p>
+                            }
                         </span>
                 </div>
 
