@@ -5,50 +5,38 @@ import CookPot from "../assets/newRecipe/Cook_Pot.png";
 import CookPotCover from "../assets/newRecipe/Cook_Pot_Cover.png";
 import AddIngredientApp from "../components/AddIngredientApp";
 import FormPropsTextFields from "../components/FormPropsTextFields";
-import Slider from "../components/Slider";
+import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
 
 export default function FoodForge() {
     return (
 
-        <div  id="createRecipe_grid-container" style={{backgroundColor: "#38517d"}} >
+        <div id={"Main-Container"}>
 
-            <div className="subContainer_left" >
-
-
-                <div className={"topContainer"}>
-                    <img src={CookPotCover} alt="picShu" style={{position: 'relative', width: '90%'}}/>
-                    <br/><br/>
+            <div id={"Left-Container"}>
+                <div id={"Left-Inner-Container"}>
+                    <img src={CookPotCover} alt="potTop" style={{position: 'relative', width: '80%'}}/>
+                    {/*TODO: Split Amount and Ingredient*/}
                     <AddIngredientApp/>
-                    <img src={CookPot} alt="picShu" style={{position: 'relative', width: '90%'}}/>
+                    <img src={CookPot} alt="potBottom" style={{position: 'relative', width: '80%'}}/>
                 </div>
             </div>
 
-
-            <div className="subContainer_right">
-            <br/><br/>
-                <h1 style={{top: '5rem'}}>FOOD FORGE</h1>
-
-                <div className={"formContainer"}>
-
-                    <div className={"subC_right_1"}>
-                        <FormPropsTextFields/>
-                        <Slider/>
-                    </div>
-                    <br/><br/>
-
-                    <div className={"subC_right_2"}>
-                        Please enter the instructions for your recipe here:
-                        <textarea className="textArea"></textarea>
-
-                        <a className="SubmitButton" style={{fontSize: 20}} href='/myRecipes'>
-                            <img src={SubBtn} alt="SubmitButton" style={{width: '100%', border: '2px black'}}/>
-                        </a>
-                    </div>
-
+            <div id={"Right-Container"}>
+                <div id={"Top-Right-Container"}>
+                    <h1>FOOD FORGE</h1>
+                    <FormPropsTextFields/>
+                    <br/>
+                    <DifficultyRadioGroup/>
                 </div>
-
-
+                <div id={"Bottom-Right-Container"}>
+                    Please enter the instructions for your recipe here:
+                    <textarea className="textArea"></textarea>
+                    <a className="Save-Recipe-Button" href='/myRecipes'>
+                        <img src={SubBtn} alt="SubmitButton"/>
+                    </a>
+                </div>
             </div>
+
         </div>
     );
 }

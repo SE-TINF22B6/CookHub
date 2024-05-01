@@ -1,90 +1,62 @@
-#createRecipe_grid-container{
+#Main-Container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
     width: 100%;
-    height: 95vh;
-    background-color: #c7fc70;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    align-items: center;
-    overflow-x: hidden;
-    background-image: url("../assets/Loginpage_avocado.svg");
-    background-repeat: no-repeat;
-    background-size: 50%;
-
 }
 
-/* ---------------------------------*/
+#Left-Container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../assets/Loginpage_avocado.svg");
+    background-size: 100%;
+}
 
-.subContainer_left{
-    grid-column: 1;
-    width: 100%;
-    height: 100%;
+#Left-Inner-Container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
-}
-
-.topContainer {
-    flex-grow: 1;
     width: 50%;
-    margin-right: auto;
-    margin-left: auto;
+    height: 100%;
     background-color: #C9FE71;
 }
 
-.SimplePaper{
-    position: absolute;
-    width: 150%;
-    height: 100%;
-}
-
-/* ---------------------------------*/
-
-.subContainer_right{
-    grid-column: 2;
-    width: 100%;
-    height: 100%;
+#Right-Container{
+    flex: 1;
     display: flex;
     flex-direction: column;
-
     align-items: center;
     box-shadow: black;
     background-color: #C9FE71;
 }
 
-/* ---------------------------------*/
-
-
-
-
-.formContainer {
+#Top-Right-Container {
+    display: flex;
+    flex-direction: row;
     width: 50%;
-    background-color: #C9FE71;
-
 }
 
-.subC_right_1 {
-    width: 100%;
-    height: 100%;
+#Info-Container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
 }
 
-.subC_right_2 {
-    width: 100%;
-    height: 80%;
+#Difficulty-Container {
+    display: flex;
+}
+
+#Bottom-Right-Container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
 }
 
 .textArea{
-    width: 50rem;
-    height: 100%;
-
+    width: 40vw;
+    height: 20vh;
 }
-/* ---------------------------------*/
+
+.Save-Recipe-Button {
+    border-color: black;
+}
