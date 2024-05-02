@@ -9,7 +9,7 @@ public class RecipeIngredientsMap : ClassMap<RecipeIngredient>
     {
         CompositeId()
             .KeyReference(x => x.Recipe, "recipe_id")
-            .KeyReference(x => x.Ingredient, "ingredient_id");
+            .KeyReference(x => x.Ingredient, part => part.Not.Lazy(),"ingredient_id");
         Map(x => x.Quantity);
         Map(x => x.UnitOfMeasure);
     }

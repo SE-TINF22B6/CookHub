@@ -15,4 +15,16 @@ public class Recipe
     public virtual ICollection<RecipeCategory> Categories { get; set; } = new List<RecipeCategory>();
     public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
     public virtual ICollection<string> AdventureTexts { get; set; } = new List<string>();
+
+    public override string ToString() =>
+        $"Name: {Name}\n" +
+        $"Preparation time: {PrepTime} minutes\n" +
+        $"Cooking time: {CookingTime} minutes\n" +
+        $"Difficulty: {Difficulty}/100\n" +
+        "\n" +
+        "Ingredients:\n" +
+        string.Join('\n', Ingredients.Select(recipeIngredient => recipeIngredient.ToString())) + "\n" +
+        "\n" +
+        "Instructions:\n" +
+        InstructionText;
 }

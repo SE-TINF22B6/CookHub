@@ -1,5 +1,7 @@
 using DataAccess.Entities;
 using DataAccess.Repository;
+using OpenAI;
+using OpenAI.Managers;
 using Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,15 +23,22 @@ builder.Services.AddCors(options =>
     });
 });
 
+if (string.IsNullOrEmpty(ConfigService.Config.OpenAiToken))
+{
+    throw new Exception("No OpenAI API token specified. Please enter the API token in the /Backend/config.json file.");
+}
+
 // dependency injection:
 builder.Services.AddTransient<UserService>();
 builder.Services.AddTransient<RecipeService>();
 builder.Services.AddTransient<IngredientService>();
+builder.Services.AddTransient<AdventurizeService>();
 builder.Services.AddTransient<IRepository<User>, UserRepository>();
 builder.Services.AddTransient<IRepository<Recipe>, RecipeRepository>();
 builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
 builder.Services.AddTransient<IRepository<Authentication>, AuthenticationRepository>();
-builder.Services.AddSingleton(DataAccess.DataAccess.CreateSessionFactory("Server=localhost;Port=5432;User Id=postgres;Password=password;Database=cookhub;"));
+builder.Services.AddSingleton(DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString));
+builder.Services.AddSingleton(new OpenAIService(new OpenAiOptions { ApiKey = ConfigService.Config.OpenAiToken }));
 
 var app = builder.Build();
 

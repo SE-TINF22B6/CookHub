@@ -1,11 +1,14 @@
+using System.Text.Json.Serialization;
+
 namespace DataAccess.Entities;
 
 public class RecipeIngredient
 {
-    public virtual required Recipe Recipe { get; set; }
+    [JsonIgnore]
+    public virtual Recipe Recipe { get; set; } = null!;
     public virtual required Ingredient Ingredient { get; set; }
     public virtual double Quantity { get; set; }
-    public virtual string UnitOfMeasure { get; set; } = "";
+    public virtual string? UnitOfMeasure { get; set; }
 
     // Equals(...) and GetHashCode(...) method must be overridden for NHibernate
     public override bool Equals(object? obj)
@@ -18,4 +21,7 @@ public class RecipeIngredient
     }
 
     public override int GetHashCode() => HashCode.Combine(Recipe, Ingredient);
+
+    public override string ToString()
+        => UnitOfMeasure == null ? $"{Quantity} {Ingredient.Name}" : $"{Quantity} {UnitOfMeasure} {Ingredient.Name}";
 }
