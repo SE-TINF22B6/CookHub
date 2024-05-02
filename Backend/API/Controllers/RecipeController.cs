@@ -119,4 +119,8 @@ public class RecipeController: ControllerBase
             return NotFound(ex.Message);
         }
     }
+
+    [HttpGet("top/{count:int}")]
+    public IActionResult GetTopRecipes(int count)
+        => Ok(_recipeService.GetTopRecipes(count));
 }

@@ -8,9 +8,9 @@ namespace Services;
 /// </summary>
 public class RecipeService
 {
-    private readonly IRepository<Recipe> _repository;
+    private readonly IRecipeRepository _repository;
 
-    public RecipeService(IRepository<Recipe> repository)
+    public RecipeService(IRecipeRepository repository)
     {
         _repository = repository;
     }
@@ -60,4 +60,6 @@ public class RecipeService
 
         _repository.Delete(recipe);
     }
+
+    public ICollection<Recipe> GetTopRecipes(int count) => _repository.GetTopRecipes(count);
 }
