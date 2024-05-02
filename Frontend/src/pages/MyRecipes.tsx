@@ -1,13 +1,8 @@
 import {
     Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
-    Divider,
     FormControl,
     InputLabel,
-    List,
-    ListItemButton,
-    ListItemText,
     NativeSelect,
-    Slide, TextareaAutosize,
     ToggleButton
 } from "@mui/material";
 import React, {useEffect, useState} from "react";
