@@ -29,24 +29,33 @@ public class RecipeService
     
     public List<Recipe> GetRecipesByName(string name)
     {
+        var trimmedName = name.Trim();
         var allRecipes = _repository.GetAll();
-        return allRecipes.Where(r => r.Name.Contains(name)).ToList();
+    
+        return allRecipes
+            .Where(r => r.Name.Contains(trimmedName, StringComparison.OrdinalIgnoreCase))
+            .OrderByDescending(r => r.Name.StartsWith(trimmedName, StringComparison.OrdinalIgnoreCase))
+            .ThenBy(r => r.Name.IndexOf(trimmedName, StringComparison.OrdinalIgnoreCase))
+            .ToList();
     }
+
 
     public List<Recipe> GetRecipesByIngredients(List<string> ingredients)
     {
         var allRecipes = _repository.GetAll();
-        return allRecipes.Where(r => r.Ingredients.Any(i => ingredients.Contains(i.Ingredient.Name))).ToList();
+        return allRecipes
+            .Where(r => r.Ingredients.Any(i => ingredients.Any(ingredient => 
+                string.Equals(ingredient, i.Ingredient.Name, StringComparison.OrdinalIgnoreCase))))
+            .ToList();
     }
+
     
     public void CreateRecipe(Recipe recipe)
     {
-        var existingRecipe = _repository.GetAll().FirstOrDefault(i => i.Name.Equals(recipe.Name, StringComparison.OrdinalIgnoreCase));
-        if (existingRecipe != null)
+        if (string.IsNullOrWhiteSpace(recipe.Name))
         {
-            throw new InvalidOperationException("An recipe with the same name already exists.");
+            throw new ArgumentException("Recipe name cannot be empty.", nameof(recipe));
         }
-        
         _repository.Create(recipe);
     }
     
