@@ -1,6 +1,9 @@
 # CookHub
 <br>
 
+-> Which tools
+-> Statistic required about: How many tests passed, how many failed
+
 ## Test Report
 <br>
 
@@ -12,6 +15,9 @@
 
 **GitHub Actions**  
 > GitHub Actions play a pivotal role in automating our testing pipelines. Every code commit triggers a series of actions that execute automated tests, ensuring that all changes are validated against predefined test cases before integration. This section will detail the setup, configuration, and management of these workflows, alongside best practices for maximizing their effectiveness.
+
+**Selenium**
+> Selenium to simulate clicking 
 
 **Unit Testing with TypeScript**  
 > Unit tests form the backbone of our testing framework, primarily focusing on the functionality of the smallest parts of the program. Written in TypeScript, these tests provide a robust platform for verifying the logic and behavior of individual modules. We will explore the frameworks and tools used, such as Jest or Mocha, the structure of test cases, and the criteria for writing effective and comprehensive unit tests.
