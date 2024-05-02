@@ -44,12 +44,12 @@
 > - **ESLint:** While primarily a linting tool, ESLint helps ensure that our TypeScript code adheres to best practices and standards, indirectly supporting our testing efforts by reducing the likelihood of bugs.
 
 **Scope Limitations**  
-Due to the constraints of time and resources in our study project, comprehensive testing like full system testing or exhaustive end-to-end testing will not be prioritized. Our focus will remain on critical functionalities and integration points, aiming to maximize our testing impact within the available means.
+> Due to the constraints of time and resources in our study project, comprehensive testing like full system testing or exhaustive end-to-end testing will not be prioritized. Our focus will remain on critical functionalities and integration points, aiming to maximize our testing impact within the available means.
 
-**5. Expected Outcomes**  
-The primary objective of our testing strategy is to maintain a high standard of quality for all delivered features, despite the restricted scope. By leveraging automated tools and focusing on key areas of the software, we aim to ensure stability and functionality, minimizing the risk of major defects in the production environment.
-
-This testing strategy is designed to be adaptive and scalable, able to accommodate more comprehensive testing phases as resources become available, ensuring ongoing improvement in the quality and reliability of the software product.
+**Expected Outcomes**  
+> The primary objective of our testing strategy is to maintain a high standard of quality for all delivered features, despite the restricted scope. By leveraging automated tools and focusing on key areas of the software, we aim to ensure stability and functionality, minimizing the risk of major defects in the production environment.
+>
+> This testing strategy is designed to be adaptive and scalable, able to accommodate more comprehensive testing phases as resources become available, ensuring ongoing improvement in the quality and reliability of the software product.
 
 ### 3. Test Plan
 > This section outlines the specific testing tasks, timelines, and resources required to achieve the testing objectives.
