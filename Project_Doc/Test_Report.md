@@ -5,8 +5,24 @@
 <br>
 
 ### 1. Introduction
-> This section provides an overview of the software testing process and the scope of the testing activities.
-> 
+> This section of the documentation provides a comprehensive overview of the software testing process adopted in our project, focusing specifically on the utilization of GitHub Actions and unit testing with TypeScript. The objective here is to outline the scope of testing activities, ensuring a clear understanding of the methodologies used and the expected outcomes. This will assist developers, testers, and stakeholders to efficiently collaborate and maintain high standards of software quality throughout the development lifecycle.
+
+**1. Overview of Testing Strategy**  
+> We employ an integrated approach to testing, combining automated workflows via GitHub Actions with rigorous unit testing in TypeScript. This strategy is designed to enhance the efficiency and reliability of our testing processes, enabling continuous integration and delivery.
+
+**2. GitHub Actions**  
+> GitHub Actions play a pivotal role in automating our testing pipelines. Every code commit triggers a series of actions that execute automated tests, ensuring that all changes are validated against predefined test cases before integration. This section will detail the setup, configuration, and management of these workflows, alongside best practices for maximizing their effectiveness.
+
+**3. Unit Testing with TypeScript**  
+> Unit tests form the backbone of our testing framework, primarily focusing on the functionality of the smallest parts of the program. Written in TypeScript, these tests provide a robust platform for verifying the logic and behavior of individual modules. We will explore the frameworks and tools used, such as Jest or Mocha, the structure of test cases, and the criteria for writing effective and comprehensive unit tests.
+
+**4. Scope of Testing Activities**  
+> The scope of our testing extends from simple code functionality checks to complex interaction and integration tests, ensuring that every component functions as expected in isolation and in conjunction with others. This section will outline the extent of these activities and the criteria used to define their boundaries and priorities.
+
+**5. Expected Outcomes**  
+> By the end of this section, readers should have a thorough understanding of the testing processes, equipped with the knowledge to execute and improve upon the existing tests. Moreover, the documentation will set expectations for the outcomes of the testing activities, including reliability, performance metrics, and the criteria for success.
+
+
 ### 2. Test Strategy
 > This section describes the overall approach to testing, including the testing methodology, testing types, and testing techniques used. Highlight which automatic testing tools/frameworks are used for your project. 
 
