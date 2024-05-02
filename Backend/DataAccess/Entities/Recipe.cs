@@ -15,6 +15,7 @@ public class Recipe
     public virtual ICollection<RecipeCategory> Categories { get; set; } = new List<RecipeCategory>();
     public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
     public virtual ICollection<string> AdventureTexts { get; set; } = new List<string>();
+    public virtual ICollection<User> LikedBy { get; set; } = new List<User>();
 
     public override string ToString() =>
         $"Name: {Name}\n" +

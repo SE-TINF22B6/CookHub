@@ -34,7 +34,7 @@ builder.Services.AddTransient<RecipeService>();
 builder.Services.AddTransient<IngredientService>();
 builder.Services.AddTransient<AdventurizeService>();
 builder.Services.AddTransient<IRepository<User>, UserRepository>();
-builder.Services.AddTransient<IRepository<Recipe>, RecipeRepository>();
+builder.Services.AddTransient<IRecipeRepository, RecipeRepository>();
 builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
 builder.Services.AddTransient<IRepository<Authentication>, AuthenticationRepository>();
 builder.Services.AddSingleton(DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString));

@@ -1,10 +1,9 @@
-using DataAccess.Entities;
 using NHibernate;
 
 namespace DataAccess.Repository;
 
 /// <inheritdoc/>
-public class RecipeRepository : IRepository<Recipe>
+public class RecipeRepository : IRecipeRepository
 {
     public ISessionFactory Factory { get; }
 

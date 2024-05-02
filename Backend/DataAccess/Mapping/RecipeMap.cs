@@ -20,5 +20,6 @@ public class RecipeMap : ClassMap<Recipe>
         HasMany(recipe => recipe.Categories).Cascade.All().Element("category").Not.LazyLoad();
         HasMany(recipe => recipe.Ingredients).Cascade.All().Inverse().Not.LazyLoad();
         HasMany(recipe => recipe.AdventureTexts).Cascade.All().Element("text").Not.LazyLoad();
+        HasManyToMany(recipe => recipe.LikedBy).Cascade.All().Inverse().Table("liked_recipes").Not.LazyLoad();
     }
 }
