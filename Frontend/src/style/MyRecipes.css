@@ -18,6 +18,7 @@
 .infoText {
     color: black;
     font-size: 2vw;
+    text-align: left;
 }
 
 #Top-Container {
@@ -89,8 +90,20 @@
 
 #Button-Container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content:flex-start;
     align-items: center;
+}
+
+.rageQuitButton {
+    background-color: #38527D;
+    border: none;
+    margin-left: 10%;
+}
+
+.btn {
+    background-color: #38527D;
+    border: none;
+    cursor: pointer;
 }
 
 #Bottom-Container {
@@ -132,92 +145,3 @@
         transform: rotate(360deg);
     }
 }
-
-
-
-
-/*.header {*/
-/*    width: 100%;*/
-/*    padding: 20px;*/
-/*    background-color: #38527D;*/
-/*    color: #000000;*/
-/*    font-size: 50px;*/
-/*    font-family: Arial, sans-serif;*/
-/*    font-weight: bold;*/
-/*    text-shadow: 2px 2px #C9FE71;*/
-/*    box-sizing: border-box;*/
-/*}*/
-
-/*.split-container-4x4 {*/
-/*    display: flex;*/
-/*    flex-grow: 1;*/
-/*    margin: 20px;*/
-/*}*/
-
-/*.leftSide {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    width: 50%;*/
-/*}*/
-
-/*.leftSide-Top,*/
-/*.leftSide-Bottom {*/
-/*    flex: 1;*/
-/*    padding: 10px;*/
-/*    margin-bottom: 20px;*/
-/*    box-sizing: border-box;*/
-/*}*/
-
-/*#RecipeImage {*/
-/*    max-width: 95%;*/
-/*    max-height: 95%;*/
-/*    box-shadow: 5px 5px #000000;*/
-/*}*/
-
-/*.rightSide {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr 2fr;*/
-/*    grid-template-rows: 0.8fr 1.7fr;*/
-/*    grid-gap: 20px;*/
-/*    width: 50%;*/
-/*    padding: 20px;*/
-/*    box-sizing: border-box;*/
-/*    background-image: url("../assets/fillElements/InfoCard_Background.png");*/
-/*    background-size: cover;*/
-/*    background-repeat: no-repeat;*/
-/*}*/
-
-/*.container {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    padding: 20px;*/
-/*    box-sizing: border-box;*/
-/*    max-height: 100%;*/
-/*}*/
-
-/*#Ingredients,*/
-/*#Instruction {*/
-/*    width: 100%;*/
-/*}*/
-
-/*#rageQuitButton {*/
-/*    background-color: #f1444a;*/
-/*    color: white;*/
-/*    border-radius: 30px;*/
-/*    border: none;*/
-/*    width: 200px;*/
-/*    height: 50px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*@media only screen and (max-width: 768px) {*/
-/*    .split-container-4x4 {*/
-/*        flex-direction: column;*/
-/*    }*/
-
-/*    .leftSide, .rightSide {*/
-/*        width: 100%;*/
-/*    }*/
-/*}*/
