@@ -11,4 +11,8 @@
       <PackageReference Include="Npgsql" Version="8.0.0-rc.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Repository\IUserRepository.cs" />
+    </ItemGroup>
+
 </Project>

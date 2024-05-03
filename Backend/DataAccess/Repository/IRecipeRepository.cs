@@ -17,4 +17,20 @@ public interface IRecipeRepository : IRepository<Recipe>
         transaction.Commit();
         return topRecipes;
     }
+
+    public void CreateWithIngredients(Recipe recipe)
+    {
+        using var session = Factory.OpenSession();
+        using var transaction = session.BeginTransaction();
+        
+        foreach (var recipeIngredient in recipe.Ingredients)
+        {
+            session.Save(recipeIngredient.Ingredient);
+            recipeIngredient.Recipe = recipe;
+        }
+
+        session.Save(recipe);
+        
+        transaction.Commit();
+    }
 }

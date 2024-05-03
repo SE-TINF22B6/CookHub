@@ -12,6 +12,7 @@ public enum RecipeCategory
     Fish,
     GlutenFree,
     Grill,
+    Indian,
     Italian,
     Kids,
     LactoseFree,

@@ -37,7 +37,8 @@ builder.Services.AddTransient<IRepository<User>, UserRepository>();
 builder.Services.AddTransient<IRecipeRepository, RecipeRepository>();
 builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
 builder.Services.AddTransient<IRepository<Authentication>, AuthenticationRepository>();
-builder.Services.AddSingleton(DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString));
+var sessionFactory = DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString);
+builder.Services.AddSingleton(sessionFactory);
 builder.Services.AddSingleton(new OpenAIService(new OpenAiOptions { ApiKey = ConfigService.Config.OpenAiToken }));
 
 var app = builder.Build();
@@ -58,4 +59,27 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+CreateExampleData();
+
 app.Run();
+
+return;
+
+void CreateExampleData()
+{
+    var userService = app.Services.GetService<UserService>()!;
+    var recipeService = app.Services.GetService<RecipeService>()!;
+    
+    if (userService.GetUserByEmail("admin@cookhub.com") == null)
+    {
+        userService.CreateTestUser();
+    }
+
+    if (!recipeService.GetAllRecipes().Exists(recipe => recipe.Name == "Pizza Margherita"))
+    {
+        recipeService.CreateExampleRecipes();
+        var testUser = userService.GetUserByEmail("admin@cookhub.com")!;
+        userService.LikeRecipe(testUser, recipeService.GetRecipeById(0)!);
+        userService.LikeRecipe(testUser, recipeService.GetRecipeById(1)!);
+    }
+}

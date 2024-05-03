@@ -1,10 +1,14 @@
+using System.Text.Json.Serialization;
+
 namespace DataAccess.Entities;
 
 public class Recipe
 {
     public virtual int Id { get; set; }
-    public virtual required string Name { get; set; }
-    public virtual required User Creator { get; set; }
+    public virtual string Name { get; set; }
+    [JsonIgnore]
+    public virtual User Creator { get; set; }
+    public virtual string CreatorEmail => Creator.Email;
     public virtual string PictureUrl { get; set; } = "";
     public virtual int PrepTime { get; set; }
     public virtual int CookingTime { get; set; }
@@ -15,7 +19,9 @@ public class Recipe
     public virtual ICollection<RecipeCategory> Categories { get; set; } = new List<RecipeCategory>();
     public virtual ICollection<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
     public virtual ICollection<string> AdventureTexts { get; set; } = new List<string>();
+    [JsonIgnore]
     public virtual ICollection<User> LikedBy { get; set; } = new List<User>();
+    public virtual IEnumerable<string> LikedEmails => LikedBy.Select(user => user.Email);
 
     public override string ToString() =>
         $"Name: {Name}\n" +
