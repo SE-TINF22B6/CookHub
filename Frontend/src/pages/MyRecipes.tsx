@@ -168,7 +168,7 @@ export default function MyRecipes() {
             </div>
 
             <div id={"Button-Container"}>
-                <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"} rel={"referrer"}>
+                <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"} rel={"noreferrer"}>
                     <button className={"btn"}>
                         <img src={RageQuitButton} width={"210"} alt={"RageQuitButton"}/>
                     </button>
