@@ -13,7 +13,7 @@ import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
 import {useParams} from "react-router-dom";
 import {RecipeClient} from "../clients/RecipeClient";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import RageQuitButton from "../assets/fillElements/rageQuit-btn.png";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -91,10 +91,10 @@ export default function MyRecipes() {
                     <br/>
                     <span className={"infoText"}>
                             {/* TODO: implement logic to get data from db */}
-                        <p>Preparation Time: {data.prepTime}</p>
-                            <p>Cooking Time: {data.cookingTime}</p>
-                            <p>Difficulty: {data.difficulty}</p>
-                            <p>Rating: 4.5</p>
+                        <p><strong>Preparation Time:</strong> {data.prepTime} min</p>
+                            <p><strong>Cooking Time:</strong> {data.cookingTime} min</p>
+                            <p><strong>Difficulty:</strong> {data.difficulty}</p>
+                            <p><strong>Liked:</strong> -number of likes-</p>
                         <p> Like:
                         <ToggleButton
                             value="check"
@@ -168,9 +168,9 @@ export default function MyRecipes() {
             </div>
 
             <div id={"Button-Container"}>
-                <a href={"https://www.lieferando.de/"} target={"_blank"} rel={"noreferrer"}>
-                    <button id={"rageQuitButton"}>
-                        Rage Quit
+                <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"} rel={"referrer"}>
+                    <button className={"btn"}>
+                        <img src={RageQuitButton} width={"210"} alt={"RageQuitButton"}/>
                     </button>
                 </a>
             <button className={"adventureButton"} onClick={()=>{
