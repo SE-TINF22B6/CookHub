@@ -33,15 +33,15 @@ export class RecipeClient {
         }
     }
 
-    public async getAllRecipes() {
+    public async adventurizeRecipe(id: number|undefined) {
          try {
-        const response = await fetch(`https://localhost:44328/Recipe`);
+        const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
         if (!response.ok) {
             throw new Error(response.statusText);
         }
-        const recipes = await response.json();
-        console.log(recipes);
-        return recipes;
+        const data = await response.text();
+        console.log(data);
+        return data;
 
          }catch (error){
              console.log(error);

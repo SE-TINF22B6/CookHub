@@ -1,4 +1,10 @@
-import {FormControl, InputLabel, NativeSelect, ToggleButton} from "@mui/material";
+import {
+    Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+    FormControl,
+    InputLabel,
+    NativeSelect,
+    ToggleButton
+} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
 import Placeholder from "../assets/fillElements/placeholder.png";
@@ -8,18 +14,39 @@ import {useParams} from "react-router-dom";
 import {RecipeClient} from "../clients/RecipeClient";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
+
+
 
 
 export default function MyRecipes() {
     let {slug} = useParams();
     const [data, setData] = useState<any>(null);
     const [selected, setSelected] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+    const [adventureText, setAdventureText] = React.useState<any>("");
 
 
+
+    async function handleClickAdventurize(id:number){
+        let client = new RecipeClient();
+        setAdventureText(null);
+        const data:string | undefined = await client.adventurizeRecipe(id);
+        setAdventureText(data);
+    }
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
 
     useEffect(() => {
-        async function findRecipe(slug:string|undefined) {
+        async function findRecipe(slug: string | undefined) {
             try {
                 let client: RecipeClient = new RecipeClient();
                 setData(await client.getRecipeById(Number(slug)));
@@ -35,7 +62,7 @@ export default function MyRecipes() {
     }, [slug]);
 
     useEffect(() => {
-        if(data){
+        if (data) {
             console.log(data);
         }
 
@@ -53,7 +80,8 @@ export default function MyRecipes() {
             <div id={"Top-Container"}>
 
                 <div id={"Top-Left-Container"}>
-                    <img id="RecipeImage" src={data.pictureUrl? data.pictureUrl: Placeholder} alt="Gute_Rahmenbedingungen"/>
+                    <img id="RecipeImage" src={data.pictureUrl ? data.pictureUrl : Placeholder}
+                         alt="Gute_Rahmenbedingungen"/>
                 </div>
 
                 <div id={"Top-Right-Container"}>
@@ -76,7 +104,7 @@ export default function MyRecipes() {
                                 setSelected(!selected);
                             }}
                         >
-                        <FavoriteIcon />
+                        <FavoriteIcon/>
                     </ToggleButton></p>
                         </span>
                     <br/>
@@ -118,7 +146,7 @@ export default function MyRecipes() {
                     {/* TODO: implement logic to get ingredients of recipe out of db */}
                     <ul>
                         {data.ingredients.length !== 0 ?
-                            data.ingredients.map((item:any) =>{
+                            data.ingredients.map((item: any) => {
                                 return <li>item</li>
                             }) : <li>No Ingredients available</li>
                         }
@@ -130,10 +158,9 @@ export default function MyRecipes() {
                     <h2>Instruction:</h2>
                     <br/>
                     <span id="InstructionText" style={{color: "black"}}>
-                            {data.instructionText?
-                                data.ingredients.map((item:any) =>{
-                                    return <p>item</p>
-                                }) : <p>No Instruction available</p>
+                            {data.instructionText ?
+                                data.instructionText
+                                : <p>No Instruction available</p>
                             }
                         </span>
                 </div>
@@ -146,8 +173,63 @@ export default function MyRecipes() {
                         Rage Quit
                     </button>
                 </a>
-
+            <button className={"adventureButton"} onClick={()=>{
+                handleClickOpen();
+                handleClickAdventurize(data.id);
+            }}>
                 <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" width={"200"}/>
+            </button>
+                <Dialog
+                    open={open}
+                    fullScreen={open}
+                    onClose={handleClose}
+                    PaperProps={{
+                        component: 'form',
+                        onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+                            event.preventDefault();
+                            const formData = new FormData(event.currentTarget);
+                            const formJson = Object.fromEntries((formData as any).entries());
+                            const recipeName = formJson.recipeName;
+                            console.log(recipeName);
+                            console.log(adventureText);
+                            handleClose();
+                        },
+                    }}
+                >
+                    <DialogTitle>Adventurized Text</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                           Your Recipe
+                        </DialogContentText>
+                        <TextField
+                            autoFocus
+                            required
+                            margin="dense"
+                            id="name"
+                            name="recipeName"
+                            label="Recipe Name"
+                            type="text"
+                            fullWidth
+                            variant="outlined"
+                        />
+                        <h3>Adventure Text</h3>
+                        <div id={"atext"}>
+                            {adventureText ?
+                                <div dangerouslySetInnerHTML={{ __html: adventureText.replace(/\./g, '.<br>') }} />
+                                : <span className="loader"></span>
+                            }
+                        </div>
+                    </DialogContent>
+                    <div style={{display: "flex", justifyContent: "center"}}>
+                    <DialogActions>
+                        <Button color="error" variant="contained" onClick={handleClose}>Cancel</Button>
+                        <Button color="secondary" variant="contained" onClick={()=>{
+                            handleClickAdventurize(data.id);
+                        }}>Regenerate</Button>
+                        <Button color="success" variant="contained" type="submit">Save</Button>
+                    </DialogActions>
+                    </div>
+                </Dialog>
 
 
             </div>
