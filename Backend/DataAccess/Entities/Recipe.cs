@@ -5,9 +5,9 @@ namespace DataAccess.Entities;
 public class Recipe
 {
     public virtual int Id { get; set; }
-    public virtual string Name { get; set; }
+    public virtual string Name { get; set; } = null!;
     [JsonIgnore]
-    public virtual User Creator { get; set; }
+    public virtual User Creator { get; set; } = null!;
     public virtual string CreatorEmail => Creator.Email;
     public virtual string PictureUrl { get; set; } = "";
     public virtual int PrepTime { get; set; }
