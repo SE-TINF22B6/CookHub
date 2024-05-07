@@ -6,8 +6,42 @@ import CookPotCover from "../assets/newRecipe/Cook_Pot_Cover.png";
 import AddIngredientApp from "../components/AddIngredientApp";
 import FormPropsTextFields from "../components/FormPropsTextFields";
 import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
+import Button from "@mui/material/Button";
+import React, {useRef} from "react";
+import {styled} from "@mui/material/styles";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function FoodForge() {
+
+    const VisuallyHiddenInput = styled('input')({
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        height: 1,
+        overflow: 'hidden',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        whiteSpace: 'nowrap',
+        width: 1,
+    });
+
+    const fileUploadRef : any = useRef();
+
+    function uploadImageDisplay() {
+        getBase64(fileUploadRef.current.files[0]);
+    }
+
+    function getBase64(file: File) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            console.log(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
     return (
 
         <div id={"Main-Container"}>
@@ -25,6 +59,16 @@ export default function FoodForge() {
                 <div id={"Top-Right-Container"}>
                     <h1>FOOD FORGE</h1>
                     <FormPropsTextFields/>
+                    <Button
+                      component="label"
+                      role={undefined}
+                      variant="contained"
+                      tabIndex={-1}
+                      startIcon={<FavoriteIcon />}
+                    >
+                        Upload file
+                        <VisuallyHiddenInput type="file" ref={fileUploadRef} onChange={uploadImageDisplay} />
+                    </Button>
                     <br/>
                     <DifficultyRadioGroup/>
                 </div>
