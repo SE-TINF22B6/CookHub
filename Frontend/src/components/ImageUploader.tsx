@@ -54,7 +54,7 @@ export default function ImageUploader() {
     return (
         <>
             <div className={"ImageInput"}>
-                <img src={url} onClick={triggerFileUpload} alt={"Recipe picture"}/>
+                <img src={url} onClick={triggerFileUpload} alt={"Recipe"}/>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </div>
             <Button
