@@ -1,0 +1,39 @@
+.ImageInput img {
+    width: 186px;
+    height: 186px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.ImageInput label {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: #312e38;
+    border-radius: 50%;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ImageInput label input {
+    display: none;
+}
+
+.ImageInput label svg {
+    width: 20px;
+    height: 20px;
+    color: #f4ede8;
+}
+
+.ImageInput label:hover {
+    background: blue;
+}
+
+
