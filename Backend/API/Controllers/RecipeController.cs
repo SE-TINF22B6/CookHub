@@ -123,4 +123,11 @@ public class RecipeController: ControllerBase
     [HttpGet("top/{count:int}")]
     public IActionResult GetTopRecipes(int count)
         => Ok(_recipeService.GetTopRecipes(count));
+
+    [HttpPost("upload-image")]
+    public IActionResult UploadRecipeImage([FromBody] string base64Image)
+    {
+        var success = RecipeService.TrySaveRecipeImage(base64Image);
+        return success ? Ok() : BadRequest("Invalid base64 image.");
+    }
 }

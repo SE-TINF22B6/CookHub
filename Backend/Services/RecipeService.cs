@@ -545,4 +545,41 @@ public class RecipeService
             }
         });
     }
+
+    public static bool TrySaveRecipeImage(string base64Image)
+    {
+        if (base64Image.Length > 1_073_741_824) // = 1 GB
+        {   // image is too large
+            return false;
+        }
+
+        var mimeType = base64Image.Split(';')[0][5..];
+        var fileExtension = mimeType switch
+        {
+            "image/png" => "png",
+            "image/jpeg" => "jpg",
+            "image/webp" => "webp",
+            _ => ""
+        };
+
+        if (fileExtension == "")
+        {   // invalid mime type
+            return false;
+        }
+
+        const string folderPath = "wwwroot/images/recipes";
+        var filePath = $"{folderPath}/{Guid.NewGuid()}.{fileExtension}";
+        base64Image = base64Image.Split(',').Last();
+
+        try
+        {
+            File.WriteAllBytes(filePath, Convert.FromBase64String(base64Image));
+        }
+        catch (Exception)
+        {   // could not convert string or save image
+            return false;
+        }
+
+        return true;
+    }
 }
