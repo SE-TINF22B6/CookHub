@@ -6,8 +6,13 @@ import CookPotCover from "../assets/newRecipe/Cook_Pot_Cover.png";
 import AddIngredientApp from "../components/AddIngredientApp";
 import FormPropsTextFields from "../components/FormPropsTextFields";
 import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
+import ImageUploader from "../components/ImageUploader";
+
+
 
 export default function FoodForge() {
+
+
     return (
 
         <div id={"Main-Container"}>
@@ -24,7 +29,9 @@ export default function FoodForge() {
             <div id={"Right-Container"}>
                 <div id={"Top-Right-Container"}>
                     <h1>FOOD FORGE</h1>
+                    <ImageUploader/>
                     <FormPropsTextFields/>
+
                     <br/>
                     <DifficultyRadioGroup/>
                 </div>
