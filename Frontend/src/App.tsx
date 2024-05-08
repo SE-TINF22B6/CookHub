@@ -15,6 +15,7 @@ import MyRecipes from "./pages/MyRecipes";
 import FindRecipes from "./pages/FindRecipes";
 import Logout from "./pages/Logout";
 import PleaseLogin from "./pages/PleaseLogin";
+import SignUp from "./pages/SignUp";
 
 
 interface RequireAuthProps {
@@ -49,6 +50,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Welcome/>} />
                     <Route path='/login' element={<Login/>} />
+                    <Route path='/signup' element={<SignUp/>} />
                     <Route path='/about' element={<AboutUs/>} />
                     <Route path='/faqs' element={<FAQsPage/>}/>
                     <Route path='/impressum' element={<Impressum/>}/>
