@@ -136,3 +136,14 @@ preview__time{
     transform-origin: 0% 100%;
     background-color: #C8CF02; /* the main color  */
 }
+
+.topRecipes{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10%;
+}
+
+.topRecipes a{
+    text-decoration: none;
+    color: black;
+}

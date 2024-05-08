@@ -47,4 +47,21 @@ export class RecipeClient {
              console.log(error);
          }
     }
+
+    public async getRecipeByLikes(count: number|undefined) {
+        try {
+            const response = await fetch(`https://localhost:44328/Recipe/Top/${count}`);
+            /*const response = await fetch(`https://localhost:7274/Recipe/byname/${name}`);*/
+
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            const recipes = await response.json();
+            console.log(recipes);
+            return recipes;
+        }catch (error){
+            console.log(error);
+        }
+    }
+
 }
