@@ -37,4 +37,43 @@ public class UserService
             Name = "Carlos",
             ProfilePicture = "7800de47-3004-495a-bdb5-55a22e3ed9a3.png"
         });
+    
+    public static bool TrySaveProfilePicture(string base64Image, out string fileName)
+    {
+        fileName = "";
+
+        if (base64Image.Length > 1_073_741_824) // = 1 GB
+        {   // image is too large
+            return false;
+        }
+
+        var mimeType = base64Image.Split(';')[0][5..];
+        var fileExtension = mimeType switch
+        {
+            "image/png" => "png",
+            "image/jpeg" => "jpg",
+            "image/webp" => "webp",
+            _ => ""
+        };
+
+        if (fileExtension == "")
+        {   // invalid mime type
+            return false;
+        }
+
+        const string folderPath = "wwwroot/images/profile-pictures/";
+        fileName = $"{Guid.NewGuid()}.{fileExtension}";
+        base64Image = base64Image.Split(',').Last();
+
+        try
+        {
+            File.WriteAllBytes(folderPath + fileName, Convert.FromBase64String(base64Image));
+        }
+        catch (Exception)
+        {   // could not convert string or save image
+            return false;
+        }
+
+        return true;
+    }
 }
