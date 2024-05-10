@@ -20,7 +20,6 @@ export default function FoodForge() {
             <div id={"Left-Container"}>
                 <div id={"Left-Inner-Container"}>
                     <img src={CookPotCover} alt="potTop" style={{position: 'relative', width: '80%'}}/>
-                    {/*TODO: Split Amount and Ingredient*/}
                     <AddIngredientApp/>
                     <img src={CookPot} alt="potBottom" style={{position: 'relative', width: '80%'}}/>
                 </div>
