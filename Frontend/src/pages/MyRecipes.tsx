@@ -77,10 +77,13 @@ export default function MyRecipes() {
 
         <div className="MainContainer">
 
+            <h1>MyRecipes</h1>
+
             <div id={"Top-Container"}>
 
                 <div id={"Top-Left-Container"}>
-                    <img id="RecipeImage" src={data.pictureUrl ? `https://localhost:44328/images/recipes/${data.pictureUrl}` : Placeholder}
+                    <img id="RecipeImage"
+                         src={data.pictureUrl ? `https://localhost:44328/images/recipes/${data.pictureUrl}` : Placeholder}
                          alt="Gute_Rahmenbedingungen"/>
                 </div>
 
