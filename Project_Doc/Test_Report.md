@@ -8,25 +8,25 @@
 <br>
 
 ### 1. Introduction
-> This section of the documentation provides a comprehensive overview of the software testing process adopted in our project, focusing specifically on the utilization of GitHub Actions and unit testing with TypeScript. The objective here is to outline the scope of testing activities, ensuring a clear understanding of the methodologies used and the expected outcomes. This will assist developers, testers, and stakeholders to efficiently collaborate and maintain high standards of software quality throughout the development lifecycle.
+> This section of the documentation provides an overview of the software testing process adopted in our project, focusing specifically on the utilization of GitHub Actions and unit testing with TypeScript and Selenium.
 
 **Overview of Testing Strategy**  
-> We employ an integrated approach to testing, combining automated workflows via GitHub Actions with rigorous unit testing in TypeScript. This strategy is designed to enhance the efficiency and reliability of our testing processes, enabling continuous integration and delivery.
+> We implement integrated testing, automated workflows via GitHub Actions and unit testing in TypeScript. 
 
 **GitHub Actions**  
-> GitHub Actions play a pivotal role in automating our testing pipelines. Every code commit triggers a series of actions that execute automated tests, ensuring that all changes are validated against predefined test cases before integration. This section will detail the setup, configuration, and management of these workflows, alongside best practices for maximizing their effectiveness.
+> GitHub Actions play a pivotal role in automating our testing pipelines. Every code commit triggers a series of actions that execute automated tests, ensuring that all changes are validated against predefined test cases before integration.
 
 **Selenium**
-> Selenium to simulate clicking 
+> Selenium to simulate e.g clicking on the website.
 
 **Unit Testing with TypeScript**  
-> Unit tests form the backbone of our testing framework, primarily focusing on the functionality of the smallest parts of the program. Written in TypeScript, these tests provide a robust platform for verifying the logic and behavior of individual modules. We will explore the frameworks and tools used, such as Jest or Mocha, the structure of test cases, and the criteria for writing effective and comprehensive unit tests.
+> Unit tests form the backbone of our testing framework, primarily focusing on the functionality of the smallest parts of the program. Written in TypeScript, these tests verifying the logic and behavior of individual modules. 
 
 **Scope of Testing Activities**  
-> The scope of our testing extends from simple code functionality checks to complex interaction and integration tests, ensuring that every component functions as expected in isolation and in conjunction with others. This section will outline the extent of these activities and the criteria used to define their boundaries and priorities.
+> The scope of our testing extends from simple code functionality checks to complex interaction and integration tests, ensuring that (nearly) every component works as expected.
 
 **Expected Outcomes**  
-> By the end of this section, readers should have a thorough understanding of the testing processes, equipped with the knowledge to execute and improve upon the existing tests. Moreover, the documentation will set expectations for the outcomes of the testing activities, including reliability, performance metrics, and the criteria for success.
+> By the end of this section, readers should have a thorough understanding of the testing processes, equipped with the knowledge to execute and improve upon the existing tests.
 
 <br><br>
 
