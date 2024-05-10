@@ -33,4 +33,26 @@ public class UserControllerTests
         // CLEAN UP
         Directory.Delete(folderPath, true);
     }
+    
+    [Fact]
+    public void DontSaveBadBase64Image()
+    {
+        // ARRANGE
+        const string folderPath = "wwwroot/images/profile-pictures";
+        if (Directory.Exists(folderPath))
+        {
+            Directory.Delete(folderPath, true);
+        }
+        Directory.CreateDirectory(folderPath);
+        
+        // ACT
+        var result = _userController.UploadProfilePicture("blabla");
+        
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Empty(Directory.GetFiles(folderPath));
+        
+        // CLEAN UP
+        Directory.Delete(folderPath, true);
+    }
 }

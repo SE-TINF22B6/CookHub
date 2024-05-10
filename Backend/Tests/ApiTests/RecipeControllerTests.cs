@@ -34,4 +34,26 @@ public class RecipeControllerTests
         // CLEAN UP
         Directory.Delete(folderPath, true);
     }
+
+    [Fact]
+    public void DontSaveBadBase64Image()
+    {
+        // ARRANGE
+        const string folderPath = "wwwroot/images/recipes";
+        if (Directory.Exists(folderPath))
+        {
+            Directory.Delete(folderPath, true);
+        }
+        Directory.CreateDirectory(folderPath);
+        
+        // ACT
+        var result = _recipeController.UploadRecipeImage("blabla");
+        
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Empty(Directory.GetFiles(folderPath));
+        
+        // CLEAN UP
+        Directory.Delete(folderPath, true);
+    }
 }
