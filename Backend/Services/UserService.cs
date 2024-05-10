@@ -1,4 +1,5 @@
-﻿using DataAccess.Entities;
+﻿using System.Text.RegularExpressions;
+using DataAccess.Entities;
 using DataAccess.Repository;
 
 namespace Services;
@@ -6,7 +7,7 @@ namespace Services;
 /// <summary>
 /// Class that handles user logic
 /// </summary>
-public class UserService
+public partial class UserService
 {
     private readonly IRepository<User> _repository;
 
@@ -15,12 +16,14 @@ public class UserService
         _repository = repository;
     }
 
+    public void CreateUser(User user) => _repository.Create(user);
+
     public User? GetUserByEmail(string email) => _repository.Get(email);
 
-    public bool TryValidateUserData(string email, string password)
+    public bool TryValidateUserData(string email, string password, out User? user)
     {
-        var user = _repository.Get(email);
-        return user != null && user.PasswordHash == password;
+        user = _repository.Get(email);
+        return user != null && CryptoService.GetHash(password).SequenceEqual(user.PasswordHash);
     }
 
     public void LikeRecipe(User user, Recipe recipe)
@@ -33,7 +36,7 @@ public class UserService
         => _repository.Create(new User
         {
             Email = "admin@cookhub.com",
-            PasswordHash = "password",
+            PasswordHash = CryptoService.GetHash("password"),
             Name = "Carlos",
             ProfilePicture = "7800de47-3004-495a-bdb5-55a22e3ed9a3.png"
         });
@@ -76,4 +79,34 @@ public class UserService
 
         return true;
     }
+
+    public bool TryValidateRegisterData(string name, string email, string password, out string error)
+    {
+        error = string.Empty;
+
+        if (!UsernameRegex().IsMatch(name))
+            error += "Invalid username. ";
+
+        if (!EmailRegex().IsMatch(email))
+            error += "Invalid email. ";
+
+        if (!PasswordRegex().IsMatch(password))
+            error += "Invalid password. ";
+
+        var existingUser = GetUserByEmail(email);
+
+        if (existingUser != null)
+            error += "This email is already registered. ";
+
+        return error == string.Empty;
+    }
+
+    [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]
+    private static partial Regex UsernameRegex();
+
+    [GeneratedRegex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,24}$")]
+    private static partial Regex EmailRegex();
+
+    [GeneratedRegex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,32}$")]
+    private static partial Regex PasswordRegex();
 }
