@@ -546,8 +546,10 @@ public class RecipeService
         });
     }
 
-    public static bool TrySaveRecipeImage(string base64Image)
+    public static bool TrySaveRecipeImage(string base64Image, out string fileName)
     {
+        fileName = "";
+
         if (base64Image.Length > 1_073_741_824) // = 1 GB
         {   // image is too large
             return false;
@@ -567,13 +569,13 @@ public class RecipeService
             return false;
         }
 
-        const string folderPath = "wwwroot/images/recipes";
-        var filePath = $"{folderPath}/{Guid.NewGuid()}.{fileExtension}";
+        const string folderPath = "wwwroot/images/recipes/";
+        fileName = $"{Guid.NewGuid()}.{fileExtension}";
         base64Image = base64Image.Split(',').Last();
 
         try
         {
-            File.WriteAllBytes(filePath, Convert.FromBase64String(base64Image));
+            File.WriteAllBytes(folderPath + fileName, Convert.FromBase64String(base64Image));
         }
         catch (Exception)
         {   // could not convert string or save image

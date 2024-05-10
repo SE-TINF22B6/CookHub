@@ -127,7 +127,7 @@ public class RecipeController: ControllerBase
     [HttpPost("upload-image")]
     public IActionResult UploadRecipeImage([FromBody] string base64Image)
     {
-        var success = RecipeService.TrySaveRecipeImage(base64Image);
-        return success ? Ok() : BadRequest("Invalid base64 image.");
+        var success = RecipeService.TrySaveRecipeImage(base64Image, out var fileName);
+        return success ? Ok(fileName) : BadRequest("Invalid base64 image.");
     }
 }

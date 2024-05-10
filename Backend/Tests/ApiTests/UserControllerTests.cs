@@ -24,8 +24,11 @@ public class UserControllerTests
         var result = _userController.UploadProfilePicture(base64Image);
 
         // ASSERT
-        Assert.IsType<OkResult>(result);
-        Assert.Single(Directory.GetFiles(folderPath));
+        Assert.IsType<OkObjectResult>(result);
+        var filesInFolder = Directory.GetFiles(folderPath);
+        Assert.Single(filesInFolder);
+        var returnedFileName = (result as OkObjectResult)!.Value!.ToString()!;
+        Assert.Contains(returnedFileName, filesInFolder.Single());
 
         // CLEAN UP
         Directory.Delete(folderPath, true);
