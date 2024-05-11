@@ -1,39 +1,25 @@
 using DataAccess.Entities;
 using DataAccess.Repository;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
 using Services;
 using Xunit;
 
 namespace Tests;
 
+[Collection("TestDatabase")]
 public class UserRepositoryTests : IDisposable
 {
-    private const string TestDatabaseFileName = "test-database.db";
     private readonly ISessionFactory _testDatabaseFactory;
     private readonly IRepository<User> _repository;
 
     public UserRepositoryTests()
     {
-        _testDatabaseFactory = Fluently.Configure()
-            .Database(() => SQLiteConfiguration.Standard.UsingFile(TestDatabaseFileName))
-            .Mappings(configuration =>
-            {
-                configuration.FluentMappings.AddFromAssembly(typeof(User).Assembly);
-            })
-            .ExposeConfiguration(configuration => new SchemaUpdate(configuration).Execute(false, true))
-            .BuildSessionFactory();
-        
+        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
         _repository = new UserRepository(_testDatabaseFactory);
     }
-    
+
     public void Dispose()
-    {
-        _testDatabaseFactory.Dispose();
-        File.Delete(TestDatabaseFileName);
-    }
+        => Tests.DisposeTestDatabase(_testDatabaseFactory);
 
     [Fact]
     public void CanCreateAndGetAUser()
