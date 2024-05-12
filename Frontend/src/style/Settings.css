@@ -4,12 +4,10 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding: 0;
     background-color: #38527D;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+
     overflow-x: hidden;
     align-items: center;
 }
@@ -35,11 +33,12 @@
 .userPicture {
     background-color: #38517d;
     border-radius: 2rem;
-    width: 100%;
+    width: 50%;
 }
 
 .body-left {
     display: flex;
+    flex: 1;
     flex-direction: column;
     margin-top: 2%;
     align-items: center;
@@ -48,6 +47,7 @@
 
 .body-middle {
     display: flex;
+    flex: 1;
     flex-direction: column;
     margin-top: 2%;
     align-items: center;
@@ -55,6 +55,7 @@
 
 .body-right {
     display: flex;
+    flex: 1;
     flex-direction: column;
     margin-top: 2%;
     align-items: center;

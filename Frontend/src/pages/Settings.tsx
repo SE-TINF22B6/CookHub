@@ -8,8 +8,6 @@ import UserImage from "../assets/Hotdog.svg";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-
-
 const value = "HotDog";
 
 
@@ -23,15 +21,6 @@ export default function Settings() {
             </div>
 
             <div id={"body"}>
-
-                {/* IMPLEMENT:
-                - change username
-                - change password
-                - delete account
-                - change profile picture
-                - dark mode (optional
-                */}
-
 
                 <div className={"body-left"}>
 
@@ -84,7 +73,7 @@ export default function Settings() {
                         Delete Account
                     </Button>
 
-                    <br/><br/>
+                    <br/><br/><br/><br/><br/>
 
                     <h2>Change Profile Picture</h2>
                     <ImageUploader/>
