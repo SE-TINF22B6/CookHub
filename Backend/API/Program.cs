@@ -33,7 +33,7 @@ builder.Services.AddTransient<UserService>();
 builder.Services.AddTransient<RecipeService>();
 builder.Services.AddTransient<IngredientService>();
 builder.Services.AddTransient<AdventurizeService>();
-builder.Services.AddTransient<IRepository<User>, UserRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IRecipeRepository, RecipeRepository>();
 builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
 builder.Services.AddTransient<IRepository<Authentication>, AuthenticationRepository>();
@@ -80,7 +80,7 @@ void CreateExampleData()
     {
         recipeService.CreateExampleRecipes();
         var testUser = userService.GetUserByEmail("admin@cookhub.com")!;
-        userService.LikeRecipe(testUser, recipeService.GetRecipeById(0)!);
         userService.LikeRecipe(testUser, recipeService.GetRecipeById(1)!);
+        userService.LikeRecipe(testUser, recipeService.GetRecipeById(2)!);
     }
 }

@@ -9,20 +9,22 @@ namespace Services;
 /// </summary>
 public partial class UserService
 {
-    private readonly IRepository<User> _repository;
+    private readonly IUserRepository _repository;
 
-    public UserService(IRepository<User> repository)
+    public UserService(IUserRepository repository)
     {
         _repository = repository;
     }
 
     public void CreateUser(User user) => _repository.Create(user);
 
-    public User? GetUserByEmail(string email) => _repository.Get(email);
+    public User? GetUserById(int id) => _repository.Get(id);
+
+    public User? GetUserByEmail(string email) => _repository.GetByEmail(email);
 
     public bool TryValidateUserData(string email, string password, out User? user)
     {
-        user = _repository.Get(email);
+        user = _repository.GetByEmail(email);
         return user != null && CryptoService.GetHash(password).SequenceEqual(user.PasswordHash);
     }
 

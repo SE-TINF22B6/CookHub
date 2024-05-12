@@ -8,7 +8,7 @@ public class Recipe
     public virtual string Name { get; set; } = null!;
     [JsonIgnore]
     public virtual User Creator { get; set; } = null!;
-    public virtual string CreatorEmail => Creator.Email;
+    public virtual int CreatorId => Creator.Id;
     public virtual string PictureUrl { get; set; } = "";
     public virtual int PrepTime { get; set; }
     public virtual int CookingTime { get; set; }
@@ -21,7 +21,7 @@ public class Recipe
     public virtual ICollection<string> AdventureTexts { get; set; } = new List<string>();
     [JsonIgnore]
     public virtual ICollection<User> LikedBy { get; set; } = new List<User>();
-    public virtual IEnumerable<string> LikedEmails => LikedBy.Select(user => user.Email);
+    public virtual IEnumerable<int> LikedUserIds => LikedBy.Select(user => user.Id);
 
     public override string ToString() =>
         $"Name: {Name}\n" +
