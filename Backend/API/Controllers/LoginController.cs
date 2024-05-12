@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Models;
+using DataAccess.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Services;
 
 namespace API.Controllers;
@@ -11,17 +13,89 @@ namespace API.Controllers;
 public class LoginController : ControllerBase
 {
     private readonly UserService _userService;
+    private readonly Dictionary<string, string> _authTokens;
+    private const string TokenKey = "auth-token";
 
-    public LoginController(UserService userService)
+    public LoginController(UserService userService, Dictionary<string, string> authTokens)
     {
         _userService = userService;
+        _authTokens = authTokens;
     }
-    
-    [HttpPost]
-    public string Login([FromBody] LoginDataModel loginData)
-    {
-        var isValidUserData = _userService.TryValidateUserData(loginData.Email, loginData.Password);
 
-        return isValidUserData ? "login data correct" : "login data incorrect";
+    [HttpPost]
+    public IActionResult Login([FromBody] LoginDataModel loginData)
+    {
+        var isValidUserData = _userService.TryValidateUserData(loginData.Email, loginData.Password, out var user);
+
+        if (!isValidUserData)
+        {
+            return BadRequest("Invalid login data.");
+        }
+
+        var authToken = CryptoService.GenerateToken();
+        _authTokens.Add(authToken, user!.Email);
+
+        Response.Cookies.Append(TokenKey, authToken, new CookieOptions
+        {
+            Path = "/",
+            HttpOnly = true,
+            Secure = true,
+            SameSite = SameSiteMode.Strict,
+            Expires = DateTimeOffset.Now.AddDays(30)
+        });
+
+        return Ok();
+    }
+
+    [HttpGet("log-out")]
+    public IActionResult LogOut()
+    {
+        var authToken = Request.Cookies[TokenKey];
+        Response.Cookies.Delete(TokenKey);
+
+        if (authToken?.Length == 32)
+        {
+            _authTokens.Remove(authToken);
+        }
+
+        return Ok();
+    }
+
+    [HttpGet("is-logged-in")]
+    public IActionResult IsLoggedIn()
+    {
+        var authToken = Request.Cookies[TokenKey];
+
+        if (authToken == null || !_authTokens.ContainsKey(authToken))
+        {
+            return NotFound("Not logged in");
+        }
+
+        var userEmail = _authTokens.GetValueOrDefault(authToken)!;
+        var user = _userService.GetUserByEmail(userEmail);
+
+        return user == null ? Problem("Could not get user from data base") : Ok(user);
+    }
+
+    [HttpPost("register")]
+    public IActionResult Register([FromBody] RegisterDataModel registerData)
+    {
+        var isValidRegisterData = _userService.TryValidateRegisterData(registerData.Name,
+                                                                       registerData.Email,
+                                                                       registerData.Password,
+                                                                       out var error);
+        if (!isValidRegisterData)
+        {
+            return BadRequest(error);
+        }
+
+        _userService.CreateUser(new User
+        {
+            Email = registerData.Email,
+            Name = registerData.Name,
+            PasswordHash = CryptoService.GetHash(registerData.Password)
+        });
+
+        return Login(new LoginDataModel { Email = registerData.Email, Password = registerData.Password });
     }
 }

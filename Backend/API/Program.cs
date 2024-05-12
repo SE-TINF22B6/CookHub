@@ -40,6 +40,7 @@ builder.Services.AddTransient<IRepository<Authentication>, AuthenticationReposit
 var sessionFactory = DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString);
 builder.Services.AddSingleton(sessionFactory);
 builder.Services.AddSingleton(new OpenAIService(new OpenAiOptions { ApiKey = ConfigService.Config.OpenAiToken }));
+builder.Services.AddSingleton<Dictionary<string, string>>();
 
 var app = builder.Build();
 
