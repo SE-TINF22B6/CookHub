@@ -2,6 +2,7 @@ import '../style/AboutUs.css';
 import * as React from 'react';
 import Carlos from "../assets/AboutUs/Chef_Carlo_with_background.png";
 import CookHub_Team_H1 from "../assets/AboutUs/CookHub_Team_H1.png";
+import Carlos_PopUp from "../helpers/Carlos_PopUp";
 
 export default function AboutUs() {
     return (
@@ -22,8 +23,13 @@ export default function AboutUs() {
 
             <div className="carlos">
                 <img src={Carlos} className="CarlosTeamMember" alt="team"/>
+                <br/>
+                {Carlos_PopUp(
+                    "LEEEEN!"
+                )}
+
             </div>
 
         </div>
-    );
+    )
 }

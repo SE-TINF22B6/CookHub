@@ -8,7 +8,7 @@ import * as React from 'react';
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import '../style/Carlos_PopUp.css';
 
-export default function Carlos_PopUp() {
+export default function Carlos_PopUp(text: string) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -18,6 +18,8 @@ export default function Carlos_PopUp() {
     const handleClose = () => {
         setOpen(false);
     };
+
+
 
     return (
         <React.Fragment>
@@ -46,8 +48,7 @@ export default function Carlos_PopUp() {
                                     backgroundColor: '#262525FF',
                                     fontWeight: 'bold',
                                     textShadow: '3'
-                                }}> Hey there! I'm Carlos, your personal cooking assistant.
-                                    I'm here to help you with...
+                                }}> {text}
                                 </span>
                             </div>
 
