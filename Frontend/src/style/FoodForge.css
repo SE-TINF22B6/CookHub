@@ -35,7 +35,16 @@
 #Top-Right-Container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.imageUploader-container {
+
+}
+
+.form-container {
+
 }
 
 #Info-Container {

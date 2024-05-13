@@ -9,7 +9,6 @@ import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
 import ImageUploader from "../components/ImageUploader";
 
 
-
 export default function FoodForge() {
 
 
@@ -18,28 +17,40 @@ export default function FoodForge() {
         <div id={"Main-Container"}>
 
             <div id={"Left-Container"}>
+
                 <div id={"Left-Inner-Container"}>
+
                     <img src={CookPotCover} alt="potTop" style={{position: 'relative', width: '80%'}}/>
+
                     <AddIngredientApp/>
+
                     <img src={CookPot} alt="potBottom" style={{position: 'relative', width: '80%'}}/>
+
                 </div>
+
             </div>
 
             <div id={"Right-Container"}>
-                <div id={"Top-Right-Container"}>
-                    <h1>FOOD FORGE</h1>
-                    <ImageUploader/>
-                    <FormPropsTextFields/>
 
-                    <br/>
+                <br/>
+                <h1>FOOD FORGE</h1>
+
+                <div id={"Top-Right-Container"}>
+                    <ImageUploader/><br/>
+                    <FormPropsTextFields/><br/>
                     <DifficultyRadioGroup/>
                 </div>
+
                 <div id={"Bottom-Right-Container"}>
-                    Please enter the instructions for your recipe here:
+
+                    <strong>Please enter the instructions for your recipe here:</strong>
+
                     <textarea className="textArea"></textarea>
+
                     <a className="Save-Recipe-Button" href='/myRecipes'>
                         <img src={SubBtn} alt="SubmitButton"/>
                     </a>
+
                 </div>
             </div>
 

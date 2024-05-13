@@ -8,7 +8,7 @@ import FormLabel from '@mui/material/FormLabel';
 export default function RowRadioButtonsGroup() {
     return (
         <FormControl>
-            <FormLabel id="difficultyRadioGroup">Choose  the difficulty of the recipe</FormLabel>
+            <FormLabel id="difficultyRadioGroup"><strong>Choose  the difficulty of the recipe</strong></FormLabel>
             <RadioGroup
                 row
                 aria-labelledby="Difficulty-Radio-Group"
