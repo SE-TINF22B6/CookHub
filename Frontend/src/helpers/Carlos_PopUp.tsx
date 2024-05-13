@@ -8,7 +8,7 @@ import * as React from 'react';
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import '../style/Carlos_PopUp.css';
 
-export default function Carlos_PopUp(text: string) {
+export default function Carlos_PopUp(buttonTitle: string, text: string) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -27,7 +27,7 @@ export default function Carlos_PopUp(text: string) {
                 variant="outlined"
                 onClick={handleClickOpen}
                 style={{color: '#C9FE71', borderColor: '#C9FE71'}}
-            > Need help?
+            > {buttonTitle}
             </Button>
 
             <Dialog
