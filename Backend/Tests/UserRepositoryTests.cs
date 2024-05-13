@@ -1,38 +1,25 @@
 using DataAccess.Entities;
 using DataAccess.Repository;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Tool.hbm2ddl;
+using Services;
 using Xunit;
 
 namespace Tests;
 
+[Collection("TestDatabase")]
 public class UserRepositoryTests : IDisposable
 {
-    private const string TestDatabaseFileName = "test-database.db";
     private readonly ISessionFactory _testDatabaseFactory;
     private readonly IRepository<User> _repository;
 
     public UserRepositoryTests()
     {
-        _testDatabaseFactory = Fluently.Configure()
-            .Database(() => SQLiteConfiguration.Standard.UsingFile(TestDatabaseFileName))
-            .Mappings(configuration =>
-            {
-                configuration.FluentMappings.AddFromAssembly(typeof(User).Assembly);
-            })
-            .ExposeConfiguration(configuration => new SchemaUpdate(configuration).Execute(false, true))
-            .BuildSessionFactory();
-        
+        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
         _repository = new UserRepository(_testDatabaseFactory);
     }
-    
+
     public void Dispose()
-    {
-        _testDatabaseFactory.Dispose();
-        File.Delete(TestDatabaseFileName);
-    }
+        => Tests.DisposeTestDatabase(_testDatabaseFactory);
 
     [Fact]
     public void CanCreateAndGetAUser()
@@ -71,18 +58,20 @@ public class UserRepositoryTests : IDisposable
     {
         // ARRANGE
         var testUser = CreateTestUser();
+        const string newPassword = "newPassword";
         _repository.Create(testUser);
         
         // ASSERT PRE CONDITION
         Assert.Equal(testUser.Name, _repository.GetAll().Single().Name);
         
         // ACT
-        testUser.PasswordHash = "newPassword";
+        testUser.PasswordHash = CryptoService.GetHash(newPassword);
         _repository.Update(testUser);
         
         // ASSERT
         var userFromDataBase = _repository.GetAll().Single();
         Assert.Equal(testUser.Name, userFromDataBase.Name);
+        Assert.Equal(CryptoService.GetHash(newPassword), userFromDataBase.PasswordHash);
     }
 
     [Fact]
@@ -129,7 +118,7 @@ public class UserRepositoryTests : IDisposable
         => new()
         {
             Email = "test@example.com",
-            PasswordHash = "password",
+            PasswordHash = CryptoService.GetHash("password"),
             Name = "test"
         };
 }

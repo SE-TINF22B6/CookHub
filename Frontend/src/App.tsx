@@ -14,7 +14,7 @@ import Settings from "./pages/Settings";
 import MyRecipes from "./pages/MyRecipes";
 import FindRecipes from "./pages/FindRecipes";
 import Logout from "./pages/Logout";
-import PleaseLogin from "./pages/PleaseLogin";
+import SignUp from "./pages/SignUp";
 
 
 interface RequireAuthProps {
@@ -24,7 +24,7 @@ interface RequireAuthProps {
 const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
     const loginStatus = true;  // @ backend Team: implement logic for checking if user is logged in
 
-    return loginStatus ? <>{children}</> : <Navigate to="/please-login" />;
+    return loginStatus ? <>{children}</> : <Navigate to="/login" />;
 }
 
 const AppBarConditional = () => {
@@ -49,14 +49,14 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Welcome/>} />
                     <Route path='/login' element={<Login/>} />
+                    <Route path='/signup' element={<SignUp/>} />
                     <Route path='/about' element={<AboutUs/>} />
                     <Route path='/faqs' element={<FAQsPage/>}/>
                     <Route path='/impressum' element={<Impressum/>}/>
-                    <Route path='/please-login' element={<PleaseLogin/>} />
                     <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
                     <Route path='/settings' element={<RequireAuth><Settings/></RequireAuth>}/>
                     <Route path='/myrecipes/:slug' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
-                    <Route path='/findrecipes' element={<RequireAuth><FindRecipes/></RequireAuth>}/>
+                    <Route path='/findrecipes' element={<FindRecipes/>}/>
                     <Route path='/foodforge' element={<RequireAuth><FoodForge/></RequireAuth>}/>
                     <Route path='/logout' element={<RequireAuth><Logout/></RequireAuth>}/>
                 </Routes>

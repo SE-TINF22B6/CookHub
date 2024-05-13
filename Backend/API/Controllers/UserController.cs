@@ -3,18 +3,14 @@ using Services;
 
 namespace API.Controllers;
 
-/// <summary>
-/// Class that defines api endpoints for users
-/// </summary>
 [ApiController]
 [Route("[controller]")]
-public class UserController: ControllerBase
+public class UserController : ControllerBase
 {
-    private readonly UserService _userService;
-
-    public UserController(UserService userService)
+    [HttpPost("upload-profile-picture")]
+    public IActionResult UploadProfilePicture([FromBody] string base64Image)
     {
-        _userService = userService;
+        var success = UserService.TrySaveProfilePicture(base64Image, out var fileName);
+        return success ? Ok(fileName) : BadRequest("Invalid base64 image.");
     }
 }
-    

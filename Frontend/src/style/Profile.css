@@ -1,111 +1,99 @@
 
-.ProfilePage {
+#ProfilePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-image: url("../assets/ProfilePage/Background.png");
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
     overflow-x: hidden;
 }
 
-.Header {
-
-}
-
-.ContainerTop {
+#ContainerTop {
     display: flex;
     margin-top: 4rem;
-    margin-left: auto;
-    margin-right: auto;
-    Background-color: transparent;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
 }
 
-.Stack1 {
-    Background-color: transparent;
-}
-
-.Stack2 {
-    Background-color: transparent;
-}
-
-.App-logo_ProfilePage {
-    width: 100%;
-    height: 100%;
-    margin-right: 5rem;
-    Background-color: transparent;
-}
-
-.AvatarUsernameHolder {
-    width: 100%;
-    height: 100%;
-    margin-left: 3rem;
-}
-
-.p-3 {
-    margin-left: 10rem;
-}
-
-.Buttons {
-
-}
-
-.LogoutButton {
-    width: 100%;
-    height: 100%;
-}
-
-.SettingsButton {
-    width: 100%;
-    height: 100%;
-
-}
-
-.ContainerBottom {
+#divLogo {
     display: flex;
-    margin-top: 6rem;
-    Background-color: transparent;
-
-}
-
-.Stack3 {
-    display: flex;
-}
-
-.HistoryCard {
-
-}
-
-.FavoritesCard {
-
-}
-
-.OwnRecipesCard {
-
-}
-
-#cardsContainer {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    flex: 1;
     justify-content: center;
 }
 
-.frameOfCards {
-    position: absolute;
+.carlos {
+    width: 45%;
+}
+
+#divUserInfo {
     display: flex;
-    border-radius: 30px;
-    height: 100%;
-    width: 100%;
-   box-shadow: 0 0 50px 0 #C9FE71 ;
-    z-index: 0
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #3d63a4;
+    width: 30rem;
+    height: 10rem;
+    border-radius: 2rem;
 }
 
-#threeCards {
-    position: relative;
-    z-index: 1; /* Höher als .frameOfCards */
+#buttonContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3rem;
+    align-items: center;
 }
 
+.LogoutButton {
+    display: flex;
+    margin-bottom: 2rem;
+}
 
+.SettingsButton {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+#containerBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:70%;
+    margin-top: 2rem;
+}
+
+.CardHolder-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 30rem;
+    background-color: #3d63a4;
+    border-radius: 2rem;
+}
+
+.CardHolder-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 30rem;
+    background-color: #3d63a4;
+    border-radius: 2rem;
+}
+
+.CardHolder-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 30rem;
+    background-color: #3d63a4;
+    border-radius: 2rem;
+}
 

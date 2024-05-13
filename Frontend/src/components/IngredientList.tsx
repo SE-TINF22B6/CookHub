@@ -1,23 +1,19 @@
-import Ingredient from "./Ingredient";
+import React from "react";
+import { IngredientListProps } from "./types";
+import { IngredientDisplay } from "./Ingredient";
 
-interface IngredientArray {
-    ingredients: { id: number, value: string }[];
-    deleteTodo: (id: number) => void;
-
-}
-
-export default function IngredientList(ingredients: IngredientArray) {
-
-
+const IngredientList: React.FC<IngredientListProps> = (
+    { ingredients, deleteIngredient }) => {
     return (
         <div>
-            <ul>
-                {
-                    ingredients.ingredients.map(ingredient =>
-                        <Ingredient key={ingredient.id} id={ingredient.id} value={ingredient.value} onDelete={ingredients.deleteTodo}></Ingredient>
-                    )
-                }
-            </ul>
+            {ingredients.map((ingredient) => (
+                <IngredientDisplay
+                    key={ingredient.id} {...ingredient}
+                    deleteIngredient={deleteIngredient}
+                />
+            ))}
         </div>
-    )
-}
+    );
+};
+
+export default IngredientList;

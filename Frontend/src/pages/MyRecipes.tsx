@@ -1,24 +1,25 @@
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
-    Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
     FormControl,
     InputLabel,
     NativeSelect,
     ToggleButton
 } from "@mui/material";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
-import Placeholder from "../assets/fillElements/placeholder.png";
-import InfoTable from "../components/InfoTable";
-import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
 import {useParams} from "react-router-dom";
-import {RecipeClient} from "../clients/RecipeClient";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
+import Placeholder from "../assets/fillElements/placeholder.png";
 import RageQuitButton from "../assets/fillElements/rageQuit-btn.png";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-
-
-
+import {RecipeClient} from "../clients/RecipeClient";
+import InfoTable from "../components/InfoTable";
 
 
 export default function MyRecipes() {
@@ -29,11 +30,10 @@ export default function MyRecipes() {
     const [adventureText, setAdventureText] = React.useState<any>("");
 
 
-
-    async function handleClickAdventurize(id:number){
+    async function handleClickAdventurize(id: number) {
         let client = new RecipeClient();
         setAdventureText(null);
-        const data:string | undefined = await client.adventurizeRecipe(id);
+        const data: string | undefined = await client.adventurizeRecipe(id);
         setAdventureText(data);
     }
 
@@ -77,10 +77,13 @@ export default function MyRecipes() {
 
         <div className="MainContainer">
 
+            <h1>MyRecipes</h1>
+
             <div id={"Top-Container"}>
 
                 <div id={"Top-Left-Container"}>
-                    <img id="RecipeImage" src={data.pictureUrl ? data.pictureUrl : Placeholder}
+                    <img id="RecipeImage"
+                         src={data.pictureUrl ? `https://localhost:44328/images/recipes/${data.pictureUrl}` : Placeholder}
                          alt="Gute_Rahmenbedingungen"/>
                 </div>
 
@@ -147,7 +150,7 @@ export default function MyRecipes() {
                     <ul>
                         {data.ingredients.length !== 0 ?
                             data.ingredients.map((item: any) => {
-                                return <li>item</li>
+                                return <li>{item.ingredient.name}</li>
                             }) : <li>No Ingredients available</li>
                         }
 
@@ -159,26 +162,29 @@ export default function MyRecipes() {
                     <br/>
                     <span id="InstructionText" style={{color: "black"}}>
                             {data.instructionText ?
-                                data.instructionText
-                                : <p>No Instruction available</p>
+                                <span
+                                    dangerouslySetInnerHTML={{__html: data.instructionText.replaceAll('\n', '<br>')}}></span> :
+                                <p>No Instruction available</p>
                             }
+
                         </span>
                 </div>
 
             </div>
 
             <div id={"Button-Container"}>
-                <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"} rel={"noreferrer"}>
+                <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"}
+                   rel={"noreferrer"}>
                     <button className={"btn"}>
                         <img src={RageQuitButton} width={"210"} alt={"RageQuitButton"}/>
                     </button>
                 </a>
-            <button className={"adventureButton"} onClick={()=>{
-                handleClickOpen();
-                handleClickAdventurize(data.id);
-            }}>
-                <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" width={"200"}/>
-            </button>
+                <button className={"adventureButton"} onClick={() => {
+                    handleClickOpen();
+                    handleClickAdventurize(data.id);
+                }}>
+                    <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" width={"200"}/>
+                </button>
                 <Dialog
                     open={open}
                     fullScreen={open}
@@ -199,7 +205,7 @@ export default function MyRecipes() {
                     <DialogTitle>Adventurized Text</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                           Your Recipe
+                            Your Recipe
                         </DialogContentText>
                         <TextField
                             autoFocus
@@ -215,19 +221,19 @@ export default function MyRecipes() {
                         <h3>Adventure Text</h3>
                         <div id={"atext"}>
                             {adventureText ?
-                                <div dangerouslySetInnerHTML={{ __html: adventureText.replace(/\./g, '.<br>') }} />
+                                <div dangerouslySetInnerHTML={{__html: adventureText.replaceAll('\n', '<br>')}}/>
                                 : <span className="loader"></span>
                             }
                         </div>
                     </DialogContent>
                     <div style={{display: "flex", justifyContent: "center"}}>
-                    <DialogActions>
-                        <Button color="error" variant="contained" onClick={handleClose}>Cancel</Button>
-                        <Button color="secondary" variant="contained" onClick={()=>{
-                            handleClickAdventurize(data.id);
-                        }}>Regenerate</Button>
-                        <Button color="success" variant="contained" type="submit">Save</Button>
-                    </DialogActions>
+                        <DialogActions>
+                            <Button color="error" variant="contained" onClick={handleClose}>Cancel</Button>
+                            <Button color="secondary" variant="contained" onClick={() => {
+                                handleClickAdventurize(data.id);
+                            }}>Regenerate</Button>
+                            <Button color="success" variant="contained" type="submit">Save</Button>
+                        </DialogActions>
                     </div>
                 </Dialog>
 

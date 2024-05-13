@@ -1,0 +1,54 @@
+.SignUpPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+}
+
+.headerSignUp {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.bodySignUp {
+    display: flex;
+    flex-direction: row;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+.formContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: #C9FE71;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.carlosContainer {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: black;
+}
+
+.speech-bubble {
+    color: #C9FE71;
+    background-color: #262525FF;
+    font-weight: bold;
+    textShadow: 3;
+}
+
+.chef-carlos {
+    width: 50%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
