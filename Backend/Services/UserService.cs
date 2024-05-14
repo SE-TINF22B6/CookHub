@@ -15,6 +15,11 @@ public partial class UserService
     {
         _repository = repository;
     }
+    
+    public IEnumerable<User> GetAllUsers()
+    {
+        return _repository.GetAll();
+    }
 
     public void CreateUser(User user) => _repository.Create(user);
 
