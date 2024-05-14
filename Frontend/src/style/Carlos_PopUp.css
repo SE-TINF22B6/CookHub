@@ -1,0 +1,39 @@
+
+#carlos-dialog {
+
+}
+
+.css-ypiqx9-MuiDialogContent-root {
+    background-color: #2b2f32;
+    overflow-y: hidden;
+}
+
+#carlos-dialog-description {
+
+}
+
+.speech-bubble {
+    position: relative;
+    background: #262525;
+    border: 1px solid #c7fc71;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+
+}
+
+.carlos-image-div  {
+
+}
+
+.carlos-image {
+    width: 50%;
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+
+.dialog-button {
+
+}

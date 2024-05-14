@@ -29,10 +29,10 @@ export default function SignUp() {
                         <input type="email" id="email" name="email"/><br/><br/><br/>
 
                         <label htmlFor="password">Password:</label><br/>
-                        <input type="password" id="password" name="password"/><br/><br/>
+                        <input type="password" id="password_1" name="password"/><br/><br/>
 
                         <label htmlFor="password">Repeat Password:</label><br/>
-                        <input type="password" id="password" name="password"/><br/><br/><br/>
+                        <input type="password" id="password_2" name="password"/><br/><br/><br/>
 
                         <input type="submit" value="Submit"/>
                     </form>
