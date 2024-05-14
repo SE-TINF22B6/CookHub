@@ -81,7 +81,7 @@ export default function FindRecipes() {
                                             </div>
                                             <p className="preview__publisher"><FavoriteIcon/>{recipe.likedUserIds}</p>
                                             <div className="preview__user-generated">
-                                                {recipe.adventureTexts.length != 0 ?
+                                                {recipe.adventureTexts.length !== 0 ?
                                                     <div className="ribbon">Adventurized</div> :
                                                     <p>Not Adventurized</p>
                                                 }
