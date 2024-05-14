@@ -23,7 +23,22 @@ public partial class UserService
 
     public void CreateUser(User user) => _repository.Create(user);
 
-    public User? GetUserById(int id) => _repository.Get(id);
+    public User? GetUserById(int id)
+    {
+        var user = _repository.Get(id);
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        foreach (var recipe in user.LikedRecipes.Concat(user.History))
+        {
+            recipe.CreationDate = recipe.CreationDate.ToUniversalTime();
+        }
+
+        return user;
+    }
 
     public User? GetUserByEmail(string email) => _repository.GetByEmail(email);
 
