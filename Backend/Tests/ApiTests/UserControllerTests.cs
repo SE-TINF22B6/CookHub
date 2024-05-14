@@ -1,24 +1,26 @@
 using API.Controllers;
+using DataAccess.Repository;
 using Microsoft.AspNetCore.Mvc;
-using NSubstitute;
+using NHibernate;
 using Services;
 using Xunit;
 
 namespace Tests.ApiTests;
 
-public class UserControllerTests
+[Collection("TestDatabase")]
+public class UserControllerTests : IDisposable
 {
     private readonly UserController _userController;
-    private readonly UserService _userServiceMock;
-    private readonly RecipeService _recipeServiceMock;
+    private readonly ISessionFactory _testDatabaseFactory;
 
     public UserControllerTests()
     {
-        _userServiceMock = Substitute.For<UserService>();
-        _recipeServiceMock = Substitute.For<RecipeService>();
-        _userController = new UserController(_userServiceMock, _recipeServiceMock);
+        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
+        _userController = new UserController(new UserService(new UserRepository(_testDatabaseFactory)), new RecipeService(new RecipeRepository(_testDatabaseFactory)));
     }
-    
+
+    public void Dispose() => Tests.DisposeTestDatabase(_testDatabaseFactory);
+
     [Fact]
     public void CanUploadProfilePicture()
     {

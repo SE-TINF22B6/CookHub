@@ -18,20 +18,12 @@ public class RecipeService
     public List<Recipe> GetAllRecipes()
     {
         var allRecipes = _repository.GetAll();
-        // postgres does not like DateTime objects that are not in UTC
-        allRecipes.ForEach(recipe => recipe.CreationDate = recipe.CreationDate.ToUniversalTime());
         return allRecipes;
     }
 
     public Recipe? GetRecipeById(int id)
     {
         var recipe = _repository.Get(id);
-
-        if (recipe != null)
-        {   // postgres does not like DateTime objects that are not in UTC
-            recipe.CreationDate = recipe.CreationDate.ToUniversalTime();
-        }
-        
         return recipe;
     }
 

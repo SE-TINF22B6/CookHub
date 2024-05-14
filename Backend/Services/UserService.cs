@@ -32,11 +32,6 @@ public partial class UserService
             return null;
         }
 
-        foreach (var recipe in user.LikedRecipes.Concat(user.History))
-        {
-            recipe.CreationDate = recipe.CreationDate.ToUniversalTime();
-        }
-
         return user;
     }
 
