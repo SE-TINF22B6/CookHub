@@ -32,6 +32,24 @@ public class UserController : ControllerBase
         return Ok(user);
     }
     
+    [HttpGet("/{id}")]
+    public IActionResult GetUser(int? id)
+    {
+        if (id == null)
+        {
+            return BadRequest("ID cannot be null.");
+        }
+
+        var user = _userService.GetUserById(id.Value);
+    
+        if (user == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+
+        return Ok(user);
+    }
+    
     [HttpPost("like-recipe/{userId:int}/{recipeId:int}")]
     public IActionResult LikeRecipe(int userId, int recipeId)
     {
