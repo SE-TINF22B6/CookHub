@@ -18,6 +18,9 @@ public class UserController : ControllerBase
         _recipeService = recipeService;
     }
 
+    /// <summary>
+    /// Saves an img as a profile picture
+    /// </summary>
     [HttpPost("upload-profile-picture")]
     public IActionResult UploadProfilePicture([FromBody] string base64Image)
     {
@@ -25,6 +28,9 @@ public class UserController : ControllerBase
         return success ? Ok(fileName) : BadRequest("Invalid base64 image.");
     }
     
+    /// <summary>
+    /// Get all Users
+    /// </summary>
     [HttpGet]
     public ActionResult<IEnumerable<User>> GetAllUsers()
     {
@@ -32,6 +38,9 @@ public class UserController : ControllerBase
         return Ok(user);
     }
     
+    /// <summary>
+    /// Gets a user by ID
+    /// </summary>
     [HttpGet("/{id}")]
     public IActionResult GetUser(int? id)
     {
@@ -50,6 +59,9 @@ public class UserController : ControllerBase
         return Ok(user);
     }
     
+    /// <summary>
+    /// Lets a user like a recipe
+    /// </summary>
     [HttpPost("like-recipe/{userId:int}/{recipeId:int}")]
     public IActionResult LikeRecipe(int userId, int recipeId)
     {
@@ -75,6 +87,17 @@ public class UserController : ControllerBase
         {
             return StatusCode(500, $"Error: {ex.Message}");
         }
+    }
+    
+    /// <summary>
+    /// Gets a list with all recipes like by an user
+    /// </summary>
+    [HttpGet("{userId}/liked-recipes")]
+    public IActionResult GetLikedRecipes(int userId)
+    {
+        var likedRecipes = _userService.GetLikedRecipesByUserId(userId);
+
+        return Ok(likedRecipes);
     }
     
 }

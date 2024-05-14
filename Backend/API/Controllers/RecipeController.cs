@@ -123,6 +123,18 @@ public class RecipeController: ControllerBase
     [HttpGet("top/{count:int}")]
     public IActionResult GetTopRecipes(int count)
         => Ok(_recipeService.GetTopRecipes(count));
+    
+    
+    /// <summary>
+    /// Get all users that like this recipe
+    /// </summary>
+    [HttpGet("{recipeId}/liked-users")]
+    public IActionResult GetLikedUsers(int recipeId)
+    {
+        var likedUsers = _recipeService.GetUsersWhoLikedRecipe(recipeId);
+
+        return Ok(likedUsers);
+    }
 
     [HttpPost("upload-image")]
     public IActionResult UploadRecipeImage([FromBody] string base64Image)

@@ -53,6 +53,12 @@ public partial class UserService
         user.LikedRecipes.Add(recipe);
         _repository.Update(user);
     }
+    
+    public ICollection<Recipe> GetLikedRecipesByUserId(int userId)
+    {
+        var user = _repository.Get(userId);
+        return user?.LikedRecipes;
+    }
 
     public void CreateTestUser()
         => _repository.Create(new User

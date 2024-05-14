@@ -56,6 +56,12 @@ public class RecipeService
             .ToList();
     }
     
+    public ICollection<User> GetUsersWhoLikedRecipe(int recipeId)
+    {
+        var recipe = _repository.Get(recipeId);
+        return recipe?.LikedBy;
+    }
+    
     public void CreateRecipe(Recipe recipe)
     {
         if (string.IsNullOrWhiteSpace(recipe.Name))
