@@ -4,7 +4,9 @@ namespace DataAccess.Entities;
 
 public class User
 {
-    public virtual required string Email { get; set; }
+    public virtual int Id { get; set; }
+    [JsonIgnore]
+    public virtual string Email { get; set; } = null!;
     [JsonIgnore]
     public virtual byte[] PasswordHash { get; set; } = null!;
     public virtual string Name { get; set; } = null!;

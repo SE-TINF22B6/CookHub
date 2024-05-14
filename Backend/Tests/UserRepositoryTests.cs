@@ -10,7 +10,7 @@ namespace Tests;
 public class UserRepositoryTests : IDisposable
 {
     private readonly ISessionFactory _testDatabaseFactory;
-    private readonly IRepository<User> _repository;
+    private readonly IUserRepository _repository;
 
     public UserRepositoryTests()
     {
@@ -28,11 +28,11 @@ public class UserRepositoryTests : IDisposable
         var testUser = CreateTestUser();
         
         // ASSERT PRE CONDITION
-        Assert.Null(_repository.Get(testUser.Email));
+        Assert.Null(_repository.GetByEmail(testUser.Email));
         
         // ACT
         _repository.Create(testUser);
-        var userFromDatabase = _repository.Get(testUser.Email);
+        var userFromDatabase = _repository.GetByEmail(testUser.Email);
         
         // ASSERT
         Assert.Equal(testUser.Name, userFromDatabase?.Name);
@@ -110,7 +110,7 @@ public class UserRepositoryTests : IDisposable
         _repository.Update(testUser);
         
         // ASSERT
-        var likedRecipes = _repository.Get(testUser.Email)?.LikedRecipes;
+        var likedRecipes = _repository.GetByEmail(testUser.Email)?.LikedRecipes;
         Assert.Equal(testRecipe.Name, likedRecipes?.Single().Name);
     }
 

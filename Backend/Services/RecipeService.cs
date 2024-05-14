@@ -85,7 +85,7 @@ public class RecipeService
         {
             Name = "Pizza Margherita",
             Categories = new List<RecipeCategory> { RecipeCategory.Pizza, RecipeCategory.Italian, RecipeCategory.Vegetarian },
-            Creator = new User { Email = "admin@cookhub.com" },
+            Creator = new User { Id = 1 },
             PictureUrl = "0c01601c-d5cf-4207-ba44-f5f38266b15a.jpg",
             PrepTime = 5,
             CookingTime = 10,
@@ -151,7 +151,7 @@ public class RecipeService
         {
             Name = "Spaghetti Carbonara",
             Categories = new List<RecipeCategory> { RecipeCategory.Pasta, RecipeCategory.Italian },
-            Creator = new User { Email = "admin@cookhub.com" },
+            Creator = new User { Id = 1 },
             PictureUrl = "be75f4d4-2603-4a64-a50d-1470950d665e.jpg",
             PrepTime = 10,
             CookingTime = 15,
@@ -217,7 +217,7 @@ public class RecipeService
         {
             Name = "Chicken Tikka Masala",
             Categories = new List<RecipeCategory> { RecipeCategory.Chicken, RecipeCategory.Indian },
-            Creator = new User { Email = "admin@cookhub.com" },
+            Creator = new User { Id = 1 },
             PictureUrl = "c496c4cc-a1ec-478b-b17d-cc2f48468eac.jpg",
             PrepTime = 20,
             CookingTime = 30,
@@ -372,7 +372,7 @@ public class RecipeService
         {
             Name = "Mango Sticky Rice",
             Categories = new List<RecipeCategory> { RecipeCategory.Asian, RecipeCategory.Vegan },
-            Creator = new User { Email = "admin@cookhub.com" },
+            Creator = new User { Id = 1 },
             PictureUrl = "9a1393f4-55ac-4411-83bb-3d97145f9f5a.jpg",
             PrepTime = 15,
             CookingTime = 25,
@@ -441,7 +441,7 @@ public class RecipeService
         {
             Name = "Greek Salad",
             Categories = new List<RecipeCategory> { RecipeCategory.Salad, RecipeCategory.Vegetarian },
-            Creator = new User { Email = "admin@cookhub.com" },
+            Creator = new User { Id = 1 },
             PictureUrl = "c37bd2f7-42de-41e9-8e4b-4b87dd68a79a.jpg",
             PrepTime = 15,
             CookingTime = 0,
