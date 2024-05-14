@@ -1,4 +1,7 @@
-# CookHub
+# CookHub <img src="https://github.com/SE-TINF22B6/CookHub/assets/113697513/f781dc67-1bf9-4b25-9995-7830d95fb300" width="200" align="right" />
+
+<br><br> 
+
 
 ## Project links
 * [srs.md](https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md)
@@ -56,11 +59,14 @@ timeout /t 10 > nul
 
 <br><br>
 
-## How to start the frontend
-1. Open the *Frontend* folder in [WebStorm](https://www.jetbrains.com/de-de/webstorm/)
+## How to start the frontend ( Webstorm | IntelliJ )
+
+
+1. Open the *Frontend* folder in [WebStorm / IntelliJ](https://www.jetbrains.com/de-de/webstorm/)
 2. (If you need to install/update dependencies, run ***npm install*** in the terminal) 
 3. Run ***npm start*** in the terminal
 4. Wait till the frontend opens in your browser
+
 
 <br><br>
 
