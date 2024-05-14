@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "../style/FindRecipes.css";
 import {RecipeClient} from "../clients/RecipeClient";
-import chef from "../assets/Logo_no_background.svg";
 import Card from "@mui/material/Card";
 import {CardActionArea} from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,6 +10,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import SpeedIcon from '@mui/icons-material/Speed';
 import Box from "@mui/material/Box";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 
 export default function FindRecipes() {
@@ -71,7 +71,7 @@ export default function FindRecipes() {
                             <ul className="results">
                                 <a href={`http://localhost:3000/myrecipes/${recipe.id}`}>
                                     <li className="preview" key={index}>
-                                        <img src={chef} alt="Test"/>
+                                        <img src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`} alt="recipe" style={{width:'20%', borderRadius:'50%'}} />
                                         <div className="preview__data">
                                             <h4 className="preview__title">{recipe.name}</h4>
                                             <div className="preview__time">
@@ -79,9 +79,9 @@ export default function FindRecipes() {
                                                 <p>Preparation Time: {recipe.prepTime}</p>
                                                 <p>Cooking Time: {recipe.cookingTime}</p>
                                             </div>
-                                            <p className="preview__publisher">{recipe.description}</p>
+                                            <p className="preview__publisher"><FavoriteIcon/>{recipe.likedUserIds}</p>
                                             <div className="preview__user-generated">
-                                                {recipe.creator ?
+                                                {recipe.adventureTexts.length != 0 ?
                                                     <div className="ribbon">Adventurized</div> :
                                                     <p>Not Adventurized</p>
                                                 }
