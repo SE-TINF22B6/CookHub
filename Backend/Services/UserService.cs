@@ -18,6 +18,11 @@ public partial class UserService
 
     public void CreateUser(User user) => _repository.Create(user);
 
+    public IEnumerable<User> GetAllUsers()
+    {
+        return _repository.GetAll();
+    }
+    
     public User? GetUserByEmail(string email) => _repository.Get(email);
 
     public bool TryValidateUserData(string email, string password, out User? user)
@@ -25,7 +30,7 @@ public partial class UserService
         user = _repository.Get(email);
         return user != null && CryptoService.GetHash(password).SequenceEqual(user.PasswordHash);
     }
-
+    public User? GetUserById(int userId) => _repository.Get(userId);
     public void LikeRecipe(User user, Recipe recipe)
     {
         user.LikedRecipes.Add(recipe);

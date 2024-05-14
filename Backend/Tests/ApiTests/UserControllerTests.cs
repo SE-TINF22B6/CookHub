@@ -1,12 +1,23 @@
 using API.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using NSubstitute;
+using Services;
 using Xunit;
 
 namespace Tests.ApiTests;
 
 public class UserControllerTests
 {
-    private readonly UserController _userController = new();
+    private readonly UserController _userController;
+    private readonly UserService _userServiceMock;
+    private readonly RecipeService _recipeServiceMock;
+
+    public UserControllerTests()
+    {
+        _userServiceMock = Substitute.For<UserService>();
+        _recipeServiceMock = Substitute.For<RecipeService>();
+        _userController = new UserController(_userServiceMock, _recipeServiceMock);
+    }
     
     [Fact]
     public void CanUploadProfilePicture()
