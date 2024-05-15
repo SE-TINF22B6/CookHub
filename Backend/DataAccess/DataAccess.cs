@@ -6,8 +6,13 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace DataAccess;
 
-public class DataAccess
+public static class DataAccess
 {
+    static DataAccess()
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
     public static ISessionFactory CreateSessionFactory(string connectionString) => Fluently.Configure()
         .Database(PostgreSQLConfiguration.PostgreSQL83.ConnectionString(connectionString))
         .Mappings(configuration =>
