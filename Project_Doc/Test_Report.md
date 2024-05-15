@@ -17,7 +17,8 @@
 > GitHub Actions play a pivotal role in automating our testing pipelines. Every code commit triggers a series of actions that execute automated tests, ensuring that all changes are validated against predefined test cases before integration.
 
 **Selenium**
-> Selenium to simulate e.g clicking on the website.
+> The Selenium WebDriver drives a browser natively, as a user would, either locally or on a remote machine using the Selenium server, marks a leap forward in terms of browser automation.
+> Selenium WebDriver refers to both the language bindings and the implementations of the individual browser controlling code.
 
 **Unit Testing with TypeScript**  
 > Unit tests form the backbone of our testing framework, primarily focusing on the functionality of the smallest parts of the program. Written in TypeScript, these tests verifying the logic and behavior of individual modules. 
