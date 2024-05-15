@@ -94,10 +94,6 @@ public class RecipeController: ControllerBase
     [HttpPost]
     public IActionResult CreateRecipe(Recipe recipe)
     {
-        if (recipe == null)
-        {
-            return BadRequest("Recipe data is missing.");
-        }
         if (string.IsNullOrWhiteSpace(recipe.Name))
         {
             return BadRequest("Recipe name is required.");

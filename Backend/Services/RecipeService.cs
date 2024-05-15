@@ -48,7 +48,7 @@ public class RecipeService
             .ToList();
     }
     
-    public ICollection<User> GetUsersWhoLikedRecipe(int recipeId)
+    public ICollection<User>? GetUsersWhoLikedRecipe(int recipeId)
     {
         var recipe = _repository.Get(recipeId);
         return recipe?.LikedBy;

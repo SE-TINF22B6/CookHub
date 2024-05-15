@@ -53,7 +53,7 @@ public class UserController : ControllerBase
     
         if (user == null)
         {
-            return NotFound("Recipe not found.");
+            return NotFound("User not found.");
         }
 
         return Ok(user);
