@@ -6,17 +6,16 @@
 
 #LoginPageBody {
     display: flex;
+    flex-direction: row;
     position: relative;
     margin-top: 10vh;
-    flex-direction: row;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: space-around;
 }
 
 
 #LoginPageBodyLeft {
     display: flex;
-    position: relative;
     background-image: url("../assets/Logos_Icons/CookHub_Frame_unfilled_no_background.png");
     background-size: contain;
     background-position: center;
@@ -58,7 +57,7 @@
 
 #LoginPageBodyRight {
     display: flex;
-    position: relative;
+    flex-direction: column;
     color: #C9FE71;
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 1.5rem;
