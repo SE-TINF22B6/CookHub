@@ -23,14 +23,27 @@ interface RequireAuthProps {
 }
 
 const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
-    const [loginStatus, setLoginStatus] = React.useState(true);
+    const [loginStatus, setLoginStatus] = React.useState<boolean | null>(null);
+
     useEffect(() => {
-        let user = new UserClient();
-        user.isLoggedIn().then((value) => {
-            setLoginStatus(true);
-        });
+        const checkLoginStatus = async () => {
+            try {
+                const response = await new UserClient().isLoggedIn();
+                // @ts-ignore
+                setLoginStatus(response);
+            } catch (error) {
+                console.error('Login check failed:', error);
+                setLoginStatus(false);
+            }
+        };
+
+        checkLoginStatus();
     }, []);
-    console.log(loginStatus);
+
+    if (loginStatus === null) {
+        return <span className="loader"></span>;
+    }
+
     return loginStatus ? <>{children}</> : <Navigate to="/login"/>;
 }
 

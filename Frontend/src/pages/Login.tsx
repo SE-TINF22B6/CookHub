@@ -18,7 +18,7 @@ export default function Login() {
         if (result === 200) {
 
             setMessage("Login successful!");
-            navigate('/impressum');
+            navigate('/profile');
 
         } else {
             setMessage("Login failed!");
