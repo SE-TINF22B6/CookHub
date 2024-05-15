@@ -49,6 +49,24 @@ public partial class UserService
         _repository.Update(user);
     }
     
+    public void UnlikeRecipe(User user, Recipe recipe)
+    {
+        var userWithLikedRecipes = _repository.Get(user.Id);
+
+        if (userWithLikedRecipes != null)
+        {
+            var likedRecipe = userWithLikedRecipes.LikedRecipes.FirstOrDefault(r => r.Id == recipe.Id);
+        
+            if (likedRecipe != null)
+            {
+                userWithLikedRecipes.LikedRecipes.Remove(likedRecipe);
+
+                _repository.Update(userWithLikedRecipes);
+            }
+        }
+    }
+
+    
     public ICollection<Recipe> GetLikedRecipesByUserId(int userId)
     {
         var user = _repository.Get(userId);

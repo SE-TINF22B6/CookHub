@@ -78,6 +78,11 @@ public class UserController : ControllerBase
             return NotFound("Recipe not found.");
         }
 
+        if (recipe.LikedUserIds.Contains(userId))
+        {
+            return BadRequest("User already liked this recipe.");
+        }
+
         try
         {
             _userService.LikeRecipe(user, recipe);
@@ -88,6 +93,42 @@ public class UserController : ControllerBase
             return StatusCode(500, $"Error: {ex.Message}");
         }
     }
+    
+    /// <summary>
+    /// Lets a user unlike a recipe
+    /// </summary>
+    [HttpDelete("unlike-recipe/{userId:int}/{recipeId:int}")]
+    public IActionResult UnlikeRecipe(int userId, int recipeId)
+    {
+        var user = _userService.GetUserById(userId);
+        var recipe = _recipeService.GetRecipeById(recipeId);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        if (recipe == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+
+        if (!recipe.LikedUserIds.Contains(userId))
+        {
+            return BadRequest("User hasn't liked this recipe.");
+        }
+
+        try
+        {
+            _userService.UnlikeRecipe(user, recipe);
+            return Ok($"User {userId} unliked recipe {recipeId}.");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Error: {ex.Message}");
+        }
+    }
+
     
     /// <summary>
     /// Gets a list with all recipes like by an user

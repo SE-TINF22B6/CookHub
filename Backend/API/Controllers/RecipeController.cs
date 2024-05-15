@@ -72,6 +72,7 @@ public class RecipeController: ControllerBase
         return Ok(recipes);
     }
 
+    
     [HttpGet("adventurize/{id:int}")]
     public async Task<IActionResult> AdventurizeRecipe(int id)
     {
@@ -106,6 +107,9 @@ public class RecipeController: ControllerBase
         return CreatedAtAction(nameof(GetRecipe), new { id = recipe.Id }, recipe);
     }
 
+    /// <summary>
+    /// Deletes Recipe by ID
+    /// </summary>
     [HttpDelete("{id}")]
     public IActionResult DeleteRecipe(int id)
     {
@@ -120,11 +124,34 @@ public class RecipeController: ControllerBase
         }
     }
 
+    /// <summary>
+    /// Gets Top Recipes
+    /// </summary>
     [HttpGet("top/{count:int}")]
     public IActionResult GetTopRecipes(int count)
         => Ok(_recipeService.GetTopRecipes(count));
     
+    /// <summary>
+    /// Gets number of likes
+    /// </summary>
+    [HttpGet("{id}/likes/count")]
+    public IActionResult GetLikesCount(int id)
+    {
+        var recipe = _recipeService.GetRecipeById(id);
 
+        if (recipe == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+
+        var likesCount = recipe.LikedBy.Count;
+        return Ok(likesCount);
+    }
+    
+
+    /// <summary>
+    /// Uploads an image to a recipe
+    /// </summary>
     [HttpPost("upload-image")]
     public IActionResult UploadRecipeImage([FromBody] string base64Image)
     {
