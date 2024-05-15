@@ -1,6 +1,6 @@
 using API.Controllers;
 using API.Models;
-using DataAccess.Entities;
+using Contracts.Entities;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

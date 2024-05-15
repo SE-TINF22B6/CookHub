@@ -1,4 +1,4 @@
-namespace DataAccess.Entities;
+namespace Contracts.Entities;
 
 public enum RecipeCategory
 {

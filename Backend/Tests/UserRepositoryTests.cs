@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 using DataAccess.Repository;
 using NHibernate;
 using Services;

@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 using DataAccess.Repository;
 using OpenAI;
 using OpenAI.Managers;
@@ -36,7 +36,6 @@ builder.Services.AddTransient<AdventurizeService>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IRecipeRepository, RecipeRepository>();
 builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
-builder.Services.AddTransient<IRepository<Authentication>, AuthenticationRepository>();
 var sessionFactory = DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString);
 builder.Services.AddSingleton(sessionFactory);
 builder.Services.AddSingleton(new OpenAIService(new OpenAiOptions { ApiKey = ConfigService.Config.OpenAiToken }));

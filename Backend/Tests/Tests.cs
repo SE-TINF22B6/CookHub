@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;

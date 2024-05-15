@@ -1,5 +1,4 @@
-using DataAccess.Entities;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Contracts.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 

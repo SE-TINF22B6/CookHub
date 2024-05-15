@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 
 namespace DataAccess.Repository;
 
