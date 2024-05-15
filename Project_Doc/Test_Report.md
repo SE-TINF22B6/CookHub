@@ -19,6 +19,7 @@
 **Selenium**
 > The Selenium WebDriver drives a browser natively, as a user would, either locally or on a remote machine using the Selenium server, marks a leap forward in terms of browser automation.
 > Selenium WebDriver refers to both the language bindings and the implementations of the individual browser controlling code.
+> Also see [Selenium](https://github.com/SE-TINF22B6/CookHub/wiki/Testing) in our Wiki.
 
 **Unit Testing with TypeScript**  
 > Unit tests form the backbone of our testing framework, primarily focusing on the functionality of the smallest parts of the program. Written in TypeScript, these tests verifying the logic and behavior of individual modules. 
