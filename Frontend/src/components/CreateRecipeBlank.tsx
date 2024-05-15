@@ -47,9 +47,8 @@ export default function CreateRecipeBlank() {
                 <TextField
                     id="filled-select-currency"
                     select
-                    label="Select"
+                    label="Select your food type"
                     defaultValue="EUR"
-                    helperText="Please select your food category"
                     variant="filled"
                 >
                     {currencies.map((option) => (
