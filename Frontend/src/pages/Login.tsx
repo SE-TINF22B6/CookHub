@@ -3,12 +3,28 @@ import React, {useState} from "react";
 import "../style/Login.css"
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import {UserClient} from "../clients/UserClient";
+import {useNavigate} from "react-router-dom";
 
 export default function Login() {
 
-    let email = '';
-    let password = '';
-    let [message, setMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+
+    const handleLogin = async () => {
+        const result = await new UserClient().userLogin(email, password);
+
+        if (result === 200) {
+
+            setMessage("Login successful!");
+            navigate('/impressum');
+
+        } else {
+            setMessage("Login failed!");
+        }
+    };
+
 
     return (
         <div id="LoginPage">
@@ -18,14 +34,14 @@ export default function Login() {
                         <div className="EnterInformation">
                             <div className="InputMail">
                                 <label
-                                    form="exampleInputEmail1"
+                                    form="exampleInputEmail1" onSubmit={e => e.preventDefault()}
                                     className="form-label">Email address</label>
                                 <input
                                     type="email"
                                     className="form-control"
                                     id="exampleInputEmail1"
                                     aria-describedby="emailHelp"
-                                    onInput={event => email = event.currentTarget.value}></input>
+                                    onChange={event => setEmail(event.target.value)}></input>
                             </div>
                             <div className="InputPassword">
                                 <label
@@ -35,16 +51,15 @@ export default function Login() {
                                     type="password"
                                     className="form-control"
                                     id="exampleInputPassword1"
-                                    onInput={event => password = event.currentTarget.value}></input>
+                                    onChange={event => setPassword(event.target.value)}></input>
                             </div>
                             <div style={{fontSize: 12}}>{message}</div>
                             <input
                                 type="button"
                                 className="SubmitLogin"
                                 value="Submit"
-                                onClick={() =>
-                                    new UserClient().sendLoginRequest(email, password).then(
-                                        response => setMessage(JSON.parse(response)))}/>
+                                onClick={handleLogin}
+                                   />
                             <br/>
                             <h3>
                                 <span style={{fontSize: 18}}>Don't have an account yet?</span>
