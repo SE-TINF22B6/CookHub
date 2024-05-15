@@ -8,7 +8,7 @@ export default function FormPropsTextFields() {
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': { m: 0.5, width: '30ch' },
+                '& .MuiTextField-root': { m: 0.1, width: '40ch'},
             }}
             noValidate
             autoComplete="off"
@@ -18,7 +18,6 @@ export default function FormPropsTextFields() {
 
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <TextField
-                        // Textfeld 4
                         id="filled-helperText"
                         label="Name of the recipe"
                         defaultValue=""
@@ -26,7 +25,6 @@ export default function FormPropsTextFields() {
                     />
 
                     <TextField
-                        // Textfeld 5
                         id="filled-helperText"
                         label="≈ costs to expect (€)"
                         defaultValue=""
@@ -37,7 +35,6 @@ export default function FormPropsTextFields() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <TextField
-                        // Textfeld 2
                         id="filled-number"
                         label="Preparation Time (min)"
                         type="number"
@@ -47,7 +44,6 @@ export default function FormPropsTextFields() {
                         variant="filled"
                     />
                     <TextField
-                        // Textfeld 3
                         id="filled-number"
                         label="Cooking Time (min)"
                         type="number"
