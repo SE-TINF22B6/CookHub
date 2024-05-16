@@ -1,4 +1,4 @@
-using Contracts.Entities;
+using Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -32,10 +32,10 @@ public class UserController : ControllerBase
     /// Get all Users
     /// </summary>
     [HttpGet]
-    public ActionResult<IEnumerable<User>> GetAllUsers()
+    public ActionResult<IEnumerable<UserModel>> GetAllUsers()
     {
-        var user =  _userService.GetAllUsers();
-        return Ok(user);
+        var users =  _userService.GetAllUsers().Select(user => user.ToModel());
+        return Ok(users);
     }
     
     /// <summary>
@@ -56,7 +56,7 @@ public class UserController : ControllerBase
             return NotFound("User not found.");
         }
 
-        return Ok(user);
+        return Ok(user.ToModel());
     }
     
     /// <summary>

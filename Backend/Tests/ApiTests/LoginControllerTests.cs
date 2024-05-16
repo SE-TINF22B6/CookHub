@@ -1,6 +1,6 @@
 using API.Controllers;
 using API.Models;
-using Contracts.Entities;
+using Contracts.Models;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -163,7 +163,7 @@ public class LoginControllerTests : IDisposable
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
         var returnedUserData = (result as OkObjectResult)!.Value;
-        Assert.IsType<User>(returnedUserData);
+        Assert.IsType<UserModel>(returnedUserData);
     }
 
     [Fact]

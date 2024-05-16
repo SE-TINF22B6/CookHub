@@ -72,7 +72,7 @@ public class LoginController : ControllerBase
         }
 
         var user = _userService.GetUserById(userId);
-        return user == null ? Problem("Could not get user from data base") : Ok(user);
+        return user == null ? Problem("Could not get user from data base") : Ok(user.ToModel());
     }
 
     [HttpPost("register")]
