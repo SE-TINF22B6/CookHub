@@ -1,4 +1,3 @@
-using Contracts.Entities;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -15,7 +14,7 @@ public static class Tests
             .Database(() => SQLiteConfiguration.Standard.UsingFile(TestDatabaseFileName))
             .Mappings(configuration =>
             {
-                configuration.FluentMappings.AddFromAssembly(typeof(User).Assembly);
+                configuration.FluentMappings.AddFromAssembly(typeof(DataAccess.DataAccess).Assembly);
             })
             .ExposeConfiguration(configuration => new SchemaUpdate(configuration).Execute(false, true))
             .BuildSessionFactory();

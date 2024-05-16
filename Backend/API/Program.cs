@@ -39,7 +39,7 @@ builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
 var sessionFactory = DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString);
 builder.Services.AddSingleton(sessionFactory);
 builder.Services.AddSingleton(new OpenAIService(new OpenAiOptions { ApiKey = ConfigService.Config.OpenAiToken }));
-builder.Services.AddSingleton<Dictionary<string, string>>();
+builder.Services.AddSingleton<Dictionary<string, int>>();
 
 var app = builder.Build();
 
