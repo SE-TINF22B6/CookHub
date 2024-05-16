@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Contracts.Models;
 
 namespace Contracts.Entities;
 
@@ -34,4 +35,24 @@ public class Recipe
         "\n" +
         "Instructions:\n" +
         InstructionText;
+
+    public virtual RecipeModel ToModel(int viewerId = -1)
+        => new RecipeModel
+        {
+            Id = Id,
+            Name = Name,
+            CreatorId = Creator.Id,
+            CreatorName = Creator.Name,
+            PictureUrl = PictureUrl,
+            PrepTime = PrepTime,
+            CookingTime = CookingTime,
+            Difficulty = Difficulty,
+            Description = Description,
+            InstructionText = InstructionText,
+            CreationDate = CreationDate,
+            Categories = Categories.Select(category => category.ToString()),
+            AdventureTexts = AdventureTexts,
+            LikeCount = LikedBy.Count,
+            LikedByCurrentUser = viewerId > 0 && LikedBy.Any(user => user.Id == viewerId)
+        };
 }

@@ -6,7 +6,7 @@ namespace Tests.ApiTests;
 
 public class RecipeControllerTests
 {
-    private readonly RecipeController _recipeController = new(null!, null!);
+    private readonly RecipeController _recipeController = new(null!, null!, new Dictionary<string, int>());
     
     [Fact]
     public void CanUploadRecipeImage()

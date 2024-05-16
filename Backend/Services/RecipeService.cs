@@ -582,4 +582,7 @@ public class RecipeService
 
         return true;
     }
+
+    public int CreateRecipeWithIngredients(Recipe recipe)
+        => _repository.CreateWithIngredients(recipe);
 }
