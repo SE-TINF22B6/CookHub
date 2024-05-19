@@ -1,3 +1,4 @@
+using API.Models;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -129,5 +130,12 @@ public class RecipeController: ControllerBase
     {
         var success = RecipeService.TrySaveRecipeImage(base64Image, out var fileName);
         return success ? Ok(fileName) : BadRequest("Invalid base64 image.");
+    }
+
+    [HttpPost("adventurize")]
+    public IActionResult SaveAdventure([FromBody] AdventureModel adventure)
+    {
+        var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text);
+        return success ? Ok() : NotFound($"Could not find recipe with id {adventure.RecipeId}");
     }
 }

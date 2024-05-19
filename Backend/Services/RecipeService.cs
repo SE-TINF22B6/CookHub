@@ -584,4 +584,18 @@ public class RecipeService
 
         return true;
     }
+
+    public bool TrySaveAdventure(int recipeId, string adventureText)
+    {
+        var recipe = _repository.Get(recipeId);
+
+        if (recipe == null)
+        {
+            return false;
+        }
+
+        recipe.AdventureTexts.Add(adventureText);
+        _repository.Update(recipe);
+        return true;
+    }
 }
