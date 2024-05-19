@@ -136,6 +136,6 @@ public class RecipeController: ControllerBase
     public IActionResult SaveAdventure([FromBody] AdventureModel adventure)
     {
         var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text, out var errorMessage);
-        return success ? Ok() : NotFound(errorMessage);
+        return success ? Ok() : BadRequest(errorMessage);
     }
 }
