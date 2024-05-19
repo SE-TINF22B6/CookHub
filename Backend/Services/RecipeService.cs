@@ -585,17 +585,25 @@ public class RecipeService
         return true;
     }
 
-    public bool TrySaveAdventure(int recipeId, string adventureText)
+    public bool TrySaveAdventure(int recipeId, string adventureText, out string errorMessage)
     {
         var recipe = _repository.Get(recipeId);
 
         if (recipe == null)
         {
+            errorMessage = $"Could not find recipe with id {recipeId}";
+            return false;
+        }
+
+        if (adventureText.Length == 0)
+        {
+            errorMessage = "Adventure text cannot be empty";
             return false;
         }
 
         recipe.AdventureTexts.Add(adventureText);
         _repository.Update(recipe);
+        errorMessage = "";
         return true;
     }
 }

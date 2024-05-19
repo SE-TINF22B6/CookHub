@@ -135,7 +135,7 @@ public class RecipeController: ControllerBase
     [HttpPost("adventurize")]
     public IActionResult SaveAdventure([FromBody] AdventureModel adventure)
     {
-        var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text);
-        return success ? Ok() : NotFound($"Could not find recipe with id {adventure.RecipeId}");
+        var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text, out var errorMessage);
+        return success ? Ok() : NotFound(errorMessage);
     }
 }
