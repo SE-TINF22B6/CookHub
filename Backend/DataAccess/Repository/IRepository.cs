@@ -48,8 +48,8 @@ public interface IRepository<TEntity>
         using var session = Factory.OpenSession();
         using var transaction = session.BeginTransaction();
 
-        session.Update(entity);
-        
+        session.Merge(entity);
+
         transaction.Commit();
     }
 

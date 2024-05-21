@@ -15,6 +15,11 @@ public partial class UserService
     {
         _repository = repository;
     }
+    
+    public IEnumerable<User> GetAllUsers()
+    {
+        return _repository.GetAll();
+    }
 
     public void CreateUser(User user) => _repository.Create(user);
 
@@ -32,6 +37,26 @@ public partial class UserService
     {
         user.LikedRecipes.Add(recipe);
         _repository.Update(user);
+    }
+    
+    public void UnlikeRecipe(User user, Recipe recipe)
+    {
+        {
+            var likedRecipe = user.LikedRecipes.FirstOrDefault(r => r.Id == recipe.Id);
+            
+            if (likedRecipe != null)
+            {
+                user.LikedRecipes.Remove(likedRecipe);
+                _repository.Update(user);
+            }
+        }
+    }
+
+    
+    public ICollection<Recipe>? GetLikedRecipesByUserId(int userId)
+    {
+        var user = _repository.Get(userId);
+        return user?.LikedRecipes;
     }
 
     public void CreateTestUser()
