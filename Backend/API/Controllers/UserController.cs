@@ -136,8 +136,13 @@ public class UserController : ControllerBase
     [HttpGet("{userId}/liked-recipes")]
     public IActionResult GetLikedRecipes(int userId)
     {
-        var likedRecipes = _userService.GetLikedRecipesByUserId(userId);
+        var user = _userService.GetUserById(userId);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
 
+        var likedRecipes = _userService.GetLikedRecipesByUserId(userId);
         return Ok(likedRecipes);
     }
     
