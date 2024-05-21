@@ -4,6 +4,10 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.19",
-    "react-bootstrap": "^2.9.1"
+    "react-bootstrap": "^2.9.1",
+    "selenium-webdriver": "^4.20.0"
+  },
+  "devDependencies": {
+    "webdriver-manager": "^12.1.9"
   }
 }
