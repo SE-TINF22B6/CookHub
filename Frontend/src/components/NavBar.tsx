@@ -29,7 +29,7 @@ export default function NavBar() {
                 className="AppBar"
                 position="static"
                 elevation={1}
-                style={{backgroundColor: '#052323', zIndex:15}}
+                style={{backgroundColor: '#262525FF', zIndex:15}}
             >
                 <Toolbar className="ToolBar">
 

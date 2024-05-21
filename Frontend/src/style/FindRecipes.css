@@ -70,6 +70,7 @@ html {
     border-radius: 10rem;
     display: flex;
     justify-content: space-evenly;
+    min-height: 170px;
 }
 .preview__data{
     flex: 1;

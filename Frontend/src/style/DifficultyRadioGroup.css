@@ -1,0 +1,20 @@
+.difficultyRadioGroup {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.first{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.second{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.third{
+    border-radius: 5px;
+    padding: 5px;
+}

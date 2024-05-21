@@ -3,7 +3,7 @@ import React, {useRef, useState} from "react";
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import Button from "@mui/material/Button";
 import "../style/ImageUploader.css";
-import asset from "../assets/recipes/uploader.png";
+import asset from "../assets/recipes/photo_placeholder.png";
 
 export default function ImageUploader() {
 

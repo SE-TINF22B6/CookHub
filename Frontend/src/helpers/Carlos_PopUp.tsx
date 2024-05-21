@@ -26,7 +26,7 @@ export default function Carlos_PopUp(buttonTitle: string, text: string) {
             <Button
                 variant="outlined"
                 onClick={handleClickOpen}
-                style={{color: '#C9FE71', borderColor: '#C9FE71'}}
+                style={{color: '#000000', borderColor: '#000000'}}
             > {buttonTitle}
             </Button>
 
