@@ -1,14 +1,34 @@
 using API.Controllers;
+using API.Models;
+using DataAccess.Repository;
 using Microsoft.AspNetCore.Mvc;
+using NHibernate;
 using Services;
 using Xunit;
 
 namespace Tests.ApiTests;
 
-public class RecipeControllerTests
+[Collection("TestDatabase")]
+public class RecipeControllerTests : IDisposable
 {
-    private readonly RecipeController _recipeController = new(null!, null!);
-    
+    private readonly RecipeController _recipeController;
+    private readonly UserService _userService;
+    private readonly ISessionFactory _testDatabaseFactory;
+    private readonly RecipeService _recipeService;
+
+    public RecipeControllerTests()
+    {
+        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
+        _userService = new UserService(new UserRepository(_testDatabaseFactory));
+        _recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
+        _recipeController = new RecipeController(_recipeService, null!);
+    }
+
+    public void Dispose()
+    {
+        Tests.DisposeTestDatabase(_testDatabaseFactory);
+    }
+
     [Fact]
     public void CanUploadRecipeImage()
     {
@@ -55,5 +75,47 @@ public class RecipeControllerTests
         
         // CLEAN UP
         Directory.Delete(folderPath, true);
+    }
+
+    [Fact]
+    public void CanSaveAdventureText()
+    {
+        // ARRANGE
+        _userService.CreateTestUser(); // a user has to exist before CreateExampleRecipes() can be used
+        _recipeService.CreateExampleRecipes();
+        var adventure = new AdventureModel
+        {
+            RecipeId = 1,
+            Text = "Some adventure text"
+        };
+
+        // ACT
+        var result = _recipeController.SaveAdventure(adventure);
+
+        // ASSERT
+        Assert.IsType<OkResult>(result);
+        var recipeInDatabase = _recipeService.GetRecipeById(adventure.RecipeId)!;
+        Assert.Contains(adventure.Text, recipeInDatabase.AdventureTexts);
+    }
+
+    [Fact]
+    public void DontSaveEmptyAdventureText()
+    {
+        // ARRANGE
+        _userService.CreateTestUser(); // a user has to exist before CreateExampleRecipes() can be used
+        _recipeService.CreateExampleRecipes();
+        var adventure = new AdventureModel
+        {
+            RecipeId = 1,
+            Text = ""
+        };
+
+        // ACT
+        var result = _recipeController.SaveAdventure(adventure);
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        var errorMessage = (result as BadRequestObjectResult)?.Value?.ToString()!;
+        Assert.Equal("Adventure text cannot be empty", errorMessage);
     }
 }

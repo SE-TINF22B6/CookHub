@@ -1,3 +1,4 @@
+using API.Models;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -153,5 +154,12 @@ public class RecipeController: ControllerBase
     {
         var success = RecipeService.TrySaveRecipeImage(base64Image, out var fileName);
         return success ? Ok(fileName) : BadRequest("Invalid base64 image.");
+    }
+
+    [HttpPost("adventurize")]
+    public IActionResult SaveAdventure([FromBody] AdventureModel adventure)
+    {
+        var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text, out var errorMessage);
+        return success ? Ok() : BadRequest(errorMessage);
     }
 }
