@@ -4,8 +4,30 @@ import carlos from "../assets/Chef_Carlo_without_background (1).png";
 import avatar from "../assets/Hotdog.svg";
 import logoutBTN from "../assets/ProfilePage/Logout.png";
 import settingsBTN from "../assets/ProfilePage/Settings.png";
+import {UserClient} from "../clients/UserClient";
 
 export default function Profile() {
+
+    const handleLogOut = async () => {
+        try {
+            const response = await new UserClient().logOut();
+
+            // @ts-ignore
+            if (response.ok) {
+                console.log("Logout erfolgreich.");
+
+            } else {
+                // @ts-ignore
+                console.log("Logout fehlgeschlagen: ", response.status);
+
+            }
+        } catch (error) {
+            console.error("Ein Netzwerkfehler ist aufgetreten:", error);
+
+        }
+    };
+
+
     return (
         <div id="ProfilePage" style={{backgroundColor: "transparent"}}>
 
@@ -27,7 +49,7 @@ export default function Profile() {
 
 
                 <div id={"buttonContainer"}>
-                    <a href="/"><img src={logoutBTN} className="LogoutButton" alt="logout button"/></a>
+                    <a href="/"><button onClick={handleLogOut} style={{backgroundColor: "transparent", borderColor:"transparent"}}><img src={logoutBTN} className="LogoutButton" alt="logout button"/></button></a>
                     <a href="/settings"><img src={settingsBTN} className="SettingsButton" alt="settings button"/></a>
                 </div>
 
