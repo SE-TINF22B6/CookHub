@@ -48,7 +48,7 @@ export class UserClient {
       return response;
 
     } catch (error) {
-      console.error(error);
+      console.error("Netzwerkfehler: ",error);
     }
   }
 
