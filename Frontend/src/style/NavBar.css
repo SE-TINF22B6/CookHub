@@ -1,30 +1,29 @@
+#box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .AppBar{
     background-color: #C9FE71;
 }
 
 .ToolBar {
-    box-shadow: 0 0 10px #000000;
-
-}
-
-.Logo {
-
-}
-
-.LinksPages {
-
+    box-shadow: 0 0 5px #c7fc71;
 }
 
 .ButtonGroup {
-
+    box-shadow: 0 0 10px #c7fc71;
 }
 
-.ButtonGroup .MyRecipes {
-
+.Logo {
+    width: 5vw;
+    height: 5vw;
 }
 
 .MenuIcon {
     position: relative;
+    box-shadow: 0 0 10px #c7fc71;
 }
 
 .MenuPopover {
@@ -39,11 +38,13 @@
 }
 
 .LoginButton {
-
+    box-shadow: 0 0 10px #c7fc71;
 }
 
-.Avatar {
 
+.AvatarImg {
+    width: 5vw;
+    height: 5vw;
 }
 
 @media only screen and (max-width: 600px){
