@@ -1,17 +1,17 @@
-import * as React from 'react';
-import '../style/NavBar.css';
+import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Logo from "../assets/Logo_no_background.svg";
+import * as React from 'react';
+import '../style/NavBar.css';
+import {Link} from "react-router-dom";
+import LogoAnimated from "../assets/gifs/logo_animated.gif";
 import Avatar from "../assets/Hotdog.svg";
 import MenuListComposition from "./MenuListComposition";
-import {Link} from "react-router-dom";
 
 
 export default function NavBar() {
@@ -24,7 +24,7 @@ export default function NavBar() {
 
     return (
 
-        <Box sx={{ flexGrow: 1 }}>
+        <Box id="box" sx={{ flexGrow: 1 }}>
             <AppBar
                 className="AppBar"
                 position="static"
@@ -34,7 +34,7 @@ export default function NavBar() {
                 <Toolbar className="ToolBar">
 
                     <Link className="Back2LandingPage" to={'/'}>
-                        <img className="Logo" src={Logo} alt='Logo' style={{width: '80%'}} />
+                        <img className="Logo" src={LogoAnimated} alt='Logo' />
                     </Link>
 
                     <Typography
@@ -80,12 +80,18 @@ export default function NavBar() {
                         )}
                     </IconButton>
 
-                    <Button className="LoginButton" color="inherit" href='/login' variant="outlined" sx={{  color: '#c7fc70', mr: 5 }}>
+                    <Button
+                        className="LoginButton"
+                        color="inherit"
+                        href='/login'
+                        variant="outlined"
+                        sx={{  color: '#c7fc70', mr: 5 }}
+                    >
                         Login
                     </Button>
 
                     <Link className='Avatar' to={'/profile'}>
-                        <img className="AvatarImg" src={Avatar} alt='UserAvatar' style={{width: '80%'}}/>
+                        <img className="AvatarImg" src={Avatar} alt='UserAvatar' />
                     </Link>
 
 
