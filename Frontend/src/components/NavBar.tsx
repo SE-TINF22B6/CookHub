@@ -21,7 +21,7 @@ export default function NavBar() {
     const [data, setData] = useState<any>(null);
     let localItem: null;
 
-    if(localStorage.length != 0){
+    if(localStorage.length !== 0){
         // @ts-ignore
         localItem = JSON.parse(localStorage.getItem('userData'));
     }else {

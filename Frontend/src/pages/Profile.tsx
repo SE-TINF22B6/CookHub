@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../style/Profile.css";
 import carlos from "../assets/Chef_Carlo_without_background (1).png";
 import logoutBTN from "../assets/ProfilePage/Logout.png";
