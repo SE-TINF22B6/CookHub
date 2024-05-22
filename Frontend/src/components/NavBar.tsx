@@ -31,7 +31,7 @@ export default function NavBar() {
 
     useEffect(()=>{
         setData(localItem);
-    },[]);
+    });
 
 
     const toggleMenu = () => {
