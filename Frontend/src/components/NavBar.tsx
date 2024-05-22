@@ -12,13 +12,31 @@ import {Link} from "react-router-dom";
 import LogoAnimated from "../assets/gifs/logo_animated.gif";
 import Avatar from "../assets/Hotdog.svg";
 import MenuListComposition from "./MenuListComposition";
+import {useEffect, useState} from "react";
 
 
 export default function NavBar() {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [data, setData] = useState<any>(null);
+    let localItem: null;
+
+    if(localStorage.length != 0){
+        // @ts-ignore
+        localItem = JSON.parse(localStorage.getItem('userData'));
+    }else {
+        localItem = null;
+    }
+   // @ts-ignore
+
+    useEffect(()=>{
+        setData(localItem);
+    },[]);
+
 
     const toggleMenu = () => {
+
+
         setIsMenuOpen(!isMenuOpen);
     };
 
@@ -91,7 +109,8 @@ export default function NavBar() {
                     </Button>
 
                     <Link className='Avatar' to={'/profile'}>
-                        <img className="AvatarImg" src={Avatar} alt='UserAvatar' />
+
+                        <img className="AvatarImg" src={data ? `https://localhost:44328/images/profile-pictures/${data.profilePicture}`: Avatar} alt='UserAvatar' />
                     </Link>
 
 

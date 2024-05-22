@@ -31,13 +31,14 @@ const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
                 const response = await new UserClient().isLoggedIn();
                 // @ts-ignore
                 setLoginStatus(response);
+                return response;
             } catch (error) {
                 console.error('Login check failed:', error);
                 setLoginStatus(false);
             }
         };
 
-        checkLoginStatus();
+         checkLoginStatus();
     }, []);
 
     if (loginStatus === null) {

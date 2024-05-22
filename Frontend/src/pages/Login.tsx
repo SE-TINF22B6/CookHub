@@ -15,8 +15,11 @@ export default function Login() {
     const handleLogin = async () => {
         const result = await new UserClient().userLogin(email, password);
 
-        if (result === 200) {
-
+        // @ts-ignore
+        if (result.status === 200) {
+            // @ts-ignore
+            console.log(result);
+            //localStorage.setItem('userData', JSON.stringify(result));
             setMessage("Login successful!");
             navigate('/profile');
 

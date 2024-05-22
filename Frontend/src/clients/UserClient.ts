@@ -28,9 +28,8 @@ export class UserClient {
         method: 'GET',
         credentials: 'include',
       });
-      console.log(response);
-
-      return response.ok;
+      // @ts-ignore
+      return await response.json();
 
     } catch (error) {
       console.error(error);
@@ -68,11 +67,8 @@ export class UserClient {
       if (!response.ok) {
         throw new Error('Response was not ok.');
       }
-      console.log(response);
-      let test = await this.isLoggedIn()
-      console.log(test);
 
-      return response.status;
+      return response;
 
 
     } catch (error) {
