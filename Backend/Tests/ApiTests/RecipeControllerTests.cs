@@ -1,7 +1,7 @@
 using API.Controllers;
 using API.Models;
-using Contracts.Entities;
 using DataAccess.Repository;
+using Contracts.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
@@ -175,4 +175,46 @@ public class RecipeControllerTests : IDisposable
                 }
             }
         };
+
+    [Fact]
+    public void CanSaveAdventureText()
+    {
+        // ARRANGE
+        _userService.CreateTestUser(); // a user has to exist before CreateExampleRecipes() can be used
+        _recipeService.CreateExampleRecipes();
+        var adventure = new AdventureModel
+        {
+            RecipeId = 1,
+            Text = "Some adventure text"
+        };
+
+        // ACT
+        var result = _recipeController.SaveAdventure(adventure);
+
+        // ASSERT
+        Assert.IsType<OkResult>(result);
+        var recipeInDatabase = _recipeService.GetRecipeById(adventure.RecipeId)!;
+        Assert.Contains(adventure.Text, recipeInDatabase.AdventureTexts);
+    }
+
+    [Fact]
+    public void DontSaveEmptyAdventureText()
+    {
+        // ARRANGE
+        _userService.CreateTestUser(); // a user has to exist before CreateExampleRecipes() can be used
+        _recipeService.CreateExampleRecipes();
+        var adventure = new AdventureModel
+        {
+            RecipeId = 1,
+            Text = ""
+        };
+
+        // ACT
+        var result = _recipeController.SaveAdventure(adventure);
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        var errorMessage = (result as BadRequestObjectResult)?.Value?.ToString()!;
+        Assert.Equal("Adventure text cannot be empty", errorMessage);
+    }
 }

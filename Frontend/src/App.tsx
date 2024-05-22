@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style/Welcome.css';
 import {BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
@@ -15,17 +15,39 @@ import MyRecipes from "./pages/MyRecipes";
 import FindRecipes from "./pages/FindRecipes";
 import Logout from "./pages/Logout";
 import SignUp from "./pages/SignUp";
+import {UserClient} from "./clients/UserClient";
 
 
 interface RequireAuthProps {
     children: React.ReactNode;
 }
 
-const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
-    const loginStatus = true;  // @ backend Team: implement logic for checking if user is logged in
+const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
+    const [loginStatus, setLoginStatus] = React.useState<boolean | null>(null);
 
-    return loginStatus ? <>{children}</> : <Navigate to="/login" />;
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            try {
+                const response = await new UserClient().isLoggedIn();
+                // @ts-ignore
+                setLoginStatus(response);
+            } catch (error) {
+                console.error('Login check failed:', error);
+                setLoginStatus(false);
+            }
+        };
+
+        checkLoginStatus();
+    }, []);
+
+    if (loginStatus === null) {
+        return <span className="loader"></span>;
+    }
+
+    return loginStatus ? <>{children}</> : <Navigate to="/login"/>;
 }
+
+
 
 const AppBarConditional = () => {
     const location = useLocation();
