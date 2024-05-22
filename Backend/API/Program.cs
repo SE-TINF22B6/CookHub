@@ -56,7 +56,7 @@ app.UseCors("default");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseCookiePolicy();
 app.UseAuthorization();
 
 app.MapControllers();
