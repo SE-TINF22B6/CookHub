@@ -10,10 +10,12 @@
 
 .ToolBar {
     box-shadow: 0 0 5px #c7fc71;
+    display: flex;
 }
 
-.ButtonGroup {
-    box-shadow: 0 0 10px #c7fc71;
+
+#logoContainer {
+    flex-grow: 5;
 }
 
 .Logo {
@@ -21,8 +23,22 @@
     height: 5vw;
 }
 
+
+#linkContainer {
+    flex-grow: 5;
+}
+
+.ButtonGroup {
+    box-shadow: 0 0 10px #c7fc71;
+}
+
+
+#menuButtonContainer {
+    flex-grow: 1;
+}
+
+
 .MenuIcon {
-    position: relative;
     box-shadow: 0 0 10px #c7fc71;
 }
 
@@ -37,23 +53,76 @@
     z-index: 4;
 }
 
+
+#loginContainer {
+    flex-grow: 1;
+}
+
 .LoginButton {
     box-shadow: 0 0 10px #c7fc71;
 }
 
 
-.AvatarImg {
-    width: 5vw;
-    height: 5vw;
+#avatarContainer {
+    flex-grow: 1;
+
 }
 
-@media only screen and (max-width: 600px){
+.AvatarImg {
+    width: 5vw;
+    height: 5vh;
+}
+
+
+@media (max-width: 1100px){
     .LinksPages,
     .ButtonGroup,
     .MenuIcon,
-    .LoginButton,
-    .Avatar {
+    #loginContainer {
         display: none;
+    }
+
+    .MenuIcon {
+        box-shadow: 0 0 0;
+    }
+
+    .LoginButton {
+        box-shadow: 0 0 0;
+    }
+
+    .AvatarImg {
+        width: 10vw;
+        height: 10vw;
+    }
+
+    #logoContainer {
+        flex-grow: 10;
+    }
+
+    .Logo {
+        width: 30%;
+        height: 30%;
+    }
+
+
+    #linkContainer {
+        flex-grow: 1;
+    }
+
+    #menuButtonContainer {
+        flex-grow: 1;
+    }
+
+    .MenuIcon {
+        box-shadow: 0 0 0;
+    }
+
+    #loginContainer {
+        flex-grow: 1;
+    }
+
+    #avatarContainer {
+        flex-grow: 1;
     }
 
 }
