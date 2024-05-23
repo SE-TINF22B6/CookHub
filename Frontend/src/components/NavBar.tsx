@@ -108,7 +108,7 @@ export default function NavBar({user}) {
 
                     <div id={"avatarContainer"}>
                         <Link className='Avatar' to={'/profile'}>
-                            {user ? <img className="AvatarImg" src={`https://localhost:44328/images/profile-pictures/${user.profilePicture}`}/> :
+                            {user ? <img className="AvatarImg" src={`https://localhost:44328/images/profile-pictures/${user.profilePicture}`} alt={'UserAvatar'}/> :
                                 <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>}
                         </Link>
                     </div>
