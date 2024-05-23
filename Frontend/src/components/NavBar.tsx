@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,7 +16,9 @@ import Avatar from "../assets/Hotdog.svg";
 import MenuListComposition from "./MenuListComposition";
 
 
-export default function NavBar() {
+
+// @ts-ignore
+export default function NavBar({user}) {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -104,7 +108,8 @@ export default function NavBar() {
 
                     <div id={"avatarContainer"}>
                         <Link className='Avatar' to={'/profile'}>
-                            <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>
+                            {user ? <img className="AvatarImg" src={`https://localhost:44328/images/profile-pictures/${user.profilePicture}`}/> :
+                                <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>}
                         </Link>
                     </div>
 

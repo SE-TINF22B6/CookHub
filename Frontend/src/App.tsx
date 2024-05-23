@@ -30,7 +30,7 @@ const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
             try {
                 const response = await new UserClient().isLoggedIn();
                 // @ts-ignore
-                setLoginStatus(response);
+                setLoginStatus(response.ok);
             } catch (error) {
                 console.error('Login check failed:', error);
                 setLoginStatus(false);
@@ -63,11 +63,36 @@ const AppBarConditional = () => {
 
 
 function App() {
+
+    const [userData, setUserData] = React.useState<object | null>(null);
+
+    useEffect(() => {
+        const getUserData = async () => {
+            try {
+                const response = await new UserClient().isLoggedIn();
+                // @ts-ignore
+                if (response.ok){
+                    // @ts-ignore
+                    const data = await response.json();
+                    setUserData(data);
+                }
+
+            } catch (error) {
+                console.error('Login check failed:', error);
+                setUserData(null);
+            }
+        };
+
+        getUserData();
+
+    }, []);
+
+
     return (
         <div className="App">
             <BrowserRouter>
                 <AppBarConditional />
-                <NavBar />
+                <NavBar user={userData}/>
                 <Routes>
                     <Route path='/' element={<Welcome/>} />
                     <Route path='/login' element={<Login/>} />
