@@ -1,6 +1,6 @@
 using System.Text;
 using API.Controllers;
-using DataAccess.Entities;
+using Contracts.Entities;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;

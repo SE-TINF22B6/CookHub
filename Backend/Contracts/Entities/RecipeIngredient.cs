@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace DataAccess.Entities;
+namespace Contracts.Entities;
 
 public class RecipeIngredient
 {

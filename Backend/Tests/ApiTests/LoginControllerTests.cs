@@ -1,6 +1,6 @@
 using API.Controllers;
 using API.Models;
-using DataAccess.Entities;
+using Contracts.Models;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,13 +16,13 @@ public class LoginControllerTests : IDisposable
 {
     private readonly ISessionFactory _testDatabaseFactory;
     private readonly LoginController _loginController;
-    private readonly Dictionary<string,string> _authTokens;
+    private readonly Dictionary<string, int> _authTokens;
     private readonly UserService _userService;
 
     public LoginControllerTests()
     {
         _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
-        _authTokens = new Dictionary<string, string>();
+        _authTokens = new Dictionary<string, int>();
         _userService = new UserService(new UserRepository(_testDatabaseFactory));
         _loginController = new LoginController(_userService, _authTokens)
         {
@@ -163,7 +163,7 @@ public class LoginControllerTests : IDisposable
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
         var returnedUserData = (result as OkObjectResult)!.Value;
-        Assert.IsType<User>(returnedUserData);
+        Assert.IsType<UserModel>(returnedUserData);
     }
 
     [Fact]

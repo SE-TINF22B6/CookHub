@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 using FluentNHibernate.Mapping;
 
 namespace DataAccess.Mapping;

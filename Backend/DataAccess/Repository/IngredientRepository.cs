@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 using NHibernate;
 
 namespace DataAccess.Repository;

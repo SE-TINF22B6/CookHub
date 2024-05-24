@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 using DataAccess.Repository;
 
 namespace Services;
@@ -604,4 +604,7 @@ public class RecipeService
         errorMessage = "";
         return true;
     }
+
+    public int CreateRecipeWithIngredients(Recipe recipe)
+        => _repository.CreateWithIngredients(recipe);
 }

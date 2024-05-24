@@ -1,4 +1,4 @@
-using DataAccess.Entities;
+using Contracts.Entities;
 
 namespace DataAccess.Repository;
 
@@ -18,7 +18,7 @@ public interface IRecipeRepository : IRepository<Recipe>
         return topRecipes;
     }
 
-    public void CreateWithIngredients(Recipe recipe)
+    public int CreateWithIngredients(Recipe recipe)
     {
         using var session = Factory.OpenSession();
         using var transaction = session.BeginTransaction();
@@ -29,8 +29,9 @@ public interface IRecipeRepository : IRepository<Recipe>
             recipeIngredient.Recipe = recipe;
         }
 
-        session.Save(recipe);
+        var id = session.Save(recipe);
         
         transaction.Commit();
+        return (int) id;
     }
 }

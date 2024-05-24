@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{68800768-D130-4CF0-8C8F-6F3F0AE0E507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{3E67D191-4425-488E-A4F0-0D7C82D8B47C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{68800768-D130-4CF0-8C8F-6F3F0AE0E507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68800768-D130-4CF0-8C8F-6F3F0AE0E507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68800768-D130-4CF0-8C8F-6F3F0AE0E507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E67D191-4425-488E-A4F0-0D7C82D8B47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E67D191-4425-488E-A4F0-0D7C82D8B47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E67D191-4425-488E-A4F0-0D7C82D8B47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E67D191-4425-488E-A4F0-0D7C82D8B47C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

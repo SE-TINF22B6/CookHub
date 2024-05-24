@@ -1,5 +1,5 @@
 using API.Models;
-using DataAccess.Entities;
+using Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -15,23 +15,26 @@ public class RecipeController: ControllerBase
 {
     private readonly RecipeService _recipeService;
     private readonly AdventurizeService _adventurizeService;
+    private readonly Dictionary<string, int> _authTokens;
 
-    public RecipeController(RecipeService recipeService, AdventurizeService adventurizeService)
+    public RecipeController(RecipeService recipeService, AdventurizeService adventurizeService, Dictionary<string, int> authTokens)
     {
         _recipeService = recipeService;
         _adventurizeService = adventurizeService;
+        _authTokens = authTokens;
     }
     
     /// <summary>
     /// Gets a List with all recipes
     /// </summary>
     [HttpGet]
-    public ActionResult<IEnumerable<Recipe>> GetAllIngredients()
+    public ActionResult<IEnumerable<RecipeModel>> GetAllRecipes()
     {
-        var ingredients = _recipeService.GetAllRecipes();
-        return Ok(ingredients);
+        var viewerId = GetIdOfLoggedInUser();
+        var recipes = _recipeService.GetAllRecipes().Select(recipe => recipe.ToModel(viewerId));
+        return Ok(recipes);
     }
-    
+
     /// <summary>
     /// Gets a recipe by ID
     /// </summary>
@@ -50,16 +53,18 @@ public class RecipeController: ControllerBase
             return NotFound("Recipe not found.");
         }
 
-        return Ok(recipe);
+        var viewerId = GetIdOfLoggedInUser();
+        return Ok(recipe.ToModel(viewerId));
     }
-    
+
     /// <summary>
     /// Gets recipes by search term in their name
     /// </summary>
     [HttpGet("byname/{name}")]
     public IActionResult GetRecipeByName(string name)
     {
-        var recipes = _recipeService.GetRecipesByName(name);
+        var viewerId = GetIdOfLoggedInUser();
+        var recipes = _recipeService.GetRecipesByName(name).Select(recipe => recipe.ToModel(viewerId));
         return Ok(recipes);
     }
 
@@ -69,7 +74,8 @@ public class RecipeController: ControllerBase
     [HttpGet("byingredient")]
     public IActionResult GetRecipesByIngredients([FromQuery] List<string> ingredients)
     {
-        var recipes = _recipeService.GetRecipesByIngredients(ingredients);
+        var viewerId = GetIdOfLoggedInUser();
+        var recipes = _recipeService.GetRecipesByIngredients(ingredients).Select(recipe => recipe.ToModel(viewerId));
         return Ok(recipes);
     }
 
@@ -93,15 +99,29 @@ public class RecipeController: ControllerBase
     /// Create new recipe
     /// </summary>
     [HttpPost]
-    public IActionResult CreateRecipe(Recipe recipe)
+    public IActionResult CreateRecipe(CreateRecipeModel recipe)
     {
+        var creatorId = GetIdOfLoggedInUser();
+
+        if (creatorId == -1)
+        {
+            return BadRequest("You have to be logged in to create a recipe");
+        }
+
         if (string.IsNullOrWhiteSpace(recipe.Name))
         {
             return BadRequest("Recipe name is required.");
         }
-        _recipeService.CreateRecipe(recipe);
-        
-        return CreatedAtAction(nameof(GetRecipe), new { id = recipe.Id }, recipe);
+
+        var pictureFileName = "";
+
+        if (recipe.Picture.Length > 0 && !RecipeService.TrySaveRecipeImage(recipe.Picture, out pictureFileName))
+        {
+            return BadRequest("Invalid base64 image.");
+        }
+
+        var recipeId = _recipeService.CreateRecipeWithIngredients(recipe.ToSavableEntity(creatorId, pictureFileName));
+        return CreatedAtAction(nameof(GetRecipe), new { id = recipeId }, recipe);
     }
 
     /// <summary>
@@ -126,8 +146,12 @@ public class RecipeController: ControllerBase
     /// </summary>
     [HttpGet("top/{count:int}")]
     public IActionResult GetTopRecipes(int count)
-        => Ok(_recipeService.GetTopRecipes(count));
-    
+    {
+        var viewerId = GetIdOfLoggedInUser();
+        var topRecipes = _recipeService.GetTopRecipes(count).Select(recipe => recipe.ToModel(viewerId));
+        return Ok(topRecipes);
+    }
+
     /// <summary>
     /// Gets number of likes
     /// </summary>
@@ -161,5 +185,11 @@ public class RecipeController: ControllerBase
     {
         var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text, out var errorMessage);
         return success ? Ok() : BadRequest(errorMessage);
+    }
+    
+    private int GetIdOfLoggedInUser()
+    {
+        var isLoggedIn = _authTokens.TryGetValue(Request.Cookies["auth-token"]?? "", out var userId);
+        return isLoggedIn ? userId : -1;
     }
 }

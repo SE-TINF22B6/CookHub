@@ -1,5 +1,5 @@
 ﻿using API.Models;
-using DataAccess.Entities;
+using Contracts.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -13,10 +13,10 @@ namespace API.Controllers;
 public class LoginController : ControllerBase
 {
     private readonly UserService _userService;
-    private readonly Dictionary<string, string> _authTokens;
+    private readonly Dictionary<string, int> _authTokens;
     private const string TokenKey = "auth-token";
 
-    public LoginController(UserService userService, Dictionary<string, string> authTokens)
+    public LoginController(UserService userService, Dictionary<string, int> authTokens)
     {
         _userService = userService;
         _authTokens = authTokens;
@@ -33,7 +33,7 @@ public class LoginController : ControllerBase
         }
 
         var authToken = CryptoService.GenerateToken();
-        _authTokens.Add(authToken, user!.Email);
+        _authTokens.Add(authToken, user!.Id);
 
         Response.Cookies.Append(TokenKey, authToken, new CookieOptions
         {
@@ -66,15 +66,13 @@ public class LoginController : ControllerBase
     {
         var authToken = Request.Cookies[TokenKey];
 
-        if (authToken == null || !_authTokens.ContainsKey(authToken))
+        if (authToken == null || !_authTokens.TryGetValue(authToken, out var userId))
         {
             return NotFound("Not logged in");
         }
 
-        var userEmail = _authTokens.GetValueOrDefault(authToken)!;
-        var user = _userService.GetUserByEmail(userEmail);
-
-        return user == null ? Problem("Could not get user from data base") : Ok(user);
+        var user = _userService.GetUserById(userId);
+        return user == null ? Problem("Could not get user from data base") : Ok(user.ToModel());
     }
 
     [HttpPost("register")]

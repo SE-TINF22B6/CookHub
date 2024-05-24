@@ -143,3 +143,5 @@ dist
 /Backend/Services/obj
 /Backend/Backend.sln.DotSettings.user
 /Backend/config.json
+/Backend/Contracts/bin
+/Backend/Contracts/obj

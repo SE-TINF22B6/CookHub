@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-using DataAccess.Entities;
+using Contracts.Entities;
 using DataAccess.Repository;
 
 namespace Services;
