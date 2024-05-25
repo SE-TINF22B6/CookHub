@@ -28,9 +28,9 @@ export class UserClient {
         method: 'GET',
         credentials: 'include',
       });
-      console.log(response);
 
-      return response.ok;
+
+      return response;
 
     } catch (error) {
       console.error(error);
