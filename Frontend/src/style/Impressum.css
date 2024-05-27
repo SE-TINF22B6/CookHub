@@ -1,25 +1,88 @@
 .ImpressumPage {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Startet die Ausrichtung vom Anfang */
+    justify-content: flex-start;
     background-color: #38527D;
     background-size: cover;
 }
 
+.header {
+    text-align: center;
+    margin-top: 2rem;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: #c7fc71;
+}
+
 .body {
-    position: relative;
     display: flex;
     width: 100%;
     text-align: center;
     justify-content: center;
+    text-shadow: 2px 2px 4px #000000;
+    margin-top: 2rem;
+}
+
+.body h2 {
+    font-size: 1.5rem;
+    color: #c7fc71;
+}
+
+.body h3 {
+    font-size: 1.5rem;
+    color: #c7fc71;
 }
 
 .content {
-    color: #C9FE71;
-    font-size: 25px;
+    color: #c7fc71;
+    font-size: 100%;
 }
 
 
+@media (max-width: 1100px){
+    .ImpressumPage {
+        font-size: 100%;
+        padding: 1rem;
+    }
+
+    .body {
+        margin-top: 0;
+    }
+
+    .body h2 {
+        font-size: 100%;
+    }
+
+    .body h3 {
+        font-size: 100%;
+    }
+
+    .content {
+        color: #C9FE71;
+        font-size: 100%;
+    }
+
+    .header h1 {
+        font-size: 250%;
+        color: #c7fc71;
+    }
+
+    .headerAboutUs {
+        padding: 1rem;
+    }
+
+    .carlos img{
+        width: 100%;
+    }
+
+    .Carlos_PopUP {
+        display: none;
+    }
+
+}
 
 
 
