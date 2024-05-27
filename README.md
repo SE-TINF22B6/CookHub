@@ -44,6 +44,7 @@ https://localhost:44328/swagger/index.html
  dotnet dev-certs https --trust
 ```
 
+
 <br>
 
 > [!tip]
@@ -70,6 +71,14 @@ timeout /t 10 > nul
 2. (If you need to install/update dependencies, run ***npm install*** in the terminal) 
 3. Run ***npm start*** in the terminal
 4. Wait till the frontend opens in your browser
+
+5. Also to start the frontend via HTTPS you need to replace "npm start" with:
+```shell
+ ($env:HTTPS = "true") -and (npm start)
+```
+
+> [!caution]
+> If it doesn't work -> Nick is to blame
 
 
 <br><br>
