@@ -6,9 +6,15 @@ export default function Impressum(){
     return(
 
         <div className="ImpressumPage">
+
+            <div className="header">
+                <h1>Impressum</h1>
+            </div>
+
+
             <div className="body">
+
                     <div className="content">
-                        <h1>Impressum</h1>
                         <br/><br/>
                         <h2>Angaben gemäß § 5 TMG:</h2>
                         <br/>
@@ -49,8 +55,7 @@ export default function Impressum(){
                         <h3>Urheberrecht</h3>
                         <br/>
                         <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. ...</p>
-                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-
+                        <br/><br/>
                     </div>
 
             </div>
