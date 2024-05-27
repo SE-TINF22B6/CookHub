@@ -1,28 +1,28 @@
 import "../style/Welcome.css"
-import React, {useState} from "react";
+import React, { useState} from "react";
 import "../style/Login.css"
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import {UserClient} from "../clients/UserClient";
-import {useNavigate} from "react-router-dom";
+
+
 
 export default function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    const navigate = useNavigate();
 
     const handleLogin = async () => {
         const result = await new UserClient().userLogin(email, password);
 
         if (result === 200) {
             setMessage("Login successful!");
-            navigate('/profile');
+
+            window.location.href = "/profile";
         } else {
             setMessage("Login failed!");
         }
     };
-
 
     return (
         <div id="LoginPage">
@@ -54,7 +54,7 @@ export default function Login() {
                             id="exampleInputPassword1"
                             onChange={event => setPassword(event.target.value)}></input>
                     </div>
-                    <div style={{fontSize: 12}}>{message}</div>
+                    <div style={{fontSize: 40, color:"red"}}>{message}</div>
                     <input
                         type="button"
                         className="SubmitButton"

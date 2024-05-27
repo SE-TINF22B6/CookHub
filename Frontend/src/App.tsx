@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import './style/Welcome.css';
 import {BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+
 import NavBar from "./components/NavBar";
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
@@ -16,37 +16,7 @@ import FindRecipes from "./pages/FindRecipes";
 import Logout from "./pages/Logout";
 import SignUp from "./pages/SignUp";
 import {UserClient} from "./clients/UserClient";
-
-
-interface RequireAuthProps {
-    children: React.ReactNode;
-}
-
-const RequireAuth: React.FC<RequireAuthProps> = ({children}) => {
-    const [loginStatus, setLoginStatus] = React.useState<boolean | null>(null);
-
-    useEffect(() => {
-        const checkLoginStatus = async () => {
-            try {
-                const response = await new UserClient().isLoggedIn();
-                // @ts-ignore
-                setLoginStatus(response.ok);
-            } catch (error) {
-                console.error('Login check failed:', error);
-                setLoginStatus(false);
-            }
-        };
-
-        checkLoginStatus();
-    }, []);
-
-    if (loginStatus === null) {
-        return <span className="loader"></span>;
-    }
-
-    return loginStatus ? <>{children}</> : <Navigate to="/login"/>;
-}
-
+import {UserData} from "./models/UserData";
 
 
 const AppBarConditional = () => {
@@ -64,49 +34,48 @@ const AppBarConditional = () => {
 
 function App() {
 
-    const [userData, setUserData] = React.useState<object | null>(null);
+    const [userData, setUserData] = React.useState<UserData | null>();
+
+
+    const getUserData = useCallback(async () => {
+        try {
+            const response = await new UserClient().isLoggedIn();
+
+            if (response?.ok) {
+                const data = await response?.json();
+                setUserData(data);
+            }
+
+        } catch (error) {
+            console.error('Login check failed:', error);
+            setUserData(null);
+        }
+    },[]);
+
 
     useEffect(() => {
-        const getUserData = async () => {
-            try {
-                const response = await new UserClient().isLoggedIn();
-                // @ts-ignore
-                if (response.ok){
-                    // @ts-ignore
-                    const data = await response.json();
-                    setUserData(data);
-                }
-
-            } catch (error) {
-                console.error('Login check failed:', error);
-                setUserData(null);
-            }
-        };
-
-        getUserData();
-
-    }, []);
+        getUserData()
+    }, [getUserData]);
 
 
     return (
         <div className="App">
             <BrowserRouter>
-                <AppBarConditional />
-                <NavBar user={userData}/>
+                <AppBarConditional/>
+                <NavBar data={userData?? null}/>
                 <Routes>
-                    <Route path='/' element={<Welcome/>} />
-                    <Route path='/login' element={<Login/>} />
-                    <Route path='/signup' element={<SignUp/>} />
-                    <Route path='/about' element={<AboutUs/>} />
+                    <Route path='/' element={<Welcome/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    <Route path='/signup' element={<SignUp/>}/>
+                    <Route path='/about' element={<AboutUs/>}/>
                     <Route path='/faqs' element={<FAQsPage/>}/>
                     <Route path='/impressum' element={<Impressum/>}/>
-                    <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
-                    <Route path='/settings' element={<RequireAuth><Settings/></RequireAuth>}/>
-                    <Route path='/myrecipes/:slug' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
-                    <Route path='/myrecipes/' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
+                    <Route path='/profile' element={<Profile data={userData ?? null}/>}/>
+                    <Route path='/settings' element={<Settings  data={userData?? null}/>}/>
+                    <Route path='/myrecipes/:slug' element={<MyRecipes/>}/>
                     <Route path='/findrecipes' element={<FindRecipes/>}/>
-                    <Route path='/foodforge' element={<RequireAuth><FoodForge/></RequireAuth>}/>
-                    <Route path='/logout' element={<RequireAuth><Logout/></RequireAuth>}/>
+                    <Route path='/foodforge' element={<FoodForge data={userData?? null}/>}/>
+                    <Route path='/logout' element={<Logout/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
