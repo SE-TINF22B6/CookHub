@@ -49,12 +49,12 @@ function App() {
             console.error('Login check failed:', error);
             setUserData(null);
         }
-    },[userData]);
+    },[]);
 
 
     useEffect(() => {
         getUserData()
-    }, [userData]);
+    }, [getUserData]);
 
 
     return (
