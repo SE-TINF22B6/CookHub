@@ -27,15 +27,12 @@ export default function FindRecipes() {
     useEffect(() => {
         async function getTopRecipes() {
             let client: RecipeClient = new RecipeClient();
-            setTopRecipe(await client.getRecipeByLikes(3));
+            setTopRecipe(await client.getRecipeByLikes(5));
         }
+
         getTopRecipes();
     }, []);
 
-    /*    async function findAll() {
-            const client = new RecipeClient();
-            setData(await client.getAllRecipes());
-        }*/
 
     function handleSubmit(event: any) {
         event.preventDefault();
@@ -45,6 +42,7 @@ export default function FindRecipes() {
 
     return (
         <div className="RecipeBrowser">
+
             <div className={"searchForm"}>
                 <form className="search" onSubmit={handleSubmit}>
                     <input
@@ -55,15 +53,12 @@ export default function FindRecipes() {
                         onChange={e => {
                             setInputValue(e.target.value);
                             findBtn(e.target.value);
-                        }
-                        }
+                        }}
                     />
-                    <button className="btn__search">
-                        Search
-                    </button>
-                </form>
 
+                </form>
             </div>
+
 
             {data ? data.map((recipe, index) => {
                     return (
@@ -71,7 +66,8 @@ export default function FindRecipes() {
                             <ul className="results">
                                 <a href={`/myrecipes/${recipe.id}`}>
                                     <li className="preview" key={index}>
-                                        <img src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`} alt="recipe" style={{width:'20%', borderRadius:'50%'}} />
+                                        <img src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                                             alt="recipe" style={{width: '20%', borderRadius: '50%'}}/>
                                         <div className="preview__data">
                                             <h4 className="preview__title">{recipe.name}</h4>
                                             <div className="preview__time">
@@ -96,40 +92,55 @@ export default function FindRecipes() {
                 })
                 :
 
-               ""
+                ""
             }
 
-            <div className={"recipes"}>
 
-            </div>
             <div className={"topRecipes"}>
                 {!inputValue ?
                     topRecipe.map((recipe) => {
                         return (
                             <a href={`/myrecipes/${recipe.id}`}>
-                            <Card sx={{width: "350px" ,height: "37vh",backgroundColor: '#C9FE71', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}}>
-                                <CardActionArea>
-                                    <CardMedia
-                                        component="img"
-                                        height="140"
-                                        image={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
-                                        alt="recipe"
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            {recipe.name}
-                                        </Typography>
-                                        <Box sx={{ display: 'flex',justifyContent: "space-evenly", alignItems: 'center', pl: 1, pb: 1 }}>
-                                        <AccessTimeIcon></AccessTimeIcon>
-                                            {recipe.cookingTime}
-                                        <AppRegistrationIcon></AppRegistrationIcon>
-                                            {recipe.prepTime}
-                                          <SpeedIcon></SpeedIcon>
-                                            {recipe.difficulty}
-                                        </Box>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
+                                <Card id="cards" sx={{
+                                    width: "15vw",
+                                    height: "30vh",
+                                    backgroundColor: '#C9FE71',
+                                    boxShadow: '#2b2f32 12px 12px 12px',
+                                    margin: '2vw',
+                                }}>
+
+                                    <CardActionArea>
+
+                                        <CardMedia
+                                            component="img"
+                                            height="140"
+                                            image={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                                            alt="recipe"
+                                        />
+
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                {recipe.name}
+                                            </Typography>
+                                            <Box sx={{
+                                                display: 'flex',
+                                                justifyContent: "space-around",
+                                                alignItems: 'center',
+                                                pl: 0,
+                                                pb: 0
+                                            }}>
+                                                <AccessTimeIcon></AccessTimeIcon>
+                                                {recipe.cookingTime}
+                                                <AppRegistrationIcon></AppRegistrationIcon>
+                                                {recipe.prepTime}
+                                                <SpeedIcon></SpeedIcon>
+                                                {recipe.difficulty}
+                                            </Box>
+                                        </CardContent>
+
+                                    </CardActionArea>
+
+                                </Card>
                             </a>
                         );
                     }) :
@@ -140,6 +151,5 @@ export default function FindRecipes() {
             </div>
 
         </div>
-
     );
 }

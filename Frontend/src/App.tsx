@@ -103,6 +103,7 @@ function App() {
                     <Route path='/profile' element={<RequireAuth><Profile/></RequireAuth>}/>
                     <Route path='/settings' element={<RequireAuth><Settings/></RequireAuth>}/>
                     <Route path='/myrecipes/:slug' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
+                    <Route path='/myrecipes/' element={<RequireAuth><MyRecipes/></RequireAuth>}/>
                     <Route path='/findrecipes' element={<FindRecipes/>}/>
                     <Route path='/foodforge' element={<RequireAuth><FoodForge/></RequireAuth>}/>
                     <Route path='/logout' element={<RequireAuth><Logout/></RequireAuth>}/>
