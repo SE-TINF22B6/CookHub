@@ -4,14 +4,25 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import "../style/Settings.css";
 import ImageUploader from "../components/ImageUploader";
-import UserImage from "../assets/Hotdog.svg";
+
 import DeleteIcon from '@mui/icons-material/Delete';
+import {UserDataParams} from "../models/UserDataParams";
+import NotLoggedIn from "../components/NotLoggedIn";
 
 
-const value = "HotDog";
 
 
-export default function Settings() {
+export default function Settings(userProfile: UserDataParams) {
+    let data = userProfile.data;
+
+    if(!data){
+        return (
+            <>
+              <NotLoggedIn></NotLoggedIn>
+            </>
+        );
+    }
+
     return (
 
         <div className="SettingsPage">
@@ -24,12 +35,12 @@ export default function Settings() {
 
                 <div className={"body-left"}>
 
-                    <h2>Username: {value}</h2>
+                    <h2>Username: {data?.name}</h2>
 
                     <br/><br/>
 
                     <span className={"userPicture"}>
-                        <img src={UserImage} alt="User" style={{width: '100%'}}/>
+                        <img src={`https://localhost:44328/images/profile-pictures/${data?.profilePicture}`} alt="User" style={{width: '100%'}}/>
                     </span>
                 </div>
 

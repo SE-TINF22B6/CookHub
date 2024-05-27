@@ -8,10 +8,18 @@ import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
 import FormPropsTextFields from "../components/FormPropsTextFields";
 import ImageUploader from "../components/ImageUploader";
 import Carlos_PopUp from "../helpers/Carlos_PopUp";
+import {UserDataParams} from "../models/UserDataParams";
+import NotLoggedIn from "../components/NotLoggedIn";
 
 
-export default function FoodForge() {
+export default function FoodForge(isLoggedIn: UserDataParams) {
+let data = isLoggedIn.data;
 
+if (!data){
+    return (
+        <NotLoggedIn></NotLoggedIn>
+    )
+}
 
     return (
 

@@ -14,12 +14,13 @@ import {Link} from "react-router-dom";
 import LogoAnimated from "../assets/gifs/logo_animated.gif";
 import Avatar from "../assets/Hotdog.svg";
 import MenuListComposition from "./MenuListComposition";
+import {UserDataParams} from "../models/UserDataParams";
 
 
 
 // @ts-ignore
-export default function NavBar({user}) {
-
+export default function NavBar(loggedIn : UserDataParams) {
+    let user = loggedIn.data;
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     const toggleMenu = () => {
@@ -93,7 +94,7 @@ export default function NavBar({user}) {
                     </div>
 
 
-                    <div id={"loginContainer"}>
+                    {!user ? <div id={"loginContainer"}>
                         <Button
                             className="LoginButton"
                             color="inherit"
@@ -103,7 +104,7 @@ export default function NavBar({user}) {
                         >
                             Login
                         </Button>
-                    </div>
+                    </div> : ""}
 
 
                     <div id={"avatarContainer"}>
