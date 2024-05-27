@@ -70,7 +70,7 @@ void CreateExampleData()
 {
     var userService = app.Services.GetService<UserService>()!;
     var recipeService = app.Services.GetService<RecipeService>()!;
-    
+
     if (userService.GetUserByEmail("admin@cookhub.com") == null)
     {
         userService.CreateTestUser();
@@ -82,5 +82,10 @@ void CreateExampleData()
         var testUser = userService.GetUserByEmail("admin@cookhub.com")!;
         userService.LikeRecipe(testUser, recipeService.GetRecipeById(1)!);
         userService.LikeRecipe(testUser, recipeService.GetRecipeById(2)!);
+    }
+
+    if (recipeService.GetRecipeById(1)?.AdventureTexts.Count == 0)
+    {
+        recipeService.CreateExampleAdventureTexts();
     }
 }
