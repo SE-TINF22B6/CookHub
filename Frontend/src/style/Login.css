@@ -1,37 +1,40 @@
 #LoginPage {
     Background-color: #38527D;
-    min-height: 100vh;
-}
-
-#LoginPageBody {
+    height: 80vh;
     display: flex;
     flex-direction: row;
-    position: relative;
-    margin-top: 10vh;
-    align-items: center;
-    justify-content: space-around;
 }
 
-
-#LoginPageBodyLeft {
+#BodyLeft {
     display: flex;
+    flex: 1;
     background-image: url("../assets/Logos_Icons/CookHub_Frame_unfilled_no_background.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 75vh;
+    justify-content: center;
+    padding: 5rem;
+}
+
+#FormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.form-label {
+    font-size: 1.5rem;
+    color: #ffffff;
 }
 
 .InputMail, .InputPassword {
     font-size: 2rem;
-    align-items: center;
-
 }
 
 .InputMail input, .InputPassword input {
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
+    max-width: 100%;
     padding: 1rem;
 }
 
@@ -39,28 +42,43 @@
     font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .InputMail, .InputPassword {
-        font-size: 1rem;
-    }
+.SubmitButton {
+    background-color: #C9FE71;
+    color: #000000;
+    padding: 1rem 2rem 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    border: solid 3px black;
+    margin-top: 2rem;
+    width: 80%;
+    height: 10%;
+}
 
-    .InputMail input, .InputPassword input {
-        max-width: 300px;
-    }
+.sign-up {
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
 
-    .InputMail label, .InputPassword label {
-        font-size: 1rem;
-    }
+.SignUpLink {
+    font-size: 1.3rem;
+    color: #C9FE71;
+    cursor: pointer;
 }
 
 
-#LoginPageBodyRight {
+
+
+#BodyRight {
     display: flex;
+    flex: 1;
     flex-direction: column;
+    justify-content: space-around;
     color: #C9FE71;
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 1.5rem;
     text-shadow: 2px 2px 3px black;
+    padding: 5rem;
 }
 
 .StartAdventure {
@@ -69,58 +87,6 @@
 
 .LoginPageText {
     font-size: 1rem;
-}
-
-.EnterInformation {
-    position: relative;
-    color: #ffffff;
-    font-size: 2rem;
-    min-width: 50rem;
-    top: 20%;
-
-}
-
-.SubmitLogin {
-    background-color: #C9FE71;
-    color: #000000;
-    font-weight: 400;
-    display: inline-block;
-    padding: 1rem 2rem 1rem;
-    text-decoration: none;
-    border-radius: 15px;
-    cursor: pointer;
-    border: solid 2px black;
-    margin-top: 2rem;
-}
-
-@media (max-width: 768px) {
-    .SubmitLogin {
-        font-size: 14px;
-        padding: 10px 15px;
-    }
-
-    .SubmitButton {
-        font-size: 16px;
-    }
-}
-
-.SubmitButton {
-    font-size: 1rem;
-    color: #C9FE71;
-    padding: 1rem 1rem 1rem;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-@media (max-width: 480px) {
-    .SubmitLogin {
-        font-size: 12px;
-        padding: 8px 12px;
-    }
-
-    .SubmitButton {
-        font-size: 14px;
-    }
 }
 
 .Chef-Carlo2 {
@@ -147,6 +113,7 @@
     z-index: -1;
     content: '';
 }
+
 .speech-bubble:after {
     top: 0; right: 0; bottom: 0; left: 0;
     border-radius: inherit;
@@ -154,6 +121,7 @@
     background: #262525;
     box-shadow: 0 0 .5em rgb(199, 252, 113);
 }
+
 .speech-bubble:before {
     border: solid 0 transparent;
     border-right: solid 3.5em #000000;
@@ -163,3 +131,59 @@
     transform: rotate(45deg) skewX(75deg);
 }
 
+.Chef-Carlo2 {
+    height: 40%;
+    margin-left: 5rem;
+}
+
+
+
+
+@media (max-width: 1100px){
+    #LoginPage {
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    #BodyLeft {
+        display: flex;
+        flex: 1;
+
+        padding: 5rem;
+    }
+
+    .InputMail label, .InputPassword label {
+        font-size: 1rem;
+    }
+
+    #exampleInputEmail1, #exampleInputPassword1 {
+        height: 2rem;
+    }
+
+    .sign-up, .SignUpLink {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+
+    .SubmitButton {
+        font-size: 70%;
+        width: 50%;
+        height: 30%;
+    }
+
+    #BodyRight {
+        padding: 2rem;
+        display: flex;
+        flex: 1;
+    }
+
+    .speech-bubble {
+        width: 25rem;
+        height: 50%;
+        font-size: 40%;
+    }
+
+    .Chef-Carlo2 {
+        height: 20vmin;
+    }
+}

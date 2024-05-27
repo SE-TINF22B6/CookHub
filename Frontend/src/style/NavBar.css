@@ -19,8 +19,9 @@
 }
 
 .Logo {
-    width: 5vw;
-    height: 5vw;
+    width: 15%;
+    max-width: 15vw;
+    min-width: 5vw;
 }
 
 
