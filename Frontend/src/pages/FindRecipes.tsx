@@ -69,7 +69,7 @@ export default function FindRecipes() {
                     return (
                         <div className="recipeContainer">
                             <ul className="results">
-                                <a href={`http://localhost:3000/myrecipes/${recipe.id}`}>
+                                <a href={`/myrecipes/${recipe.id}`}>
                                     <li className="preview" key={index}>
                                         <img src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`} alt="recipe" style={{width:'20%', borderRadius:'50%'}} />
                                         <div className="preview__data">
@@ -106,7 +106,7 @@ export default function FindRecipes() {
                 {!inputValue ?
                     topRecipe.map((recipe) => {
                         return (
-                            <a href={`http://localhost:3000/myrecipes/${recipe.id}`}>
+                            <a href={`/myrecipes/${recipe.id}`}>
                             <Card sx={{width: "350px" ,height: "37vh",backgroundColor: '#C9FE71', boxShadow: '0 4px 8px rgba(0,0,0,0.1)'}}>
                                 <CardActionArea>
                                     <CardMedia
