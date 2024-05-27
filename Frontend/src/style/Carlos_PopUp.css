@@ -8,9 +8,14 @@
     overflow-y: hidden;
 }
 
+.dialog-button {
+
+}
+
 #carlos-dialog-description {
 
 }
+
 
 .speech-bubble {
     position: relative;
@@ -34,6 +39,23 @@
     margin-top: 3rem;
 }
 
-.dialog-button {
 
+@media (max-width: 1100px){
+
+    .speech-bubble {
+        width: 100%;
+        font-size: 100%;
+    }
+
+    .carlos-image {
+        width: 50%;
+    }
+
+    .Carlos_PopUP {
+        display: none;
+    }
+
+    .dialog-button {
+        width: 70%;
+    }
 }

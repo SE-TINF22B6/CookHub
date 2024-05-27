@@ -8,7 +8,7 @@ import * as React from 'react';
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import '../style/Carlos_PopUp.css';
 
-export default function Carlos_PopUp(buttonTitle: string, text: string) {
+export default function Carlos_PopUp(buttonTitle: string, text: string, buttonTextColor: string = '#000000', buttonBorderColor: string = '#000000', backgroundColor: string = '#c7fc71') {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -19,16 +19,22 @@ export default function Carlos_PopUp(buttonTitle: string, text: string) {
         setOpen(false);
     };
 
-
-
     return (
         <React.Fragment>
-            <Button
-                variant="outlined"
+            <button className="dialog-button"
                 onClick={handleClickOpen}
-                style={{color: '#000000', borderColor: '#000000'}}
-            > {buttonTitle}
-            </Button>
+                style={{
+                    color: buttonTextColor,
+                    border: `2px solid ${buttonBorderColor}`,
+                    backgroundColor: backgroundColor,
+                    borderRadius: '10px',
+                    minWidth: '15%',
+                    padding: '1%',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+                }}
+            >
+                {buttonTitle}
+            </button>
 
             <Dialog
                 id={"carlos-dialog"}
