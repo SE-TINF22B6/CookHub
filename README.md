@@ -35,9 +35,13 @@ cd C:\Users\[userName]\IdeaProjects\CookHub\Backend\API
 ```shell
 dotnet run --launch-profile https --urls=https://localhost:44328/
 ```
-4. After successfull build and start open in browser the following url:
+3. After successfull build and start open in browser the following url:
 ```shell
 https://localhost:44328/swagger/index.html
+```
+4. A certification problem could appear when the certificate isn't working as expected. Then you need to manually trust the certificate via console:
+```shell
+ dotnet dev-certs https --trust
 ```
 
 <br>
