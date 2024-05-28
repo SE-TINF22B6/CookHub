@@ -1,4 +1,7 @@
-
+.Avatar{
+    width: 100px;
+    height: 100px;
+}
 #ProfilePage {
     display: flex;
     flex-direction: column;
