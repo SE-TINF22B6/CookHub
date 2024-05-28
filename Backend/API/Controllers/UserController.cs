@@ -152,50 +152,37 @@ public class UserController : ControllerBase
     [HttpPost("change-username")]
     public IActionResult ChangeUsername([FromBody] string newUsername)
     {
-        var userId = GetIdOfLoggedInUser();
-
-        if (userId == -1)
-        {
-            return BadRequest("User is not logged in.");
-        }
-
-        var success = _userService.TryChangeUsername(userId, newUsername, out var error);
-
-        return success ? Ok() : BadRequest(error);
+        var error = string.Empty;
+        return GenericUserRequest(userId => _userService.TryChangeUsername(userId, newUsername, out error), in error);
     }
 
     [HttpPost("change-password")]
-    public IActionResult ChangePassword([FromBody] PasswordChangeModel passwordChange)
+    public IActionResult ChangePassword([FromBody] PasswordChangeModel input)
     {
-        var userId = GetIdOfLoggedInUser();
-
-        if (userId == -1)
-        {
-            return BadRequest("User is not logged in.");
-        }
-
-        var success = _userService.TryChangePassword(userId, passwordChange.OldPassword, passwordChange.NewPassword, out var error);
-
-        return success ? Ok() : BadRequest(error);
+        var error = string.Empty;
+        return GenericUserRequest(userId => _userService.TryChangePassword(userId, input.OldPassword, input.NewPassword, out error), in error);
     }
 
     [HttpPost("change-profile-picture")]
     public IActionResult ChangeProfilePicture([FromBody] string base64Image)
     {
-        var userId = GetIdOfLoggedInUser();
-
-        if (userId == -1)
-        {
-            return BadRequest("User is not logged in.");
-        }
-
-        var success = _userService.TryChangeProfilePicture(userId, base64Image, out var error);
-
-        return success ? Ok() : BadRequest(error);
+        var error = string.Empty;
+        return GenericUserRequest(userId => _userService.TryChangeProfilePicture(userId, base64Image, out error), in error);
     }
 
     [HttpDelete("delete-account")]
     public IActionResult DeleteAccount([FromBody] string password)
+    {
+        var error = string.Empty;
+        return GenericUserRequest(userId =>
+        {
+            var isDeleted = _userService.TryDeleteAccount(userId, password, out error);
+            if (isDeleted) LogOut();
+            return isDeleted;
+        }, in error);
+    }
+
+    private IActionResult GenericUserRequest(Predicate<int> tryWithUserId, in string errorAfterInvoke)
     {
         var userId = GetIdOfLoggedInUser();
 
@@ -204,10 +191,9 @@ public class UserController : ControllerBase
             return BadRequest("User is not logged in.");
         }
 
-        var success = _userService.TryDeleteAccount(userId, password, out var error);
-        LogOut();
+        var success = tryWithUserId.Invoke(userId);
 
-        return success ? Ok() : BadRequest(error);
+        return success ? Ok() : BadRequest(errorAfterInvoke);
     }
 
     private int GetIdOfLoggedInUser()
