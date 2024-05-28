@@ -50,7 +50,7 @@ export default function SignUp() {
 
         setMessage("");
         setIsFormValid(true);
-    }, [userName, email, password, passwordRe,emailRegex,passwordRegex,usernameRegex]);
+    }, [userName, email, password]);
 
     useEffect(() => {
         validateForm();
