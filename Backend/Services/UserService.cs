@@ -128,6 +128,58 @@ public partial class UserService
         return error == string.Empty;
     }
 
+    public bool TryChangeUsername(int userId, string newUsername, out string error)
+    {
+        if (!UsernameRegex().IsMatch(newUsername))
+        {
+            error = "Invalid username.";
+            return false;
+        }
+
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        user.Name = newUsername;
+        _repository.Update(user);
+
+        error = string.Empty;
+        return true;
+    }
+
+    public bool TryChangePassword(int userId, string oldPassword, string newPassword, out string error)
+    {
+        if (!PasswordRegex().IsMatch(newPassword))
+        {
+            error = "New password is invalid.";
+            return false;
+        }
+
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        if (!CryptoService.GetHash(oldPassword).SequenceEqual(user.PasswordHash))
+        {
+            error = "Old password is invalid.";
+            return false;
+        }
+
+        user.PasswordHash = CryptoService.GetHash(newPassword);
+        _repository.Update(user);
+
+        error = string.Empty;
+        return true;
+    }
+
     [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]
     private static partial Regex UsernameRegex();
 

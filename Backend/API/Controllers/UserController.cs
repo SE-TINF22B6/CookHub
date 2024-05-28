@@ -1,3 +1,4 @@
+using API.Models;
 using Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -11,11 +12,13 @@ public class UserController : ControllerBase
     
     private readonly UserService _userService;
     private readonly RecipeService _recipeService;
+    private readonly Dictionary<string, int> _authTokens;
 
-    public UserController(UserService userService, RecipeService recipeService)
+    public UserController(UserService userService, RecipeService recipeService, Dictionary<string, int> authTokens)
     {
         _userService = userService;
         _recipeService = recipeService;
+        _authTokens = authTokens;
     }
 
     /// <summary>
@@ -146,4 +149,40 @@ public class UserController : ControllerBase
         return Ok(likedRecipes);
     }
     
+
+    [HttpPost("change-username")]
+    public IActionResult ChangeUsername([FromBody] string newUsername)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in.");
+        }
+
+        var success = _userService.TryChangeUsername(userId, newUsername, out var error);
+
+        return success ? Ok() : BadRequest(error);
+    }
+
+    [HttpPost("change-password")]
+    public IActionResult ChangePassword([FromBody] PasswordChangeModel passwordChange)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in.");
+        }
+
+        var success = _userService.TryChangePassword(userId, passwordChange.OldPassword, passwordChange.NewPassword, out var error);
+
+        return success ? Ok() : BadRequest(error);
+    }
+
+    private int GetIdOfLoggedInUser()
+    {
+        var isLoggedIn = _authTokens.TryGetValue(Request.Cookies["auth-token"]?? "", out var userId);
+        return isLoggedIn ? userId : -1;
+    }
 }
