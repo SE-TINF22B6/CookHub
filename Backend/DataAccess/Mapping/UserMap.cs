@@ -13,7 +13,8 @@ public class UserMap : ClassMap<User>
         Map(user => user.PasswordHash).Not.Nullable();
         Map(user => user.Name).Not.Nullable();
         Map(user => user.ProfilePicture);
-        HasManyToMany<Recipe>(user => user.LikedRecipes).Table("liked_recipes").Cascade.All().Not.LazyLoad();
-        HasManyToMany<Recipe>(user => user.History).Table("history").Not.LazyLoad();
+        HasManyToMany(user => user.LikedRecipes).Table("liked_recipes").Not.LazyLoad();
+        HasManyToMany(user => user.History).Table("history").Not.LazyLoad();
+        HasMany(user => user.CreatedRecipes).Inverse().Not.LazyLoad();
     }
 }

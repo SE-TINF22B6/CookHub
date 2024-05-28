@@ -148,7 +148,6 @@ public class UserController : ControllerBase
         var likedRecipes = _userService.GetLikedRecipesByUserId(userId);
         return Ok(likedRecipes);
     }
-    
 
     [HttpPost("change-username")]
     public IActionResult ChangeUsername([FromBody] string newUsername)
@@ -180,9 +179,32 @@ public class UserController : ControllerBase
         return success ? Ok() : BadRequest(error);
     }
 
+    [HttpDelete("delete-account")]
+    public IActionResult DeleteAccount([FromBody] string password)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in.");
+        }
+
+        var success = _userService.TryDeleteAccount(userId, password, out var error);
+        LogOut();
+
+        return success ? Ok() : BadRequest(error);
+    }
+
     private int GetIdOfLoggedInUser()
     {
         var isLoggedIn = _authTokens.TryGetValue(Request.Cookies["auth-token"]?? "", out var userId);
         return isLoggedIn ? userId : -1;
+    }
+
+    private void LogOut()
+    {
+        var authToken = Request.Cookies["auth-token"];
+        Response.Cookies.Delete("auth-token");
+        _authTokens.Remove(authToken?? "");
     }
 }

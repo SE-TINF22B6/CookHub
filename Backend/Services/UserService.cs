@@ -180,6 +180,28 @@ public partial class UserService
         return true;
     }
 
+    public bool TryDeleteAccount(int userId, string password, out string error)
+    {
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        if (!CryptoService.GetHash(password).SequenceEqual(user.PasswordHash))
+        {
+            error = "Invalid password.";
+            return false;
+        }
+
+        _repository.Delete(user);
+
+        error = string.Empty;
+        return true;
+    }
+
     [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]
     private static partial Regex UsernameRegex();
 
