@@ -180,6 +180,29 @@ public partial class UserService
         return true;
     }
 
+    public bool TryChangeProfilePicture(int userId, string base64Image, out string error)
+    {
+        if (!TrySaveProfilePicture(base64Image, out var fileName))
+        {
+            error = "Invalid base64 image.";
+            return false;
+        }
+
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        user.ProfilePicture = fileName;
+        _repository.Update(user);
+
+        error = string.Empty;
+        return true;
+    }
+
     public bool TryDeleteAccount(int userId, string password, out string error)
     {
         var user = GetUserById(userId);

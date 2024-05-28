@@ -179,6 +179,21 @@ public class UserController : ControllerBase
         return success ? Ok() : BadRequest(error);
     }
 
+    [HttpPost("change-profile-picture")]
+    public IActionResult ChangeProfilePicture([FromBody] string base64Image)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in.");
+        }
+
+        var success = _userService.TryChangeProfilePicture(userId, base64Image, out var error);
+
+        return success ? Ok() : BadRequest(error);
+    }
+
     [HttpDelete("delete-account")]
     public IActionResult DeleteAccount([FromBody] string password)
     {
