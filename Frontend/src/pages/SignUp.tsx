@@ -1,7 +1,7 @@
 import '../style/SignUp.css';
 import * as React from 'react';
 import chef from "../assets/Chef_Carlo_without_background (1).png";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {UserClient} from "../clients/UserClient";
 
 
@@ -19,10 +19,10 @@ export default function SignUp() {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,24}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,32}$/;
 
-    const validateForm = () => {
-        if(userName === ""){
+    const validateForm = useCallback(() => {
+        if (userName === "") {
             setMessage("");
-            return ;
+            return;
         }
         if (!usernameRegex.test(userName)) {
             setMessage("Username must be 4-16 characters long and can only contain letters, numbers, and underscores.");
@@ -50,13 +50,11 @@ export default function SignUp() {
 
         setMessage("");
         setIsFormValid(true);
-    };
+    }, [userName, email, password, passwordRe]);
 
     useEffect(() => {
         validateForm();
-    }, [userName,password,email,passwordRe, validateForm]);
-
-
+    }, [validateForm]);
 
 
     const handleSignUp = async () => {
