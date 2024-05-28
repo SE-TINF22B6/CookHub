@@ -56,17 +56,17 @@ export default function SignUp() {
            }
 
            validateForm();
-       }, []);*/
+       }, []);
 
-
+*/
     const handleSignUp = async () => {
-        if (isFormValid) {
+        //if (isFormValid) { }
             const response = await new UserClient().userSignup(userName,email,password);
 
             console.log(response);
 
             console.log("SignUp called", email, password, passwordRe, userName);
-        }
+
     };
 
     return (
