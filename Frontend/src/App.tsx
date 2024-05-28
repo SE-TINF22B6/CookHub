@@ -17,6 +17,7 @@ import Logout from "./pages/Logout";
 import SignUp from "./pages/SignUp";
 import {UserClient} from "./clients/UserClient";
 import {UserData} from "./models/UserData";
+import MyRecipeLoggedIn from "./pages/MyRecipeLoggedIn";
 
 
 const AppBarConditional = () => {
@@ -73,6 +74,7 @@ function App() {
                     <Route path='/profile' element={<Profile data={userData ?? null}/>}/>
                     <Route path='/settings' element={<Settings  data={userData?? null}/>}/>
                     <Route path='/myrecipes/:slug' element={<MyRecipes/>}/>
+                    <Route path='/myrecipes' element={<MyRecipeLoggedIn data={userData?? null}/>}/>
                     <Route path='/findrecipes' element={<FindRecipes/>}/>
                     <Route path='/foodforge' element={<FoodForge data={userData?? null}/>}/>
                     <Route path='/logout' element={<Logout/>}/>
