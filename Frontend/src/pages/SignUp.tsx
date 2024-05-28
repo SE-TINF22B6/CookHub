@@ -1,7 +1,7 @@
 import '../style/SignUp.css';
 import * as React from 'react';
 import chef from "../assets/Chef_Carlo_without_background (1).png";
-import {useCallback, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {UserClient} from "../clients/UserClient";
 
 
@@ -19,42 +19,44 @@ export default function SignUp() {
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,24}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,32}$/;
 
-    const validateForm = useCallback(() => {
-        if (userName === "") {
-            setMessage("");
-            return;
-        }
-        if (!usernameRegex.test(userName)) {
-            setMessage("Username must be 4-16 characters long and can only contain letters, numbers, and underscores.");
-            setIsFormValid(false);
-            return;
-        }
-
-        if (!emailRegex.test(email)) {
-            setMessage("Please enter a valid email address.");
-            setIsFormValid(false);
-            return;
-        }
-
-        if (password !== passwordRe) {
-            setMessage("Passwords don't match!");
-            setIsFormValid(false);
-            return;
-        }
-
-        if (!passwordRegex.test(password)) {
-            setMessage("Password must be 8-32 characters long, contain at least one letter, one number, and one special character.");
-            setIsFormValid(false);
-            return;
-        }
-
-        setMessage("");
-        setIsFormValid(true);
-    }, []);
 
     useEffect(() => {
+
+        const validateForm = ()=> {
+            if (userName === "") {
+                setMessage("");
+                return;
+            }
+            if (!usernameRegex.test(userName)) {
+                setMessage("Username must be 4-16 characters long and can only contain letters, numbers, and underscores.");
+                setIsFormValid(false);
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                setMessage("Please enter a valid email address.");
+                setIsFormValid(false);
+                return;
+            }
+
+            if (password !== passwordRe) {
+                setMessage("Passwords don't match!");
+                setIsFormValid(false);
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                setMessage("Password must be 8-32 characters long, contain at least one letter, one number, and one special character.");
+                setIsFormValid(false);
+                return;
+            }
+
+            setMessage("");
+            setIsFormValid(true);
+        }
+
         validateForm();
-    }, [validateForm]);
+    }, []);
 
 
     const handleSignUp = async () => {
