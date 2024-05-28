@@ -16,7 +16,7 @@ export default function SignUp() {
     const [isFormValid, setIsFormValid] = useState(false);
 
     const usernameRegex = /^[A-Za-z0-9_]{4,16}$/;
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,24}$/;
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,24}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,32}$/;
 
     const validateForm = () => {
@@ -54,7 +54,7 @@ export default function SignUp() {
 
     useEffect(() => {
         validateForm();
-    }, [userName,password,email,passwordRe]);
+    }, [userName,password,email,passwordRe, validateForm]);
 
 
 
