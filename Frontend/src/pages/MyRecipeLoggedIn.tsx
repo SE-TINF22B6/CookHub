@@ -43,7 +43,7 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
                         <a href={`/myrecipes/${recipe.id}`}><div className="card1" key={index}>
                             <div className="content">
                                 <div className="back">
-                                    <div className="back-content" style={{backgroundImage:`url(https:localhost:44328/images/recipes/${recipe.pictureUrl})`, backgroundSize:"cover", backgroundRepeat:"no-repeat"}}>
+                                    <div className="back-content" style={{backgroundImage:`url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize:"cover", backgroundRepeat:"no-repeat"}}>
                                         <strong>Hover Me</strong>
                                     </div>
                                 </div>
