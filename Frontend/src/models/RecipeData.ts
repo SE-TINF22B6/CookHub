@@ -1,0 +1,18 @@
+export interface RecipeData {
+    id: number | undefined,
+    name: string | undefined,
+    creatorId: number | undefined,
+    creatorName: string | undefined,
+    pictureUrl: string | undefined,
+    prepTime: number | undefined,
+    cookingTime: number | undefined,
+    difficulty: number | undefined,
+    description: string | undefined,
+    instructionsText: string | undefined,
+    creationDateTime: string | undefined,
+    categories: Array<string | undefined>,
+    ingredients: Array<object | undefined>,
+    adventureTexts: Array<string | undefined>,
+    likeCount: number | undefined,
+    likedByCurrentUser: boolean | undefined,
+}
