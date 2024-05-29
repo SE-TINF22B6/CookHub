@@ -49,6 +49,12 @@ public class Recipe
             Difficulty = Difficulty,
             Description = Description,
             InstructionText = InstructionText,
+            Ingredients = Ingredients.Select(recipeIngredient => new RecipeIngredientModel
+            {
+                IngredientName = recipeIngredient.Ingredient.Name,
+                Quantity = recipeIngredient.Quantity,
+                UnitOfMeasure = recipeIngredient.UnitOfMeasure?? ""
+            }),
             CreationDate = CreationDate,
             Categories = Categories.Select(category => category.ToString()),
             AdventureTexts = AdventureTexts,

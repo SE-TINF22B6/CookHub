@@ -73,7 +73,7 @@ function App() {
                     <Route path='/impressum' element={<Impressum/>}/>
                     <Route path='/profile' element={<Profile data={userData ?? null}/>}/>
                     <Route path='/settings' element={<Settings  data={userData?? null}/>}/>
-                    <Route path='/myrecipes/:slug' element={<MyRecipes/>}/>
+                    <Route path='/myrecipes/:slug' element={<MyRecipes data={userData?? null}/>}/>
                     <Route path='/myrecipes' element={<MyRecipeLoggedIn data={userData?? null}/>}/>
                     <Route path='/findrecipes' element={<FindRecipes/>}/>
                     <Route path='/foodforge' element={<FoodForge data={userData?? null}/>}/>

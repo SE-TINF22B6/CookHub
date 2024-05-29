@@ -9,15 +9,10 @@ import Paper from '@mui/material/Paper';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {useTheme} from '@mui/material/styles';
 
-
 import {RecipeDataParams} from "../models/RecipeDataParams";
 
-
-
-
-
 export default function InfoTable(data: RecipeDataParams) {
-    let recipe = data;
+    let recipe = data.data;
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -32,25 +27,19 @@ export default function InfoTable(data: RecipeDataParams) {
                 <TableHead>
                     <TableRow sx={{backgroundColor: '#c7fc70'}}>
                         <TableCell>Name</TableCell>
-                        <TableCell align="right">Creator</TableCell>
-                        <TableCell align="right">Likes</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {recipe.data?.adventureTexts.map((text) => {
-                        let result = text?.split('\n',1)[0];
+                    {recipe?.adventureTexts.map((text) => {
+                        let title = text?.split('\n',1)[0];
                         return(
-                        <TableRow
-
-                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                        >
-
-                            <TableCell component="th" scope="row">
-                                {result}
-                            </TableCell>
-                            <TableCell align="right">{recipe.data?.creatorName}</TableCell>
-                            <TableCell align="right">{recipe.data?.likeCount}</TableCell>
-                        </TableRow>);
+                            <TableRow sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                      onClick={() => data.showAdventureText(title, text?.replace(`${title}\n\n`, ''))}
+                                      style={{cursor: 'pointer'}}>
+                                <TableCell component="th" scope="row">
+                                    {title}
+                                </TableCell>
+                            </TableRow>)
                     })}
                 </TableBody>
             </Table>
