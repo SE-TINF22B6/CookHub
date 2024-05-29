@@ -33,8 +33,8 @@ export default function MyRecipes() {
     async function handleClickAdventurize(id: number) {
         let client = new RecipeClient();
         setAdventureText(null);
-        const data: string | undefined = await client.adventurizeRecipe(id);
-        setAdventureText(data);
+        const adData: string | undefined = await client.adventurizeRecipe(id);
+        setAdventureText(adData);
     }
 
     const handleClickOpen = () => {
@@ -76,8 +76,6 @@ export default function MyRecipes() {
     return (
 
         <div className="MainContainer">
-
-            <h1>MyRecipes</h1>
 
             <div id={"Top-Container"}>
 
@@ -249,7 +247,7 @@ export default function MyRecipes() {
                     fontFamily: "Arial",
                     fontWeight: "bold"
                 }}>Adventurized Versions:</h2>
-                <InfoTable/>
+                <InfoTable data={data}  />
 
             </div>
 
