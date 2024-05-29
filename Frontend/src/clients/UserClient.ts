@@ -94,8 +94,9 @@ export class UserClient {
 
 
     public async userSignup(name: string, email: string, password: string) {
+        let response;
         try {
-            const response =  await fetch(`https://localhost:44328/Login/register`, {
+            response = await fetch(`https://localhost:44328/Login/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,15 +107,16 @@ export class UserClient {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                return response.text();
             }
 
-            const data = await response.json();
-            return data;
-
-        } catch (error) {
+        } catch (error : any) {
             console.error(error);
+            console.log(response?.text());
+            return response?.text()?? "";
         }
+
+        return "";
     }
 
 

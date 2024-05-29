@@ -98,7 +98,7 @@ public class LoginControllerTests : IDisposable
         {
             Email = "test@example.com",
             Name = "TestUser",
-            Password = "Test1234"
+            Password = "Test.1234"
         };
 
         // ACT
