@@ -1,9 +1,12 @@
 using System.Text;
 using API.Controllers;
+using API.Models;
 using Contracts.Entities;
 using DataAccess.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
+using NSubstitute;
 using Services;
 using Xunit;
 
@@ -14,65 +17,64 @@ public class UserControllerTests : IDisposable
 {
     private readonly UserController _userController;
     private readonly ISessionFactory _testDatabaseFactory;
+    private readonly UserService _userService;
+    private readonly Dictionary<string,int> _authTokens;
+    private readonly RecipeService _recipeService;
+    private const int UserId = 1;
+    private const string ProfilePicturesFolderPath = "wwwroot/images/profile-pictures";
+    private const string SomeBase64Image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAFCAIAAAAVLyF7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA0SURBVBhXhcpBCgAwDALB/v/T1qKIBEL3EEbISQCs3R68DdZm/oyEYZb5btRIn281rAngAmE2d4kg2D28AAAAAElFTkSuQmCC";
 
     public UserControllerTests()
     {
         _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
-        _userController = new UserController(new UserService(new UserRepository(_testDatabaseFactory)),
-            new RecipeService(new RecipeRepository(_testDatabaseFactory)));
+        _userService = new UserService(new UserRepository(_testDatabaseFactory));
+        _recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
+        _authTokens = new Dictionary<string, int>();
+        _userController = CreateUserControllerWithMockedContext();
+
+        Directory.CreateDirectory(ProfilePicturesFolderPath);
     }
 
-    public void Dispose() => Tests.DisposeTestDatabase(_testDatabaseFactory);
+    public void Dispose()
+    {
+        Tests.DisposeTestDatabase(_testDatabaseFactory);
+        Directory.Delete(ProfilePicturesFolderPath, true);
+    }
+
+    private UserController CreateUserControllerWithMockedContext()
+    {
+        var httpContextMock = Substitute.For<HttpContext>();
+        httpContextMock.Request.Cookies["auth-token"].Returns(_ => _authTokens.SingleOrDefault().Key);
+
+        return new UserController(_userService, _recipeService, _authTokens)
+        {
+            ControllerContext = new ControllerContext { HttpContext = httpContextMock }
+        };
+    }
 
     [Fact]
     public void CanUploadProfilePicture()
     {
-        // ARRANGE
-        const string folderPath = "wwwroot/images/profile-pictures";
-        const string base64Image =
-            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAFCAIAAAAVLyF7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA0SURBVBhXhcpBCgAwDALB/v/T1qKIBEL3EEbISQCs3R68DdZm/oyEYZb5btRIn281rAngAmE2d4kg2D28AAAAAElFTkSuQmCC";
-        if (Directory.Exists(folderPath))
-        {
-            Directory.Delete(folderPath, true);
-        }
-
-        Directory.CreateDirectory(folderPath);
-
         // ACT
-        var result = _userController.UploadProfilePicture(base64Image);
+        var result = _userController.UploadProfilePicture(SomeBase64Image);
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var filesInFolder = Directory.GetFiles(folderPath);
+        var filesInFolder = Directory.GetFiles(ProfilePicturesFolderPath);
         Assert.Single(filesInFolder);
         var returnedFileName = (result as OkObjectResult)!.Value!.ToString()!;
         Assert.Contains(returnedFileName, filesInFolder.Single());
-
-        // CLEAN UP
-        Directory.Delete(folderPath, true);
     }
 
     [Fact]
     public void DontSaveBadBase64Image()
     {
-        // ARRANGE
-        const string folderPath = "wwwroot/images/profile-pictures";
-        if (Directory.Exists(folderPath))
-        {
-            Directory.Delete(folderPath, true);
-        }
-
-        Directory.CreateDirectory(folderPath);
-
         // ACT
         var result = _userController.UploadProfilePicture("blabla");
 
         // ASSERT
         Assert.IsType<BadRequestObjectResult>(result);
-        Assert.Empty(Directory.GetFiles(folderPath));
-
-        // CLEAN UP
-        Directory.Delete(folderPath, true);
+        Assert.Empty(Directory.GetFiles(ProfilePicturesFolderPath));
     }
 
     [Fact]
@@ -110,8 +112,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var expectedMessage = $"User {userId} liked recipe {recipeId}.";
-        Assert.Equal(expectedMessage, (result as OkObjectResult)!.Value!.ToString());
+        Assert.Equal($"User {userId} liked recipe {recipeId}.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -150,8 +151,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<BadRequestObjectResult>(result);
-        var expectedMessage = "User already liked this recipe.";
-        Assert.Equal(expectedMessage, (result as BadRequestObjectResult)!.Value);
+        Assert.Equal("User already liked this recipe.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -176,8 +176,7 @@ public class UserControllerTests : IDisposable
 
         //ASSERT
         Assert.IsType<NotFoundObjectResult>(result);
-        var expectedMessage = "User not found.";
-        Assert.Equal(expectedMessage, (result as NotFoundObjectResult)!.Value);
+        Assert.Equal("User not found.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -204,8 +203,7 @@ public class UserControllerTests : IDisposable
 
         //ASSERT
         Assert.IsType<NotFoundObjectResult>(result);
-        var expectedMessage = "Recipe not found.";
-        Assert.Equal(expectedMessage, (result as NotFoundObjectResult)!.Value);
+        Assert.Equal("Recipe not found.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -246,8 +244,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var expectedMessage = $"User {userId} unliked recipe {recipeId}.";
-        Assert.Equal(expectedMessage, (result as OkObjectResult)!.Value!.ToString());
+        Assert.Equal($"User {userId} unliked recipe {recipeId}.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -272,8 +269,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<NotFoundObjectResult>(result);
-        var expectedMessage = "User not found.";
-        Assert.Equal(expectedMessage, (result as NotFoundObjectResult)!.Value);
+        Assert.Equal("User not found.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -300,8 +296,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<NotFoundObjectResult>(result);
-        var expectedMessage = "Recipe not found.";
-        Assert.Equal(expectedMessage, (result as NotFoundObjectResult)!.Value);
+        Assert.Equal("Recipe not found.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -337,8 +332,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<BadRequestObjectResult>(result);
-        var expectedMessage = "User hasn't liked this recipe.";
-        Assert.Equal(expectedMessage, (result as BadRequestObjectResult)!.Value);
+        Assert.Equal("User hasn't liked this recipe.", ResponseMessageOf(result));
     }
     
     [Fact]
@@ -388,7 +382,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var likedRecipes = (result as OkObjectResult)!.Value as IEnumerable<Recipe>;
+        var likedRecipes = ResponseMessageOf(result) as IEnumerable<Recipe>;
         Assert.NotNull(likedRecipes);
         Assert.Contains(likedRecipes, r => r.Id == recipeId1);
         Assert.Contains(likedRecipes, r => r.Id == recipeId2);
@@ -405,8 +399,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<NotFoundObjectResult>(result);
-        var expectedMessage = "User not found.";
-        Assert.Equal(expectedMessage, (result as NotFoundObjectResult)!.Value);
+        Assert.Equal("User not found.", ResponseMessageOf(result));
     }
 
     [Fact]
@@ -433,8 +426,179 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var likedRecipes = (result as OkObjectResult)!.Value as IEnumerable<Recipe>;
+        var likedRecipes = ResponseMessageOf(result) as IEnumerable<Recipe>;
         Assert.NotNull(likedRecipes);
         Assert.Empty(likedRecipes);
     }
+
+    [Fact]
+    public void DontChangeUserSettingsWhenNotLoggedIn()
+    {
+        Assert.IsType<BadRequestObjectResult>(_userController.ChangeUsername("newUsername"));
+        Assert.IsType<BadRequestObjectResult>(_userController.ChangePassword(new PasswordChangeModel
+        {
+            OldPassword = "Old.Password123",
+            NewPassword = "New.Password123",
+        }));
+        Assert.IsType<BadRequestObjectResult>(_userController.DeleteAccount("Some.Password123"));
+        Assert.IsType<BadRequestObjectResult>(_userController.ChangeProfilePicture(SomeBase64Image));
+    }
+
+    [Fact]
+    public void CanChangeUsername()
+    {
+        // ARRANGE
+        const int userId = 1;
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), userId);
+        const string newUsername = "ILoveCarlos";
+
+        // ACT
+        var result = _userController.ChangeUsername(newUsername);
+
+        // ASSERT
+        Assert.IsType<OkResult>(result);
+        var userInDatabase = _userService.GetAllUsers().Single();
+        Assert.Equal(newUsername, userInDatabase.Name);
+    }
+
+    [Theory]
+    [InlineData(""), InlineData("h"), InlineData("H@llo"),
+     InlineData("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"), InlineData(SomeBase64Image)]
+    public void DontChangeUsernameToInvalidUsername(string newUsername)
+    {
+        // ARRANGE
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+
+        // ACT
+        var result = _userController.ChangeUsername(newUsername);
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("Invalid username.", ResponseMessageOf(result));
+        var userInDatabase = _userService.GetAllUsers().Single();
+        Assert.NotEqual(newUsername, userInDatabase.Name);
+    }
+
+    [Fact]
+    public void CanChangePassword()
+    {
+        // ARRANGE
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+        var passwordChangeData = new PasswordChangeModel
+        {
+            OldPassword = "password",
+            NewPassword = "Password.123"
+        };
+
+        // ACT
+        var result = _userController.ChangePassword(passwordChangeData);
+
+        // ASSERT
+        Assert.IsType<OkResult>(result);
+        var userInDatabase = _userService.GetAllUsers().Single();
+        Assert.Equal(CryptoService.GetHash(passwordChangeData.NewPassword), userInDatabase.PasswordHash);
+    }
+
+    [Theory]
+    [InlineData("Admin123")]  // no special character
+    [InlineData("Admin!")]    // no number
+    [InlineData("Admin.1")]   // too short
+    [InlineData(SomeBase64Image)] // mental illness
+    public void DontChangePasswordToInvalidPassword(string newPassword)
+    {
+        // ARRANGE
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+        var passwordChangeData = new PasswordChangeModel
+        {
+            OldPassword = "password",
+            NewPassword = newPassword
+        };
+
+        // ACT
+        var result = _userController.ChangePassword(passwordChangeData);
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("New password is invalid.", ResponseMessageOf(result));
+        var userInDatabase = _userService.GetAllUsers().Single();
+        Assert.NotEqual(CryptoService.GetHash(newPassword), userInDatabase.PasswordHash);
+    }
+
+    [Fact]
+    public void CanDeleteAccount()
+    {
+        // ARRANGE
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+        
+        // ACT
+        var result = _userController.DeleteAccount("password");
+        
+        // ASSERT
+        Assert.IsType<OkResult>(result);
+        Assert.Empty(_userService.GetAllUsers());
+    }
+
+    [Fact]
+    public void DontDeleteAccountWhenUserEnteredWrongPassword()
+    {
+        // ARRANGE
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+        
+        // ACT
+        var result = _userController.DeleteAccount("wrongPassword");
+        
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("Invalid password.", ResponseMessageOf(result));
+        Assert.Single(_userService.GetAllUsers());
+    }
+
+    [Fact]
+    public void CanChangeProfilePicture()
+    {
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+        var oldProfilePicture = _userService.GetAllUsers().Single().ProfilePicture;
+        
+        // ACT
+        var result = _userController.ChangeProfilePicture(SomeBase64Image);
+        
+        // ASSERT
+        Assert.IsType<OkResult>(result);
+
+        var newProfilePicture = _userService.GetAllUsers().Single().ProfilePicture;
+        Assert.NotEqual(oldProfilePicture, newProfilePicture);
+
+        var profilePicturesFolder = Directory.GetFiles(ProfilePicturesFolderPath)
+            .Select(path => path.Replace(@"\", "/")); // make paths the same on windows and linux
+        Assert.Contains($"{ProfilePicturesFolderPath}/{newProfilePicture}", profilePicturesFolder);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("blablabalbalblalb")]
+    [InlineData("asdf" + SomeBase64Image)]
+    public void DontChangeProfilePictureToBadImage(string base64Image)
+    {
+        _userService.CreateTestUser();
+        _authTokens.Add(CryptoService.GenerateToken(), UserId);
+        var oldProfilePicture = _userService.GetAllUsers().Single().ProfilePicture;
+
+        // ACT
+        var result = _userController.ChangeProfilePicture(base64Image);
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("Invalid base64 image.", ResponseMessageOf(result));
+        var userInDatabase = _userService.GetAllUsers().Single();
+        Assert.Equal(oldProfilePicture, userInDatabase.ProfilePicture);
+    }
+
+    private static object? ResponseMessageOf(IActionResult result) => (result as ObjectResult)?.Value;
 }

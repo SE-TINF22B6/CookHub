@@ -72,8 +72,8 @@ public partial class UserService
     {
         fileName = "";
 
-        if (base64Image.Length > 1_073_741_824) // = 1 GB
-        {   // image is too large
+        if (base64Image.Length is < 10 or > 1_073_741_824) // = 1 GB
+        {   // image is too short to be an image, or too large
             return false;
         }
 
