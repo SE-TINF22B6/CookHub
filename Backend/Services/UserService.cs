@@ -231,6 +231,6 @@ public partial class UserService
     [GeneratedRegex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,24}$")]
     private static partial Regex EmailRegex();
 
-    [GeneratedRegex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,32}$")]
+    [GeneratedRegex("""^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,32}$""")]
     private static partial Regex PasswordRegex();
 }
