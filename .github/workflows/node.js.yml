@@ -21,12 +21,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    # Start backend
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Start Backend
+      run: dotnet run --launch-profile https --urls=https://localhost:44328/
+      working-directory: Backend/API
+
+    # Start Frontend
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
     - run: npm ci
       working-directory: ./
     - run: npm ci
