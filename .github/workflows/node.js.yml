@@ -28,7 +28,7 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Start Backend in background
-      run: nohup dotnet run --launch-profile https --urls=https://localhost:44328/
+      run: dotnet run --launch-profile https --urls=https://localhost:44328/ | tee echo
       working-directory: Backend/API
 
     # Start Frontend
