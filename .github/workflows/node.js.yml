@@ -27,8 +27,8 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
-    - name: Start Backend
-      run: dotnet run --launch-profile https --urls=https://localhost:44328/
+    - name: Start Backend in background
+      run: nohup dotnet run --launch-profile https --urls=https://localhost:44328/
       working-directory: Backend/API
 
     # Start Frontend
