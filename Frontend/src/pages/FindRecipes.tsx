@@ -66,8 +66,10 @@ export default function FindRecipes() {
                             <ul className="results">
                                 <a href={`/myrecipes/${recipe.id}`}>
                                     <li className="preview" key={index}>
-                                        <img src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
-                                             alt="recipe" style={{width: '20%', borderRadius: '50%'}}/>
+                                        <img className="previewImage"
+                                             src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                                             alt="recipe"
+                                        />
                                         <div className="preview__data">
                                             <h4 className="preview__title">{recipe.name}</h4>
                                             <div className="preview__time">
