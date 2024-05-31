@@ -16,19 +16,34 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
+
+    # Start backend
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Start Backend in background
+      run: dotnet run --launch-profile https --urls=https://localhost:44328/ &
+      working-directory: Backend/API
+
+    # Start Frontend
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+      working-directory: ./
+    - run: npm ci
       working-directory: Frontend
     - run: npm run build --if-present
+      working-directory: Frontend
+    - run: HTTPS=true npm start &
       working-directory: Frontend
     - run: npm test
       working-directory: Frontend

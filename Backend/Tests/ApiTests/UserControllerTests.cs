@@ -2,6 +2,7 @@ using System.Text;
 using API.Controllers;
 using API.Models;
 using Contracts.Entities;
+using DataAccess;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ public class UserControllerTests : IDisposable
 
     public UserControllerTests()
     {
-        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
+        _testDatabaseFactory = DataAccessFactory.CreateTestDatabaseFactory();
         _userService = new UserService(new UserRepository(_testDatabaseFactory));
         _recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
         _authTokens = new Dictionary<string, int>();
@@ -37,7 +38,7 @@ public class UserControllerTests : IDisposable
 
     public void Dispose()
     {
-        Tests.DisposeTestDatabase(_testDatabaseFactory);
+        DataAccessFactory.DisposeTestDatabase(_testDatabaseFactory);
         Directory.Delete(ProfilePicturesFolderPath, true);
     }
 

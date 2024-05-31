@@ -3,6 +3,7 @@ using API.Models;
 using DataAccess.Repository;
 using Contracts.Entities;
 using Contracts.Models;
+using DataAccess;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
@@ -25,7 +26,7 @@ public class RecipeControllerTests : IDisposable
 
     public RecipeControllerTests()
     {
-        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
+        _testDatabaseFactory = DataAccessFactory.CreateTestDatabaseFactory();
         _userService = new UserService(new UserRepository(_testDatabaseFactory));
         _authTokens = new Dictionary<string, int>();
         _recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
@@ -41,7 +42,7 @@ public class RecipeControllerTests : IDisposable
 
     public void Dispose()
     {
-        Tests.DisposeTestDatabase(_testDatabaseFactory);
+        DataAccessFactory.DisposeTestDatabase(_testDatabaseFactory);
         try
         {
             Directory.Delete(RecipePicturesFolderPath, true);

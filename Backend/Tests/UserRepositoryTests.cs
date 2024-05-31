@@ -1,4 +1,5 @@
 using Contracts.Entities;
+using DataAccess;
 using DataAccess.Repository;
 using NHibernate;
 using Services;
@@ -14,12 +15,12 @@ public class UserRepositoryTests : IDisposable
 
     public UserRepositoryTests()
     {
-        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
+        _testDatabaseFactory = DataAccessFactory.CreateTestDatabaseFactory();
         _repository = new UserRepository(_testDatabaseFactory);
     }
 
     public void Dispose()
-        => Tests.DisposeTestDatabase(_testDatabaseFactory);
+        => DataAccessFactory.DisposeTestDatabase(_testDatabaseFactory);
 
     [Fact]
     public void CanCreateAndGetAUser()
