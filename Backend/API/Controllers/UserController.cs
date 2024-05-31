@@ -1,3 +1,4 @@
+using API.Models;
 using Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -11,11 +12,13 @@ public class UserController : ControllerBase
     
     private readonly UserService _userService;
     private readonly RecipeService _recipeService;
+    private readonly Dictionary<string, int> _authTokens;
 
-    public UserController(UserService userService, RecipeService recipeService)
+    public UserController(UserService userService, RecipeService recipeService, Dictionary<string, int> authTokens)
     {
         _userService = userService;
         _recipeService = recipeService;
+        _authTokens = authTokens;
     }
 
     /// <summary>
@@ -145,5 +148,64 @@ public class UserController : ControllerBase
         var likedRecipes = _userService.GetLikedRecipesByUserId(userId);
         return Ok(likedRecipes);
     }
-    
+
+    [HttpPost("change-username")]
+    public IActionResult ChangeUsername([FromBody] string newUsername)
+    {
+        var error = string.Empty;
+        return GenericUserRequest(userId => _userService.TryChangeUsername(userId, newUsername, out error), in error);
+    }
+
+    [HttpPost("change-password")]
+    public IActionResult ChangePassword([FromBody] PasswordChangeModel input)
+    {
+        var error = string.Empty;
+        return GenericUserRequest(userId => _userService.TryChangePassword(userId, input.OldPassword, input.NewPassword, out error), in error);
+    }
+
+    [HttpPost("change-profile-picture")]
+    public IActionResult ChangeProfilePicture([FromBody] string base64Image)
+    {
+        var error = string.Empty;
+        return GenericUserRequest(userId => _userService.TryChangeProfilePicture(userId, base64Image, out error), in error);
+    }
+
+    [HttpDelete("delete-account")]
+    public IActionResult DeleteAccount([FromBody] string password)
+    {
+        var error = string.Empty;
+        return GenericUserRequest(userId =>
+        {
+            var isDeleted = _userService.TryDeleteAccount(userId, password, out error);
+            if (isDeleted) LogOut();
+            return isDeleted;
+        }, in error);
+    }
+
+    private IActionResult GenericUserRequest(Predicate<int> tryWithUserId, in string errorAfterInvoke)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in.");
+        }
+
+        var success = tryWithUserId.Invoke(userId);
+
+        return success ? Ok() : BadRequest(errorAfterInvoke);
+    }
+
+    private int GetIdOfLoggedInUser()
+    {
+        var isLoggedIn = _authTokens.TryGetValue(Request.Cookies["auth-token"]?? "", out var userId);
+        return isLoggedIn ? userId : -1;
+    }
+
+    private void LogOut()
+    {
+        var authToken = Request.Cookies["auth-token"];
+        Response.Cookies.Delete("auth-token");
+        _authTokens.Remove(authToken?? "");
+    }
 }
