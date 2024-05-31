@@ -1,4 +1,5 @@
 using Contracts.Entities;
+using DataAccess;
 using DataAccess.Repository;
 using OpenAI;
 using OpenAI.Managers;
@@ -25,11 +26,18 @@ builder.Services.AddCors(options =>
 });
 
 var noApiToken = false;
+var noDatabase = false;
 
 if (string.IsNullOrEmpty(ConfigService.Config.OpenAiToken))
 {
     Console.Error.Write("No OpenAI API token specified. Please enter the API token in the /Backend/config.json file.");
     noApiToken = true;
+}
+
+if (string.IsNullOrEmpty(ConfigService.Config.DatabaseConnectionString))
+{
+    Console.Error.Write("No database connection string specified in /Backend/config.json. Running with SQLite test database.");
+    noDatabase = true;
 }
 
 // dependency injection:
@@ -40,8 +48,9 @@ builder.Services.AddTransient<AdventurizeService>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IRecipeRepository, RecipeRepository>();
 builder.Services.AddTransient<IRepository<Ingredient>, IngredientRepository>();
-var sessionFactory = DataAccess.DataAccess.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString);
-builder.Services.AddSingleton(sessionFactory);
+builder.Services.AddSingleton(noDatabase
+    ? DataAccessFactory.CreateTestDatabaseFactory()
+    : DataAccessFactory.CreateSessionFactory(ConfigService.Config.DatabaseConnectionString));
 builder.Services.AddSingleton(new OpenAIService(new OpenAiOptions
 {
     ApiKey = noApiToken? "no api token specified" : ConfigService.Config.OpenAiToken

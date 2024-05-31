@@ -1,6 +1,7 @@
 using API.Controllers;
 using API.Models;
 using Contracts.Models;
+using DataAccess;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ public class LoginControllerTests : IDisposable
 
     public LoginControllerTests()
     {
-        _testDatabaseFactory = Tests.CreateTestDatabaseFactory();
+        _testDatabaseFactory = DataAccessFactory.CreateTestDatabaseFactory();
         _authTokens = new Dictionary<string, int>();
         _userService = new UserService(new UserRepository(_testDatabaseFactory));
         _loginController = new LoginController(_userService, _authTokens)
@@ -31,7 +32,7 @@ public class LoginControllerTests : IDisposable
     }
 
     public void Dispose()
-        => Tests.DisposeTestDatabase(_testDatabaseFactory);
+        => DataAccessFactory.DisposeTestDatabase(_testDatabaseFactory);
 
     [Fact]
     public void CanLogIn()
