@@ -37,5 +37,5 @@ jobs:
       working-directory: Frontend
     - run: npm run build --if-present
       working-directory: Frontend
-    - run: npm test
+    - run: sudo npm test
       working-directory: Frontend
