@@ -27,15 +27,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - name: Install Google Chrome
-      run: |
-        chmod +x ./scripts/InstallChrome.sh
-                    ./scripts/InstallChrome.sh
     - run: npm ci
       working-directory: ./
     - run: npm ci
       working-directory: Frontend
     - run: npm run build --if-present
       working-directory: Frontend
-    - run: sudo npm test
+    - run: npm test
       working-directory: Frontend
