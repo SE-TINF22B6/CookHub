@@ -20,21 +20,24 @@ import Placeholder from "../assets/fillElements/placeholder.png";
 import RageQuitButton from "../assets/fillElements/rageQuit-btn.png";
 import {RecipeClient} from "../clients/RecipeClient";
 import InfoTable from "../components/InfoTable";
+import {UserDataParams} from "../models/UserDataParams";
 
 
-export default function MyRecipes() {
+export default function MyRecipes(user : UserDataParams) {
     let {slug} = useParams();
     const [data, setData] = useState<any>(null);
     const [selected, setSelected] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [adventureText, setAdventureText] = React.useState<any>("");
-
+    const [title, setTitle] = React.useState("");
+    const [instructionText, setInstructionText] = React.useState("");
+    const [nrOfPortions, setNrOfPortions] = React.useState<number>(1);
 
     async function handleClickAdventurize(id: number) {
         let client = new RecipeClient();
         setAdventureText(null);
-        const data: string | undefined = await client.adventurizeRecipe(id);
-        setAdventureText(data);
+        const adData: string | undefined = await client.adventurizeRecipe(id);
+        setAdventureText(adData);
     }
 
     const handleClickOpen = () => {
@@ -44,12 +47,20 @@ export default function MyRecipes() {
         setOpen(false);
     };
 
+    const showAdventureText = (title: string, text: string) => {
+        setTitle(title);
+        setInstructionText(text);
+        window.location.href = '#';
+    }
 
     useEffect(() => {
         async function findRecipe(slug: string | undefined) {
             try {
                 let client: RecipeClient = new RecipeClient();
-                setData(await client.getRecipeById(Number(slug)));
+                const recipe = await client.getRecipeById(Number(slug));
+                setData(recipe);
+                setTitle(recipe?.name?? "");
+                setInstructionText(recipe?.instructionText?? "");
             } catch (error) {
                 console.log("Fehler beim Laden des Rezeptes: ", error);
             }
@@ -131,6 +142,7 @@ export default function MyRecipes() {
                                 name: 'number of portions',
                                 id: 'uncontrolled-native',
                             }}
+                            onChange={event => setNrOfPortions(+event.target.value)}
                         >
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -146,11 +158,10 @@ export default function MyRecipes() {
                     </FormControl>
                     <br/>
                     <br/>
-                    {/* TODO: implement logic to get ingredients of recipe out of db */}
                     <ul>
                         {data.ingredients.length !== 0 ?
                             data.ingredients.map((item: any) => {
-                                return <li>{item.ingredient.name}</li>
+                                return <li>{`${item.quantity !== 0 ? item.quantity*nrOfPortions : ''} ${item.unitOfMeasure} ${item.ingredientName}`}</li>
                             }) : <li>No Ingredients available</li>
                         }
 
@@ -163,7 +174,7 @@ export default function MyRecipes() {
                     <span id="InstructionText" style={{color: "black"}}>
                             {data.instructionText ?
                                 <span
-                                    dangerouslySetInnerHTML={{__html: data.instructionText.replaceAll('\n', '<br>')}}></span> :
+                                    dangerouslySetInnerHTML={{__html: instructionText.replaceAll('\n', '<br>')}}></span> :
                                 <p>No Instruction available</p>
                             }
 
@@ -179,7 +190,7 @@ export default function MyRecipes() {
                         <img className="RageQuitButton" src={RageQuitButton} alt={"RageQuitButton"}/>
                     </button>
                 </a>
-                <button className={"adventureButton"} onClick={() => {
+                <button className={"adventureButton"} hidden={user.data == null} onClick={() => {
                     handleClickOpen();
                     handleClickAdventurize(data.id);
                 }}>

@@ -1,5 +1,3 @@
-using Contracts.Entities;
-
 namespace Contracts.Models;
 
 public class RecipeModel
@@ -16,7 +14,7 @@ public class RecipeModel
     public required string InstructionText { get; set; }
     public DateTime CreationDate { get; set; } = DateTime.Now.ToUniversalTime();
     public IEnumerable<string> Categories { get; set; } = new List<string>();
-    public IEnumerable<RecipeIngredient> Ingredients { get; set; } = new List<RecipeIngredient>();
+    public IEnumerable<RecipeIngredientModel> Ingredients { get; set; } = new List<RecipeIngredientModel>();
     public IEnumerable<string> AdventureTexts { get; set; } = new List<string>();
     public int LikeCount { get; set; }
     public bool LikedByCurrentUser { get; set; }

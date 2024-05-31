@@ -8,8 +8,7 @@ public class Recipe
     public virtual int Id { get; set; }
     public virtual string Name { get; set; } = null!;
     [JsonIgnore]
-    public virtual User Creator { get; set; } = null!;
-    public virtual int CreatorId => Creator.Id;
+    public virtual User? Creator { get; set; }
     public virtual string PictureUrl { get; set; } = "";
     public virtual int PrepTime { get; set; }
     public virtual int CookingTime { get; set; }
@@ -41,14 +40,20 @@ public class Recipe
         {
             Id = Id,
             Name = Name,
-            CreatorId = Creator.Id,
-            CreatorName = Creator.Name,
+            CreatorId = Creator?.Id?? 0,
+            CreatorName = Creator?.Name?? "Deleted user",
             PictureUrl = PictureUrl,
             PrepTime = PrepTime,
             CookingTime = CookingTime,
             Difficulty = Difficulty,
             Description = Description,
             InstructionText = InstructionText,
+            Ingredients = Ingredients.Select(recipeIngredient => new RecipeIngredientModel
+            {
+                IngredientName = recipeIngredient.Ingredient.Name,
+                Quantity = recipeIngredient.Quantity,
+                UnitOfMeasure = recipeIngredient.UnitOfMeasure?? ""
+            }),
             CreationDate = CreationDate,
             Categories = Categories.Select(category => category.ToString()),
             AdventureTexts = AdventureTexts,

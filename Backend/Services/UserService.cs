@@ -72,8 +72,8 @@ public partial class UserService
     {
         fileName = "";
 
-        if (base64Image.Length > 1_073_741_824) // = 1 GB
-        {   // image is too large
+        if (base64Image.Length is < 10 or > 1_073_741_824) // = 1 GB
+        {   // image is too short to be an image, or too large
             return false;
         }
 
@@ -128,12 +128,109 @@ public partial class UserService
         return error == string.Empty;
     }
 
+    public bool TryChangeUsername(int userId, string newUsername, out string error)
+    {
+        if (!UsernameRegex().IsMatch(newUsername))
+        {
+            error = "Invalid username.";
+            return false;
+        }
+
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        user.Name = newUsername;
+        _repository.Update(user);
+
+        error = string.Empty;
+        return true;
+    }
+
+    public bool TryChangePassword(int userId, string oldPassword, string newPassword, out string error)
+    {
+        if (!PasswordRegex().IsMatch(newPassword))
+        {
+            error = "New password is invalid.";
+            return false;
+        }
+
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        if (!CryptoService.GetHash(oldPassword).SequenceEqual(user.PasswordHash))
+        {
+            error = "Old password is invalid.";
+            return false;
+        }
+
+        user.PasswordHash = CryptoService.GetHash(newPassword);
+        _repository.Update(user);
+
+        error = string.Empty;
+        return true;
+    }
+
+    public bool TryChangeProfilePicture(int userId, string base64Image, out string error)
+    {
+        if (!TrySaveProfilePicture(base64Image, out var fileName))
+        {
+            error = "Invalid base64 image.";
+            return false;
+        }
+
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        user.ProfilePicture = fileName;
+        _repository.Update(user);
+
+        error = string.Empty;
+        return true;
+    }
+
+    public bool TryDeleteAccount(int userId, string password, out string error)
+    {
+        var user = GetUserById(userId);
+
+        if (user == null)
+        {
+            error = $"Could not find user with id {userId}";
+            return false;
+        }
+
+        if (!CryptoService.GetHash(password).SequenceEqual(user.PasswordHash))
+        {
+            error = "Invalid password.";
+            return false;
+        }
+
+        _repository.Delete(user);
+
+        error = string.Empty;
+        return true;
+    }
+
     [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]
     private static partial Regex UsernameRegex();
 
     [GeneratedRegex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,24}$")]
     private static partial Regex EmailRegex();
 
-    [GeneratedRegex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,32}$")]
+    [GeneratedRegex("""^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,32}$""")]
     private static partial Regex PasswordRegex();
 }

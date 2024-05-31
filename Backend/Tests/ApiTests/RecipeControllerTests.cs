@@ -2,6 +2,7 @@ using API.Controllers;
 using API.Models;
 using DataAccess.Repository;
 using Contracts.Entities;
+using Contracts.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;

@@ -7,25 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 
-function createData(
-    name: string,
-    creator: string,
-    rating: string,
-) {
-    return { name, creator, rating};
-}
+import {RecipeDataParams} from "../models/RecipeDataParams";
 
-
-const rows = [
-    createData('Ramen Noodles of Death', 'AlphaUser', '⭐⭐⭐⭐'),
-    createData('Out of Ramen', 'Cooker69', '⭐⭐'),
-
-];
-
-
-export default function InfoTable() {
+export default function InfoTable(data: RecipeDataParams) {
+    let recipe = data.data;
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -36,27 +23,24 @@ export default function InfoTable() {
                             minHeight: 400
                         }}
         >
-            <Table sx={{ minWidth: 200 }} aria-label="simple table">
+            <Table sx={{minWidth: 200}} aria-label="simple table">
                 <TableHead>
-                    <TableRow sx={{ backgroundColor: '#c7fc70' }}>
+                    <TableRow sx={{backgroundColor: '#c7fc70'}}>
                         <TableCell>Name</TableCell>
-                        <TableCell align="right">Creator</TableCell>
-                        <TableCell align="right">Rating</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
-                        <TableRow
-                            key={row.name}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {row.name}
-                            </TableCell>
-                            <TableCell align="right">{row.creator}</TableCell>
-                            <TableCell align="right">{row.rating}</TableCell>
-                        </TableRow>
-                    ))}
+                    {recipe?.adventureTexts.map((text) => {
+                        let title = text?.split('\n',1)[0];
+                        return(
+                            <TableRow sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                                      onClick={() => data.showAdventureText(title, text?.replace(`${title}\n\n`, ''))}
+                                      style={{cursor: 'pointer'}}>
+                                <TableCell component="th" scope="row">
+                                    {title}
+                                </TableCell>
+                            </TableRow>)
+                    })}
                 </TableBody>
             </Table>
         </TableContainer>
