@@ -12,10 +12,10 @@ test('renders learn react link', () => {
 
 it('should be able to start selenium', async () => {
     const options = new Chrome.Options();
-    options.addArguments('headless');
+    options.addArguments('headless', 'ignore-certificate-errors');
     let driver = await new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
-    await driver.get('https://www.selenium.dev/selenium/web/web-form.html');
+    await driver.get('https://localhost:3000/');
     let title = await driver.getTitle();
-    expect(title).toEqual("Web form");
+    expect(title).toEqual("React App");
     await driver.close();
 });
