@@ -88,6 +88,10 @@ export default function MyRecipes(user : UserDataParams) {
 
         <div className="MainContainer">
 
+            <div id={"Header"}>
+                <h1>🗇 {title} </h1>
+            </div>
+
             <div id={"Top-Container"}>
 
                 <div id={"Top-Left-Container"}>
@@ -98,8 +102,6 @@ export default function MyRecipes(user : UserDataParams) {
 
                 <div id={"Top-Right-Container"}>
 
-                    <h1>🗇 {title} </h1>
-
                     <br/>
                     <span className={"infoText"}>
                             {/* TODO: implement logic to get data from db */}
@@ -108,7 +110,6 @@ export default function MyRecipes(user : UserDataParams) {
                         <p><strong>Difficulty:</strong> {data.difficulty}</p>
                         <p><strong>Liked:</strong> {data.likeCount}</p>
                         <p hidden={user.data == null}>
-                            Like:
                             <ToggleButton
                                 value="check"
                                 color="warning"
@@ -161,7 +162,7 @@ export default function MyRecipes(user : UserDataParams) {
                     <ul>
                         {data.ingredients.length !== 0 ?
                             data.ingredients.map((item: any) => {
-                                return <li>{`${item.quantity !== 0 ? item.quantity*nrOfPortions : ''} ${item.unitOfMeasure} ${item.ingredientName}`}</li>
+                                return <li>{`${item.quantity !== 0 ? item.quantity * nrOfPortions : ''} ${item.unitOfMeasure} ${item.ingredientName}`}</li>
                             }) : <li>No Ingredients available</li>
                         }
 
@@ -184,17 +185,19 @@ export default function MyRecipes(user : UserDataParams) {
             </div>
 
             <div id={"Button-Container"}>
-                <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"}
+                <a className={"rageQuitButton"}
+                   href={"https://www.lieferando.de/"}
+                   target={"_blank"}
                    rel={"noreferrer"}>
                     <button className={"btn"}>
-                        <img src={RageQuitButton} width={"210"} alt={"RageQuitButton"}/>
+                        <img className="RageQuitButton" src={RageQuitButton} alt={"RageQuitButton"}/>
                     </button>
                 </a>
                 <button className={"adventureButton"} hidden={user.data == null} onClick={() => {
                     handleClickOpen();
                     handleClickAdventurize(data.id);
                 }}>
-                    <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" width={"200"}/>
+                    <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" />
                 </button>
                 <Dialog
                     open={open}
@@ -260,7 +263,7 @@ export default function MyRecipes(user : UserDataParams) {
                     fontFamily: "Arial",
                     fontWeight: "bold"
                 }}>Adventurized Versions:</h2>
-                <InfoTable data={data} showAdventureText={showAdventureText} />
+                <InfoTable data={data} showAdventureText={showAdventureText}/>
 
             </div>
 

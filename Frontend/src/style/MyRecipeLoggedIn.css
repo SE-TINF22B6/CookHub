@@ -9,7 +9,7 @@
     height: 100%;
     transform-style: preserve-3d;
     transition: transform 300ms;
-    box-shadow: 0px 0px 10px 1px #000000ee;
+    box-shadow: 0 0 10px 1px #000000ee;
     border-radius: 5px;
 }
 
@@ -90,7 +90,7 @@
 
 
 .description {
-    box-shadow: 0px 0px 10px 5px #00000088;
+    box-shadow: 0 0 10px 5px #00000088;
     margin-top: 40%;
     width: 100%;
     padding: 10px;
@@ -146,4 +146,67 @@
 .allRecipeContainer{
     display: flex;
     justify-content: space-evenly;
+}
+
+
+@media (max-width: 1100px){
+
+    li {
+        font-size: 50%;
+    }
+
+    #Top-Container {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #Top-Right-Container {
+        margin-left: 0;
+    }
+
+
+    #Middle-Container {
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    #Middle-Left-Container {
+        margin-top: 2vh;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #Middle-Right-Container {
+        margin: 0;
+    }
+
+    #InstructionText {
+        font-size: 300%;
+    }
+
+    #Button-Container {
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .RageQuitButton {
+        width: 50%;
+        margin-left: 0;
+        flex: 1;
+    }
+
+    .btn {
+        background-color: #38527D;
+        border: none;
+        cursor: pointer;
+    }
+
+    .adventureButton {
+        flex: 1;
+    }
+
+    .AdventurizeIt{
+        width: 50%;
+    }
 }
