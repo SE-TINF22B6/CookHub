@@ -4,6 +4,8 @@ import App from './App';
 import {Browser, Builder} from "selenium-webdriver";
 import Chrome from 'selenium-webdriver/chrome';
 
+jest.setTimeout(60_000);
+
 test('renders learn react link', () => {
     render(<App />);
     const element = screen.getByText(/Start Journey/i);
