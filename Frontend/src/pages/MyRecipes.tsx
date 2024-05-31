@@ -77,7 +77,9 @@ export default function MyRecipes() {
 
         <div className="MainContainer">
 
-            <h1>MyRecipes</h1>
+            <div id={"Header"}>
+                <h1>🗇 {data.name} </h1>
+            </div>
 
             <div id={"Top-Container"}>
 
@@ -89,8 +91,6 @@ export default function MyRecipes() {
 
                 <div id={"Top-Right-Container"}>
 
-                    <h1>🗇 {data.name} </h1>
-
                     <br/>
                     <span className={"infoText"}>
                             {/* TODO: implement logic to get data from db */}
@@ -98,7 +98,7 @@ export default function MyRecipes() {
                             <p><strong>Cooking Time:</strong> {data.cookingTime} min</p>
                             <p><strong>Difficulty:</strong> {data.difficulty}</p>
                             <p><strong>Liked:</strong> -number of likes-</p>
-                        <p> Like:
+                        <p className={"likeButton"}>
                         <ToggleButton
                             value="check"
                             color="warning"
@@ -176,14 +176,14 @@ export default function MyRecipes() {
                 <a className={"rageQuitButton"} href={"https://www.lieferando.de/"} target={"_blank"}
                    rel={"noreferrer"}>
                     <button className={"btn"}>
-                        <img src={RageQuitButton} width={"210"} alt={"RageQuitButton"}/>
+                        <img className="RageQuitButton" src={RageQuitButton} alt={"RageQuitButton"}/>
                     </button>
                 </a>
                 <button className={"adventureButton"} onClick={() => {
                     handleClickOpen();
                     handleClickAdventurize(data.id);
                 }}>
-                    <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" width={"200"}/>
+                    <img className="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" />
                 </button>
                 <Dialog
                     open={open}
@@ -242,13 +242,7 @@ export default function MyRecipes() {
 
             <div id={"Bottom-Container"}>
 
-                <h2 style={{
-                    textShadow: "2px 2px #C9FE71",
-                    color: "#000000",
-                    fontSize: "40px",
-                    fontFamily: "Arial",
-                    fontWeight: "bold"
-                }}>Adventurized Versions:</h2>
+                <h1>Adventurized Versions:</h1>
                 <InfoTable/>
 
             </div>
