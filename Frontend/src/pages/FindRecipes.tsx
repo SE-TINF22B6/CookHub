@@ -121,7 +121,7 @@ export default function FindRecipes() {
                                         />
 
                                         <CardContent>
-                                            <Typography id={`recipe${recipe.id}`} gutterBottom variant="h5" component="div">
+                                            <Typography className="recipeName" id={`recipe${recipe.id}`} gutterBottom variant="h5" component="div">
                                                 {recipe.name}
                                             </Typography>
                                             <Box sx={{
