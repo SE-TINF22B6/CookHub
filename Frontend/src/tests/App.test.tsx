@@ -1,4 +1,4 @@
-import {driver, frontendUrl} from "./setupTests";
+import {driver, frontendUrl} from "../setupTests";
 
 it('should be able to start selenium', async () => {
     await driver.get(frontendUrl);
