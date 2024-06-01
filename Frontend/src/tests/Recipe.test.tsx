@@ -1,20 +1,6 @@
-import {driver, frontendUrl} from "../setupTests";
+import {driver, frontendUrl, logInWithTestUser, logOut} from "../setupTests";
 import {By} from "selenium-webdriver";
 import {Select} from "selenium-webdriver/lib/select";
-
-const logInWithTestUser = async () => await driver.executeScript(`
-        await fetch('https://localhost:44328/Login/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({'email': 'admin@cookhub.com', 'password': 'password'}),
-            credentials: 'include'
-        });`)
-
-const logOut = async () => await driver.executeScript(`
-    await fetch('https://localhost:44328/Login/log-out', {
-        method: 'GET',
-        credentials: 'include',
-    });`);
 
 describe('test with logged in user', () => {
     beforeAll(async () => {
