@@ -107,8 +107,8 @@ export default function SignUp() {
 
                         <label htmlFor="password">Repeat Password:</label><br/>
                         <input type="password" id="password_2" name="password" onChange={(e) => setPasswordRe(e.target.value)}/><br/><br/><br/>
-                        <span style={{width:"200px", color:"red", fontSize: "14px", marginBottom: "30px", display:"block"}}>{message}</span>
-                        <input type="submit" value="Submit" onClick={handleSignUp}/>
+                        <span id="messageContainer" style={{width:"200px", color:"red", fontSize: "14px", marginBottom: "30px", display:"block"}}>{message}</span>
+                        <input type="submit" id="submitButton" value="Submit" onClick={handleSignUp}/>
                     </form>
                 </div>
 
