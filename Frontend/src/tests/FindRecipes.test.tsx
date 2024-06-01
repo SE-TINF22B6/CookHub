@@ -1,10 +1,15 @@
 import {By, until} from "selenium-webdriver";
-import {driver} from "../setupTests";
+import {driver, frontendUrl} from "../setupTests";
 
 it('should be able to browse recipes', async () => {
-    await driver.get('https://localhost:3000/findrecipes');
+    // ARRANGE
+    await driver.get(`${frontendUrl}/findrecipes`);
+
+    // ACT
     driver.wait(until.elementLocated(By.id('recipe1')));
-    let recipe = await driver.findElement(By.id('recipe1'));
-    let recipeName = await recipe.getText();
+
+    // ASSERT
+    const recipe = await driver.findElement(By.id('recipe1'));
+    const recipeName = await recipe.getText();
     expect(recipeName).toEqual('Pizza Margherita');
 })

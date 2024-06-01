@@ -7,6 +7,7 @@ import {Browser, Builder, WebDriver} from "selenium-webdriver";
 import Chrome from "selenium-webdriver/chrome";
 
 export let driver : WebDriver;
+export const frontendUrl = "https://localhost:3000";
 jest.setTimeout(60_000);
 
 beforeAll(async () => {
