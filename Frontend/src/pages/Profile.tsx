@@ -60,7 +60,7 @@ export default function Profile(userProfile: UserDataParams) {
             <div id="ContainerTop">
 
                 <div id="divLogo">
-                    <img src={carlos} className="carlos" alt="logo"/>
+                    <img className="carlos" src={carlos} alt="logo"/>
                 </div>
 
                 <div id="divUserInfo">
@@ -68,7 +68,7 @@ export default function Profile(userProfile: UserDataParams) {
                         <img src={`https://localhost:44328/images/profile-pictures/${data?.profilePicture}`} className="Avatar" alt="avatar"/>
                     </div>
                     <div className="UsernameHolder">
-                        <h1 style={{color: "#C9FE71"}}>{data?.name}</h1>
+                        <h1>{data?.name}</h1>
                     </div>
                 </div>
 
