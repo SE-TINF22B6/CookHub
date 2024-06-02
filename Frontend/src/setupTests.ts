@@ -26,12 +26,12 @@ export const logOut = async () => await driver.executeScript(`
 jest.setTimeout(60_000);
 
 beforeAll(async () => {
-  const options = new Chrome.Options();
-  options.addArguments('headless', 'ignore-certificate-errors');
-  driver = await new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
-  await driver.manage().setTimeouts({ implicit: 2000 });
+    const options = new Chrome.Options();
+    options.addArguments('headless', 'ignore-certificate-errors');
+    driver = await new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
+    await driver.manage().setTimeouts({ implicit: 2000 });
 });
 
 afterAll(async () => {
-  await driver.close();
+    await driver.close();
 });

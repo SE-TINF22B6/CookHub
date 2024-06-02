@@ -136,4 +136,22 @@ export class UserClient {
 
         return response.ok ? '' : response?.text();
     }
+
+    public async deleteAccount(password: string){
+        let response;
+        try {
+            response = await fetch('https://localhost:44328/User/delete-account', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(password),
+                credentials: 'include'
+            });
+
+            return response.text();
+        } catch (error) {
+            console.log(error);
+            // TODO: display error (?)
+            return await response?.text()?? '';
+        }
+    }
 }

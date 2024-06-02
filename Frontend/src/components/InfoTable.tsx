@@ -35,7 +35,8 @@ export default function InfoTable(data: RecipeDataParams) {
                         return(
                             <TableRow sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                       onClick={() => data.showAdventureText(title, text?.replace(`${title}\n\n`, ''))}
-                                      style={{cursor: 'pointer'}}>
+                                      style={{cursor: 'pointer'}}
+                                      className="adventureTableRow">
                                 <TableCell component="th" scope="row">
                                     {title}
                                 </TableCell>

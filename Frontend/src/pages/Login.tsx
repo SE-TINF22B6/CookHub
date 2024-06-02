@@ -54,7 +54,7 @@ export default function Login() {
                             id="exampleInputPassword1"
                             onChange={event => setPassword(event.target.value)}></input>
                     </div>
-                    <div style={{fontSize: 40, color:"red"}}>{message}</div>
+                    <div id="messageContainer" style={{fontSize: 40, color:"red"}}>{message}</div>
                     <input
                         type="button"
                         className="SubmitButton"

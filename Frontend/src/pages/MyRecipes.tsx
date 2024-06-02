@@ -188,7 +188,7 @@ export default function MyRecipes(user : UserDataParams) {
                     </FormControl>
                     <br/>
                     <br/>
-                    <ul>
+                    <ul id="ingredientsList">
                         {data.ingredients.length !== 0 ?
                             data.ingredients.map((item: any) => {
                                 return <li>{`${item.quantity !== 0 ? item.quantity * nrOfPortions : ''} ${item.unitOfMeasure} ${item.ingredientName}`}</li>
