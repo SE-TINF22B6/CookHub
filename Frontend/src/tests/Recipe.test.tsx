@@ -24,6 +24,7 @@ describe('test with logged in user', () => {
     it('should show like button when user is logged in', async () => {
         // ARRANGE
         const likeButton = await driver.findElement(By.id('likeButton'));
+        await driver.wait(until.elementIsVisible(likeButton));
 
         // ASSERT
         expect(await likeButton.isDisplayed()).toEqual(true);
@@ -32,6 +33,7 @@ describe('test with logged in user', () => {
     it('should show adventurize button when user is logged in', async () => {
         // ARRANGE
         const adventureButton = await driver.findElement(By.className('adventureButton'));
+        await driver.wait(until.elementIsVisible(adventureButton));
 
         // ASSERT
         expect(await adventureButton.isDisplayed()).toEqual(true);
