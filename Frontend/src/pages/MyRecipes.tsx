@@ -21,6 +21,7 @@ import RageQuitButton from "../assets/fillElements/rageQuit-btn.png";
 import {RecipeClient} from "../clients/RecipeClient";
 import InfoTable from "../components/InfoTable";
 import {UserDataParams} from "../models/UserDataParams";
+import {UserClient} from "../clients/UserClient";
 
 
 export default function MyRecipes(user : UserDataParams) {
@@ -32,12 +33,39 @@ export default function MyRecipes(user : UserDataParams) {
     const [title, setTitle] = React.useState("");
     const [instructionText, setInstructionText] = React.useState("");
     const [nrOfPortions, setNrOfPortions] = React.useState<number>(1);
+    const [likeCount, setLikeCount] = React.useState(0);
 
     async function handleClickAdventurize(id: number) {
         let client = new RecipeClient();
         setAdventureText(null);
         const adData: string | undefined = await client.adventurizeRecipe(id);
         setAdventureText(adData);
+    }
+
+    async function handleClickLike() {
+        const userClient = new UserClient();
+        const userId = user.data?.id?? -1;
+        const recipeId = Number(slug);
+        let error = '';
+        let newLikeCount = likeCount;
+
+        if (userId < 1 || recipeId < 1) return;
+
+        if (selected) {
+            error = await userClient.unlikeRecipe(userId, recipeId);
+            newLikeCount--;
+        } else {
+            error = await userClient.likeRecipe(userId, recipeId);
+            newLikeCount++;
+        }
+
+        if (error !== '') {
+            console.error(error);
+            return;
+        }
+
+        setSelected(!selected);
+        setLikeCount(newLikeCount);
     }
 
     const handleClickOpen = () => {
@@ -61,6 +89,8 @@ export default function MyRecipes(user : UserDataParams) {
                 setData(recipe);
                 setTitle(recipe?.name?? "");
                 setInstructionText(recipe?.instructionText?? "");
+                setSelected(recipe.likedByCurrentUser);
+                setLikeCount(recipe.likeCount);
             } catch (error) {
                 console.log("Fehler beim Laden des Rezeptes: ", error);
             }
@@ -108,16 +138,14 @@ export default function MyRecipes(user : UserDataParams) {
                         <p><strong>Preparation Time:</strong> {data.prepTime} min</p>
                         <p><strong>Cooking Time:</strong> {data.cookingTime} min</p>
                         <p><strong>Difficulty:</strong> {data.difficulty}</p>
-                        <p><strong>Liked:</strong> {data.likeCount}</p>
+                        <p id="likeCount"><strong>Likes:</strong> {likeCount}</p>
                         <p hidden={user.data == null}>
                             <ToggleButton
                                 id="likeButton"
                                 value="check"
                                 color="warning"
                                 selected={selected}
-                                onChange={() => {
-                                    setSelected(!selected);
-                                }}
+                                onChange={handleClickLike}
                             >
                                 <FavoriteIcon/>
                             </ToggleButton>

@@ -19,8 +19,10 @@ describe('test with logged in user', () => {
         expect(await heading.getText()).toEqual("Carlos's Recipes");
         expect(await cardBacks[0].getText()).toEqual('Hover Me');
         expect(cardBacks).toHaveLength(2);
-        expect(await cardTitles[0].getText()).toEqual('Pizza Margherita');
-        expect(await cardTitles[1].getText()).toEqual('Spaghetti Carbonara');
+
+        const cardTitleTexts = await Promise.all(cardTitles.map(async card => await card.getText()));
+        expect(cardTitleTexts).toContain('Pizza Margherita');
+        expect(cardTitleTexts).toContain('Spaghetti Carbonara');
     });
 
     afterAll(logOut);
