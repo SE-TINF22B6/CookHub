@@ -16,7 +16,7 @@ interface Props {
     backgroundColor?: string;
 }
 
-export default function Carlos_PopUp({buttonTitle, text, buttonTextColor = '#000000', buttonBorderColor = '#000000', backgroundColor = '#c7fc71'}: Props)  {
+export default function CARLOS_POPUP({buttonTitle, text, buttonTextColor = '#000000', buttonBorderColor = '#000000', backgroundColor = '#c7fc71'}: Props)  {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {

@@ -2,7 +2,7 @@ import '../style/AboutUs.css';
 import * as React from 'react';
 import Carlos from "../assets/AboutUs/Chef_Carlo_with_background.png";
 import CookHub_Team_H1 from "../assets/AboutUs/CookHub_Team_H1.png";
-import Carlos_PopUp from "../helpers/Carlos_PopUp";
+import CARLOS_POPUP from "../helpers/CARLOS_POPUP";
 
 export default function AboutUs() {
     return (
@@ -25,7 +25,7 @@ export default function AboutUs() {
                 <img src={Carlos} className="CarlosTeamMember" alt="team"/>
                 <br/>
                 <br/>
-                <Carlos_PopUp
+                <CARLOS_POPUP
                     buttonTitle="Info"
                     text="Len, you are the best Time-Tracker Manager
                     we could ever ask for. You are always on time and you always

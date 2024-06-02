@@ -7,7 +7,7 @@ import AddIngredientApp from "../components/AddIngredientApp";
 import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
 import FormPropsTextFields from "../components/FormPropsTextFields";
 import ImageUploader from "../components/ImageUploader";
-import Carlos_PopUp from "../helpers/Carlos_PopUp";
+import CARLOS_POPUP from "../helpers/CARLOS_POPUP";
 import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
 
@@ -78,7 +78,7 @@ if (!data){
                         </a>
 
                         <div className="carlos">
-                            <Carlos_PopUp
+                            <CARLOS_POPUP
                                 buttonTitle="Need help?"
                                 text="To create a new recipe just fill out the form on the right side.
                                 You can also add the ingredients which will be added to the pot on the left side.

@@ -5,7 +5,7 @@ import React from "react";
 import "../style/Settings.css";
 import {UserClient} from "../clients/UserClient";
 import ImageUploader from "../components/ImageUploader";
-import Carlos_PopUp from "../helpers/Carlos_PopUp";
+import CARLOS_POPUP from "../helpers/CARLOS_POPUP";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
@@ -53,7 +53,7 @@ export default function Settings(userProfile: UserDataParams) {
 
                     <br/>
 
-                    <Carlos_PopUp
+                    <CARLOS_POPUP
                         buttonTitle="Info"
                         text="In this section you can change your username, password and profile picture. You can also delete your account, but be careful, this action is irreversible! To delete your account, you need to enter your current password."
                         buttonTextColor="#000000"
