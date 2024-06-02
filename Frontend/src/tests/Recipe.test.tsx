@@ -1,5 +1,5 @@
 import {driver, frontendUrl, logInWithTestUser, logOut} from "../setupTests";
-import {By} from "selenium-webdriver";
+import {By, until} from "selenium-webdriver";
 import {Select} from "selenium-webdriver/lib/select";
 
 const unlikeRecipe = async (recipeId: number) => driver.executeScript(
