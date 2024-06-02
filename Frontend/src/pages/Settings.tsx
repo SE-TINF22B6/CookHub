@@ -14,6 +14,7 @@ export default function Settings(userProfile: UserDataParams) {
 
     let data = userProfile.data;
     const [currentPassword, setCurrentPassword] = React.useState('');
+
     // Mock password for testing purposes
     let password = "password";
 
@@ -105,7 +106,7 @@ export default function Settings(userProfile: UserDataParams) {
                         onClick={() => {
                             // Implement onClick functionality by checking the current password
 
-                            if (currentPassword == password) {
+                            if (currentPassword === password) {
                                 if (window.confirm("Are you sure you want to delete your account?")) {
                                     // Implement account deletion functionality
                                     alert("Account deleted successfully!");
