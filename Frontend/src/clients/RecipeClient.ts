@@ -19,7 +19,9 @@ export class RecipeClient {
 
     public async getRecipeById(id: number|undefined) {
         try {
-            const response = await fetch(`https://localhost:44328/Recipe/${id}`);
+            const response = await fetch(`https://localhost:44328/Recipe/${id}`, {
+                credentials: 'include'
+            });
             /*const response = await fetch(`https://localhost:7274/Recipe/byname/${name}`);*/
 
             if (!response.ok) {

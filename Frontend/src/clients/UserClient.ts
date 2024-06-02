@@ -119,6 +119,24 @@ export class UserClient {
         return "";
     }
 
+    public async likeRecipe(userId: number, recipeId: number) {
+        let response = await fetch(`https://localhost:44328/User/like-recipe/${userId}/${recipeId}`, {
+            method: 'POST',
+            credentials: 'include'
+        });
+
+        return response.ok ? '' : response?.text();
+    }
+
+    public async unlikeRecipe(userId: number, recipeId: number) {
+        let response = await fetch(`https://localhost:44328/User/unlike-recipe/${userId}/${recipeId}`, {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+
+        return response.ok ? '' : response?.text();
+    }
+
     public async deleteAccount(password: string) {
         let response;
         try {
