@@ -138,9 +138,10 @@ export default function MyRecipes(user : UserDataParams) {
                         <p><strong>Preparation Time:</strong> {data.prepTime} min</p>
                         <p><strong>Cooking Time:</strong> {data.cookingTime} min</p>
                         <p><strong>Difficulty:</strong> {data.difficulty}</p>
-                        <p><strong>Liked:</strong> {likeCount}</p>
+                        <p id="likeCount"><strong>Likes:</strong> {likeCount}</p>
                         <p hidden={user.data == null}>
                             <ToggleButton
+                                id="likeButton"
                                 value="check"
                                 color="warning"
                                 selected={selected}
