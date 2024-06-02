@@ -108,6 +108,7 @@ export default function Settings(userProfile: UserDataParams) {
 
                             if (currentPassword === password) {
                                 if (window.confirm("Are you sure you want to delete your account?")) {
+
                                     // Implement account deletion functionality
                                     alert("Account deleted successfully!");
                                 }
