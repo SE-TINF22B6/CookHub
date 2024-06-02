@@ -4,21 +4,24 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import "../style/Settings.css";
 import ImageUploader from "../components/ImageUploader";
-
+import Carlos_PopUp from "../helpers/Carlos_PopUp";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
 
 
-
-
 export default function Settings(userProfile: UserDataParams) {
-    let data = userProfile.data;
 
-    if(!data){
+    let data = userProfile.data;
+    const [currentPassword, setCurrentPassword] = React.useState('');
+    // Mock password for testing purposes
+    let password = "password";
+
+
+    if (!data) {
         return (
             <>
-              <NotLoggedIn></NotLoggedIn>
+                <NotLoggedIn></NotLoggedIn>
             </>
         );
     }
@@ -37,11 +40,28 @@ export default function Settings(userProfile: UserDataParams) {
 
                     <h2>Username: {data?.name}</h2>
 
-                    <br/><br/>
+                    <br/>
 
                     <span className={"userPicture"}>
-                        <img src={`https://localhost:44328/images/profile-pictures/${data?.profilePicture}`} alt="User" style={{width: '100%'}}/>
+                        <img id="user-image"
+                             src={`https://localhost:44328/images/profile-pictures/${data?.profilePicture}`}
+                             alt="User"/>
                     </span>
+
+                    <br/>
+
+                    {Carlos_PopUp(
+                        "Info",
+                        "In this section you can change your username, password and profile picture. " +
+                        "You can also delete your account, but be careful, this action is irreversible! " +
+                        "To delete your account, you need to enter your current password.",
+                        '#000000',
+                        '#000000',
+                        'rgb(0,175,99)'
+                    )}
+
+                    <br/><br/>
+
                 </div>
 
                 <Box className={"body-middle"}
@@ -73,21 +93,39 @@ export default function Settings(userProfile: UserDataParams) {
                      noValidate
                      autoComplete="off"
                 >
-                    <h2>Delete Account</h2>
+                    <h2>Change Profile Picture</h2>
+                    <ImageUploader/>
+
+                    <br/>
+
                     <Button
                         variant="contained"
                         startIcon={<DeleteIcon fontSize={"small"}/>}
                         color="error"
                         onClick={() => {
-                            // Implement onClick functionality
+                            // Implement onClick functionality by checking the current password
+
+                            if (currentPassword == password) {
+                                if (window.confirm("Are you sure you want to delete your account?")) {
+                                    // Implement account deletion functionality
+                                    alert("Account deleted successfully!");
+                                }
+                            } else {
+                                alert("Incorrect password!");
+                            }
                         }}>
                         Delete Account
                     </Button>
 
-                    <br/><br/><br/><br/><br/>
+                    <TextField
+                        id="filled-basic"
+                        label="Current password"
+                        variant="filled"
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                    />
 
-                    <h2>Change Profile Picture</h2>
-                    <ImageUploader/>
+                    <br/> <br/>
 
                 </Box>
             </div>
