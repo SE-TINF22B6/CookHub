@@ -76,13 +76,16 @@ if (!data){
                         <a className="Save-Recipe-Button" href='/myRecipes'>
                             <button className="save-recipe">SAVE RECIPE</button>
                         </a>
+
                         <div className="carlos">
-                            {Carlos_PopUp(
-                                "Need help?",
-                                "To create a new recipe just fill out the form on the right side." +
-                                " You can also add the ingredients which will be added to the pot on the left side." +
-                                " To save the recipe just click the 'SAVE RECIPE' button in the end."
-                            )}
+                            <Carlos_PopUp
+                                buttonTitle="Need help?"
+                                text="To create a new recipe just fill out the form on the right side.
+                                You can also add the ingredients which will be added to the pot on the left side.
+                                To save the recipe just click the 'SAVE RECIPE' button in the end."
+                                buttonBorderColor="#000000"
+                                backgroundColor='rgb(0,175,99)'
+                            />
                         </div>
                     </span>
 

@@ -78,7 +78,7 @@ export class UserClient {
         }
     }
 
-    public async getLikedRecipes(userId:number|undefined){
+    public async getLikedRecipes(userId: number | undefined) {
         try {
             const response = await fetch(`https://localhost:44328/User/${userId}/liked-recipes`, {
                 method: 'GET',
@@ -87,7 +87,7 @@ export class UserClient {
 
 
             return response.json();
-        }catch (error){
+        } catch (error) {
             console.error(error);
         }
     }
@@ -110,21 +110,21 @@ export class UserClient {
                 return response.text();
             }
 
-        } catch (error : any) {
+        } catch (error: any) {
             console.error(error);
             console.log(response?.text());
-            return response?.text()?? "";
+            return response?.text() ?? "";
         }
 
         return "";
     }
 
-    public async deleteAccount(password: string){
+    public async deleteAccount(password: string) {
         let response;
         try {
             response = await fetch('https://localhost:44328/User/delete-account', {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(password),
                 credentials: 'include'
             });
@@ -133,7 +133,27 @@ export class UserClient {
         } catch (error) {
             console.log(error);
             // TODO: display error (?)
-            return await response?.text()?? '';
+            return await response?.text() ?? '';
         }
     }
+
+    async changeUsername(newName: string) {
+        try {
+            const response = await fetch('https://localhost:44328/User/change-username', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(newName),
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                return response.text();
+            }
+
+            return response.status;
+        } catch (error: any) {
+            console.error(error);
+            return "";
+        }
+    };
 }

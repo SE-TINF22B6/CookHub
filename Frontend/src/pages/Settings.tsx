@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import React from "react";
 import "../style/Settings.css";
+import {UserClient} from "../clients/UserClient";
 import ImageUploader from "../components/ImageUploader";
 import Carlos_PopUp from "../helpers/Carlos_PopUp";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -14,6 +15,7 @@ export default function Settings(userProfile: UserDataParams) {
 
     let data = userProfile.data;
     const [currentPassword, setCurrentPassword] = React.useState('');
+    const [newName, setNewName] = React.useState('');
 
     // Mock password for testing purposes
     let password = "password";
@@ -51,15 +53,13 @@ export default function Settings(userProfile: UserDataParams) {
 
                     <br/>
 
-                    {Carlos_PopUp(
-                        "Info",
-                        "In this section you can change your username, password and profile picture. " +
-                        "You can also delete your account, but be careful, this action is irreversible! " +
-                        "To delete your account, you need to enter your current password.",
-                        '#000000',
-                        '#000000',
-                        'rgb(0,175,99)'
-                    )}
+                    <Carlos_PopUp
+                        buttonTitle="Info"
+                        text="In this section you can change your username, password and profile picture. You can also delete your account, but be careful, this action is irreversible! To delete your account, you need to enter your current password."
+                        buttonTextColor="#000000"
+                        buttonBorderColor="#000000"
+                        backgroundColor='rgb(0,175,99)'
+                    />
 
                     <br/><br/>
 
@@ -74,8 +74,27 @@ export default function Settings(userProfile: UserDataParams) {
                      autoComplete="off"
                 >
                     <h2>Change Username</h2>
-                    <TextField id="filled-basic" label="New Username" variant="filled"/>
-                    <Button variant="contained" color="primary">Submit</Button>
+                    <TextField
+                        id="filled-basic"
+                        label="New Username"
+                        variant="filled"
+                        value={newName}
+                        onChange={(e) => setNewName(e.target.value)}
+                    />
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={async () => {
+                            const result = await new UserClient().changeUsername(newName);
+
+                            if (result === 200) {
+                                alert("Username changed successfully to " + newName);
+                            } else {
+                                alert("Error. Server responded with status: " + result);
+                            }
+                        }}
+                    >Submit
+                    </Button>
 
                     <br/><br/>
 
