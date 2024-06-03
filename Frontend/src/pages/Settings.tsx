@@ -15,11 +15,11 @@ export default function Settings(userProfile: UserDataParams) {
 
     let data = userProfile.data;
     const [currentPassword, setCurrentPassword] = React.useState('');
+
     const [newName, setNewName] = React.useState('');
 
     // Mock password for testing purposes
     let password = "password";
-
 
     if (!data) {
         return (
@@ -52,6 +52,7 @@ export default function Settings(userProfile: UserDataParams) {
                     </span>
 
                     <br/>
+
 
                     <CARLOS_POPUP
                         buttonTitle="Info"
