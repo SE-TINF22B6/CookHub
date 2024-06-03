@@ -52,22 +52,12 @@ public partial class UserService
         }
     }
 
-    
     public ICollection<Recipe>? GetLikedRecipesByUserId(int userId)
     {
         var user = _repository.Get(userId);
         return user?.LikedRecipes;
     }
 
-    public void CreateTestUser()
-        => _repository.Create(new User
-        {
-            Email = "admin@cookhub.com",
-            PasswordHash = CryptoService.GetHash("password"),
-            Name = "Carlos",
-            ProfilePicture = "7800de47-3004-495a-bdb5-55a22e3ed9a3.png"
-        });
-    
     public static bool TrySaveProfilePicture(string base64Image, out string fileName)
     {
         fileName = "";
