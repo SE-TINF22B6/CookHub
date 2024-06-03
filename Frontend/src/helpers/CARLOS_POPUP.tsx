@@ -8,7 +8,15 @@ import * as React from 'react';
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import '../style/Carlos_PopUp.css';
 
-export default function Carlos_PopUp(buttonTitle: string, text: string, buttonTextColor: string = '#000000', buttonBorderColor: string = '#000000', backgroundColor: string = '#c7fc71') {
+interface Props {
+    buttonTitle: string;
+    text: string;
+    buttonTextColor?: string;
+    buttonBorderColor?: string;
+    backgroundColor?: string;
+}
+
+export default function CARLOS_POPUP({buttonTitle, text, buttonTextColor = '#000000', buttonBorderColor = '#000000', backgroundColor = '#c7fc71'}: Props)  {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {

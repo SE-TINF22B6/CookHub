@@ -7,7 +7,7 @@ import AddIngredientApp from "../components/AddIngredientApp";
 import DifficultyRadioGroup from "../components/DifficultyRadioGroup";
 import FormPropsTextFields from "../components/FormPropsTextFields";
 import ImageUploader from "../components/ImageUploader";
-import Carlos_PopUp from "../helpers/Carlos_PopUp";
+import CARLOS_POPUP from "../helpers/CARLOS_POPUP";
 import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
 
@@ -76,13 +76,16 @@ if (!data){
                         <a className="Save-Recipe-Button" href='/myRecipes'>
                             <button className="save-recipe">SAVE RECIPE</button>
                         </a>
+
                         <div className="carlos">
-                            {Carlos_PopUp(
-                                "Need help?",
-                                "To create a new recipe just fill out the form on the right side." +
-                                " You can also add the ingredients which will be added to the pot on the left side." +
-                                " To save the recipe just click the 'SAVE RECIPE' button in the end."
-                            )}
+                            <CARLOS_POPUP
+                                buttonTitle="Need help?"
+                                text="To create a new recipe just fill out the form on the right side.
+                                You can also add the ingredients which will be added to the pot on the left side.
+                                To save the recipe just click the 'SAVE RECIPE' button in the end."
+                                buttonBorderColor="#000000"
+                                backgroundColor='rgb(0,175,99)'
+                            />
                         </div>
                     </span>
 
