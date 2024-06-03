@@ -1,3 +1,9 @@
+h1 {
+
+
+}
+
+
 .Avatar{
     width: 100px;
     height: 100px;
@@ -100,3 +106,33 @@
     border-radius: 2rem;
 }
 
+
+
+@media (max-width: 1100px){
+    #ContainerTop {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .carlos {
+        display: none;
+    }
+
+
+    #divLogo {
+        margin-bottom: 2rem;
+    }
+
+    #divUserInfo {
+        width: 80%;
+    }
+
+    #containerBottom {
+        flex-direction: column;
+    }
+
+    .CardHolder-1, .CardHolder-2, .CardHolder-3 {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
