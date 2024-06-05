@@ -2,6 +2,7 @@ using System.Text;
 using API.Controllers;
 using API.Models;
 using Contracts.Entities;
+using Contracts.Models;
 using DataAccess;
 using DataAccess.Repository;
 using Microsoft.AspNetCore.Http;
@@ -599,6 +600,189 @@ public class UserControllerTests : IDisposable
         Assert.Equal("Invalid base64 image.", ResponseMessageOf(result));
         var userInDatabase = _userService.GetAllUsers().Single();
         Assert.Equal(oldProfilePicture, userInDatabase.ProfilePicture);
+    }
+    
+    [Fact]
+    public void ViewRecipe_Success()
+    {
+        // ARRANGE
+        var userId = 1;
+        var recipeId = 1;
+
+        var userService = new UserService(new UserRepository(_testDatabaseFactory));
+        var recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
+
+        // Create a user
+        var user = new User
+        {
+            Id = userId,
+            Email = "test@example.com",
+            Name = "Test User",
+            PasswordHash = Encoding.UTF8.GetBytes("password")
+        };
+
+        userService.CreateUser(user);
+
+        // Create a recipe
+        var recipe = new Recipe
+        {
+            Id = recipeId,
+            Name = "Test Recipe"
+        };
+
+        recipeService.CreateRecipe(recipe);
+
+        // Log in the user
+        _authTokens.Add(CryptoService.GenerateToken(), userId);
+
+        // ACT
+        var result = _userController.ViewRecipe(recipeId);
+
+        // ASSERT
+        Assert.IsType<OkObjectResult>(result);
+        Assert.Equal($"User {userId} viewed Recipe {recipeId}.", ResponseMessageOf(result));
+    }
+
+    [Fact]
+    public void ViewRecipe_UserNotLoggedIn()
+    {
+        // ARRANGE
+        var recipeId = 1;
+
+        // ACT
+        var result = _userController.ViewRecipe(recipeId);
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("User is not logged in.", ResponseMessageOf(result));
+    }
+
+    [Fact]
+    public void ViewRecipe_UserNotFound()
+    {
+        // ARRANGE
+        var userId = 1;
+        var recipeId = 1;
+
+        var recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
+
+        // Create a recipe
+        var recipe = new Recipe
+        {
+            Id = recipeId,
+            Name = "Test Recipe"
+        };
+
+        recipeService.CreateRecipe(recipe);
+
+        // Log in the user
+        _authTokens.Add(CryptoService.GenerateToken(), userId);
+
+        // ACT
+        var result = _userController.ViewRecipe(recipeId);
+
+        // ASSERT
+        Assert.IsType<NotFoundObjectResult>(result);
+        Assert.Equal("User not found.", ResponseMessageOf(result));
+    }
+
+    [Fact]
+    public void ViewRecipe_RecipeNotFound()
+    {
+        // ARRANGE
+        var userId = 1;
+        var recipeId = 1;
+
+        var userService = new UserService(new UserRepository(_testDatabaseFactory));
+
+        // Create a user
+        var user = new User
+        {
+            Id = userId,
+            Email = "test@test.de",
+            Name = "Test User",
+            PasswordHash = Encoding.UTF8.GetBytes("password")
+        };
+
+        userService.CreateUser(user);
+
+        // Log in the user
+        _authTokens.Add(CryptoService.GenerateToken(), userId);
+
+        // ACT
+        var result = _userController.ViewRecipe(recipeId);
+
+        // ASSERT
+        Assert.IsType<NotFoundObjectResult>(result);
+        Assert.Equal("Recipe not found.", ResponseMessageOf(result));
+    }
+
+    [Fact]
+    public void GetViewedRecipes_Success()
+    {
+        // ARRANGE
+        var userId = 1;
+        var recipeId1 = 1;
+        var recipeId2 = 2;
+
+        var userService = new UserService(new UserRepository(_testDatabaseFactory));
+        var recipeService = new RecipeService(new RecipeRepository(_testDatabaseFactory));
+
+        // Create a user
+        var user = new User
+        {
+            Id = userId,
+            Email = "test@test.de",
+            Name = "Test User",
+            PasswordHash = Encoding.UTF8.GetBytes("password")
+        };
+
+        userService.CreateUser(user);
+
+        // Create recipes
+        var recipe1 = new Recipe
+        {
+            Id = recipeId1,
+            Name = "Test Recipe 1"
+        };
+
+        var recipe2 = new Recipe
+        {
+            Id = recipeId2,
+            Name = "Test Recipe 2"
+        };
+
+        recipeService.CreateRecipe(recipe1);
+        recipeService.CreateRecipe(recipe2);
+
+        // User views the recipes
+        _authTokens.Add(CryptoService.GenerateToken(), userId);
+        _userController.ViewRecipe(recipeId1);
+        _userController.ViewRecipe(recipeId2);
+
+        // ACT
+        var result = _userController.GetViewedRecipes(userId);
+
+        // ASSERT
+        Assert.IsType<OkObjectResult>(result);
+        var viewedRecipes = ResponseMessageOf(result) as IEnumerable<RecipeModel>;
+        Assert.NotNull(viewedRecipes);
+        Assert.Contains(viewedRecipes, r => r.Id == recipeId1);
+        Assert.Contains(viewedRecipes, r => r.Id == recipeId2);
+    }
+
+    [Fact]
+    public void GetViewedRecipes_UserNotFound()
+    {
+        // ARRANGE
+        var userId = 1;
+
+        // ACT
+        var result = _userController.GetViewedRecipes(userId);
+
+        // ASSERT
+        Assert.IsType<NotFoundObjectResult>(result);
+        Assert.Equal("User not found.", ResponseMessageOf(result));
     }
 
     private static object? ResponseMessageOf(IActionResult result) => (result as ObjectResult)?.Value;
