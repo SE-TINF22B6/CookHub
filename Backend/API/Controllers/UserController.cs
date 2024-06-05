@@ -228,11 +228,18 @@ public class UserController : ControllerBase
     }
     
     /// <summary>
-    /// Gets the list of viewed recipes for a user
+    /// Gets the list of viewed recipes for the logged-in user
     /// </summary>
-    [HttpGet("{userId}/viewed-recipes")]
-    public IActionResult GetViewedRecipes(int userId)
+    [HttpGet("viewed-recipes")]
+    public IActionResult GetViewedRecipes()
     {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in."); 
+        }
+
         var user = _userService.GetUserById(userId);
 
         if (user == null)
