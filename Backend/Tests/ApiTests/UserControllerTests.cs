@@ -785,5 +785,35 @@ public class UserControllerTests : IDisposable
         Assert.Equal("User not found.", ResponseMessageOf(result));
     }
 
+    [Fact]
+    public void CanGetOwnRecipes()
+    {
+        // ARRANGE
+        const int userId = 1;
+        _userService.CreateTestUser();
+        _recipeService.CreateExampleRecipes();
+        _authTokens.Add(CryptoService.GenerateToken(), userId);
+
+        // ACT
+        var result = _userController.GetOwnRecipes();
+
+        // ASSERT
+        Assert.IsType<OkObjectResult>(result);
+        var userInDatabase = _userService.GetUserById(userId);
+        var actualOwnRecipes = userInDatabase!.CreatedRecipes.Select(recipe => recipe.ToModel());
+        Assert.Equivalent(actualOwnRecipes, ResponseMessageOf(result));
+    }
+
+    [Fact]
+    public void DoNotReturnOwnRecipesWhenNotLoggedIn()
+    {
+        // ACT
+        var result = _userController.GetOwnRecipes();
+
+        // ASSERT
+        Assert.IsType<BadRequestObjectResult>(result);
+        Assert.Equal("User is not logged in.", ResponseMessageOf(result));
+    }
+
     private static object? ResponseMessageOf(IActionResult result) => (result as ObjectResult)?.Value;
 }
