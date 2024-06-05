@@ -174,4 +174,25 @@ export class UserClient {
             return "";
         }
     };
+
+    async changeProfilePicture(imageUrl: string | null) {
+        try {
+            //actualy change the ProfilePicture
+            const response = await fetch('https://localhost:44328/User/change-profile-picture', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(imageUrl),
+                credentials: 'include'
+            });
+
+            if(!response.ok) {
+                return response;
+            }
+
+            return response.ok;
+        } catch (error: any) {
+            console.error(error);
+            return "";
+        }
+    }
 }
