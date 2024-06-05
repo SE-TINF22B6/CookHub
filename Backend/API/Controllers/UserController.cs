@@ -243,6 +243,27 @@ public class UserController : ControllerBase
         var viewedRecipes = user.History.Select(recipe => recipe.ToModel()).ToList();
         return Ok(viewedRecipes);
     }
+
+    [HttpGet("own-recipes")]
+    public IActionResult GetOwnRecipes()
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (GetIdOfLoggedInUser() == -1)
+        {
+            return BadRequest("User is not logged in."); 
+        }
+
+        var user = _userService.GetUserById(userId);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        var ownRecipes = user.CreatedRecipes.Select(recipe => recipe.ToModel());
+        return Ok(ownRecipes);
+    }
     
     private int GetIdOfLoggedInUser()
     {
