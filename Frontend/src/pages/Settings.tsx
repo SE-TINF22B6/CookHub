@@ -12,8 +12,6 @@ import NotLoggedIn from "../components/NotLoggedIn";
 import {UserData} from "../models/UserData";
 
 
-
-
 export default function Settings(userProfile: UserDataParams) {
 
     let data = userProfile.data;
@@ -26,19 +24,27 @@ export default function Settings(userProfile: UserDataParams) {
     const handlePicChange = async (e: any) => {
         e.preventDefault();
 
-        let imgUrl = document.querySelector(".ImageInput")?.firstElementChild?.getAttribute("src");
-        const response = await new UserClient().changeProfilePicture(imgUrl ?? null);
+        let imgUrl:string = document.querySelector(".ImageInput")?.firstElementChild?.getAttribute("src") ?? "";
 
-        if (response.includes(".png")) {
-            if(changedData) {
-                setChangedDataName({...changedData, profilePicture: response});
+        if (imgUrl === "/static/media/photo_placeholder.47177532c4d2205871f4.png") {
+            alert("Please upload a picture first");
+            return
+        }else {
+
+            document.querySelector(".userPicture")?.firstElementChild?.setAttribute("src", imgUrl);
+            const response = await new UserClient().changeProfilePicture(imgUrl ?? null);
+
+            if (response) {
+
+                alert("Successufly changed PP");
+                window.location.reload();
+
+            } else {
+                alert("Something went wrong");
             }
-            alert("Successufly changed PP");
-            window.location.reload();
-
-        } else {
-            alert("Something went wrong");
         }
+
+
 
     }
     // Mock password for testing purposes

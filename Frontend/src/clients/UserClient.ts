@@ -177,31 +177,19 @@ export class UserClient {
 
     async changeProfilePicture(imageUrl: string | null) {
         try {
-
-            // Getting a response Body back so i can display it instantly
-            const response = await fetch('https://localhost:44328/User/upload-profile-picture', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(imageUrl),
-                credentials: 'include'
-            });
-
             //actualy change the ProfilePicture
-            const response2 = await fetch('https://localhost:44328/User/change-profile-picture', {
+            const response = await fetch('https://localhost:44328/User/change-profile-picture', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(imageUrl),
                 credentials: 'include'
             });
 
-            if (!response.ok) {
-                return response.text();
-            }
-            if(!response2.ok) {
-                return response.text();
+            if(!response.ok) {
+                return response;
             }
 
-            return response.text();
+            return response.ok;
         } catch (error: any) {
             console.error(error);
             return "";

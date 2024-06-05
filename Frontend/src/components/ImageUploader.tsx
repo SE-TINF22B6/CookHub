@@ -25,11 +25,11 @@ export default function ImageUploader() {
 
     function uploadImageDisplay() {
         const file = fileUploadRef.current.files[0];
-        if (file && /^image\//.test(file.type)) { // Check if the file is an image
+        if (file && /^image\//.test(file.type) && !file.name.endsWith('.svg')) { // Check if the file is an image
             getBase64(file);
             setError("");
         } else {
-            setError('File is not an image.');
+            setError('Please select only .png or .jpg files.');
         }
     }
 
