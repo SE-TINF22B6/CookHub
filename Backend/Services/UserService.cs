@@ -214,6 +214,17 @@ public partial class UserService
         error = string.Empty;
         return true;
     }
+    public void ViewRecipe(User user, Recipe recipe)
+    {
+        var existingRecipe = user.History.FirstOrDefault(r => r.Id == recipe.Id);
+        if (existingRecipe != null)
+        {
+            user.History.Remove(existingRecipe);
+        }
+
+        user.History.Add(recipe);
+        _repository.Update(user);
+    }
 
     [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]
     private static partial Regex UsernameRegex();

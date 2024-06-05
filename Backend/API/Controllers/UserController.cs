@@ -196,6 +196,54 @@ public class UserController : ControllerBase
         return success ? Ok() : BadRequest(errorAfterInvoke);
     }
 
+    /// <summary>
+    /// Views a recipe and updates the user's history
+    /// </summary>
+    [HttpPost("view-recipe/{recipeId:int}")]
+    public IActionResult ViewRecipe(int recipeId)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in.");
+        }
+
+        var user = _userService.GetUserById(userId);
+        var recipe = _recipeService.GetRecipeById(recipeId);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+        
+        if (recipe == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+
+        _userService.ViewRecipe(user, recipe);
+
+        return Ok($"User {userId} viewed Recipe {recipeId}.");
+    }
+    
+    /// <summary>
+    /// Gets the list of viewed recipes for a user
+    /// </summary>
+    [HttpGet("{userId}/viewed-recipes")]
+    public IActionResult GetViewedRecipes(int userId)
+    {
+        var user = _userService.GetUserById(userId);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        var viewedRecipes = user.History.Select(recipe => recipe.ToModel()).ToList();
+        return Ok(viewedRecipes);
+    }
+    
     private int GetIdOfLoggedInUser()
     {
         var isLoggedIn = _authTokens.TryGetValue(Request.Cookies["auth-token"]?? "", out var userId);
