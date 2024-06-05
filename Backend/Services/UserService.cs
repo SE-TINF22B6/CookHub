@@ -214,12 +214,12 @@ public partial class UserService
         error = string.Empty;
         return true;
     }
-    
     public void ViewRecipe(User user, Recipe recipe)
     {
-        if (user.History.Contains(recipe))
+        var existingRecipe = user.History.FirstOrDefault(r => r.Id == recipe.Id);
+        if (existingRecipe != null)
         {
-            user.History.Remove(recipe);
+            user.History.Remove(existingRecipe);
         }
 
         user.History.Add(recipe);
