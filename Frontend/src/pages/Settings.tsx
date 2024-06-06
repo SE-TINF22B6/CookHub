@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "../style/Settings.css";
 import {UserClient} from "../clients/UserClient";
 import ImageUploader from "../components/ImageUploader";
@@ -13,9 +13,6 @@ import {UserData} from "../models/UserData";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
 
 
-
-
-
 export default function Settings(userProfile: UserDataParams) {
 
     let data = userProfile.data;
@@ -24,11 +21,21 @@ export default function Settings(userProfile: UserDataParams) {
     const [newName, setNewName] = React.useState('');
     const [changedData, setChangedDataName] = React.useState<UserData | null>(null);
     const [open, setOpen] = React.useState(false);
-    const [passwordChangeMessage, setPasswordChangeMessage] = React.useState("");
+    const [passwordDeleteChange, setPasswordDeleteChange] = React.useState("");
+
+
+    const [newNameMessage, setNewNameMessage] = React.useState("");
+    const [newPassword, setNewPassword] = React.useState("");
+    const [newPasswordMessage, setNewPasswordMessage] = React.useState("");
+    const [showResponseError, setShowResponseError] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [passwordRe, setPasswordRe] = useState("");
+    const [oldPassword, setOldPassword] = React.useState("");
+    const [passwordAfterChangeMessage, setPasswordAfterChangeMessage] = React.useState("");
 
     const handleClickOpen = () => {
         setOpen(true);
-        setPasswordChangeMessage("");
+        setPasswordDeleteChange("");
     };
 
     const handleClose = () => {
@@ -73,7 +80,61 @@ export default function Settings(userProfile: UserDataParams) {
         if (data) {
             setChangedDataName(data);
         }
-    }, [data]);
+
+        const usernameRegex = /^[A-Za-z0-9_]{4,16}$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,32}$/;
+
+        const validateForm = () => {
+            if (newName) {
+                setShowResponseError(false);
+                setNewNameMessage("");
+
+                if (!usernameRegex.test(newName)) {
+                    setNewNameMessage("Username must be 4-16 characters long and can only contain letters, numbers, and underscores.");
+                    setShowResponseError(false);
+                    setIsFormValid(false);
+                }
+
+            }
+
+
+            if (newPassword) {
+
+                if (newPassword !== passwordRe) {
+                    setNewPasswordMessage("Passwords don't match!");
+                    setShowResponseError(false);
+                    setIsFormValid(false);
+                    return;
+                }
+                if (!passwordRegex.test(newPassword)) {
+                    setNewPasswordMessage("Password must be 8-32 characters long, contain at least one letter, one number, and one special character.");
+                    setShowResponseError(false);
+                    setIsFormValid(false);
+                    return;
+                }
+                if (!newPassword && !passwordRe) {
+                    setNewPasswordMessage("");
+                    setShowResponseError(false);
+                    setIsFormValid(false);
+                    return;
+                }
+
+            }
+
+
+        }
+
+        if (!showResponseError) {
+            setNewNameMessage("");
+            setNewPasswordMessage("")
+        }
+
+        setIsFormValid(true);
+
+        validateForm();
+
+
+    }, [data, newName, newPassword, passwordRe, isFormValid, showResponseError]);
 
     if (!data) {
         return (
@@ -82,6 +143,7 @@ export default function Settings(userProfile: UserDataParams) {
             </>
         );
     }
+
 
     return <div className="SettingsPage">
 
@@ -151,14 +213,37 @@ export default function Settings(userProfile: UserDataParams) {
                     }}
                 >Submit
                 </Button>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newNameMessage}</span>
 
                 <br/><br/>
 
                 <h2>Change Password</h2>
-                <TextField id="filled-basic" label="Current password" variant="filled"/>
-                <TextField id="filled-basic" label="Enter new Password" variant="filled"/>
-                <TextField id="filled-basic" label="Repeat new password" variant="filled"/>
-                <Button variant="contained" color="primary">Submit</Button>
+                <TextField className="filled-basic" label="Current password" variant="filled" value={oldPassword} type="password" onChange={e => setOldPassword(e.target.value)}/>
+                <TextField className="filled-basic" label="Enter new Password" variant="filled" value={newPassword} type="password"
+                           onChange={(e) => setNewPassword(e.target.value)}/>
+                <TextField className="filled-basic" label="Repeat new password" variant="filled" value={passwordRe} type="password"
+                           onChange={(e) => setPasswordRe(e.target.value)}/>
+                <Button variant="contained" color="primary" onClick={async () => {
+                    if (newPassword !== passwordRe) {
+                        alert("Passwords dont match");
+                        return
+                    }
+                    const response = await new UserClient().changePassword(oldPassword, newPassword);
+                    if (response === 200) {
+
+                        setPasswordAfterChangeMessage("Password Changed");
+                    }else {
+                        setPasswordAfterChangeMessage(response?.toString() ?? "Error");
+                    }
+                    setOldPassword("");
+                    setNewPassword("")
+                    setPasswordRe("");
+
+                }}>
+                    Submit
+                </Button>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newPasswordMessage}</span>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{passwordAfterChangeMessage}</span>
             </Box>
 
             <Box className={"body-right"}
@@ -214,7 +299,7 @@ export default function Settings(userProfile: UserDataParams) {
                             variant="standard"
                             onChange={(e) => setCurrentPassword(e.target.value)}
                         />
-                        <span style={{color:"red"}}>{passwordChangeMessage}</span>
+                        <span style={{color: "red"}}>{passwordDeleteChange}</span>
                     </DialogContent>
                     <DialogActions sx={{
                         backgroundColor: "#C9FE71"
@@ -223,9 +308,9 @@ export default function Settings(userProfile: UserDataParams) {
                         <Button onClick={async () => {
                             const data = await handleDeleteAccount(currentPassword);
                             if (!data.ok) {
-                                setPasswordChangeMessage(await data.text());
-                            }else {
-                                setPasswordChangeMessage("SUCCESS");
+                                setPasswordDeleteChange(await data.text());
+                            } else {
+                                setPasswordDeleteChange("SUCCESS");
                                 window.location.reload();
                             }
                         }
