@@ -1,8 +1,9 @@
 #Main-Container {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    text-align: center;
 }
 
 #Left-Container {
@@ -11,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     background-image: url("../assets/Loginpage_avocado.svg");
-    background-size: 100%;
+    background-size: 101%;
 }
 
 #Left-Inner-Container {
@@ -76,14 +77,75 @@
 }
 
 button.save-recipe {
-    background-color: #c7fc71;
-    border: 1px solid black;
+    background-color: #00af63;
+    border: 2px solid black;
     border-radius: 12px;
-    padding: 10px 20px;
+    padding: 4px;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 2rem;
 }
 
-button.carlos {
 
+@media (max-width: 1100px){
+    #Main-Container {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    #Left-Container {
+        background-image: none;
+    }
+
+    #Left-Inner-Container {
+        width: 100%;
+    }
+
+    .ingredients {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    #Right-Container {
+        width: 100%;
+    }
+
+    .Top-Right-Container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #LeftSide {
+        width: 100%;
+        margin-bottom: 2rem;
+        padding: 2rem;
+    }
+
+    #RightSide {
+        width: 100%;
+    }
+
+
+    #Bottom-Right-Container {
+        width: 90%;
+
+    }
+
+    .group {
+        padding: 1rem;
+        margin-left: 15%;
+    }
+
+    .textArea {
+        width: 80vw;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    button.save-recipe {
+        margin-bottom: 1rem;
+    }
 }
