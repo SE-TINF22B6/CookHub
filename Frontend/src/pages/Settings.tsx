@@ -65,7 +65,7 @@ export default function Settings(userProfile: UserDataParams) {
 
             if (response) {
 
-                alert("Successufly changed PP");
+                alert("Successfully changed PP");
                 window.location.reload();
 
             } else {
@@ -155,7 +155,7 @@ export default function Settings(userProfile: UserDataParams) {
 
             <div className={"body-left"}>
 
-                <h2>Username: {changedData?.name}</h2>
+                <h2 id="usernameInfo">Username: {changedData?.name}</h2>
 
                 <br/>
 
@@ -197,6 +197,7 @@ export default function Settings(userProfile: UserDataParams) {
                     onChange={(e) => setNewName(e.target.value)}
                 />
                 <Button
+                    id="changeUsernameButton"
                     variant="contained"
                     color="primary"
                     onClick={async () => {
@@ -218,12 +219,12 @@ export default function Settings(userProfile: UserDataParams) {
                 <br/><br/>
 
                 <h2>Change Password</h2>
-                <TextField className="filled-basic" label="Current password" variant="filled" value={oldPassword} type="password" onChange={e => setOldPassword(e.target.value)}/>
-                <TextField className="filled-basic" label="Enter new Password" variant="filled" value={newPassword} type="password"
+                <TextField id="oldPassword" className="filled-basic" label="Current password" variant="filled" value={oldPassword} type="password" onChange={e => setOldPassword(e.target.value)}/>
+                <TextField id="newPassword" className="filled-basic" label="Enter new Password" variant="filled" value={newPassword} type="password"
                            onChange={(e) => setNewPassword(e.target.value)}/>
-                <TextField className="filled-basic" label="Repeat new password" variant="filled" value={passwordRe} type="password"
+                <TextField id="repeatNewPassword" className="filled-basic" label="Repeat new password" variant="filled" value={passwordRe} type="password"
                            onChange={(e) => setPasswordRe(e.target.value)}/>
-                <Button variant="contained" color="primary" onClick={async () => {
+                <Button id="changePasswordButton" variant="contained" color="primary" onClick={async () => {
                     if (newPassword !== passwordRe) {
                         alert("Passwords dont match");
                         return
@@ -243,7 +244,7 @@ export default function Settings(userProfile: UserDataParams) {
                     Submit
                 </Button>
                 <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newPasswordMessage}</span>
-                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{passwordAfterChangeMessage}</span>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}} id="passwordAfterChangeMessage">{passwordAfterChangeMessage}</span>
             </Box>
 
             <Box className={"body-right"}
@@ -256,11 +257,12 @@ export default function Settings(userProfile: UserDataParams) {
             >
                 <h2>Change Profile Picture</h2>
                 <ImageUploader/>
-                <Button variant="contained" color="secondary" onClick={handlePicChange}>Change</Button>
+                <Button id="changeProfilePictureButton" variant="contained" color="secondary" onClick={handlePicChange}>Change</Button>
 
                 <br/>
 
                 <Button
+                    id="deleteAccountButton"
                     variant="contained"
                     startIcon={<DeleteIcon fontSize={"small"}/>}
                     color="error"
@@ -299,13 +301,13 @@ export default function Settings(userProfile: UserDataParams) {
                             variant="standard"
                             onChange={(e) => setCurrentPassword(e.target.value)}
                         />
-                        <span style={{color: "red"}}>{passwordDeleteChange}</span>
+                        <span id="passwordDeleteMessage" style={{color: "red"}}>{passwordDeleteChange}</span>
                     </DialogContent>
                     <DialogActions sx={{
                         backgroundColor: "#C9FE71"
                     }}>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={async () => {
+                        <Button id="confirmAccountDeletion" onClick={async () => {
                             const data = await handleDeleteAccount(currentPassword);
                             if (!data.ok) {
                                 setPasswordDeleteChange(await data.text());
