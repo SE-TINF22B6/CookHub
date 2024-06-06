@@ -10,6 +10,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
 import {UserData} from "../models/UserData";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
+
+
+
 
 
 export default function Settings(userProfile: UserDataParams) {
@@ -19,17 +23,35 @@ export default function Settings(userProfile: UserDataParams) {
     const [currentPassword, setCurrentPassword] = React.useState('');
     const [newName, setNewName] = React.useState('');
     const [changedData, setChangedDataName] = React.useState<UserData | null>(null);
+    const [open, setOpen] = React.useState(false);
+    const [passwordChangeMessage, setPasswordChangeMessage] = React.useState("");
+
+    const handleClickOpen = () => {
+        setOpen(true);
+        setPasswordChangeMessage("");
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    async function handleDeleteAccount(password: string) {
+        console.log(password);
+        const response = await new UserClient().deleteProfile(password);
+        return response;
+
+    }
 
 
     const handlePicChange = async (e: any) => {
         e.preventDefault();
 
-        let imgUrl:string = document.querySelector(".ImageInput")?.firstElementChild?.getAttribute("src") ?? "";
+        let imgUrl: string = document.querySelector(".ImageInput")?.firstElementChild?.getAttribute("src") ?? "";
 
         if (imgUrl === "/static/media/photo_placeholder.47177532c4d2205871f4.png") {
             alert("Please upload a picture first");
             return
-        }else {
+        } else {
 
             document.querySelector(".userPicture")?.firstElementChild?.setAttribute("src", imgUrl);
             const response = await new UserClient().changeProfilePicture(imgUrl ?? null);
@@ -45,10 +67,7 @@ export default function Settings(userProfile: UserDataParams) {
         }
 
 
-
     }
-    // Mock password for testing purposes
-    let password = "password";
 
     useEffect(() => {
         if (data) {
@@ -160,29 +179,60 @@ export default function Settings(userProfile: UserDataParams) {
                     variant="contained"
                     startIcon={<DeleteIcon fontSize={"small"}/>}
                     color="error"
-                    onClick={() => {
-                        // Implement onClick functionality by checking the current password
-
-                        if (currentPassword === password) {
-                            if (window.confirm("Are you sure you want to delete your account?")) {
-
-                                // Implement account deletion functionality
-                                alert("Account deleted successfully!");
-                            }
-                        } else {
-                            alert("Incorrect password!");
-                        }
-                    }}>
+                    onClick={handleClickOpen}>
                     Delete Account
                 </Button>
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <DialogTitle sx={{
+                        color: "black",
+                        fontSize: "20px",
+                        fontStyle: "bold",
+                        textShadow: "none",
+                        backgroundColor: "#C9FE71",
+                    }}>
+                        Delete Account
+                    </DialogTitle>
+                    <DialogContent sx={{
+                        backgroundColor: "#38527D",
 
-                <TextField
-                    id="filled-basic"
-                    label="Current password"
-                    variant="filled"
-                    value={currentPassword}
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                />
+                    }}>
+                        <DialogContentText sx={{color: "red"}}>
+                            Please Enter your password to confirm!
+                        </DialogContentText>
+                        <TextField
+                            autoFocus
+                            required
+                            margin="dense"
+                            id="name"
+                            name="password"
+                            label="Password"
+                            type="password"
+                            fullWidth
+                            variant="standard"
+                            onChange={(e) => setCurrentPassword(e.target.value)}
+                        />
+                        <span style={{color:"red"}}>{passwordChangeMessage}</span>
+                    </DialogContent>
+                    <DialogActions sx={{
+                        backgroundColor: "#C9FE71"
+                    }}>
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={async () => {
+                            const data = await handleDeleteAccount(currentPassword);
+                            if (!data.ok) {
+                                setPasswordChangeMessage(await data.text());
+                            }else {
+                                setPasswordChangeMessage("SUCCESS");
+                                window.location.reload();
+                            }
+                        }
+
+                        }>Delete</Button>
+                    </DialogActions>
+                </Dialog>
 
                 <br/> <br/>
 

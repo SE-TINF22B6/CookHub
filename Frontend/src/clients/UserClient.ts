@@ -195,4 +195,23 @@ export class UserClient {
             return "";
         }
     }
+
+    async deleteProfile(password:string){
+        const response = await fetch('https://localhost:44328/User/delete-account', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(password),
+            credentials: 'include'
+        });
+
+        if(!response.ok) {
+            return response;
+        }
+
+        return response;
+    } catch (error: any) {
+        console.error(error);
+        return "";
+    }
+
 }
