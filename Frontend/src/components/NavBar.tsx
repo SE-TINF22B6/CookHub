@@ -26,7 +26,6 @@ export default function NavBar(loggedIn : UserDataParams) {
     };
 
     return (
-
         <Box id="box" sx={{flexGrow: 1}}>
             <AppBar
                 className="AppBar"
@@ -35,13 +34,11 @@ export default function NavBar(loggedIn : UserDataParams) {
                 style={{backgroundColor: '#242422', zIndex: 15}}
             >
                 <Toolbar className="ToolBar">
-
                     <div id={"logoContainer"}>
-                        <Link className="Back2LandingPage" to={'/'}>
+                        <Link className="Back2LandingPage" to={user ? '/findrecipes' : '/'}>
                             <img className="Logo" src={LogoAnimated} alt='Logo'/>
                         </Link>
                     </div>
-
 
                     <div id={"linkContainer"}>
                         <Typography
@@ -71,7 +68,6 @@ export default function NavBar(loggedIn : UserDataParams) {
                         </Typography>
                     </div>
 
-
                     <div id={"menuButtonContainer"}>
                         <IconButton
                             className="MenuIcon"
@@ -91,28 +87,29 @@ export default function NavBar(loggedIn : UserDataParams) {
                         </IconButton>
                     </div>
 
-
-                    {!user ? <div id={"loginContainer"}>
-                        <Button
-                            className="LoginButton"
-                            color="inherit"
-                            href='/login'
-                            variant="outlined"
-                            sx={{color: '#c7fc70', mr: 5}}
-                        >
-                            Login
-                        </Button>
-                    </div> : ""}
-
+                    {!user ? (
+                        <div id={"loginContainer"}>
+                            <Button
+                                className="LoginButton"
+                                color="inherit"
+                                href='/login'
+                                variant="outlined"
+                                sx={{color: '#c7fc70', mr: 5}}
+                            >
+                                Login
+                            </Button>
+                        </div>
+                    ) : null}
 
                     <div id={"avatarContainer"}>
                         <Link className='Avatar' to={'/profile'}>
-                            {user ? <img className="AvatarImg" src={`https://localhost:44328/images/profile-pictures/${user.profilePicture}`} alt={'UserAvatar'}/> :
-                                <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>}
+                            {user ? (
+                                <img className="AvatarImg" src={`https://localhost:44328/images/profile-pictures/${user.profilePicture}`} alt={'UserAvatar'}/>
+                            ) : (
+                                <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>
+                            )}
                         </Link>
                     </div>
-
-
                 </Toolbar>
             </AppBar>
         </Box>
