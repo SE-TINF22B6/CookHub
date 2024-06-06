@@ -13,13 +13,13 @@ import NotLoggedIn from "../components/NotLoggedIn";
 
 
 export default function FoodForge(isLoggedIn: UserDataParams) {
-let data = isLoggedIn.data;
+    let data = isLoggedIn.data;
 
-if (!data){
-    return (
-        <NotLoggedIn></NotLoggedIn>
-    )
-}
+    if (!data) {
+        return (
+            <NotLoggedIn></NotLoggedIn>
+        )
+    }
 
     return (
 
@@ -31,7 +31,9 @@ if (!data){
                 <div id={"Left-Inner-Container"}>
 
                     <img src={CookPotCover} alt="potTop" style={{position: 'relative', width: '80%'}}/>
-                    <AddIngredientApp/>
+                    <div className={"ingredients"}>
+                        <AddIngredientApp/>
+                    </div>
                     <img src={CookPot} alt="potBottom" style={{position: 'relative', width: '80%'}}/>
 
                 </div>
@@ -41,7 +43,6 @@ if (!data){
 
             <div id={"Right-Container"}>
 
-                <br/>
                 <h1 className={"header"}>FOOD FORGE</h1>
                 <br/>
 
@@ -66,7 +67,9 @@ if (!data){
 
                 <div id={"Bottom-Right-Container"}>
 
-                    <br/><br/><FormPropsTextFields/><br/>
+                    <br/><br/>
+                    <FormPropsTextFields/>
+                    <br/>
 
                     <textarea className="textArea"></textarea>
                     <br/>
@@ -84,6 +87,7 @@ if (!data){
                                 You can also add the ingredients which will be added to the pot on the left side.
                                 To save the recipe just click the 'SAVE RECIPE' button in the end."
                                 buttonBorderColor="#000000"
+                                buttonTextColor="#000000"
                                 backgroundColor='rgb(0,175,99)'
                             />
                         </div>
