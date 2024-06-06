@@ -1,0 +1,42 @@
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.logout-box {
+    background-color: black;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 5px #c7fc71;
+    text-align: center;
+}
+
+.logout-text {
+    font-size: 18px;
+    color: #C9FE71;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 20px;
+    box-shadow: 0 0 10px #c7fc71;
+}
+
+.keep-cooking-button,
+.log-out-button {
+    padding: 10px 50px;
+    font-size: 18px;
+    background-color: black;
+    color: #C9FE71;
+    border: 1px solid #C9FE71;
+    box-shadow: 0 0 5px rgba(199, 254, 113, 0); /* Initial box-shadow */
+    transition: box-shadow 0.3s ease; /* Add transition */
+}
+
+.keep-cooking-button:hover,
+.log-out-button:hover {
+    box-shadow: 0 0 20px rgba(199, 254, 113, 0.7); /* Shine effect on hover */
+}
+
