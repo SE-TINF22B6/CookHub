@@ -214,4 +214,25 @@ export class UserClient {
         return "";
     }
 
+    async changePassword(oldPassword: string, newPassword: string){
+        try {
+            const response = await fetch('https://localhost:44328/User/change-password', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({'oldPassword': oldPassword, 'newPassword': newPassword}),
+                credentials: 'include',
+            });
+
+            if(!response.ok) {
+                return response.text();
+            }
+
+
+            return response.status;
+        } catch (error: any) {
+            console.error(error)
+
+        }
+    }
+
 }
