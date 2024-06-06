@@ -214,7 +214,7 @@ export default function Settings(userProfile: UserDataParams) {
                     }}
                 >Submit
                 </Button>
-                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newNameMessage}</span>
+                <span id="newNameMessage" style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newNameMessage}</span>
 
                 <br/><br/>
 
@@ -226,7 +226,7 @@ export default function Settings(userProfile: UserDataParams) {
                            onChange={(e) => setPasswordRe(e.target.value)}/>
                 <Button id="changePasswordButton" variant="contained" color="primary" onClick={async () => {
                     if (newPassword !== passwordRe) {
-                        alert("Passwords dont match");
+                        alert("Passwords don't match!");
                         return
                     }
                     const response = await new UserClient().changePassword(oldPassword, newPassword);
@@ -243,7 +243,7 @@ export default function Settings(userProfile: UserDataParams) {
                 }}>
                     Submit
                 </Button>
-                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newPasswordMessage}</span>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}} id="passwordValidationMessage">{newPasswordMessage}</span>
                 <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}} id="passwordAfterChangeMessage">{passwordAfterChangeMessage}</span>
             </Box>
 

@@ -23,11 +23,12 @@ export const logOut = async () => await driver.executeScript(`
         credentials: 'include',
     });`);
 
-jest.setTimeout(60_000);
+jest.setTimeout(20_000);
 
 beforeAll(async () => {
     const options = new Chrome.Options();
-    options.addArguments('headless', 'ignore-certificate-errors');
+    options.addArguments('headless', 'ignore-certificate-errors', '--disable-single-click-autofill');
+    options.setUserPreferences({ 'autofill.profile_enabled': false });
     driver = await new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
     await driver.manage().setTimeouts({ implicit: 2000 });
 });
