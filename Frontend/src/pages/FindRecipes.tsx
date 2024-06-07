@@ -102,7 +102,7 @@ export default function FindRecipes() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                        image={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
                         alt="recipe"
                     />
                     <CardContent>

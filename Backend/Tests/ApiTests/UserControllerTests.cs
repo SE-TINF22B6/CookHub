@@ -765,10 +765,10 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var viewedRecipes = ResponseMessageOf(result) as IEnumerable<RecipeModel>;
+        var viewedRecipes = ResponseMessageOf(result) as ICollection<HistoryEntryModel>;
         Assert.NotNull(viewedRecipes);
-        Assert.Contains(viewedRecipes, r => r.Id == recipeId1);
-        Assert.Contains(viewedRecipes, r => r.Id == recipeId2);
+        Assert.Contains(viewedRecipes, entry => entry.Recipe.Id == recipeId1);
+        Assert.Contains(viewedRecipes, entry => entry.Recipe.Id == recipeId2);
     }
 
     [Fact]

@@ -247,7 +247,7 @@ public class UserController : ControllerBase
             return NotFound("User not found.");
         }
 
-        var viewedRecipes = user.History.Select(recipe => recipe.ToModel()).ToList();
+        var viewedRecipes = user.History.Select(historyEntry => historyEntry.ToModel()).ToList();
         return Ok(viewedRecipes);
     }
 
