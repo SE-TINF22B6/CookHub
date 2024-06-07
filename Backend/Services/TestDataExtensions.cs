@@ -18,7 +18,7 @@ public static class TestDataExtensions
 
     public static void CreateExampleRecipes(this RecipeService recipeService)
     {
-        recipeService.CreateRecipeWithIngredients(new Recipe
+        recipeService.TryCreateRecipeWithIngredients(new Recipe
         {
             Name = "Pizza Margherita",
             Categories = new List<RecipeCategory> { RecipeCategory.Pizza, RecipeCategory.Italian, RecipeCategory.Vegetarian },
@@ -82,9 +82,9 @@ public static class TestDataExtensions
                     Ingredient = new Ingredient { Name = "Pepper" }
                 }
             }
-        });
+        }, out _, out _);
 
-        recipeService.CreateRecipeWithIngredients(new Recipe
+        recipeService.TryCreateRecipeWithIngredients(new Recipe
         {
             Name = "Spaghetti Carbonara",
             Categories = new List<RecipeCategory> { RecipeCategory.Pasta, RecipeCategory.Italian },
@@ -148,9 +148,9 @@ public static class TestDataExtensions
                     Ingredient = new Ingredient { Name = "Salt" }
                 }
             }
-        });
+        }, out _, out _);
 
-        recipeService.CreateRecipeWithIngredients(new Recipe
+        recipeService.TryCreateRecipeWithIngredients(new Recipe
         {
             Name = "Chicken Tikka Masala",
             Categories = new List<RecipeCategory> { RecipeCategory.Chicken, RecipeCategory.Indian },
@@ -303,9 +303,9 @@ public static class TestDataExtensions
                     Ingredient = new Ingredient { Name = "Fresh cilantro leaves" }
                 }
             }
-        });
+        }, out _, out _);
 
-        recipeService.CreateRecipeWithIngredients(new Recipe
+        recipeService.TryCreateRecipeWithIngredients(new Recipe
         {
             Name = "Mango Sticky Rice",
             Categories = new List<RecipeCategory> { RecipeCategory.Asian, RecipeCategory.Vegan },
@@ -372,9 +372,9 @@ public static class TestDataExtensions
                     Ingredient = new Ingredient { Name = "Fresh mint leaves" }
                 }
             }
-        });
+        }, out _, out _);
 
-        recipeService.CreateRecipeWithIngredients(new Recipe
+        recipeService.TryCreateRecipeWithIngredients(new Recipe
         {
             Name = "Greek Salad",
             Categories = new List<RecipeCategory> { RecipeCategory.Salad, RecipeCategory.Vegetarian },
@@ -480,7 +480,7 @@ public static class TestDataExtensions
                     Ingredient = new Ingredient { Name = "Fresh oregano leaves, for garnish" }
                 }
             }
-        });
+        }, out _, out _);
     }
 
     public static void CreateExampleAdventureTexts(this RecipeService recipeService)
