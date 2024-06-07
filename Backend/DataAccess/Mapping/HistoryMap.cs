@@ -9,7 +9,7 @@ public class HistoryMap : ClassMap<HistoryEntry>
     {
         CompositeId()
             .KeyReference(entry => entry.User, "user_id")
-            .KeyReference(entry => entry.Recipe, "recipe_id");
+            .KeyReference(entry => entry.Recipe, part => part.Not.Lazy(), "recipe_id");
         Map(entry => entry.Time);
     }
 }
