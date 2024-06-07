@@ -43,7 +43,7 @@ public interface IRecipeRepository : IRepository<Recipe>
         using var transaction = session.BeginTransaction();
 
         var users = session.Query<User>().Where(user => user.History.Any(h => h.Recipe == recipe));
-        recipe = users.FirstOrDefault()?.History.FirstOrDefault()?.Recipe ?? recipe;
+        recipe = users.FirstOrDefault()?.History.FirstOrDefault(h => h.Recipe.Id == recipe.Id)?.Recipe ?? recipe;
         session.Query<HistoryEntry>().Where(h => h.Recipe == recipe).Delete();
 
         foreach (var user in users)
