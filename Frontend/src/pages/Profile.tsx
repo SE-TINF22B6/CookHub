@@ -53,7 +53,7 @@ export default function Profile(userProfile: UserDataParams) {
         if (data) {
             loadData();
         }
-    }, [data?.id]);
+    }, [data]);
 
 
     if (!data) {
