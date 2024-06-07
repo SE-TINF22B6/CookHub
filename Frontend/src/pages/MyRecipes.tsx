@@ -23,7 +23,7 @@ import {UserClient} from "../clients/UserClient";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 
-export default function MyRecipes(user : UserDataParams) {
+export default function MyRecipes(user: UserDataParams) {
     let {slug} = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState<any>(null);
@@ -34,6 +34,7 @@ export default function MyRecipes(user : UserDataParams) {
     const [instructionText, setInstructionText] = React.useState("");
     const [nrOfPortions, setNrOfPortions] = React.useState<number>(1);
     const [likeCount, setLikeCount] = React.useState(0);
+    const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
     async function handleClickAdventurize(id: number) {
         let client = new RecipeClient();
@@ -44,7 +45,7 @@ export default function MyRecipes(user : UserDataParams) {
 
     async function handleClickLike() {
         const userClient = new UserClient();
-        const userId = user.data?.id?? -1;
+        const userId = user.data?.id ?? -1;
         const recipeId = Number(slug);
         let error = '';
         let newLikeCount = likeCount;
@@ -93,7 +94,11 @@ export default function MyRecipes(user : UserDataParams) {
         window.location.href = '#';
     }
 
-    const onDeleteClick = async () => {
+    const onDeleteClick = () => {
+        setDeleteConfirmationOpen(true);
+    }
+
+    const confirmDelete = async () => {
         const recipeClient = new RecipeClient();
         const recipeId = Number(slug);
         const error = await recipeClient.deleteRecipe(recipeId);
@@ -101,8 +106,10 @@ export default function MyRecipes(user : UserDataParams) {
         if (error) {
             alert(error);
         } else {
-            navigate('/myRecipes')
+            navigate('/myRecipes');
         }
+
+        setDeleteConfirmationOpen(false);
     }
 
     useEffect(() => {
@@ -112,11 +119,11 @@ export default function MyRecipes(user : UserDataParams) {
                 const recipe = await client.getRecipeById(Number(slug));
                 await new UserClient().viewRecipe(Number(slug));
 
-                    setData(recipe);
-                    setTitle(recipe?.name?? "");
-                    setInstructionText(recipe?.instructionText?? "");
-                    setSelected(recipe.likedByCurrentUser);
-                    setLikeCount(recipe.likeCount);
+                setData(recipe);
+                setTitle(recipe?.name ?? "");
+                setInstructionText(recipe?.instructionText ?? "");
+                setSelected(recipe.likedByCurrentUser);
+                setLikeCount(recipe.likeCount);
 
             } catch (error) {
                 console.log("Fehler beim Laden des Rezeptes: ", error);
@@ -128,7 +135,7 @@ export default function MyRecipes(user : UserDataParams) {
         }
 
     }, [slug]);
-    
+
 
     if (!data) {
         return <div>Loading...</div>;
@@ -181,12 +188,33 @@ export default function MyRecipes(user : UserDataParams) {
                                 Delete recipe
                             </Button>
                         </p>
+
+                         <Dialog
+                             open={deleteConfirmationOpen}
+                             onClose={() => setDeleteConfirmationOpen(false)}
+                             aria-labelledby="alert-dialog-title"
+                             aria-describedby="alert-dialog-description"
+                             className="dialog-window"
+                         >
+                             <DialogTitle id="alert-dialog-title" className="delete-dialog-title">{"Delete Recipe?"}</DialogTitle>
+                             <DialogContent>
+                                 <p id="alert-dialog-description" className="delete-dialog-description">
+                                     Are you sure you want to delete this recipe?
+                                 </p>
+                             </DialogContent>
+                             <DialogActions className="dialog-actions">
+                                 <Button className="dialog-button" onClick={() => setDeleteConfirmationOpen(false)} color="primary">
+                                     Cancel
+                                 </Button>
+                                 <Button className="dialog-button" onClick={confirmDelete} color="primary" autoFocus>
+                                     Confirm
+                                 </Button>
+                             </DialogActions>
+                         </Dialog>
                     </span>
                     <br/>
                 </div>
-
             </div>
-
 
             <div id={"Middle-Container"}>
 
@@ -257,7 +285,7 @@ export default function MyRecipes(user : UserDataParams) {
                     handleClickOpen();
                     handleClickAdventurize(data.id);
                 }}>
-                    <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt" />
+                    <img id="AdventurizeIt" src={AdventurizeIt} alt="AdventurizeIt"/>
                 </button>
                 <Dialog
                     open={open}
@@ -292,7 +320,8 @@ export default function MyRecipes(user : UserDataParams) {
                             <Button color="secondary" variant="contained" onClick={() => {
                                 handleClickAdventurize(data.id);
                             }}>Regenerate</Button>
-                            <Button color="success" variant="contained" type="submit" onClick={() => saveAdventureText()}>Save</Button>
+                            <Button color="success" variant="contained" type="submit"
+                                    onClick={() => saveAdventureText()}>Save</Button>
                         </DialogActions>
                     </div>
                 </Dialog>
