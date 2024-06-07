@@ -1,5 +1,6 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
+    CircularProgress,
     Dialog,
     DialogActions,
     DialogContent,
@@ -21,6 +22,7 @@ import InfoTable from "../components/InfoTable";
 import {UserDataParams} from "../models/UserDataParams";
 import {UserClient} from "../clients/UserClient";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Typography from "@mui/material/Typography";
 
 
 export default function MyRecipes(user : UserDataParams) {
@@ -276,17 +278,18 @@ export default function MyRecipes(user : UserDataParams) {
                         },
                     }}
                 >
-                    <DialogTitle>Adventurized Text</DialogTitle>
-                    <DialogContent sx={{backgroundColor: 'white'}}>
-                        <h3>Adventure Text</h3>
-                        <div id={"atext"}>
-                            {adventureText ?
-                                <div dangerouslySetInnerHTML={{__html: adventureText.replaceAll('\n', '<br>')}}/>
-                                : <span className="loader"></span>
-                            }
+                    <DialogTitle className="dialog-title">Adventurized Text</DialogTitle>
+                    <DialogContent className="dialog-content" sx={{backgroundColor: '#779BD6'}}>
+                        <Typography className="adventure-text" variant="h6">Adventure Text</Typography>
+                        <div className="adventure-text" id={"atext"}>
+                            {adventureText ? (
+                                <div className="adventure-text" dangerouslySetInnerHTML={{__html: adventureText.replaceAll('\n', '<br>')}}/>
+                            ) : (
+                                <CircularProgress size={24} />
+                            )}
                         </div>
                     </DialogContent>
-                    <div style={{display: "flex", justifyContent: "center"}}>
+                    <div className="adventure-buttons" style={{display: "flex", justifyContent: "center"}}>
                         <DialogActions>
                             <Button color="error" variant="contained" onClick={handleClose}>Cancel</Button>
                             <Button color="secondary" variant="contained" onClick={() => {
@@ -296,6 +299,7 @@ export default function MyRecipes(user : UserDataParams) {
                         </DialogActions>
                     </div>
                 </Dialog>
+
 
 
             </div>
