@@ -37,20 +37,19 @@ export class RecipeClient {
     }
 
     public async adventurizeRecipe(id: number|undefined) {
-        /*try {
-        const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
-        if (!response.ok) {
-            throw new Error(response.statusText);
-        }
-        const data = await response.text();
-        console.log(data);
-        return data;
+        try {
+            const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
 
-         }catch (error){
-             console.log(error);
-         }*/ return 'The Heroic Quest for Pizza Margherita\n' +
-            '\n' +
-            'In a land far, far away, I embarked on a quest to create the legendary Pizza Margherita, known for its simple yet exquisite flavors. With determination in my heart and the courage to face the challenges ahead, I set out on this culinary adventure.';
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+
+            const data = await response.text();
+            console.log(data);
+            return data;
+        } catch (error){
+            console.log(error);
+        }
     }
 
     public async getRecipeByLikes(count: number|undefined) {
@@ -107,7 +106,7 @@ export class RecipeClient {
         }
     }
 
-    public async saveAdventureText(recipeId: number, adventureText: string) {
+    public async saveAdventureText(recipeId: number, adventureText: string): Promise<string> {
         try {
             const response = await fetch('https://localhost:44328/Recipe/adventurize', {
                 method: 'POST',
@@ -120,7 +119,7 @@ export class RecipeClient {
                 throw new Error(await response.text());
             }
 
-            return await response.text();
+            return '';
         } catch (error: any) {
             console.log(error);
             return error.message?? 'Unknown error.';

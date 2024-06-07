@@ -3,7 +3,6 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
     DialogTitle,
     FormControl,
     InputLabel,
@@ -11,7 +10,6 @@ import {
     ToggleButton
 } from "@mui/material";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
 import {useNavigate, useParams} from "react-router-dom";
@@ -72,12 +70,13 @@ export default function MyRecipes(user : UserDataParams) {
 
     async function saveAdventureText() {
         const recipeClient = new RecipeClient();
-        const error = await recipeClient.saveAdventureText(adventureText);
+        const recipeId = Number(slug);
+        const error = await recipeClient.saveAdventureText(recipeId, adventureText);
 
         if (error) {
             alert(error);
         } else {
-            location.reload();
+            window.location.reload();
         }
     }
 
