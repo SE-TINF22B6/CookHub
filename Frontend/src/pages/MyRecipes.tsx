@@ -100,11 +100,14 @@ export default function MyRecipes(user : UserDataParams) {
             try {
                 let client: RecipeClient = new RecipeClient();
                 const recipe = await client.getRecipeById(Number(slug));
-                setData(recipe);
-                setTitle(recipe?.name?? "");
-                setInstructionText(recipe?.instructionText?? "");
-                setSelected(recipe.likedByCurrentUser);
-                setLikeCount(recipe.likeCount);
+                await new UserClient().viewRecipe(Number(slug));
+
+                    setData(recipe);
+                    setTitle(recipe?.name?? "");
+                    setInstructionText(recipe?.instructionText?? "");
+                    setSelected(recipe.likedByCurrentUser);
+                    setLikeCount(recipe.likeCount);
+
             } catch (error) {
                 console.log("Fehler beim Laden des Rezeptes: ", error);
             }
@@ -115,13 +118,7 @@ export default function MyRecipes(user : UserDataParams) {
         }
 
     }, [slug]);
-
-    useEffect(() => {
-        if (data) {
-            console.log(data);
-        }
-
-    }, [data]);
+    
 
     if (!data) {
         return <div>Loading...</div>;

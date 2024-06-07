@@ -13,6 +13,7 @@ import {RecipeData} from "../models/RecipeData";
 
 export default function Profile(userProfile: UserDataParams) {
     let data = userProfile.data;
+    let current_index = 0
 
 
     const [likedRecipes, setLikedRecipes] = useState<Array<RecipeData>>([]);
@@ -149,7 +150,7 @@ export default function Profile(userProfile: UserDataParams) {
                         {history === null ?
                             <span className={"loader"}></span>
                             : history.length === 0 ? <h2>No history</h2> :
-                            history.map((recipe, index) => {
+                            history.reverse().map((recipe, index) => {
                             return (
                                     <a key={index} className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                         <img style={{width: "4rem", height: "4rem"}}
@@ -158,7 +159,7 @@ export default function Profile(userProfile: UserDataParams) {
                                         <h3>{recipe.name}</h3>
                                     </a>
                                 )
-                            })
+                            }).slice(current_index, current_index + 4)
 
 
                         }

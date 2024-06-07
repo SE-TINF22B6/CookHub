@@ -93,6 +93,27 @@ export class UserClient {
     }
 
 
+    public async viewRecipe(recipeId: number) {
+        try {
+            const response = await fetch(`https://localhost:44328/User/view-recipe/${recipeId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+
+                },
+                credentials: 'include',
+            });
+
+
+            return response.ok;
+
+        } catch (error) {
+            console.error('Failed to view Recipe:', error);
+
+        }
+    }
+
+
     public async getOwnRecipes() {
         try {
             const response = await fetch(`https://localhost:44328/User/own-recipes`, {
@@ -120,9 +141,6 @@ export class UserClient {
             console.error(error);
         }
     }
-
-
-
 
 
     public async userSignup(name: string, email: string, password: string) {
@@ -217,7 +235,7 @@ export class UserClient {
                 credentials: 'include'
             });
 
-            if(!response.ok) {
+            if (!response.ok) {
                 return response;
             }
 
@@ -228,7 +246,7 @@ export class UserClient {
         }
     }
 
-    async deleteProfile(password:string){
+    async deleteProfile(password: string) {
         const response = await fetch('https://localhost:44328/User/delete-account', {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
@@ -236,17 +254,19 @@ export class UserClient {
             credentials: 'include'
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             return response;
         }
 
         return response;
-    } catch (error: any) {
+    }
+
+    catch(error: any) {
         console.error(error);
         return "";
     }
 
-    async changePassword(oldPassword: string, newPassword: string){
+    async changePassword(oldPassword: string, newPassword: string) {
         try {
             const response = await fetch('https://localhost:44328/User/change-password', {
                 method: 'POST',
@@ -255,7 +275,7 @@ export class UserClient {
                 credentials: 'include',
             });
 
-            if(!response.ok) {
+            if (!response.ok) {
                 return response.text();
             }
 
@@ -266,9 +286,6 @@ export class UserClient {
 
         }
     }
-
-
-
 
 
 }

@@ -10,6 +10,7 @@ namespace Services;
 public partial class UserService
 {
     private readonly IUserRepository _repository;
+    private static object _lock = new();
 
     public UserService(IUserRepository repository)
     {
@@ -216,14 +217,18 @@ public partial class UserService
     }
     public void ViewRecipe(User user, Recipe recipe)
     {
-        var existingRecipe = user.History.FirstOrDefault(r => r.Id == recipe.Id);
-        if (existingRecipe != null)
+        lock (_lock)
         {
-            user.History.Remove(existingRecipe);
-        }
+            var existingRecipe = user.History.FirstOrDefault(r => r.Id == recipe.Id);
+            if (existingRecipe != null)
+            {
+                user.History.Remove(existingRecipe);
+            }
 
-        user.History.Add(recipe);
-        _repository.Update(user);
+            user.History.Add(recipe);
+            _repository.Update(user);
+        }
+        
     }
 
     [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]
