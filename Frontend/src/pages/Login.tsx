@@ -1,9 +1,8 @@
 import "../style/Welcome.css"
-import React, { useState} from "react";
+import React, {useState} from "react";
 import "../style/Login.css"
 import chef from "../assets/Chef_Carlo_without_background (1).png";
 import {UserClient} from "../clients/UserClient";
-
 
 
 export default function Login() {
@@ -29,7 +28,6 @@ export default function Login() {
 
 
             <div id="BodyLeft">
-
                 <div id="FormContainer">
 
                     <div className="InputMail">
@@ -54,13 +52,10 @@ export default function Login() {
                             id="exampleInputPassword1"
                             onChange={event => setPassword(event.target.value)}></input>
                     </div>
-                    <div id="messageContainer" style={{fontSize: 40, color:"red"}}>{message}</div>
-                    <input
-                        type="button"
-                        className="SubmitButton"
-                        value="Submit"
-                        onClick={handleLogin}
-                    />
+                    <div id="messageContainer" style={{fontSize: 20, color: "red"}}>{message}</div>
+                    <button className="SubmitButton" onClick={handleLogin}>
+                        Submit
+                    </button>
                     <br/>
                     <h3 className={"sign-up"}>
                         <span>Don't have an account yet?</span>
@@ -74,14 +69,8 @@ export default function Login() {
 
             <div id="BodyRight">
 
-                <div className='speech-bubble'>
-                    <span
-                        style={{
-                            color: '#C9FE71',
-                            backgroundColor: '#262525FF',
-                            fontWeight: 'bold',
-                            textShadow: '3'
-                        }}>
+                <div className='bubble'>
+                    <span>
                         Ready to dive into a world of culinary delights? <br/>
                         Log in to get access to a treasure trove of recipes, cooking tips, and foodie inspiration. <br/>
                         Join our community of cooking enthusiasts and elevate your kitchen experience. <br/>
@@ -92,9 +81,9 @@ export default function Login() {
                     </span>
                 </div>
 
-                <div className="Chef-Carlos">
+
                     <img src={chef} className="Chef-Carlo2" alt="chef"></img>
-                </div>
+
 
             </div>
 
