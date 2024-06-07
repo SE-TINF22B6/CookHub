@@ -9,7 +9,7 @@ export default function DifficultyRadioGroup(data: {recipe: CreateRecipeModel, s
 
     useEffect(() => {
         setDifficulty(50); // default value
-    }, []);
+    }, [setDifficulty]);
 
     return (
 
