@@ -32,13 +32,13 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
             <a href={`/myrecipes/${recipe.id}`} key={index}>
                 <div className="recipe-card">
                     <div className="content">
-                        <div className="back">
+                        <div className="front">
                             <div className="recipe-card-image" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
                             </div>
                         </div>
-                        <div className="front">
-                            <div className="front-content">
-                                    <div className="recipe-card-overlay">
+                        <div className="back">
+                            <div className="back-content" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                                    <div className="recipe-card-overlay" >
                                         <strong>{recipe.name}</strong>
                                         <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
                                     </div>
