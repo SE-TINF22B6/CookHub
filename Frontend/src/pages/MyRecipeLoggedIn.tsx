@@ -25,7 +25,7 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
 
     if (!data) {
         return <NotLoggedIn />;
-    }
+    } 
 
     const renderRecipeCards = (recipes: RecipeData[]) => (
         recipes.map((recipe, index) => {
