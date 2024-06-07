@@ -26,10 +26,10 @@ test('user should be able to search for recipes', async () => {
     await searchField.sendKeys('ma');
 
     // ASSERT
-    const results = await driver.findElements(By.className('results'));
+    const results = await driver.findElements(By.className('recipeContainer'));
     expect(results).toHaveLength(3);
 
-    const resultTitles = await driver.findElements(By.className('preview__title'));
+    const resultTitles = await driver.findElements(By.className('recipeName'));
     expect(await resultTitles[0].getText()).toEqual('Mango Sticky Rice');
     expect(await resultTitles[1].getText()).toEqual('Pizza Margherita');
     expect(await resultTitles[2].getText()).toEqual('Chicken Tikka Masala');
