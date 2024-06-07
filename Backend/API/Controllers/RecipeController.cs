@@ -126,15 +126,27 @@ public class RecipeController: ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeleteRecipe(int id)
     {
-        try
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
         {
-            _recipeService.DeleteRecipe(id);
-            return Ok("Recipe successfully deleted");
+            return BadRequest("User is not logged in");
         }
-        catch (InvalidOperationException ex)
+
+        var recipe = _recipeService.GetRecipeById(id);
+
+        if (recipe == null)
         {
-            return NotFound(ex.Message);
+            return NotFound("Recipe not found.");
         }
+
+        if (recipe.Creator?.Id != userId)
+        {
+            return BadRequest("Cannot delete a recipe that is not yours");
+        }
+
+        _recipeService.DeleteRecipe(id);
+        return Ok("Recipe successfully deleted");
     }
 
     /// <summary>
