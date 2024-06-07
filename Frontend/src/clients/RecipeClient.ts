@@ -37,18 +37,19 @@ export class RecipeClient {
     }
 
     public async adventurizeRecipe(id: number|undefined) {
-         try {
-        const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
-        if (!response.ok) {
-            throw new Error(response.statusText);
-        }
-        const data = await response.text();
-        console.log(data);
-        return data;
+        try {
+            const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
 
-         }catch (error){
-             console.log(error);
-         }
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+
+            const data = await response.text();
+            console.log(data);
+            return data;
+        } catch (error){
+            console.log(error);
+        }
     }
 
     public async getRecipeByLikes(count: number|undefined) {
@@ -102,6 +103,26 @@ export class RecipeClient {
         }catch (error: any){
             console.log(error);
             return 'Cannot delete recipe: ' + error.message?? 'Unknown error.';
+        }
+    }
+
+    public async saveAdventureText(recipeId: number, adventureText: string): Promise<string> {
+        try {
+            const response = await fetch('https://localhost:44328/Recipe/adventurize', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                credentials: 'include',
+                body: JSON.stringify({recipeId: recipeId, text: adventureText})
+            });
+
+            if (!response.ok) {
+                throw new Error(await response.text());
+            }
+
+            return '';
+        } catch (error: any) {
+            console.log(error);
+            return error.message?? 'Unknown error.';
         }
     }
 }
