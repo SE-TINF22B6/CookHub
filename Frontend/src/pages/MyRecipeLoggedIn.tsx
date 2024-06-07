@@ -27,8 +27,8 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
         return <NotLoggedIn />;
     }
 
-    const renderRecipeCards = (recipes: RecipeData[]) => {
-        return recipes.map((recipe, index) => (
+    const renderRecipeCards = (recipes: RecipeData[]) => (
+        recipes.map((recipe, index) => (
             <a href={`/myrecipes/${recipe.id}`} key={index}>
                 <div className="recipe-card">
                     <div className="content">
@@ -38,56 +38,46 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
                         </div>
                         <div className="back">
                             <div className="back-content" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
-                                    <div className="recipe-card-overlay" >
-                                        <strong>{recipe.name}</strong>
-                                        <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
-                                    </div>
+                                <div className="recipe-card-overlay" >
+                                    <strong>{recipe.name}</strong>
+                                    <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
-        ));
-    };
+        ))
+    );
 
     return (
+        
         <div className="my-recipes-container">
             <div className="recipe-column">
-                <h2>{data.name}'s Liked Recipes</h2>
-                {likedRecipes.length > 0 ? (
-                    <div className="allRecipeContainer">
-                        {chunkArray(likedRecipes, 3).map((row, index) => (
-                            <div className="recipe-row" key={index}>
-                                {renderRecipeCards(row)}
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <p>No liked recipes found.</p>
-                )}
+                <div className="header-container">
+                    <h2 className="heading">{data.name}'s Liked Recipes</h2>
+                </div>
+                <div className="allRecipeContainer">
+                    {likedRecipes.length > 0 ? (
+                        <div className="recipe-row">{renderRecipeCards(likedRecipes)}</div>
+                    ) : (
+                        <p>No liked recipes found.</p>
+                    )}
+                </div>
             </div>
 
             <div className="recipe-column">
-                <h2>{data.name}'s Own Recipes</h2>
-                {ownRecipes.length > 0 ? (
-                    <div className="allRecipeContainer">
-                        {chunkArray(ownRecipes, 3).map((row, index) => (
-                            <div className="recipe-row" key={index}>
-                                {renderRecipeCards(row)}
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <p>No own recipes found.</p>
-                )}
+                <div className="header-container">
+                    <h2 className="heading">{data.name}'s Own Recipes</h2>
+                </div>
+                <div className="allRecipeContainer">
+                    {ownRecipes.length > 0 ? (
+                        <div className="recipe-row">{renderRecipeCards(ownRecipes)}</div>
+                    ) : (
+                        <p>No own recipes found.</p>
+                    )}
+                </div>
             </div>
         </div>
-    );
-}
-
-// Utility function to chunk array into smaller arrays
-function chunkArray<T>(arr: T[], chunkSize: number): T[][] {
-    return Array.from({ length: Math.ceil(arr.length / chunkSize) }, (_, i) =>
-        arr.slice(i * chunkSize, i * chunkSize + chunkSize)
     );
 }

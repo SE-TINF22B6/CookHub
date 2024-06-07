@@ -1,7 +1,7 @@
 .recipe-card {
     width: 300px;
     height: 300px;
-    margin-bottom: 20px;
+    margin: 5vh;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -9,6 +9,22 @@
     perspective: 1000px;
 }
 
+.recipe-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.recipe-column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.my-recipes-container {
+    display: flex;
+    justify-content: space-between;
+}
 
 .recipe-card-overlay {
     position: absolute;
@@ -95,6 +111,15 @@
 .recipe-card:hover .content {
     transform: rotateY(180deg);
 
+}
+
+.heading-container{
+    background-color: black;
+}
+
+.heading{
+    margin: 40px;
+    color: #c7fc71;
 }
 
 @keyframes rotation_481 {
