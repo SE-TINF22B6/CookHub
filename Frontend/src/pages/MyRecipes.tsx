@@ -14,7 +14,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import React, {useEffect, useState} from "react";
 import "../style/MyRecipes.css";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import AdventurizeIt from "../assets/fillElements/Adventurizeit_btn.png"
 import Placeholder from "../assets/fillElements/placeholder.png";
 import RageQuitButton from "../assets/fillElements/rageQuit-btn.png";
@@ -22,10 +22,12 @@ import {RecipeClient} from "../clients/RecipeClient";
 import InfoTable from "../components/InfoTable";
 import {UserDataParams} from "../models/UserDataParams";
 import {UserClient} from "../clients/UserClient";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 export default function MyRecipes(user : UserDataParams) {
     let {slug} = useParams();
+    const navigate = useNavigate();
     const [data, setData] = useState<any>(null);
     const [selected, setSelected] = React.useState(false);
     const [open, setOpen] = React.useState(false);
@@ -79,6 +81,18 @@ export default function MyRecipes(user : UserDataParams) {
         setTitle(title);
         setInstructionText(text);
         window.location.href = '#';
+    }
+
+    const onDeleteClick = async () => {
+        const recipeClient = new RecipeClient();
+        const recipeId = Number(slug);
+        const error = await recipeClient.deleteRecipe(recipeId);
+
+        if (error) {
+            alert(error);
+        } else {
+            navigate('/myRecipes')
+        }
     }
 
     useEffect(() => {
@@ -149,6 +163,16 @@ export default function MyRecipes(user : UserDataParams) {
                             >
                                 <FavoriteIcon/>
                             </ToggleButton>
+                        </p>
+                        <p hidden={user.data?.id !== data.creatorId}>
+                            <Button
+                                variant="outlined"
+                                startIcon={<DeleteIcon/>}
+                                color="error"
+                                onClick={() => onDeleteClick()}
+                                sx={{height: '48px'}}>
+                                Delete recipe
+                            </Button>
                         </p>
                     </span>
                     <br/>
