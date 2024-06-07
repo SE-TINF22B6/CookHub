@@ -77,7 +77,7 @@ function App() {
                     <Route path='/myrecipes' element={<MyRecipeLoggedIn data={userData?? null}/>}/>
                     <Route path='/findrecipes' element={<FindRecipes/>}/>
                     <Route path='/foodforge' element={<FoodForge data={userData?? null}/>}/>
-                    <Route path='/logout' element={<Logout/>}/>
+                    <Route path='/logout' element={<Logout data={userData ?? null}/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

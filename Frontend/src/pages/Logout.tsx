@@ -3,8 +3,11 @@ import {useNavigate} from 'react-router-dom';
 import {UserClient} from '../clients/UserClient';
 import "../style/Logout.css";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import {UserDataParams} from "../models/UserDataParams";
+import NotLoggedIn from "../components/NotLoggedIn";
 
-const Logout = () => {
+const Logout = (userProfile: UserDataParams) => {
+    let data = userProfile.data;
     const navigate = useNavigate();
     const userClient = new UserClient();
 
@@ -25,6 +28,16 @@ const Logout = () => {
     const handleKeepCooking = () => {
         navigate('/profile');
     };
+
+
+
+    if (!data) {
+        return (
+            <>
+                <NotLoggedIn></NotLoggedIn>
+            </>
+        )
+    }
 
     return (
         <div className="logout-container">
