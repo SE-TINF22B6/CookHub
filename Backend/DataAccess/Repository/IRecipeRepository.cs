@@ -1,4 +1,5 @@
 using Contracts.Entities;
+using NHibernate.Linq;
 
 namespace DataAccess.Repository;
 
@@ -33,5 +34,25 @@ public interface IRecipeRepository : IRepository<Recipe>
         
         transaction.Commit();
         return (int) id;
+    }
+
+    // this looks very schizophrenic, but if you remove any of these lines nhibernate refuses to delete it
+    public new void Delete(Recipe recipe)
+    {
+        using var session = Factory.OpenSession();
+        using var transaction = session.BeginTransaction();
+
+        var users = session.Query<User>().Where(user => user.History.Any(h => h.Recipe == recipe));
+        recipe = users.FirstOrDefault()?.History.FirstOrDefault()?.Recipe ?? recipe;
+        session.Query<HistoryEntry>().Where(h => h.Recipe == recipe).Delete();
+
+        foreach (var user in users)
+        {
+            user.History = user.History.Where(h => h.Recipe != recipe).ToList();
+            session.Update(user);
+        }
+
+        session.Delete(recipe);
+        transaction.Commit();
     }
 }
