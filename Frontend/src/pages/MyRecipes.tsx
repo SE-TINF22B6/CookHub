@@ -140,7 +140,7 @@ export default function MyRecipes(user : UserDataParams) {
         <div className="MainContainer">
 
             <div id={"Header"}>
-                <h1>🗇 {title} </h1>
+                <h1 style={{color: '#C9FE71', textShadow: '2px 2px #000'}}>🗇 {title} </h1>
             </div>
 
             <div id={"Top-Container"}>
@@ -303,8 +303,8 @@ export default function MyRecipes(user : UserDataParams) {
             <div id={"Bottom-Container"}>
 
                 <h2 style={{
-                    textShadow: "2px 2px #C9FE71",
-                    color: "#000000",
+                    textShadow: "2px 2px #000",
+                    color: "#C9FE71",
                     fontSize: "40px",
                     fontFamily: "Arial",
                     fontWeight: "bold"

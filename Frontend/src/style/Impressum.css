@@ -9,12 +9,12 @@
 .header {
     text-align: center;
     margin-top: 2rem;
-    text-shadow: 2px 2px 4px #000000;
 }
 
 .header h1 {
     font-size: 3rem;
     color: #c7fc71;
+    text-shadow: 2px 2px #000;
 }
 
 .body {

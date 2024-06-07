@@ -149,7 +149,7 @@ export default function Settings(userProfile: UserDataParams) {
     return <div className="SettingsPage">
 
         <div id={"header"}>
-            <h1>Settings</h1>
+            <h1 style={{color: '#C9FE71', textShadow: '2px 2px #000'}}>Settings</h1>
         </div>
 
         <div id={"body"}>

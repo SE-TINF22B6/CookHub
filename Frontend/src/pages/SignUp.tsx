@@ -84,8 +84,8 @@ export default function SignUp() {
 
             <div className="headerSignUp">
                 <h1 style={{
-                    textShadow: "2px 2px #C9FE71",
-                    color: "#000000",
+                    textShadow: "2px 2px #000",
+                    color: "#C9FE71",
                     fontSize: "40px",
                     fontFamily: "Arial",
                     fontWeight: "bold"

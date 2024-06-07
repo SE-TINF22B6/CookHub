@@ -87,7 +87,7 @@ export default function Profile(userProfile: UserDataParams) {
                                 className="Avatar" alt="avatar"/>
                         </div>
                         <div className="UsernameHolder">
-                            <h1>{data?.name}</h1>
+                            <h1 style={{color: '#C9FE71', textShadow: '2px 2px #000'}}>{data?.name}</h1>
                         </div>
                     </div>
 
