@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import NotLoggedIn from "../components/NotLoggedIn";
 import { UserClient } from "../clients/UserClient";
 import { RecipeData } from "../models/RecipeData";
+import Placeholder from "../assets/fillElements/placeholder.png";
 
 export default function MyRecipeLoggedIn(userData: UserDataParams) {
     let data = userData.data;
@@ -25,35 +26,38 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
 
     if (!data) {
         return <NotLoggedIn />;
-    }
+    } 
 
     const renderRecipeCards = (recipes: RecipeData[]) => (
-        recipes.map((recipe, index) => (
-            <div className="recipe-card-container" key={index}>
-                <a href={`/myrecipes/${recipe.id}`}>
-                    <div className="recipe-card">
-                        <div className="content">
-                            <div className="front">
-                                <div className="recipe-card-image" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+        recipes.map((recipe, index) => {
+            const imageUrl = recipe.pictureUrl ? `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')` : `url(${Placeholder})`;
+            return (
+                <div className="recipe-card-container" key={index}>
+                    <a href={`/myrecipes/${recipe.id}`}>
+                        <div className="recipe-card">
+                            <div className="content">
+                                <div className="front">
+                                    <div className="recipe-card-image" style={{backgroundImage: imageUrl, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="back">
-                                <div className="back-content" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
-                                    <div className="recipe-card-overlay">
-                                        <strong>{recipe.name}</strong>
-                                        <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
+                                <div className="back">
+                                    <div className="back-content" style={{backgroundImage: imageUrl, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                                        <div className="recipe-card-overlay">
+                                            <strong>{recipe.name}</strong>
+                                            <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-        ))
+                    </a>
+                </div>
+            );
+        })
     );
 
     return (
-        
+
         <div className="my-recipes-container">
             <div className="recipe-column">
                 <div className="header-container">
@@ -63,7 +67,7 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
                     {likedRecipes.length > 0 ? (
                         <div className="recipe-row">{renderRecipeCards(likedRecipes)}</div>
                     ) : (
-                        <p>No liked recipes found.</p>
+                        <h2 className="heading">No liked recipes found.</h2>
                     )}
                 </div>
             </div>
@@ -76,7 +80,7 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
                     {ownRecipes.length > 0 ? (
                         <div className="recipe-row">{renderRecipeCards(ownRecipes)}</div>
                     ) : (
-                        <p>No own recipes found.</p>
+                        <h2 className="heading">No own recipes found.</h2>
                     )}
                 </div>
             </div>
