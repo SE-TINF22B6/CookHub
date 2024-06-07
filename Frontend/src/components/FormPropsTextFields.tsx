@@ -34,8 +34,14 @@ export default function FormPropsTextFields(data: {recipe: CreateRecipeModel, se
                         id="filled-number"
                         label="Preparation Time (min)"
                         type="number"
+                        InputProps={{ inputProps: { min: 0}}}
                         InputLabelProps={{
                             shrink: true,
+                        }}
+                        onKeyDown={(e) => {
+                            if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+                                e.preventDefault();
+                            }
                         }}
                         variant="filled"
                         onChange={e => setRecipe({...recipe, prepTime: +e.target.value})}
@@ -44,8 +50,14 @@ export default function FormPropsTextFields(data: {recipe: CreateRecipeModel, se
                         id="filled-number"
                         label="Cooking Time (min)"
                         type="number"
+                        InputProps={{ inputProps: { min: 0}}}
                         InputLabelProps={{
                             shrink: true,
+                        }}
+                        onKeyDown={(e) => {
+                            if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+                                e.preventDefault();
+                            }
                         }}
                         variant="filled"
                         onChange={e => setRecipe({...recipe, cookingTime: +e.target.value})}

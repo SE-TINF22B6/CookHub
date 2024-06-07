@@ -13,6 +13,7 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({ addIngredient 
         <div>
             <input
                 type="number"
+                min={0}
                 value={ingredientAmount}
                 onChange={(e) => setIngredientAmount(Number(e.target.value))}
                 placeholder="Amount"
@@ -38,6 +39,11 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({ addIngredient 
             </select>
             <input
                 type="text"
+                onKeyDown={(e) => {
+                    if (!/[a-zA-Z]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete') {
+                        e.preventDefault();
+                    }
+                }}
                 value={ingredientValue}
                 onChange={(e) => setIngredientValue(e.target.value)}
                 placeholder="Ingredient"
