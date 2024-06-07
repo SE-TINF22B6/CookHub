@@ -93,6 +93,38 @@ export class UserClient {
     }
 
 
+    public async getOwnRecipes() {
+        try {
+            const response = await fetch(`https://localhost:44328/User/own-recipes`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+
+            return response.json();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    public async getViewedRecipes() {
+        try {
+            const response = await fetch(`https://localhost:44328/User/viewed-recipes`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+
+            return response.json();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+
+
+
     public async userSignup(name: string, email: string, password: string) {
         let response;
         try {
@@ -234,5 +266,9 @@ export class UserClient {
 
         }
     }
+
+
+
+
 
 }
