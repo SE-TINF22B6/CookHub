@@ -62,63 +62,6 @@ html {
     color: black;
 }
 
-.preview {
-    background-color: #6384ba;
-    border-radius: 10rem;
-    display: flex;
-    justify-content: space-evenly;
-    min-height: 170px;
-}
-
-.previewImage {
-    width: 20%;
-    border-radius: 50%;
-}
-
-.preview__data {
-    flex: 1;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.preview__time {
-    display: flex;
-    flex-direction: column;
-}
-
-.results {
-    list-style: none;
-    margin-bottom: 2rem;
-    width: 90%;
-}
-
-.preview__user-generated {
-
-}
-
-.ribbon {
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
-}
-
-.ribbon {
-    --f: .65em; /* control the folded part */
-
-    position: relative;
-    top: -3rem;
-    right: 0;
-    line-height: 1.4;
-    padding-inline: 1lh;
-    padding-bottom: var(--f);
-    border-image: conic-gradient(#0008 0 0) 51%/var(--f);
-    clip-path: polygon(
-            100% calc(100% - var(--f)), 100% 100%, calc(100% - var(--f)) calc(100% - var(--f)), var(--f) calc(100% - var(--f)), 0 100%, 0 calc(100% - var(--f)), 999px calc(100% - var(--f) - 999px), calc(100% - 999px) calc(100% - var(--f) - 999px));
-    transform: translate(calc((1 - cos(45deg)) * 100%), -100%) rotate(45deg);
-    transform-origin: 0 100%;
-    background-color: #C8CF02;
-}
 
 .topRecipes {
     display: flex;
@@ -131,7 +74,14 @@ html {
     color: black;
 }
 
+@media (max-width: 1700px) {
 
+    .topRecipes {
+        flex-direction: column;
+        align-items: center;
+
+    }
+}
 
 
 @media (max-width: 1000px) {
@@ -167,31 +117,6 @@ html {
         padding: 0;
     }
 
-    .preview {
-        font-size: 10px;
-        font-weight: normal;
-    }
-
-    .previewImage {
-
-        display: none;
-    }
-
-    .preview__title {
-        font-size: 1rem;
-    }
-
-    .preview__user-generated {
-        display: none;
-    }
-
-    .preview__publisher {
-        display: none;
-    }
-
-    .ribbon {
-        display: none;
-    }
 
     .topRecipes {
         display: flex;
@@ -200,11 +125,11 @@ html {
         align-items: center;
         margin-top: 10%;
     }
-
     #cards {
         display: flex;
         width: 70vw;
         height: 40vh;
         box-shadow: #2b2f32 12px 12px 12px;
     }
+
 }
