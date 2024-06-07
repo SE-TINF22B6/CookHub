@@ -70,6 +70,17 @@ export default function MyRecipes(user : UserDataParams) {
         setLikeCount(newLikeCount);
     }
 
+    async function saveAdventureText() {
+        const recipeClient = new RecipeClient();
+        const error = await recipeClient.saveAdventureText(adventureText);
+
+        if (error) {
+            alert(error);
+        } else {
+            location.reload();
+        }
+    }
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -270,21 +281,7 @@ export default function MyRecipes(user : UserDataParams) {
                     }}
                 >
                     <DialogTitle>Adventurized Text</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Your Recipe
-                        </DialogContentText>
-                        <TextField
-                            autoFocus
-                            required
-                            margin="dense"
-                            id="name"
-                            name="recipeName"
-                            label="Recipe Name"
-                            type="text"
-                            fullWidth
-                            variant="outlined"
-                        />
+                    <DialogContent sx={{backgroundColor: 'white'}}>
                         <h3>Adventure Text</h3>
                         <div id={"atext"}>
                             {adventureText ?
@@ -299,7 +296,7 @@ export default function MyRecipes(user : UserDataParams) {
                             <Button color="secondary" variant="contained" onClick={() => {
                                 handleClickAdventurize(data.id);
                             }}>Regenerate</Button>
-                            <Button color="success" variant="contained" type="submit">Save</Button>
+                            <Button color="success" variant="contained" type="submit" onClick={() => saveAdventureText()}>Save</Button>
                         </DialogActions>
                     </div>
                 </Dialog>

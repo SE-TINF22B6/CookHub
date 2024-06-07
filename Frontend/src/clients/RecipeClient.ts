@@ -37,7 +37,7 @@ export class RecipeClient {
     }
 
     public async adventurizeRecipe(id: number|undefined) {
-         try {
+        /*try {
         const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
         if (!response.ok) {
             throw new Error(response.statusText);
@@ -48,7 +48,9 @@ export class RecipeClient {
 
          }catch (error){
              console.log(error);
-         }
+         }*/ return 'The Heroic Quest for Pizza Margherita\n' +
+            '\n' +
+            'In a land far, far away, I embarked on a quest to create the legendary Pizza Margherita, known for its simple yet exquisite flavors. With determination in my heart and the courage to face the challenges ahead, I set out on this culinary adventure.';
     }
 
     public async getRecipeByLikes(count: number|undefined) {
@@ -102,6 +104,26 @@ export class RecipeClient {
         }catch (error: any){
             console.log(error);
             return 'Cannot delete recipe: ' + error.message?? 'Unknown error.';
+        }
+    }
+
+    public async saveAdventureText(recipeId: number, adventureText: string) {
+        try {
+            const response = await fetch('https://localhost:44328/Recipe/adventurize', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                credentials: 'include',
+                body: JSON.stringify({recipeId: recipeId, text: adventureText})
+            });
+
+            if (!response.ok) {
+                throw new Error(await response.text());
+            }
+
+            return await response.text();
+        } catch (error: any) {
+            console.log(error);
+            return error.message?? 'Unknown error.';
         }
     }
 }
