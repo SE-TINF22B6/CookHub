@@ -29,24 +29,26 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
 
     const renderRecipeCards = (recipes: RecipeData[]) => (
         recipes.map((recipe, index) => (
-            <a href={`/myrecipes/${recipe.id}`} key={index}>
-                <div className="recipe-card">
-                    <div className="content">
-                        <div className="front">
-                            <div className="recipe-card-image" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+            <div className="recipe-card-container" key={index}>
+                <a href={`/myrecipes/${recipe.id}`}>
+                    <div className="recipe-card">
+                        <div className="content">
+                            <div className="front">
+                                <div className="recipe-card-image" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                                </div>
                             </div>
-                        </div>
-                        <div className="back">
-                            <div className="back-content" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
-                                <div className="recipe-card-overlay" >
-                                    <strong>{recipe.name}</strong>
-                                    <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
+                            <div className="back">
+                                <div className="back-content" style={{backgroundImage: `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
+                                    <div className="recipe-card-overlay">
+                                        <strong>{recipe.name}</strong>
+                                        <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         ))
     );
 
