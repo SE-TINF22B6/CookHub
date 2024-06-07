@@ -108,11 +108,6 @@ public class RecipeController: ControllerBase
             return BadRequest("You have to be logged in to create a recipe");
         }
 
-        if (string.IsNullOrWhiteSpace(recipe.Name))
-        {
-            return BadRequest("Recipe name is required.");
-        }
-
         var pictureFileName = "";
 
         if (recipe.Picture.Length > 0 && !RecipeService.TrySaveRecipeImage(recipe.Picture, out pictureFileName))
@@ -120,8 +115,9 @@ public class RecipeController: ControllerBase
             return BadRequest("Invalid base64 image.");
         }
 
-        var recipeId = _recipeService.CreateRecipeWithIngredients(recipe.ToSavableEntity(creatorId, pictureFileName));
-        return Created($"/myRecipes/{recipeId}", recipeId);
+        var success = _recipeService.TryCreateRecipeWithIngredients(recipe.ToSavableEntity(creatorId, pictureFileName),
+            out var recipeId, out var error);
+        return success ? Created($"/myRecipes/{recipeId}", recipeId) : BadRequest(error);
     }
 
     /// <summary>

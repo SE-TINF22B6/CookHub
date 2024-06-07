@@ -140,6 +140,30 @@ public class RecipeService
         return true;
     }
 
-    public int CreateRecipeWithIngredients(Recipe recipe)
-        => _repository.CreateWithIngredients(recipe);
+    public bool TryCreateRecipeWithIngredients(Recipe recipe, out int recipeId, out string error)
+    {
+        recipeId = -1;
+
+        if (string.IsNullOrWhiteSpace(recipe.Name))
+        {
+            error = "You have to give your recipe a name.";
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(recipe.InstructionText))
+        {
+            error = "You have to add an instruction text to your recipe.";
+            return false;
+        }
+
+        if (recipe.Ingredients.Count == 0)
+        {
+            error = "You have to add at least 1 ingredient to your recipe.";
+            return false;
+        }
+
+        recipeId = _repository.CreateWithIngredients(recipe);
+        error = string.Empty;
+        return true;
+    }
 }
