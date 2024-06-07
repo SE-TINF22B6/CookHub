@@ -42,7 +42,7 @@ export default function Profile(userProfile: UserDataParams) {
 
     useEffect(() => {
         async function loadData() {
-            const likedResponse = await new UserClient().getLikedRecipes(data?.id);
+            const likedResponse = await new UserClient().getLikedRecipes(data!.id);
             const ownResponse = await new UserClient().getOwnRecipes();
             const historyResponse = await new UserClient().getViewedRecipes();
             setLikedRecipes(likedResponse);
@@ -50,8 +50,9 @@ export default function Profile(userProfile: UserDataParams) {
             setHistory(historyResponse);
         }
 
-
-        loadData()
+        if (data) {
+            loadData();
+        }
     }, [data?.id]);
 
 
@@ -110,9 +111,9 @@ export default function Profile(userProfile: UserDataParams) {
                         {likedRecipes === null ?
                             <span className={"loader"}></span>
                             : likedRecipes.length === 0 ? <h2>No liked recipes</h2> :
-                                likedRecipes.map((recipe, index) => {
+                                likedRecipes.map((recipe) => {
                                     return (
-                                        <a key={index} className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
+                                        <a className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                             <img style={{width: "4rem", height: "4rem"}}
                                                  src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
                                                  alt={"rezept"}/>
