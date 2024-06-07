@@ -1,8 +1,8 @@
 export interface Ingredient {
     id: number;
-    value: string;
-    amount: number;
-    unit: string;
+    ingredientName: string;
+    quantity: number;
+    unitOfMeasure: string;
 }
 
 export interface IngredientListProps {

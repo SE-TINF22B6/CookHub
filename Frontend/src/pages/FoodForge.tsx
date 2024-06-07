@@ -10,15 +10,33 @@ import ImageUploader from "../components/ImageUploader";
 import CARLOS_POPUP from "../helpers/CARLOS_POPUP";
 import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
+import {useState} from "react";
+import {CreateRecipeModel} from "../models/CreateRecipeModel";
+import {RecipeClient} from "../clients/RecipeClient";
+import {useNavigate} from "react-router-dom";
 
 
 export default function FoodForge(isLoggedIn: UserDataParams) {
     let data = isLoggedIn.data;
 
+    const [recipe, setRecipe] = useState<CreateRecipeModel>(new CreateRecipeModel());
+    const navigate = useNavigate();
+
     if (!data) {
         return (
             <NotLoggedIn></NotLoggedIn>
         )
+    }
+
+    async function onSaveButtonClick() {
+        const recipeClient = new RecipeClient();
+        const response = await recipeClient.createRecipe(recipe);
+
+        if (Number.isNaN(+response)) {
+            alert(response);
+        } else {
+            navigate('/myRecipes/' + response);
+        }
     }
 
     return (
@@ -32,7 +50,7 @@ export default function FoodForge(isLoggedIn: UserDataParams) {
 
                     <img src={CookPotCover} alt="potTop" style={{position: 'relative', width: '80%'}}/>
                     <div className={"ingredients"}>
-                        <AddIngredientApp/>
+                        <AddIngredientApp recipe={recipe} setRecipe={setRecipe}/>
                     </div>
                     <img src={CookPot} alt="potBottom" style={{position: 'relative', width: '80%'}}/>
 
@@ -49,7 +67,7 @@ export default function FoodForge(isLoggedIn: UserDataParams) {
                 <div className={"Top-Right-Container"}>
 
                     <div id={"LeftSide"}>
-                        <ImageUploader/>
+                        <ImageUploader recipe={recipe} setRecipe={setRecipe}/>
                     </div>
 
                     <div id={"RightSide"}>
@@ -58,7 +76,7 @@ export default function FoodForge(isLoggedIn: UserDataParams) {
                         </div>
 
                         <div className={"group"}>
-                            <DifficultyRadioGroup/>
+                            <DifficultyRadioGroup recipe={recipe} setRecipe={setRecipe}/>
                         </div>
                     </div>
 
@@ -68,17 +86,18 @@ export default function FoodForge(isLoggedIn: UserDataParams) {
                 <div id={"Bottom-Right-Container"}>
 
                     <br/><br/>
-                    <FormPropsTextFields/>
+                    <FormPropsTextFields recipe={recipe} setRecipe={setRecipe}/>
                     <br/>
 
-                    <textarea className="textArea"></textarea>
+                    <textarea className="textArea"
+                              onChange={e => setRecipe({...recipe, instructionText: e.target.value})}>
+                    </textarea>
                     <br/>
 
                     <span className={"buttons"}>
                         <br/>
-                        <a className="Save-Recipe-Button" href='/myRecipes'>
-                            <button className="save-recipe">SAVE RECIPE</button>
-                        </a>
+
+                        <button className="save-recipe" onClick={() => onSaveButtonClick()}>SAVE RECIPE</button>
 
                         <div className="carlos">
                             <CARLOS_POPUP

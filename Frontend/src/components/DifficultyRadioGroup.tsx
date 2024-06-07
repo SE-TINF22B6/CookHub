@@ -1,7 +1,11 @@
 import * as React from 'react';
 import "../style/DifficultyRadioGroup.css";
+import {CreateRecipeModel} from "../models/CreateRecipeModel";
 
-export default function RowRadioButtonsGroup() {
+export default function DifficultyRadioGroup(data: {recipe: CreateRecipeModel, setRecipe: React.Dispatch<React.SetStateAction<CreateRecipeModel>>}) {
+    const {recipe, setRecipe} = data;
+    const onChange = (value: number) => setRecipe({...recipe, difficulty: value});
+
     return (
 
         <fieldset
@@ -10,23 +14,23 @@ export default function RowRadioButtonsGroup() {
         >
 
             <div>
-                <input type="radio" id="unpack" name="radio-group" value="unpack & eat"/>
-                <label htmlFor="unpack" style={{marginLeft: '10px'}}>unpack & eat</label>
+                <input type="radio" id="unpack" name="radio-group" value="0" onClick={() => onChange(0)}/>
+                <label htmlFor="unpack" style={{marginLeft: '10px'}}>Unpack & eat</label>
             </div>
             <div>
-                <input type="radio" id="kitchen" name="radio-group" value="I know where the kitchen is"/>
+                <input type="radio" id="kitchen" name="radio-group" value="25" onClick={() => onChange(25)}/>
                 <label htmlFor="kitchen" style={{marginLeft: '10px'}}>I know where the kitchen is</label>
             </div>
             <div>
-                <input type="radio" id="pizza" name="radio-group" value="stove = pizza"/>
-                <label htmlFor="pizza" style={{marginLeft: '10px'}}>stove = pizza</label>
+                <input type="radio" id="pizza" name="radio-group" value="50" onClick={() => onChange(50)}/>
+                <label htmlFor="pizza" style={{marginLeft: '10px'}}>Mid</label>
             </div>
             <div>
-                <input type="radio" id="ketchup" name="radio-group" value="ketchup isn't a spice"/>
-                <label htmlFor="ketchup" style={{marginLeft: '10px'}}>ketchup isn't a spice</label>
+                <input type="radio" id="ketchup" name="radio-group" value="75" onClick={() => onChange(75)}/>
+                <label htmlFor="ketchup" style={{marginLeft: '10px'}}>I know what I'm doing</label>
             </div>
             <div>
-                <input type="radio" id="ramsay" name="radio-group" value="Gordon Ramsay is my dad"/>
+                <input type="radio" id="ramsay" name="radio-group" value="100" onClick={() => onChange(100)}/>
                 <label htmlFor="ramsay" style={{marginLeft: '10px'}}>Gordon Ramsay is my dad</label>
             </div>
 

@@ -6,12 +6,12 @@ namespace API.Models;
 public class CreateRecipeModel
 {
     public required string Name { get; set; }
-    public required string Picture { get; set; }
+    public string Picture { get; set; } = "";
     public int PrepTime { get; set; }
     public int CookingTime { get; set; }
     public int Difficulty { get; set; }
-    public required string Description { get; set; }
-    public required string InstructionText { get; set; }
+    public string Description { get; set; } = "";
+    public string InstructionText { get; set; } = "";
     public IEnumerable<string> Categories { get; set; } = new List<string>();
     public IEnumerable<RecipeIngredientModel> Ingredients { get; set; } = new List<RecipeIngredientModel>();
 

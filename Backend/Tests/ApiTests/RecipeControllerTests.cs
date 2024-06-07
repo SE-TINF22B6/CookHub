@@ -94,7 +94,7 @@ public class RecipeControllerTests : IDisposable
         var result = _recipeController.CreateRecipe(recipe);
 
         // ASSERT
-        Assert.IsType<CreatedAtActionResult>(result);
+        Assert.IsType<CreatedResult>(result);
         var recipeInDatabase = _recipeService.GetAllRecipes().Single();
         Assert.Equal(recipe.Name, recipeInDatabase.Name);
         Assert.Equal(recipe.PrepTime, recipeInDatabase.PrepTime);
