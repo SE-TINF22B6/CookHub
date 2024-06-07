@@ -10,19 +10,18 @@ describe('test with logged in user', () => {
 
     it('should show users recipes when logged in', async () => {
         // ARRANGE
-        const cardBacks = await driver.findElements(By.className('back'));
-        const heading = await driver.findElement(By.css('h1'));
-        const cardTitles = await driver.findElements(By.css('.title p'));
-        await driver.wait(until.elementIsVisible(cardTitles[0]));
+        const likedRecipesHeading = await driver.findElement(By.css('.recipe-column:nth-of-type(1) .heading'));
+        const ownRecipesHeading = await driver.findElement(By.css('.recipe-column:nth-of-type(2) .heading'));
+        const likedRecipesCards = await driver.findElements(By.css('.recipe-column:nth-child(1) .recipe-card-container'));
+        const ownRecipesCards = await driver.findElements(By.css('.recipe-column:nth-child(2) .recipe-card-container'));
 
         // ASSERT
-        expect(await heading.getText()).toEqual("Carlos's Recipes");
-        expect(await cardBacks[0].getText()).toEqual('Hover Me');
-        expect(cardBacks).toHaveLength(2);
+        expect(await likedRecipesHeading.getText()).toContain("'s Liked Recipes");
+        expect(await ownRecipesHeading.getText()).toContain("'s Own Recipes");
 
-        const cardTitleTexts = await Promise.all(cardTitles.map(async card => await card.getText()));
-        expect(cardTitleTexts).toContain('Pizza Margherita');
-        expect(cardTitleTexts).toContain('Spaghetti Carbonara');
+        // Check for at least one card in each section to ensure recipes are displayed
+        expect(likedRecipesCards.length).toBeGreaterThan(0);
+        expect(ownRecipesCards.length).toBeGreaterThan(0);
     });
 
     afterAll(logOut);
@@ -33,10 +32,13 @@ describe('test without logged in user', () => {
 
     it('should show error message when not logged in', async () => {
         // ARRANGE
-        const messages = await driver.findElements(By.css('h1'));
+        const messages = await driver.findElements(By.css('div'));
 
         // ASSERT
-        expect(await messages[0].getText()).toEqual('You are not logged in!');
-        expect(await messages[1].getText()).toEqual('Please login or sign up!');
+        expect(await messages[0].getText()).toEqual(
+            'You are not logged in!\n' +
+            'Please login or sign up!\n' +
+            'To Login\n' +
+            'Sign Up');
     });
 });
