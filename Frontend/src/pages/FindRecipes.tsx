@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import Placeholder from "../assets/fillElements/placeholder.png";
 import "../style/FindRecipes.css";
 import {RecipeClient} from "../clients/RecipeClient";
 import Card from "@mui/material/Card";
@@ -55,7 +56,7 @@ export default function FindRecipes() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                        image={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
                         alt="recipe"
                     />
 

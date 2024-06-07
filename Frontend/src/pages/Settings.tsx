@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import Placeholder from "../assets/fillElements/placeholder.png";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import React, {useEffect, useState} from "react";
@@ -161,7 +162,7 @@ export default function Settings(userProfile: UserDataParams) {
 
                 <span className={"userPicture"}>
                     <img id="user-image"
-                         src={`https://localhost:44328/images/profile-pictures/${changedData?.profilePicture}`}
+                         src={changedData?.profilePicture ? `https://localhost:44328/images/profile-pictures/${changedData?.profilePicture}`:Placeholder}
                          alt="User"/>
                 </span>
 

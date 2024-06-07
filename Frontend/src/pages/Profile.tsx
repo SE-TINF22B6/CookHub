@@ -4,7 +4,7 @@ import carlos from "../assets/Chef_Carlo_without_background (1).png";
 import logoutBTN from "../assets/ProfilePage/Logout.png";
 import settingsBTN from "../assets/ProfilePage/Settings.png";
 import {UserClient} from "../clients/UserClient";
-
+import Placeholder from "../assets/fillElements/placeholder.png";
 import {UserDataParams} from "../models/UserDataParams";
 import {useNavigate} from "react-router-dom";
 import NotLoggedIn from "../components/NotLoggedIn";
@@ -52,6 +52,8 @@ export default function Profile(userProfile: UserDataParams) {
         )
     }
 
+    let src = data?.profilePicture;
+
     return (
         <>
 
@@ -65,7 +67,7 @@ export default function Profile(userProfile: UserDataParams) {
 
                 <div id="divUserInfo">
                     <div className="AvatarHolder">
-                        <img src={`https://localhost:44328/images/profile-pictures/${data?.profilePicture}`} className="Avatar" alt="avatar"/>
+                        <img src={src ? `https://localhost:44328/images/profile-pictures/${data?.profilePicture}` : Placeholder} className="Avatar" alt="avatar"/>
                     </div>
                     <div className="UsernameHolder">
                         <h1>{data?.name}</h1>

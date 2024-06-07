@@ -1,4 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu';
+import Placeholder from "../assets/fillElements/placeholder.png";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -24,6 +25,8 @@ export default function NavBar(loggedIn : UserDataParams) {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    let src = user?.profilePicture;
 
     return (
         <Box id="box" sx={{flexGrow: 1}}>
@@ -104,7 +107,7 @@ export default function NavBar(loggedIn : UserDataParams) {
                     <div id={"avatarContainer"}>
                         <Link className='Avatar' to={'/profile'}>
                             {user ? (
-                                <img className="AvatarImg" src={`https://localhost:44328/images/profile-pictures/${user.profilePicture}`} alt={'UserAvatar'}/>
+                                <img className="AvatarImg" src={ src ? `https://localhost:44328/images/profile-pictures/${user.profilePicture}`: Placeholder} alt={'UserAvatar'}/>
                             ) : (
                                 <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>
                             )}
