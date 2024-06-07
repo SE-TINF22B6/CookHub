@@ -116,7 +116,7 @@ export default function Profile(userProfile: UserDataParams) {
                                     return (
                                         <a className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                             <img style={{width: "4rem", height: "4rem"}}
-                                                 src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                                                 src={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
                                                  alt={"rezept"}/>
                                             <h3>{recipe.name}</h3>
                                         </a>
@@ -135,7 +135,7 @@ export default function Profile(userProfile: UserDataParams) {
                                     return (
                                         <a key={index} className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                             <img style={{width: "4rem", height: "4rem"}}
-                                                 src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                                                 src={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
                                                  alt={"rezept"}/>
                                             <h3>{recipe.name}</h3>
                                         </a>
@@ -150,16 +150,16 @@ export default function Profile(userProfile: UserDataParams) {
                         {history === null ?
                             <span className={"loader"}></span>
                             : history.length === 0 ? <h2>No history</h2> :
-                            history.reverse().map((recipe, index) => {
+                            history.map((recipe, index) => {
                             return (
                                     <a key={index} className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                         <img style={{width: "4rem", height: "4rem"}}
-                                             src={`https://localhost:44328/images/recipes/${recipe.pictureUrl}`}
+                                             src={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
                                              alt={"rezept"}/>
                                         <h3>{recipe.name}</h3>
                                     </a>
                                 )
-                            }).slice(current_index, current_index + 4)
+                            }).reverse().slice(current_index, current_index + 4)
 
 
                         }
