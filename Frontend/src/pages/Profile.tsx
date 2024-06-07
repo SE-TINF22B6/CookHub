@@ -6,7 +6,6 @@ import settingsBTN from "../assets/ProfilePage/Settings.png";
 import {UserClient} from "../clients/UserClient";
 import Placeholder from "../assets/fillElements/placeholder.png";
 import {UserDataParams} from "../models/UserDataParams";
-import {useNavigate} from "react-router-dom";
 import NotLoggedIn from "../components/NotLoggedIn";
 
 import {RecipeData} from "../models/RecipeData";
