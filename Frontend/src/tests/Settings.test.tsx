@@ -223,6 +223,6 @@ describe('test without logged in user', () => {
 
         // ASSERT
         expect(await messages[0].getText()).toEqual('You are not logged in!');
-        expect(await messages[1].getText()).toEqual('Please login! or Sign Up');
+        expect(await messages[1].getText()).toEqual('Please login or sign up!');
     });
 });

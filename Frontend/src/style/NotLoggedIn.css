@@ -1,0 +1,42 @@
+.container {
+    height: 100vh;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button-container {
+    display: flex;
+    margin-top: 20px;
+    box-shadow: 0 0 10px #c7fc71;
+}
+
+.login-box {
+    background-color: black;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 5px #c7fc71;
+    text-align: center;
+}
+
+.login-text {
+    font-family: sans-serif;
+    color: #C9FE71;
+    text-shadow: none;
+}
+
+.log-in-button,
+.sign-up-button {
+    padding: 10px 50px;
+    font-size: 18px;
+    background-color: black;
+    color: #C9FE71;
+    border: 1px solid #C9FE71;
+    box-shadow: 0 0 5px rgba(199, 254, 113, 0);
+    transition: box-shadow 0.3s ease, text-shadow 0.3s ease;
+}
+
+.log-in-button:hover,
+.sign-up-button:hover {
+    box-shadow: 0 0 20px #D2FF8FFF;
+    text-shadow: 0 0 10px #8fd8ff;
+}
