@@ -15,7 +15,7 @@ public class User
     [JsonIgnore]
     public virtual ICollection<Recipe> LikedRecipes { get; set; } = new List<Recipe>();
     [JsonIgnore]
-    public virtual ICollection<Recipe> History { get; set; } = new List<Recipe>();
+    public virtual ICollection<HistoryEntry> History { get; set; } = new List<HistoryEntry>();
     public virtual ICollection<Recipe> CreatedRecipes { get; set; } = new List<Recipe>();
 
     public virtual UserModel ToModel()

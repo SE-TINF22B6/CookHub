@@ -219,16 +219,8 @@ public partial class UserService
     {
         lock (_lock)
         {
-            var existingRecipe = user.History.FirstOrDefault(r => r.Id == recipe.Id);
-            if (existingRecipe != null)
-            {
-                user.History.Remove(existingRecipe);
-            }
-
-            user.History.Add(recipe);
-            _repository.Update(user);
+            _repository.SaveHistoryEntry(user, recipe);
         }
-        
     }
 
     [GeneratedRegex("^[A-Za-z0-9_]{4,16}$")]

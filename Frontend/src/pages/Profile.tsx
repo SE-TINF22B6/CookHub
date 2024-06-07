@@ -18,7 +18,7 @@ export default function Profile(userProfile: UserDataParams) {
 
     const [likedRecipes, setLikedRecipes] = useState<Array<RecipeData>>([]);
     const [ownRecipes, setOwnRecipes] = useState<Array<RecipeData>>([]);
-    const [history, setHistory] = useState<Array<RecipeData>>([]);
+    const [history, setHistory] = useState<Array<{recipe: RecipeData, time: string}>>([]);
 
     const handleLogOut = async () => {
         try {
@@ -150,16 +150,17 @@ export default function Profile(userProfile: UserDataParams) {
                         {history === null ?
                             <span className={"loader"}></span>
                             : history.length === 0 ? <h2>No history</h2> :
-                            history.map((recipe, index) => {
+                            history.sort((r1, r2) => r2.time.localeCompare(r1.time))
+                                .map((entry, index) => {
                             return (
-                                    <a key={index} className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
+                                    <a key={index} className={"likedRecipes"} href={`myrecipes/${entry.recipe.id}`}>
                                         <img style={{width: "4rem", height: "4rem"}}
-                                             src={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
+                                             src={entry.recipe.pictureUrl ? `https://localhost:44328/images/recipes/${entry.recipe.pictureUrl}`: Placeholder}
                                              alt={"rezept"}/>
-                                        <h3>{recipe.name}</h3>
+                                        <h3>{entry.recipe.name}</h3>
                                     </a>
                                 )
-                            }).reverse().slice(current_index, current_index + 4)
+                            }).slice(current_index, current_index + 4)
 
 
                         }
