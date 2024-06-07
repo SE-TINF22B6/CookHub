@@ -256,7 +256,7 @@ export default function Settings(userProfile: UserDataParams) {
                  autoComplete="off"
             >
                 <h2>Change Profile Picture</h2>
-                <ImageUploader/>
+                <ImageUploader recipe={null} setRecipe={null}/>
                 <Button id="changeProfilePictureButton" variant="contained" color="secondary" onClick={handlePicChange}>Change</Button>
 
                 <br/>

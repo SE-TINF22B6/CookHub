@@ -4,8 +4,9 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import Button from "@mui/material/Button";
 import "../style/ImageUploader.css";
 import asset from "../assets/recipes/photo_placeholder.png";
+import {CreateRecipeModel} from "../models/CreateRecipeModel";
 
-export default function ImageUploader() {
+export default function ImageUploader(data: {recipe: CreateRecipeModel | null, setRecipe: React.Dispatch<React.SetStateAction<CreateRecipeModel>> | null}) {
 
     const [url, setUrl] = useState(asset);
     const [error, setError] = useState("");
@@ -34,12 +35,14 @@ export default function ImageUploader() {
     }
 
     function getBase64(file: File) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
             // @ts-ignore
             setUrl(reader.result);
-            console.log(reader.result);
+            if (data.recipe && data.setRecipe) {
+                data.setRecipe({...data.recipe, picture: reader.result?.toString()?? ''});
+            }
         };
         reader.onerror = function (error) {
             console.log('Error: ', error);

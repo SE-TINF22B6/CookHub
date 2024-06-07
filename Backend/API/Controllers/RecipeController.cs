@@ -121,7 +121,7 @@ public class RecipeController: ControllerBase
         }
 
         var recipeId = _recipeService.CreateRecipeWithIngredients(recipe.ToSavableEntity(creatorId, pictureFileName));
-        return CreatedAtAction(nameof(GetRecipe), new { id = recipeId }, recipe);
+        return Created($"/myRecipes/{recipeId}", recipeId);
     }
 
     /// <summary>

@@ -2,8 +2,11 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CreateRecipeBlank from '../components/CreateRecipeBlank';
+import {CreateRecipeModel} from "../models/CreateRecipeModel";
 
-export default function FormPropsTextFields() {
+export default function FormPropsTextFields(data: {recipe: CreateRecipeModel, setRecipe: React.Dispatch<React.SetStateAction<CreateRecipeModel>>}) {
+    const {recipe, setRecipe} = data;
+
     return (
         <Box
             component="form"
@@ -14,7 +17,7 @@ export default function FormPropsTextFields() {
             autoComplete="off"
         >
             <div>
-                <CreateRecipeBlank/>
+                <CreateRecipeBlank recipe={recipe} setRecipe={setRecipe}/>
 
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <TextField
@@ -22,14 +25,7 @@ export default function FormPropsTextFields() {
                         label="Name of the recipe"
                         defaultValue=""
                         variant="filled"
-                    />
-
-                    <TextField
-                        id="filled-helperText"
-                        label="≈ costs to expect (€)"
-                        defaultValue=""
-                        variant="filled"
-                        helperText=""
+                        onChange={e => setRecipe({...recipe, name: e.target.value})}
                     />
 
                 </div>
@@ -42,6 +38,7 @@ export default function FormPropsTextFields() {
                             shrink: true,
                         }}
                         variant="filled"
+                        onChange={e => setRecipe({...recipe, prepTime: +e.target.value})}
                     />
                     <TextField
                         id="filled-number"
@@ -51,6 +48,7 @@ export default function FormPropsTextFields() {
                             shrink: true,
                         }}
                         variant="filled"
+                        onChange={e => setRecipe({...recipe, cookingTime: +e.target.value})}
                     />
 
                 </div>

@@ -52,16 +52,16 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({ addIngredient 
 
 interface IngredientDisplayProps {
     id: number;
-    value: string;
-    amount: number;
-    unit: string;
+    ingredientName: string;
+    quantity: number;
+    unitOfMeasure: string;
     deleteIngredient: (id: number) => void;
 }
 
-export const IngredientDisplay: React.FC<IngredientDisplayProps> = ({id, value, amount, unit, deleteIngredient}) => {
+export const IngredientDisplay: React.FC<IngredientDisplayProps> = ({id, ingredientName, quantity, unitOfMeasure, deleteIngredient}) => {
     return (
         <div>
-            {value} : {amount} {unit}
+            {ingredientName} : {quantity} {unitOfMeasure}
             <button onClick={() => deleteIngredient(id)}>Delete</button>
         </div>
     );

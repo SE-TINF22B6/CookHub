@@ -1,3 +1,4 @@
+import {CreateRecipeModel} from "../models/CreateRecipeModel";
 
 export class RecipeClient {
 
@@ -66,4 +67,23 @@ export class RecipeClient {
         }
     }
 
+    public async createRecipe(recipe: CreateRecipeModel) : Promise<number | string> {
+         try {
+             const response = await fetch('https://localhost:44328/Recipe/', {
+                 method: 'POST',
+                 headers: {'Content-Type': 'application/json'},
+                 credentials: 'include',
+                 body: JSON.stringify(recipe)
+             });
+
+             if (!response.ok) {
+                 throw new Error(await response.text());
+             }
+
+             return await response.text();
+         } catch (error: any) {
+             console.log(error);
+             return error.message?? 'Unknown error.';
+         }
+    }
 }
