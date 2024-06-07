@@ -81,7 +81,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 30%;
-    height: 30rem;
+    min-height: 30rem;
     background-color: #3d63a4;
     border-radius: 2rem;
 }
@@ -91,7 +91,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 30%;
-    height: 30rem;
+    min-height: 30rem;
     background-color: #3d63a4;
     border-radius: 2rem;
 }
@@ -101,11 +101,47 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 30%;
-    height: 30rem;
+    min-height: 30rem;
     background-color: #3d63a4;
     border-radius: 2rem;
 }
 
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-color: #c7fc71 transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.likedRecipes{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+    color: black;
+    margin-bottom:1rem;
+    border-radius: 30px;
+    background-color: #668fde;
+}
+
+.likedRecipes:hover{
+    color: white;
+}
+
+
+@media (max-width: 1800px) {
+
+    .likedRecipes{
+        width: 14rem;
+        text-align: center;
+    }
+}
 
 
 @media (max-width: 1100px){
@@ -134,5 +170,8 @@ h1 {
     .CardHolder-1, .CardHolder-2, .CardHolder-3 {
         width: 100%;
         margin-bottom: 2rem;
+    }
+    .likedRecipes{
+        width: 85%;
     }
 }
