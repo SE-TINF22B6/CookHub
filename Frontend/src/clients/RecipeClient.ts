@@ -86,4 +86,22 @@ export class RecipeClient {
              return error.message?? 'Unknown error.';
          }
     }
+
+    public async deleteRecipe(id: number) : Promise<string> {
+        try {
+            const response = await fetch(`https://localhost:44328/Recipe/${id}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                throw new Error(await response.text());
+            }
+
+            return '';
+        }catch (error: any){
+            console.log(error);
+            return 'Cannot delete recipe: ' + error.message?? 'Unknown error.';
+        }
+    }
 }
