@@ -1,8 +1,9 @@
 .logout-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 80vh;
+    align-items: flex-start;
+    height: 100vh;
+    padding-top: 50px;
 }
 
 .logout-box {
@@ -14,8 +15,10 @@
 }
 
 .logout-text {
-    font-size: 18px;
+    font-size: 35px;
+    font-family: sans-serif;
     color: #C9FE71;
+    text-shadow: none;
 }
 
 .button-container {
