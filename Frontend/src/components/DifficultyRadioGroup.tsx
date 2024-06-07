@@ -1,15 +1,10 @@
 import * as React from 'react';
 import "../style/DifficultyRadioGroup.css";
 import {CreateRecipeModel} from "../models/CreateRecipeModel";
-import {useEffect} from "react";
 
 export default function DifficultyRadioGroup(data: {recipe: CreateRecipeModel, setRecipe: React.Dispatch<React.SetStateAction<CreateRecipeModel>>}) {
     const {recipe, setRecipe} = data;
     const setDifficulty = (value: number) => setRecipe({...recipe, difficulty: value});
-
-    useEffect(() => {
-        setDifficulty(50); // default value
-    });
 
     return (
 
