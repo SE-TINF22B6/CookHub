@@ -22,7 +22,6 @@ test('user should be able to search for recipe name', async () => {
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
     const topRecipes = await driver.findElement(By.className('topRecipes'));
-    await driver.sleep(500);
 
     // ACT
     await searchField.click();
@@ -44,7 +43,6 @@ test('user should be able to search for category', async () => {
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
     const topRecipes = await driver.findElement(By.className('topRecipes'));
-    await driver.sleep(500);
 
     // ACT
     await searchField.click();
@@ -66,7 +64,6 @@ test('user should be able to search for ingredient', async () => {
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
     const topRecipes = await driver.findElement(By.className('topRecipes'));
-    await driver.sleep(500);
 
     // ACT
     await searchField.click();
