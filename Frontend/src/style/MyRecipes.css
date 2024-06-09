@@ -81,8 +81,29 @@ li {
     box-shadow: 5px 5px #000000;
 }
 
+.dialog-window{
+}
 
+.delete-dialog-title{
+    background: #38527D;
+    color: #c7fc71;
+}
 
+.delete-dialog-description{
+    color: #c7fc71;
+}
+
+.dialog-actions{
+    background: #38527D;
+}
+
+.dialog-button{
+    color: #c7fc71!important;
+}
+
+.dialog-button:hover{
+    box-shadow: 0 0 10px 1px #c6ff71;
+}
 
 
 #Middle-Container {
