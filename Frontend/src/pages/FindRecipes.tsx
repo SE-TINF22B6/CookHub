@@ -162,49 +162,39 @@ export default function FindRecipes() {
                         className="search__field"
                         value={inputValue}
                         placeholder="Search for recipes, categories or ingredients"
-                        onChange={e => searchFor(e.target.value)}
+                        onChange={async e => await searchFor(e.target.value)}
                     />
 
                 </form>
             </div>
 
 
-            {data ? data.map((recipe) => {
-                    return (
-                        <div className="recipeContainer">
-                            <a href={`/myrecipes/${recipe.id}`}>
-                                {recipe.adventureTexts.length !== 0 ?
-                                    <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
-                                        {createSearchRecipeCard(recipe)}
-                                    </Badge> :
-                                    createSearchRecipeCard(recipe)
-                                }
-                            </a>
-                        </div>
-                    )
-                })
-                :
-
-                ""
+            {data ? data.map((recipe) =>
+                <div className="recipeContainer">
+                    <a href={`/myrecipes/${recipe.id}`}>
+                        {recipe.adventureTexts.length !== 0 ?
+                            <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
+                                {createSearchRecipeCard(recipe)}
+                            </Badge> :
+                            createSearchRecipeCard(recipe)
+                        }
+                    </a>
+                </div>) : ""
             }
 
             <div className={"topRecipes"}>
                 {!inputValue ?
-                    topRecipe.map((recipe) => {
-                        return (
-                            <a href={`/myrecipes/${recipe.id}`}>
-                                {recipe.adventureTexts.length !== 0 ?
-                                    <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
-                                        {createRecipeCard(recipe)}
-                                    </Badge>
-                                    :
-                                    createRecipeCard(recipe)
-                                }
+                    topRecipe.map((recipe) =>
+                        <a href={`/myrecipes/${recipe.id}`}>
+                            {recipe.adventureTexts.length !== 0 ?
+                                <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
+                                    {createRecipeCard(recipe)}
+                                </Badge>
+                                :
+                                createRecipeCard(recipe)
+                            }
 
-                            </a>
-                        );
-                    }) :
-                    ""
+                        </a>) : ""
                 }
             </div>
 
