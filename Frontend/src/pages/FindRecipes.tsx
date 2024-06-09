@@ -142,7 +142,7 @@ export default function FindRecipes() {
                         type="text"
                         className="search__field"
                         value={inputValue}
-                        placeholder="Search Recipe..."
+                        placeholder="Search for recipes, categories or ingredients"
                         onChange={e => {
                             setInputValue(e.target.value);
                             findBtn(e.target.value);
