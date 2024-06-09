@@ -16,6 +16,7 @@ html {
     display: flex;
     align-items: center;
     padding-left: 3rem;
+    padding-right: 3rem;
     transition: all 0.3s;
 }
 
@@ -30,7 +31,7 @@ html {
     font-family: inherit;
     color: inherit;
     font-size: 1.7rem;
-    width: 37rem;
+    width: 33rem;
 }
 
 .search__field:focus {
@@ -116,6 +117,7 @@ html {
 
     .search__field {
         width: 100%;
+        text-overflow: ellipsis;
     }
 
     .search__field::placeholder {

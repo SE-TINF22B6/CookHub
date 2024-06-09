@@ -20,9 +20,15 @@ export default function FindRecipes() {
     const [topRecipe, setTopRecipe] = useState<any[]>([]);
     const [inputValue, setInputValue] = useState("");
 
-    async function findBtn(searchTerm: string) {
+    async function searchFor(searchTerm: string) {
+        setInputValue(searchTerm);
         const client = new RecipeClient();
         setData(await client.getRecipesBySearchTerm(searchTerm));
+    }
+
+    async function onCategoryClick(e: any, category: string) {
+        e.preventDefault();
+        await searchFor(category);
     }
 
     useEffect(() => {
@@ -81,7 +87,10 @@ export default function FindRecipes() {
                             {recipe.difficulty}
                         </Box>
                         <div id="categoryContainer">
-                            {recipe.categories.map(category => <span className="category">{category}</span>)}
+                            {recipe.categories.map(category =>
+                              <span className="category" onClick={e => onCategoryClick(e, category!)}>
+                                  {category}
+                              </span>)}
                         </div>
                     </CardContent>
 
@@ -130,7 +139,10 @@ export default function FindRecipes() {
                             {recipe.difficulty}
                         </Box>
                         <div id="categoryContainer">
-                            {recipe.categories.map(category => <span className="category">{category}</span>)}
+                            {recipe.categories.map(category =>
+                              <span className="category" onClick={e => onCategoryClick(e, category!)}>
+                                  {category}
+                              </span>)}
                         </div>
                     </CardContent>
                 </CardActionArea>
@@ -150,10 +162,7 @@ export default function FindRecipes() {
                         className="search__field"
                         value={inputValue}
                         placeholder="Search for recipes, categories or ingredients"
-                        onChange={e => {
-                            setInputValue(e.target.value);
-                            findBtn(e.target.value);
-                        }}
+                        onChange={e => searchFor(e.target.value)}
                     />
 
                 </form>
