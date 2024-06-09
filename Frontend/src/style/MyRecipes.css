@@ -157,6 +157,23 @@ li {
     font-weight: bold;
 }
 
+.dialog-title{
+    background: #3d63a4;
+    color: #c7fc71;
+}
+
+.dialog-content{
+    text-align: center;
+
+}
+
+.adventure-text{
+    color: #c7fc71;
+}
+
+.adventure-buttons{
+    background: #3d63a4!important;
+}
 
 .loader {
     width: 48px;
