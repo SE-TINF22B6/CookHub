@@ -74,6 +74,18 @@ html {
     color: black;
 }
 
+#categoryContainer {
+    margin-top: 1rem;
+}
+
+.category {
+    background-color: rgba(0, 0, 0, 0.08);
+    margin: 0.5rem;
+    padding: 0.4rem;
+    border-radius: 1rem;
+    height: 2rem;
+}
+
 @media (max-width: 1700px) {
 
     .topRecipes {
@@ -128,7 +140,7 @@ html {
     #cards {
         display: flex;
         width: 70vw;
-        height: 40vh;
+        height: fit-content;
         box-shadow: #2b2f32 12px 12px 12px;
     }
 

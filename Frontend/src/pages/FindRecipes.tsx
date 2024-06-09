@@ -11,11 +11,12 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import SpeedIcon from '@mui/icons-material/Speed';
 import Box from "@mui/material/Box";
+import {RecipeData} from "../models/RecipeData";
 
 
 export default function FindRecipes() {
 
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<RecipeData[]>([]);
     const [topRecipe, setTopRecipe] = useState<any[]>([]);
     const [inputValue, setInputValue] = useState("");
 
@@ -39,12 +40,12 @@ export default function FindRecipes() {
         console.log(inputValue);
     }
 
-    function createRecipeCard(recipe: any) {
+    function createRecipeCard(recipe: RecipeData) {
         return (
 
             <Card id="cards" sx={{
                 width: "20rem",
-                height: "15rem",
+                height: "fit-content",
                 backgroundColor: '#C9FE71',
                 boxShadow: '#2b2f32 12px 12px 12px',
                 marginBottom: "2rem",
@@ -79,6 +80,9 @@ export default function FindRecipes() {
                             <SpeedIcon></SpeedIcon>
                             {recipe.difficulty}
                         </Box>
+                        <div id="categoryContainer">
+                            {recipe.categories.map(category => <span className="category">{category}</span>)}
+                        </div>
                     </CardContent>
 
                 </CardActionArea>
@@ -87,11 +91,11 @@ export default function FindRecipes() {
         )
     }
 
-    function createSearchRecipeCard(recipe: any) {
+    function createSearchRecipeCard(recipe: RecipeData) {
         return (
-            <Card id="cards" sx={{
+          <Card id="cards" sx={{
                 width: "20rem",
-                height: "15rem",
+                height: "fit-content",
                 backgroundColor: '#C9FE71',
                 boxShadow: '#2b2f32 12px 12px 12px',
                 marginBottom: "2rem",
@@ -125,6 +129,9 @@ export default function FindRecipes() {
                             <SpeedIcon></SpeedIcon>
                             {recipe.difficulty}
                         </Box>
+                        <div id="categoryContainer">
+                            {recipe.categories.map(category => <span className="category">{category}</span>)}
+                        </div>
                     </CardContent>
                 </CardActionArea>
 
