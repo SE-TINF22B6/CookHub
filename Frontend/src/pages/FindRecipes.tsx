@@ -19,9 +19,9 @@ export default function FindRecipes() {
     const [topRecipe, setTopRecipe] = useState<any[]>([]);
     const [inputValue, setInputValue] = useState("");
 
-    async function findBtn(name: string) {
-        let client: RecipeClient = new RecipeClient();
-        setData(await client.getRecipeByName(name));
+    async function findBtn(searchTerm: string) {
+        const client = new RecipeClient();
+        setData(await client.getRecipesBySearchTerm(searchTerm));
     }
 
     useEffect(() => {
