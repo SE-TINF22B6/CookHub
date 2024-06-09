@@ -21,9 +21,11 @@ test('user should be able to search for recipe name', async () => {
     // ARRANGE
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
+    const topRecipes = await driver.findElement(By.className('topRecipes'));
 
     // ACT
     await searchField.sendKeys('sala');
+    await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
 
     // ASSERT
     const results = await driver.findElements(By.className('recipeContainer'));
@@ -38,9 +40,11 @@ test('user should be able to search for category', async () => {
     // ARRANGE
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
+    const topRecipes = await driver.findElement(By.className('topRecipes'));
 
     // ACT
     await searchField.sendKeys('italian');
+    await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
 
     // ASSERT
     const results = await driver.findElements(By.className('recipeContainer'));
@@ -55,9 +59,11 @@ test('user should be able to search for ingredient', async () => {
     // ARRANGE
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
+    const topRecipes = await driver.findElement(By.className('topRecipes'));
 
     // ACT
     await searchField.sendKeys('pepper');
+    await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
 
     // ASSERT
     const results = await driver.findElements(By.className('recipeContainer'));
