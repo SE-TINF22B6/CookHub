@@ -26,7 +26,7 @@ test('user should be able to search for recipe name', async () => {
 
     // ACT
     await searchField.click();
-    await searchField.sendKeys('sala');
+    await driver.actions().sendKeys('sala').perform();
     await driver.findElement(By.id('menuButtonContainer')).click();
     await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
 
@@ -48,7 +48,7 @@ test('user should be able to search for category', async () => {
 
     // ACT
     await searchField.click();
-    await searchField.sendKeys('italian');
+    await driver.actions().sendKeys('italian').perform();
     await driver.findElement(By.id('menuButtonContainer')).click();
     await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
 
@@ -70,7 +70,7 @@ test('user should be able to search for ingredient', async () => {
 
     // ACT
     await searchField.click();
-    await searchField.sendKeys('pepper');
+    await driver.actions().sendKeys('pepper').perform();
     await driver.findElement(By.id('menuButtonContainer')).click();
     await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
 
