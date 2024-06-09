@@ -194,6 +194,14 @@ public class RecipeController: ControllerBase
         var success = _recipeService.TrySaveAdventure(adventure.RecipeId, adventure.Text, out var errorMessage);
         return success ? Ok() : BadRequest(errorMessage);
     }
+
+    [HttpGet("search/{searchTerm}")]
+    public IActionResult Search(string searchTerm)
+    {
+        var viewerId = GetIdOfLoggedInUser();
+        var recipes = _recipeService.GetRecipesForSearchTerm(searchTerm).Select(recipe => recipe.ToModel(viewerId));
+        return Ok(recipes);
+    }
     
     private int GetIdOfLoggedInUser()
     {
