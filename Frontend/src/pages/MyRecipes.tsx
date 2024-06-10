@@ -280,7 +280,6 @@ export default function MyRecipes(user : UserDataParams) {
                 >
                     <DialogTitle className="dialog-title">Adventurized Text</DialogTitle>
                     <DialogContent className="dialog-content" sx={{backgroundColor: '#779BD6'}}>
-                        <Typography className="adventure-text" variant="h6">Adventure Text</Typography>
                         <div className="adventure-text" id={"atext"}>
                             {adventureText ? (
                                 <div className="adventure-text" dangerouslySetInnerHTML={{__html: adventureText.replaceAll('\n', '<br>')}}/>
