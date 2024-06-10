@@ -172,7 +172,7 @@ export default function MyRecipes(user: UserDataParams) {
                         <p><strong>Difficulty:</strong> {data.difficulty}</p>
                         <p id="likeCount"><strong>Likes:</strong> {likeCount}</p>
                         <p><strong>Categories:</strong> {data.categories.toString().replaceAll(',', ', ')}</p>
-                        <p hidden={user.data == null}>
+                        <p hidden={user.data == null} >
                             <ToggleButton
                                 id="likeButton"
                                 value="check"
@@ -183,7 +183,7 @@ export default function MyRecipes(user: UserDataParams) {
                                 <FavoriteIcon/>
                             </ToggleButton>
                         </p>
-                        <p hidden={user.data?.id !== data.creatorId}>
+                        <p hidden={user.data?.id !== data.creatorId} >
                             <Button
                                 variant="outlined"
                                 startIcon={<DeleteIcon/>}
