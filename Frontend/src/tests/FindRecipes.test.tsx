@@ -15,4 +15,4 @@ it('should display the top 5 recipes', async () => {
     expect(await recipeNames[2].getText()).toEqual('Chicken Tikka Masala');
     expect(await recipeNames[3].getText()).toEqual('Mango Sticky Rice');
     expect(await recipeNames[4].getText()).toEqual('Greek Salad');
-});
+}); 
