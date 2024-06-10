@@ -27,7 +27,7 @@ jest.setTimeout(20_000);
 
 beforeAll(async () => {
     const options = new Chrome.Options();
-    options.addArguments( 'ignore-certificate-errors', '--disable-single-click-autofill');
+    options.addArguments( 'headless', 'ignore-certificate-errors', '--disable-single-click-autofill');
     options.setUserPreferences({ 'autofill.profile_enabled': false });
     driver = await new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
     await driver.manage().setTimeouts({ implicit: 2000 });

@@ -252,7 +252,7 @@ export default function Settings(userProfile: UserDataParams) {
                             }
 
                         } else {
-                            alert("Error. Something went wrong " + result);
+                            alert("Error. Something went wrong: " + result);
                         }
                     }}
                 >Submit
@@ -364,7 +364,7 @@ export default function Settings(userProfile: UserDataParams) {
                                  className="delete-dialog-title">{"Something went wrong!"}</DialogTitle>
                     <DialogContent>
                         <p id="alert-dialog-description" className="delete-dialog-description">
-                            Please select a File first!
+                            Please select a file first!
                         </p>
                     </DialogContent>
                     <DialogActions className="dialog-actions">

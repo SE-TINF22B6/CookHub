@@ -14,6 +14,7 @@ describe('test with logged in user', () => {
         const ownRecipesHeading = await driver.findElement(By.css('.recipe-column:nth-of-type(2) .heading'));
         const likedRecipesCards = await driver.findElements(By.css('.recipe-column:nth-child(1) .recipe-card-container'));
         const ownRecipesCards = await driver.findElements(By.css('.recipe-column:nth-child(2) .recipe-card-container'));
+        await driver.wait(until.elementIsVisible(likedRecipesCards[0]?? likedRecipesHeading));
 
         // ASSERT
         expect(await likedRecipesHeading.getText()).toContain("'s Liked Recipes");

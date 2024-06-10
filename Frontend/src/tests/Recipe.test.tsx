@@ -45,6 +45,7 @@ describe('test with logged in user', () => {
         let likeButton = await driver.findElement(By.id('likeButton'));
         expect(await likeCount.getText()).toEqual('Likes: 1');
         expect(await likeButton.getAttribute('aria-pressed')).toEqual('true');
+        await driver.wait(until.elementIsVisible(likeButton));
 
         try {
             // ACT
@@ -71,6 +72,7 @@ describe('test with logged in user', () => {
         let likeButton = await driver.findElement(By.id('likeButton'));
         expect(await likeCount.getText()).toEqual('Likes: 0');
         expect(await likeButton.getAttribute('aria-pressed')).toEqual('false');
+        await driver.wait(until.elementIsVisible(likeButton));
 
         try {
             // ACT

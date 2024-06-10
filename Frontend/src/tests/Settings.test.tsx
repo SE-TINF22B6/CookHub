@@ -13,8 +13,7 @@ const uploadImage = async () => await driver.executeScript('document.querySelect
 
 async function getPasswordChangeElements() {
     await driver.wait(until.elementLocated(By.id('oldPassword')));
-    const elements =
-     [
+    return [
         await driver.findElement(By.id('oldPassword')),
         await driver.findElement(By.id('newPassword')),
         await driver.findElement(By.id('repeatNewPassword')),
@@ -22,8 +21,6 @@ async function getPasswordChangeElements() {
         await driver.findElement(By.id('passwordValidationMessage')),
         await driver.findElement(By.id('passwordAfterChangeMessage'))
     ];
-    await driver.wait(until.elementIsVisible(elements[0]));
-    return elements;
 }
 
 describe('test with dummy user', () => {
@@ -32,6 +29,8 @@ describe('test with dummy user', () => {
         await createTestUser();
         await driver.get(`${frontendUrl}/settings`);
     });
+
+    afterEach(async () => await driver.navigate().refresh());
 
     test('user can change user name', async () => {
 
@@ -49,16 +48,9 @@ describe('test with dummy user', () => {
         await driver.wait(until.elementIsVisible(dialog));
         const dialogText = await dialog.getText();
 
-
-
         // ASSERT
         expect(dialogText).toEqual('Your name was changed to\nNew_Name');
         expect(await usernameInfo.getText()).toEqual('Username: New_Name');
-
-        const btn = await driver.findElement(By.className('dialog-button'));
-        await driver.wait(until.elementIsVisible(btn));
-        await driver.actions().click(btn).perform();
-
     });
 
     test('user can change password', async () => {
@@ -77,35 +69,32 @@ describe('test with dummy user', () => {
         await driver.wait(until.elementIsVisible(dialog));
         const dialogText = await dialog.getText();
 
-
-
         // ASSERT
-        expect(dialogText).toEqual('Your password was successfully changed ');
+        expect(dialogText).toEqual('Your password was successfully changed');
         expect(await message.getText()).toEqual('Password Changed');
-
-
-        const btn = await driver.findElement(By.className('dialog-button'));
-        await driver.actions().click(btn).perform();
     });
 
     test('user can change profile picture', async () => {
         // ARRANGE
-        await driver.wait(until.elementLocated(By.className('ImageInput')));
+        await driver.wait(until.elementLocated(By.id('changeProfilePictureButton')));
         const profilePicture = await driver.findElement(By.id('user-image'));
         const submitButton = await driver.findElement(By.id('changeProfilePictureButton'));
         const oldProfilePicture = await profilePicture.getAttribute('src');
+        await driver.wait(until.elementIsVisible(submitButton));
 
         // ACT
         await uploadImage();
         await driver.actions().click(submitButton).perform();
+        await driver.wait(until.elementLocated(By.id('alert-dialog-description')));
 
-        //
+        // ASSERT
         const dialog = await driver.findElement(By.id('alert-dialog-description'));
         await driver.wait(until.elementIsVisible(dialog));
         const dialogText = await dialog.getText();
         expect(dialogText).toEqual('Your profile picture was successfully changed');
 
         const btn = await driver.findElement(By.className('dialog-button'));
+        await driver.wait(until.elementIsVisible(btn));
         await driver.actions().click(btn).perform();
 
         const newProfilePicture = await driver.findElement(By.id('user-image')).getAttribute('src');
@@ -176,6 +165,7 @@ describe('test with logged in user', () => {
         // ASSERT
         expect(await message1.getText()).toEqual('Password must be 8-32 characters long, contain at least one letter, one number, and one special character.');
         await driver.actions().click(changePasswordButton).perform();
+        await driver.wait(until.elementTextMatches(message2, /^.+$/))
         expect(await message2.getText()).toEqual('New password is invalid.');
     });
 
@@ -190,12 +180,8 @@ describe('test with logged in user', () => {
         await repeatNewPasswordInput.sendKeys('password.12');
 
         // ASSERT
-        expect(await message.getText()).toEqual("Passwords don't match!");
         await driver.actions().click(changePasswordButton).perform();
-        await driver.wait(until.alertIsPresent());
-        const alert = await driver.switchTo().alert();
-        expect(await alert.getText()).toEqual("Passwords don't match!");
-        await alert.accept();
+        expect(await message.getText()).toEqual("Passwords don't match!");
     });
 
     test('user cannot change profile picture without selecting image', async () => {
@@ -209,10 +195,14 @@ describe('test with logged in user', () => {
         await driver.actions().click(submitButton).perform();
 
         // ASSERT
-        await driver.wait(until.alertIsPresent());
-        const alert = await driver.switchTo().alert();
-        expect(await alert.getText()).toEqual('Please upload a picture first');
-        await alert.accept();
+        const dialog = await driver.findElement(By.id('alert-dialog-description'));
+        await driver.wait(until.elementIsVisible(dialog));
+        expect(await dialog.getText()).toEqual('Please select a file first!');
+
+        const btn = await driver.findElement(By.className('dialog-button'));
+        await driver.wait(until.elementIsVisible(btn));
+        await driver.actions().click(btn).perform();
+
         const currentProfilePicture = await profilePicture.getAttribute('src');
         expect(currentProfilePicture).toEqual(oldProfilePicture);
     });
@@ -227,13 +217,12 @@ describe('test with logged in user', () => {
 
         const passwordInput = await driver.findElement(By.id('name'));
         const confirmButton = await driver.findElement(By.id('confirmAccountDeletion'));
-        const passwordDeleteMessage = await driver.findElement(By.id('passwordDeleteMessage'));
 
-        await passwordInput.sendKeys('LET ME IN');
-        await confirmButton.click();
+        await passwordInput.sendKeys('yo');
+        await driver.actions().click(confirmButton).perform();
 
         // ASSERT
-        await driver.wait(until.elementTextMatches(passwordDeleteMessage, /.+/));
+        const passwordDeleteMessage = await driver.findElement(By.id('passwordDeleteMessage'));
         expect(await passwordDeleteMessage.getText()).toEqual('Invalid password.');
     });
 
