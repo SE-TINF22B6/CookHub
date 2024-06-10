@@ -11,6 +11,7 @@ import NotLoggedIn from "../components/NotLoggedIn";
 import {RecipeData} from "../models/RecipeData";
 
 
+
 export default function Profile(userProfile: UserDataParams) {
     let data = userProfile.data;
     let current_index = 0

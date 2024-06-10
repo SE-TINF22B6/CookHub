@@ -230,10 +230,12 @@ li {
     #Top-Container {
         width: 100%;
         margin-left: 0;
+        flex-direction: column;
     }
 
     #Top-Right-Container {
         margin-left: 0;
+        font-size: 10rem;
     }
 
 
@@ -280,5 +282,10 @@ li {
 
     #AdventurizeIt{
         width: 50%;
+    }
+
+    .infoText {
+        font-size: 1rem;
+        text-align: center;
     }
 }

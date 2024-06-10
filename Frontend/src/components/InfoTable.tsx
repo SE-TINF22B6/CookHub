@@ -30,7 +30,7 @@ export default function InfoTable(data: RecipeDataParams) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {recipe?.adventureTexts.map((text) => {
+                    {recipe?.adventureTexts.map((text,index) => {
                         let title = text?.split('\n',1)[0];
                         return(
                             <TableRow sx={{'&:last-child td, &:last-child th': {border: 0}}}
@@ -38,7 +38,7 @@ export default function InfoTable(data: RecipeDataParams) {
                                       style={{cursor: 'pointer'}}
                                       className="adventureTableRow">
                                 <TableCell component="th" scope="row">
-                                    {title}
+                                    {index+1 + ". "}{title}
                                 </TableCell>
                             </TableRow>)
                     })}
