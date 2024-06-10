@@ -41,8 +41,10 @@ describe('test with logged in user', () => {
 
     test('user should be able to unlike a recipe', async () => {
         // ARRANGE
+        await driver.wait(until.elementLocated(By.id('likeButton')));
         let likeCount = await driver.findElement(By.id('likeCount'));
         let likeButton = await driver.findElement(By.id('likeButton'));
+        await driver.wait(until.elementIsVisible(likeCount));
         expect(await likeCount.getText()).toEqual('Likes: 1');
         expect(await likeButton.getAttribute('aria-pressed')).toEqual('true');
         await driver.wait(until.elementIsVisible(likeButton));
@@ -68,8 +70,10 @@ describe('test with logged in user', () => {
     test('user should be able to like a recipe', async () => {
         // ARRANGE
         await driver.get(`${frontendUrl}/myrecipes/3`);
+        await driver.wait(until.elementLocated(By.id('likeCount')));
         let likeCount = await driver.findElement(By.id('likeCount'));
         let likeButton = await driver.findElement(By.id('likeButton'));
+        await driver.wait(until.elementIsVisible(likeButton));
         expect(await likeCount.getText()).toEqual('Likes: 0');
         expect(await likeButton.getAttribute('aria-pressed')).toEqual('false');
         await driver.wait(until.elementIsVisible(likeButton));
