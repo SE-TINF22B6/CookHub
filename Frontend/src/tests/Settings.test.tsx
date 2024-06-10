@@ -125,7 +125,7 @@ describe('test with logged in user', () => {
         // ACT
         await usernameTextField.sendKeys(Key.chord(Key.CONTROL,"a", Key.DELETE)); // clear text field
         await usernameTextField.sendKeys('hey');
-        await submitButton.click();
+        await driver.actions().click(submitButton).perform();
         await driver.wait(until.alertIsPresent());
         const alert = await driver.switchTo().alert();
         const alertText = await alert.getText();
