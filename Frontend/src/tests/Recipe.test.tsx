@@ -48,7 +48,7 @@ describe('test with logged in user', () => {
 
         try {
             // ACT
-            await likeButton.click();
+            await driver.actions().click(likeButton).perform();
             await driver.wait(until.elementTextIs(likeCount, 'Likes: 0'));
 
             // ASSERT
@@ -74,7 +74,7 @@ describe('test with logged in user', () => {
 
         try {
             // ACT
-            await likeButton.click();
+            await driver.actions().click(likeButton).perform();
             await driver.wait(until.elementTextIs(likeCount, 'Likes: 1'));
 
             // ASSERT
