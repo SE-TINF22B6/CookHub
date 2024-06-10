@@ -22,6 +22,10 @@ export default function Settings(userProfile: UserDataParams) {
     const [newName, setNewName] = React.useState('');
     const [changedData, setChangedDataName] = React.useState<UserData | null>(null);
     const [open, setOpen] = React.useState(false);
+    const [openName, setOpenName] = React.useState(false);
+    const [openFile, setOpenFile] = React.useState(false);
+    const [openFileSuccess, setOpenFileSuccess] = React.useState(false);
+    const [openPassDialog, setOpenPassDialog] = React.useState(false);
     const [passwordDeleteChange, setPasswordDeleteChange] = React.useState("");
 
 
@@ -43,6 +47,43 @@ export default function Settings(userProfile: UserDataParams) {
         setOpen(false);
     };
 
+
+    const handleClickOpenName = () => {
+        setOpenName(true);
+    };
+
+    const handleCloseName = () => {
+        setOpenName(false);
+    };
+
+
+    const handleClickOpenFile = () => {
+        setOpenFile(true);
+
+    };
+
+    const handleCloseFile = () => {
+        setOpenFile(false);
+    };
+
+
+    const handleClickOpenFileSucces = () => {
+        setOpenFileSuccess(true);
+    };
+
+    const handleCloseFileSuccess = () => {
+        setOpenFileSuccess(false);
+    };
+
+
+    const handleClickOpenPassDialog = () => {
+        setOpenPassDialog(true);
+    };
+
+    const handleClosePassDialog = () => {
+        setOpenPassDialog(false);
+    };
+
     async function handleDeleteAccount(password: string) {
         console.log(password);
         const response = await new UserClient().deleteProfile(password);
@@ -57,22 +98,22 @@ export default function Settings(userProfile: UserDataParams) {
         let imgUrl: string = document.querySelector(".ImageInput")?.firstElementChild?.getAttribute("src") ?? "";
 
         if (imgUrl === "/static/media/photo_placeholder.47177532c4d2205871f4.png") {
-            alert("Please upload a picture first");
+            handleClickOpenFile();
             return
         } else {
 
             document.querySelector(".userPicture")?.firstElementChild?.setAttribute("src", imgUrl);
             const response = await new UserClient().changeProfilePicture(imgUrl ?? null);
-
             if (response) {
+                handleClickOpenFileSucces();
 
-                alert("Successfully changed PP");
-                window.location.reload();
+
 
             } else {
-                alert("Something went wrong");
+
             }
         }
+
 
 
     }
@@ -162,7 +203,7 @@ export default function Settings(userProfile: UserDataParams) {
 
                 <span className={"userPicture"}>
                     <img id="user-image"
-                         src={changedData?.profilePicture ? `https://localhost:44328/images/profile-pictures/${changedData?.profilePicture}`:Placeholder}
+                         src={changedData?.profilePicture ? `https://localhost:44328/images/profile-pictures/${changedData?.profilePicture}` : Placeholder}
                          alt="User"/>
                 </span>
 
@@ -197,44 +238,71 @@ export default function Settings(userProfile: UserDataParams) {
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                 />
+
                 <Button
                     id="changeUsernameButton"
                     variant="contained"
                     color="primary"
                     onClick={async () => {
                         const result = await new UserClient().changeUsername(newName);
-
                         if (result === 200) {
                             if (changedData) {
                                 setChangedDataName({...changedData, name: newName});
+                                handleClickOpenName();
                             }
-                            alert("Username changed successfully to " + newName);
+
                         } else {
-                            alert("Error. Server responded with status: " + result);
+                            alert("Error. Something went wrong: " + result);
                         }
                     }}
                 >Submit
                 </Button>
-                <span id="newNameMessage" style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newNameMessage}</span>
+                <Dialog
+                    open={openName}
+                    onClose={handleCloseName}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    className="dialog-window"
+                >
+                    <DialogTitle id="alert-dialog-title"
+                                 className="delete-dialog-title">{"Information"}</DialogTitle>
+                    <DialogContent>
+                        <p id="alert-dialog-description" className="delete-dialog-description">
+                            Your name was changed to
+                            <strong style={{display: "block", textAlign: "center"}}>{newName}</strong>
+                        </p>
+                    </DialogContent>
+                    <DialogActions className="dialog-actions">
+                        <Button className="dialog-button" onClick={handleCloseName} color="primary" autoFocus>
+                            Ok
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+
+                <span id="newNameMessage"
+                      style={{color: "red", fontSize: "22px", fontStyle: "bold"}}>{newNameMessage}</span>
 
                 <br/><br/>
 
                 <h2>Change Password</h2>
-                <TextField id="oldPassword" className="filled-basic" label="Current password" variant="filled" value={oldPassword} type="password" onChange={e => setOldPassword(e.target.value)}/>
-                <TextField id="newPassword" className="filled-basic" label="Enter new Password" variant="filled" value={newPassword} type="password"
+                <TextField id="oldPassword" className="filled-basic" label="Current password" variant="filled"
+                           value={oldPassword} type="password" onChange={e => setOldPassword(e.target.value)}/>
+                <TextField id="newPassword" className="filled-basic" label="Enter new Password" variant="filled"
+                           value={newPassword} type="password"
                            onChange={(e) => setNewPassword(e.target.value)}/>
-                <TextField id="repeatNewPassword" className="filled-basic" label="Repeat new password" variant="filled" value={passwordRe} type="password"
+                <TextField id="repeatNewPassword" className="filled-basic" label="Repeat new password" variant="filled"
+                           value={passwordRe} type="password"
                            onChange={(e) => setPasswordRe(e.target.value)}/>
                 <Button id="changePasswordButton" variant="contained" color="primary" onClick={async () => {
                     if (newPassword !== passwordRe) {
-                        alert("Passwords don't match!");
                         return
                     }
                     const response = await new UserClient().changePassword(oldPassword, newPassword);
                     if (response === 200) {
-
+                        handleClickOpenPassDialog();
                         setPasswordAfterChangeMessage("Password Changed");
-                    }else {
+
+                    } else {
                         setPasswordAfterChangeMessage(response?.toString() ?? "Error");
                     }
                     setOldPassword("");
@@ -244,8 +312,32 @@ export default function Settings(userProfile: UserDataParams) {
                 }}>
                     Submit
                 </Button>
-                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}} id="passwordValidationMessage">{newPasswordMessage}</span>
-                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}} id="passwordAfterChangeMessage">{passwordAfterChangeMessage}</span>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}
+                      id="passwordValidationMessage">{newPasswordMessage}</span>
+                <span style={{color: "red", fontSize: "22px", fontStyle: "bold"}}
+                      id="passwordAfterChangeMessage">{passwordAfterChangeMessage}</span>
+
+                <Dialog
+                    open={openPassDialog}
+                    onClose={handleClosePassDialog}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    className="dialog-window"
+                >
+                    <DialogTitle id="alert-dialog-title"
+                                 className="delete-dialog-title">{"Information"}</DialogTitle>
+                    <DialogContent>
+                        <p id="alert-dialog-description" className="delete-dialog-description">
+
+                            <strong style={{display: "block", textAlign: "center"}}>Your password was successfully changed </strong>
+                        </p>
+                    </DialogContent>
+                    <DialogActions className="dialog-actions">
+                        <Button className="dialog-button" onClick={handleClosePassDialog} color="primary" autoFocus>
+                            Ok
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Box>
 
             <Box className={"body-right"}
@@ -258,7 +350,51 @@ export default function Settings(userProfile: UserDataParams) {
             >
                 <h2>Change Profile Picture</h2>
                 <ImageUploader recipe={null} setRecipe={null}/>
-                <Button id="changeProfilePictureButton" variant="contained" color="secondary" onClick={handlePicChange}>Change</Button>
+                <Button id="changeProfilePictureButton" variant="contained" color="secondary"
+                        onClick={handlePicChange}>Change</Button>
+
+                <Dialog
+                    open={openFile}
+                    onClose={handleCloseFile}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    className="dialog-window"
+                >
+                    <DialogTitle id="alert-dialog-title"
+                                 className="delete-dialog-title">{"Something went wrong!"}</DialogTitle>
+                    <DialogContent>
+                        <p id="alert-dialog-description" className="delete-dialog-description">
+                            Please select a file first!
+                        </p>
+                    </DialogContent>
+                    <DialogActions className="dialog-actions">
+                        <Button className="dialog-button" onClick={handleCloseFile} color="primary" autoFocus>
+                            Ok
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={openFileSuccess}
+                    onClose={handleCloseFileSuccess}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    className="dialog-window"
+                >
+                    <DialogTitle id="alert-dialog-title"
+                                 className="delete-dialog-title">{"Information"}</DialogTitle>
+                    <DialogContent>
+                        <p id="alert-dialog-description" className="delete-dialog-description">
+
+                            <strong style={{display: "block", textAlign: "center"}}>Your profile picture was
+                                successfully changed</strong>
+                        </p>
+                    </DialogContent>
+                    <DialogActions className="dialog-actions">
+                        <Button className="dialog-button" onClick={() => {handleCloseFileSuccess();  window.location.reload();}} color="primary" autoFocus>
+                            Ok
+                        </Button>
+                    </DialogActions>
+                </Dialog>
 
                 <br/>
 
