@@ -17,19 +17,20 @@ export default function FormPropsTextFields(data: {recipe: CreateRecipeModel, se
             autoComplete="off"
         >
             <div>
-                <CreateRecipeBlank recipe={recipe} setRecipe={setRecipe}/>
-
-                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div>
                     <TextField
-                        id="filled-helperText"
-                        label="Name of the recipe"
-                        defaultValue=""
-                        variant="filled"
-                        onChange={e => setRecipe({...recipe, name: e.target.value})}
+                      id="filled-helperText"
+                      label="Name of the recipe"
+                      defaultValue=""
+                      variant="filled"
+                      onChange={e => setRecipe({...recipe, name: e.target.value})}
+                      sx={{ margin: '0.2rem !important' }}
                     />
 
+                    <CreateRecipeBlank recipe={recipe} setRecipe={setRecipe}/>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row' }}>
+
+                <div>
                     <TextField
                         id="filled-number"
                         label="Preparation Time (min)"
@@ -45,6 +46,7 @@ export default function FormPropsTextFields(data: {recipe: CreateRecipeModel, se
                         }}
                         variant="filled"
                         onChange={e => setRecipe({...recipe, prepTime: +e.target.value})}
+                        sx={{ margin: '0.2rem !important' }}
                     />
                     <TextField
                         id="filled-number"
@@ -61,6 +63,7 @@ export default function FormPropsTextFields(data: {recipe: CreateRecipeModel, se
                         }}
                         variant="filled"
                         onChange={e => setRecipe({...recipe, cookingTime: +e.target.value})}
+                        sx={{ margin: '0.2rem !important' }}
                     />
 
                 </div>

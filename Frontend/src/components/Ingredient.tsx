@@ -17,13 +17,13 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({ addIngredient 
                 value={ingredientAmount}
                 onChange={(e) => setIngredientAmount(Number(e.target.value))}
                 placeholder="Amount"
-                style={{width: "3vw"}}
+                style={{width: "2rem", height: "2rem"}}
             />
             <select
                 value={ingredientUnit}
                 onChange={(e) => setIngredientUnit(e.target.value)}
                 placeholder="Unit"
-                style={{width: "4vw", height: "1.5vw"}}
+                style={{width: "4rem", height: "2rem"}}
             >
                 <option value="" disabled>Unit</option>
                 <option value="mg">mg</option>
@@ -47,11 +47,11 @@ export const IngredientInput: React.FC<IngredientInputProps> = ({ addIngredient 
                 value={ingredientValue}
                 onChange={(e) => setIngredientValue(e.target.value)}
                 placeholder="Ingredient"
-                style={{width: "10vw"}}
+                style={{width: "10rem", height: "2rem"}}
             />
 
 
-            <button onClick={() => addIngredient(ingredientValue, ingredientAmount, ingredientUnit)}>Add</button>
+            <button style={{height: "2rem"}} onClick={() => addIngredient(ingredientValue, ingredientAmount, ingredientUnit)}>Add</button>
         </div>
     );
 }
