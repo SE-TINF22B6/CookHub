@@ -169,6 +169,7 @@ export default function MyRecipes(user: UserDataParams) {
                         <p><strong>Cooking Time:</strong> {data.cookingTime} min</p>
                         <p><strong>Difficulty:</strong> {data.difficulty}</p>
                         <p id="likeCount"><strong>Likes:</strong> {likeCount}</p>
+                        <p><strong>Categories:</strong> {data.categories.toString().replaceAll(',', ', ')}</p>
                         <p hidden={user.data == null}>
                             <ToggleButton
                                 id="likeButton"
