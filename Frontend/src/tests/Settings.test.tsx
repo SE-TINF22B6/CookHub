@@ -78,12 +78,12 @@ describe('test with dummy user', () => {
         await driver.actions().click(submitButton).perform();
 
         // ASSERT
-        const newProfilePicture = await profilePicture.getAttribute('src');
-        expect(newProfilePicture).not.toEqual(oldProfilePicture);
         await driver.wait(until.alertIsPresent());
         const alert = await driver.switchTo().alert();
         expect(await alert.getText()).toEqual('Successfully changed PP');
         await alert.accept();
+        const newProfilePicture = await driver.findElement(By.id('user-image')).getAttribute('src');
+        expect(newProfilePicture).not.toEqual(oldProfilePicture);
     });
 
     test('user can delete account', async () => {

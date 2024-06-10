@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
-import {Chip, FormControl, InputLabel, OutlinedInput, Select, SelectChangeEvent} from "@mui/material";
+import {Chip, FormControl, Input, InputLabel, Select, SelectChangeEvent} from "@mui/material";
 import {CreateRecipeModel} from "../models/CreateRecipeModel";
 
 const categories = [
@@ -57,46 +57,33 @@ export default function CreateRecipeBlank(data: {recipe: CreateRecipeModel, setR
     };
 
     return (
-        <Box
-            component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-        >
-
-
-            <div>
-                <FormControl sx={{ m: 1, width: 300 }}>
-                    <InputLabel id="demo-multiple-chip-label">Category</InputLabel>
-                    <Select
-                        labelId="demo-multiple-chip-label"
-                        id="demo-multiple-chip"
-                        multiple
-                        value={recipe.categories}
-                        onChange={handleChange}
-                        input={<OutlinedInput id="select-multiple-chip" label="Category" />}
-                        renderValue={(selected) => (
-                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                {selected.map((value) => (
-                                    <Chip key={value} label={value} />
-                                ))}
-                            </Box>
-                        )}
-                        MenuProps={MenuProps}
-                    >
-                        {categories.map((category) => (
-                            <MenuItem
-                                key={category}
-                                value={category}
-                            >
-                                {category}
-                            </MenuItem>
+        <FormControl sx={{ margin: '0.2rem !important', width: '40ch', backgroundColor: 'rgba(0, 0, 0, 0.06)' }}>
+            <InputLabel id="demo-multiple-chip-label">Categories</InputLabel>
+            <Select
+                labelId="demo-multiple-chip-label"
+                id="demo-multiple-chip"
+                multiple
+                value={recipe.categories}
+                onChange={handleChange}
+                input={<Input id="select-multiple-chip" sx={{minHeight: 40}} />}
+                renderValue={(selected) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {selected.map((value) => (
+                            <Chip key={value} label={value} />
                         ))}
-                    </Select>
-                </FormControl>
-            </div>
-        </Box>
+                    </Box>
+                )}
+                MenuProps={MenuProps}
+            >
+                {categories.map((category) => (
+                    <MenuItem
+                        key={category}
+                        value={category}
+                    >
+                        {category}
+                    </MenuItem>
+                ))}
+            </Select>
+        </FormControl>
     );
 }
