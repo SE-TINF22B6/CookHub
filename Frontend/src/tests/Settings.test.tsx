@@ -212,6 +212,7 @@ describe('test with logged in user', () => {
 
     test('user cannot delete account when entering wrong password', async () => {
         // ARRANGE
+        await driver.navigate().refresh();
         await driver.wait(until.elementLocated(By.id('deleteAccountButton')));
         const deleteAccountButton = await driver.findElement(By.id('deleteAccountButton'));
         await driver.wait(until.elementIsVisible(deleteAccountButton));
@@ -229,6 +230,7 @@ describe('test with logged in user', () => {
 
         // ASSERT
         const passwordDeleteMessage = await driver.findElement(By.id('passwordDeleteMessage'));
+        await driver.wait(until.elementTextMatches(passwordDeleteMessage, /.+/));
         expect(await passwordDeleteMessage.getText()).toEqual('Invalid password.');
     });
 
