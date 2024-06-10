@@ -22,7 +22,6 @@ import InfoTable from "../components/InfoTable";
 import {UserDataParams} from "../models/UserDataParams";
 import {UserClient} from "../clients/UserClient";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Typography from "@mui/material/Typography";
 
 
 export default function MyRecipes(user : UserDataParams) {
