@@ -32,6 +32,7 @@ describe('test with dummy user', () => {
 
     test('user can change user name', async () => {
         // ARRANGE
+        await driver.wait(until.elementLocated(By.id('usernameInfo')));
         const usernameInfo = await driver.findElement(By.id('usernameInfo'));
         const usernameTextField = await driver.findElement(By.id('filled-basic'));
         const submitButton = await driver.findElement(By.id('changeUsernameButton'));
@@ -90,10 +91,12 @@ describe('test with dummy user', () => {
         // ARRANGE
         await driver.wait(until.elementLocated(By.id('deleteAccountButton')));
         const deleteAccountButton = await driver.findElement(By.id('deleteAccountButton'));
+        await driver.wait(until.elementIsVisible(deleteAccountButton));
 
         // ACT
         await driver.actions().click(deleteAccountButton).perform();
 
+        await driver.wait(until.elementLocated(By.id('name')));
         const passwordInput = await driver.findElement(By.id('name'));
         const confirmButton = await driver.findElement(By.id('confirmAccountDeletion'));
 
@@ -116,6 +119,7 @@ describe('test with logged in user', () => {
 
     test('user cannot change username to invalid username', async () => {
         // ARRANGE
+        await driver.wait(until.elementLocated(By.id('usernameInfo')));
         const usernameInfo = await driver.findElement(By.id('usernameInfo'));
         const usernameTextField = await driver.findElement(By.id('filled-basic'));
         const submitButton = await driver.findElement(By.id('changeUsernameButton'));
@@ -195,6 +199,7 @@ describe('test with logged in user', () => {
         // ARRANGE
         await driver.wait(until.elementLocated(By.id('deleteAccountButton')));
         const deleteAccountButton = await driver.findElement(By.id('deleteAccountButton'));
+        await driver.wait(until.elementIsVisible(deleteAccountButton));
 
         // ACT
         await driver.actions().click(deleteAccountButton).perform();
