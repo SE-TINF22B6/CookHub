@@ -143,6 +143,8 @@ export default function MyRecipes(user: UserDataParams) {
         return <div>Loading...</div>;
     }
 
+    console.log(data);
+
 
     return (
 
@@ -334,7 +336,7 @@ export default function MyRecipes(user: UserDataParams) {
 
             </div>
 
-            <div id={"Bottom-Container"}>
+            <div id={"Bottom-Container"} hidden={data.adventureTexts.length === 0}>
 
                 <h2 style={{
                     textShadow: "2px 2px #000",

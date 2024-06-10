@@ -21,8 +21,6 @@
 
 #body {
     display: flex;
-    width: 80vw;
-    height: 65vh;
     margin-top: 2%;
     background-color: #C9FE71;
     border-radius: 2rem;
