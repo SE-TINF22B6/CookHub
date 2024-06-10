@@ -166,4 +166,21 @@ public class RecipeService
         error = string.Empty;
         return true;
     }
+
+    public IEnumerable<Recipe> GetRecipesForSearchTerm(string searchTerm)
+    {
+        var term = searchTerm.Trim();
+        return _repository.GetAll()
+            .Where(recipe =>
+                recipe.Name.Contains(term, StringComparison.InvariantCultureIgnoreCase) ||
+                recipe.Categories.Any(category =>
+                    category.ToString().Contains(term, StringComparison.InvariantCultureIgnoreCase)) ||
+                recipe.Ingredients.Any(ingredient =>
+                    ingredient.Ingredient.Name.Contains(term, StringComparison.InvariantCultureIgnoreCase)))
+            .OrderByDescending(recipe => recipe.Name.StartsWith(term, StringComparison.InvariantCultureIgnoreCase))
+            .ThenByDescending(recipe => recipe.Categories.Any(category =>
+                category.ToString().StartsWith(term, StringComparison.InvariantCultureIgnoreCase)))
+            .ThenByDescending(recipe => recipe.Ingredients.Any(ingredient =>
+                ingredient.Ingredient.Name.StartsWith(term, StringComparison.InvariantCultureIgnoreCase)));
+    }
 }
