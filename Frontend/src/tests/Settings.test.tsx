@@ -215,6 +215,7 @@ describe('test with logged in user', () => {
         // ACT
         await driver.actions().click(deleteAccountButton).perform();
 
+        await driver.wait(until.elementLocated(By.id('name')));
         const passwordInput = await driver.findElement(By.id('name'));
         const confirmButton = await driver.findElement(By.id('confirmAccountDeletion'));
 
