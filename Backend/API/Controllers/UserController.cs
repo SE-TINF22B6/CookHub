@@ -145,7 +145,7 @@ public class UserController : ControllerBase
             return NotFound("User not found.");
         }
 
-        var likedRecipes = _userService.GetLikedRecipesByUserId(userId);
+        var likedRecipes = _userService.GetLikedRecipesByUserId(userId)?.Select(recipe => recipe.ToModel());
         return Ok(likedRecipes);
     }
 

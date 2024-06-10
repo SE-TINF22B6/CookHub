@@ -44,7 +44,8 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
                                     <div className="back-content" style={{backgroundImage: imageUrl, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
                                         <div className="recipe-card-overlay">
                                             <strong>{recipe.name}</strong>
-                                            <p> {recipe.prepTime} min prep | {recipe.cookingTime} min cooking</p>
+                                            <p> {recipe.prepTime} min preparation | {recipe.cookingTime} min cooking</p>
+                                            <p>{recipe.categories.join(" | ")} </p>
                                         </div>
                                     </div>
                                 </div>

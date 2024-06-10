@@ -384,7 +384,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var likedRecipes = ResponseMessageOf(result) as IEnumerable<Recipe>;
+        var likedRecipes = ResponseMessageOf(result) as IEnumerable<RecipeModel>;
         Assert.NotNull(likedRecipes);
         Assert.Contains(likedRecipes, r => r.Id == recipeId1);
         Assert.Contains(likedRecipes, r => r.Id == recipeId2);
@@ -428,7 +428,7 @@ public class UserControllerTests : IDisposable
 
         // ASSERT
         Assert.IsType<OkObjectResult>(result);
-        var likedRecipes = ResponseMessageOf(result) as IEnumerable<Recipe>;
+        var likedRecipes = ResponseMessageOf(result) as IEnumerable<RecipeModel>;
         Assert.NotNull(likedRecipes);
         Assert.Empty(likedRecipes);
     }
