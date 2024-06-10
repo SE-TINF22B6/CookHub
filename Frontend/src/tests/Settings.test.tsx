@@ -211,6 +211,8 @@ describe('test with logged in user', () => {
         // ARRANGE
         await driver.wait(until.elementLocated(By.id('deleteAccountButton')));
         const deleteAccountButton = await driver.findElement(By.id('deleteAccountButton'));
+        await driver.wait(until.elementIsVisible(deleteAccountButton));
+        await driver.sleep(500);
 
         // ACT
         await driver.actions().click(deleteAccountButton).perform();
