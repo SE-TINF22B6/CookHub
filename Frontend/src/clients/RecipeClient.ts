@@ -1,22 +1,22 @@
 import {CreateRecipeModel} from "../models/CreateRecipeModel";
+import {RecipeData} from "../models/RecipeData";
 
 export class RecipeClient {
 
-     public async getRecipeByName(name: string | undefined) {
-         try {
-         const response = await fetch(`https://localhost:44328/Recipe/byname/${name}`);
-         /*const response = await fetch(`https://localhost:7274/Recipe/byname/${name}`);*/
+    public async getRecipesBySearchTerm(searchTerm: string): Promise<RecipeData[]> {
+        try {
+            const response = await fetch(`https://localhost:44328/Recipe/search/${searchTerm}`);
 
-         if (!response.ok) {
-             throw new Error(response.statusText);
-         }
-         const recipes = await response.json();
-         console.log(recipes);
-         return recipes;
-         }catch (error){
-             console.log(error);
-         }
-     }
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+
+            return await response.json();
+        } catch (error) {
+            console.log(error);
+            return [];
+        }
+    }
 
     public async getRecipeById(id: number|undefined) {
         try {

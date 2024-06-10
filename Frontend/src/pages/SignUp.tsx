@@ -121,7 +121,7 @@ export default function SignUp() {
                         Your password must have more than 6 symbols and at least 1 special symbol.<br/><br/>
                     </div>
 
-                    <div className="carlos-image">
+                    <div className="carlos-image-signup">
                         <img className="chef-carlos" src={chef} alt="chef"/>
                     </div>
 

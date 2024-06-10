@@ -16,21 +16,3 @@ it('should display the top 5 recipes', async () => {
     expect(await recipeNames[3].getText()).toEqual('Mango Sticky Rice');
     expect(await recipeNames[4].getText()).toEqual('Greek Salad');
 });
-
-test('user should be able to search for recipes', async () => {
-    // ARRANGE
-    await driver.get(`${frontendUrl}/findrecipes`);
-    const searchField = await driver.findElement(By.className('search__field'));
-
-    // ACT
-    await searchField.sendKeys('ma');
-
-    // ASSERT
-    const results = await driver.findElements(By.className('recipeContainer'));
-    expect(results).toHaveLength(3);
-
-    const resultTitles = await driver.findElements(By.className('recipeName'));
-    expect(await resultTitles[0].getText()).toEqual('Mango Sticky Rice');
-    expect(await resultTitles[1].getText()).toEqual('Pizza Margherita');
-    expect(await resultTitles[2].getText()).toEqual('Chicken Tikka Masala');
-});

@@ -11,17 +11,24 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import SpeedIcon from '@mui/icons-material/Speed';
 import Box from "@mui/material/Box";
+import {RecipeData} from "../models/RecipeData";
 
 
 export default function FindRecipes() {
 
-    const [data, setData] = useState<any[]>([]);
+    const [data, setData] = useState<RecipeData[]>([]);
     const [topRecipe, setTopRecipe] = useState<any[]>([]);
     const [inputValue, setInputValue] = useState("");
 
-    async function findBtn(name: string) {
-        let client: RecipeClient = new RecipeClient();
-        setData(await client.getRecipeByName(name));
+    async function searchFor(searchTerm: string) {
+        setInputValue(searchTerm);
+        const client = new RecipeClient();
+        setData(await client.getRecipesBySearchTerm(searchTerm));
+    }
+
+    async function onCategoryClick(e: any, category: string) {
+        e.preventDefault();
+        await searchFor(category);
     }
 
     useEffect(() => {
@@ -39,12 +46,12 @@ export default function FindRecipes() {
         console.log(inputValue);
     }
 
-    function createRecipeCard(recipe: any) {
+    function createRecipeCard(recipe: RecipeData) {
         return (
 
             <Card id="cards" sx={{
                 width: "20rem",
-                height: "15rem",
+                height: "fit-content",
                 backgroundColor: '#C9FE71',
                 boxShadow: '#2b2f32 12px 12px 12px',
                 marginBottom: "2rem",
@@ -79,6 +86,12 @@ export default function FindRecipes() {
                             <SpeedIcon></SpeedIcon>
                             {recipe.difficulty}
                         </Box>
+                        <div id="categoryContainer">
+                            {recipe.categories.map(category =>
+                              <span className="category" onClick={e => onCategoryClick(e, category!)}>
+                                  {category}
+                              </span>)}
+                        </div>
                     </CardContent>
 
                 </CardActionArea>
@@ -87,11 +100,11 @@ export default function FindRecipes() {
         )
     }
 
-    function createSearchRecipeCard(recipe: any) {
+    function createSearchRecipeCard(recipe: RecipeData) {
         return (
-            <Card id="cards" sx={{
+          <Card id="cards" sx={{
                 width: "20rem",
-                height: "15rem",
+                height: "fit-content",
                 backgroundColor: '#C9FE71',
                 boxShadow: '#2b2f32 12px 12px 12px',
                 marginBottom: "2rem",
@@ -125,6 +138,12 @@ export default function FindRecipes() {
                             <SpeedIcon></SpeedIcon>
                             {recipe.difficulty}
                         </Box>
+                        <div id="categoryContainer">
+                            {recipe.categories.map(category =>
+                              <span className="category" onClick={e => onCategoryClick(e, category!)}>
+                                  {category}
+                              </span>)}
+                        </div>
                     </CardContent>
                 </CardActionArea>
 
@@ -142,53 +161,40 @@ export default function FindRecipes() {
                         type="text"
                         className="search__field"
                         value={inputValue}
-                        placeholder="Search Recipe..."
-                        onChange={e => {
-                            setInputValue(e.target.value);
-                            findBtn(e.target.value);
-                        }}
+                        placeholder="Search for recipes, categories or ingredients"
+                        onChange={async e => await searchFor(e.target.value)}
                     />
 
                 </form>
             </div>
 
 
-            {data ? data.map((recipe) => {
-                    return (
-                        <div className="recipeContainer">
-                            <a href={`/myrecipes/${recipe.id}`}>
-                                {recipe.adventureTexts.length !== 0 ?
-                                    <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
-                                        {createSearchRecipeCard(recipe)}
-                                    </Badge> :
-                                    createSearchRecipeCard(recipe)
-                                }
-                            </a>
-                        </div>
-                    )
-                })
-                :
-
-                ""
+            {data ? data.map((recipe) =>
+                <div className="recipeContainer">
+                    <a href={`/myrecipes/${recipe.id}`}>
+                        {recipe.adventureTexts.length !== 0 ?
+                            <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
+                                {createSearchRecipeCard(recipe)}
+                            </Badge> :
+                            createSearchRecipeCard(recipe)
+                        }
+                    </a>
+                </div>) : ""
             }
 
             <div className={"topRecipes"}>
                 {!inputValue ?
-                    topRecipe.map((recipe) => {
-                        return (
-                            <a href={`/myrecipes/${recipe.id}`}>
-                                {recipe.adventureTexts.length !== 0 ?
-                                    <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
-                                        {createRecipeCard(recipe)}
-                                    </Badge>
-                                    :
-                                    createRecipeCard(recipe)
-                                }
+                    topRecipe.map((recipe) =>
+                        <a href={`/myrecipes/${recipe.id}`}>
+                            {recipe.adventureTexts.length !== 0 ?
+                                <Badge badgeContent={"ADVENTURIZED"} color="warning" sx={{color: "white"}}>
+                                    {createRecipeCard(recipe)}
+                                </Badge>
+                                :
+                                createRecipeCard(recipe)
+                            }
 
-                            </a>
-                        );
-                    }) :
-                    ""
+                        </a>) : ""
                 }
             </div>
 
