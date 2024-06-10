@@ -22,12 +22,14 @@ test('user should be able to search for recipe name', async () => {
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
     const topRecipes = await driver.findElement(By.className('topRecipes'));
+    await driver.sleep(500);
 
     // ACT
     await searchField.click();
     await driver.actions().sendKeys('sala').perform();
     await driver.findElement(By.id('menuButtonContainer')).click();
     await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
+    await driver.sleep(500);
 
     // ASSERT
     const results = await driver.findElements(By.className('recipeContainer'));
@@ -43,12 +45,14 @@ test('user should be able to search for category', async () => {
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
     const topRecipes = await driver.findElement(By.className('topRecipes'));
+    await driver.sleep(500);
 
     // ACT
     await searchField.click();
     await driver.actions().sendKeys('italian').perform();
     await driver.findElement(By.id('menuButtonContainer')).click();
     await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
+    await driver.sleep(500);
 
     // ASSERT
     const results = await driver.findElements(By.className('recipeContainer'));
@@ -64,12 +68,14 @@ test('user should be able to search for ingredient', async () => {
     await driver.get(`${frontendUrl}/findrecipes`);
     const searchField = await driver.findElement(By.className('search__field'));
     const topRecipes = await driver.findElement(By.className('topRecipes'));
+    await driver.sleep(500);
 
     // ACT
     await searchField.click();
     await driver.actions().sendKeys('pepper').perform();
     await driver.findElement(By.id('menuButtonContainer')).click();
     await driver.wait(until.elementIsNotVisible(topRecipes), 1000);
+    await driver.sleep(500);
 
     // ASSERT
     const results = await driver.findElements(By.className('recipeContainer'));
