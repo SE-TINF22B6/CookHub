@@ -1,4 +1,5 @@
 using API.Models;
+using Contracts.Entities;
 using Contracts.Models;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -208,4 +209,60 @@ public class RecipeController: ControllerBase
         var isLoggedIn = _authTokens.TryGetValue(Request.Cookies["auth-token"]?? "", out var userId);
         return isLoggedIn ? userId : -1;
     }
+    
+    /// <summary>
+    /// Updates an existing recipe
+    /// </summary>
+    [HttpPut("{id}")]
+    public IActionResult UpdateRecipe(int id, CreateRecipeModel updatedRecipe)
+    {
+        var userId = GetIdOfLoggedInUser();
+
+        if (userId == -1)
+        {
+            return BadRequest("User is not logged in");
+        }
+
+        var existingRecipe = _recipeService.GetRecipeById(id);
+
+        if (existingRecipe == null)
+        {
+            return NotFound("Recipe not found.");
+        }
+
+        if (existingRecipe.Creator?.Id != userId)
+        {
+            return BadRequest("Cannot update a recipe that is not yours");
+        }
+
+        var pictureFileName = "";
+
+        if (updatedRecipe.Picture.Length > 0 && !RecipeService.TrySaveRecipeImage(updatedRecipe.Picture, out pictureFileName))
+        {
+            return BadRequest("Invalid base64 image.");
+        }
+
+        existingRecipe.Name = updatedRecipe.Name;
+        existingRecipe.PrepTime = updatedRecipe.PrepTime;
+        existingRecipe.CookingTime = updatedRecipe.CookingTime;
+        existingRecipe.Difficulty = updatedRecipe.Difficulty;
+        existingRecipe.Description = updatedRecipe.Description;
+        existingRecipe.InstructionText = updatedRecipe.InstructionText;
+        existingRecipe.Categories = updatedRecipe.Categories.Select(Enum.Parse<RecipeCategory>).ToList();
+        existingRecipe.Ingredients = updatedRecipe.Ingredients.Select(ingredient => new RecipeIngredient
+        {
+            Ingredient = new Ingredient { Name = ingredient.IngredientName },
+            Quantity = ingredient.Quantity,
+            UnitOfMeasure = ingredient.UnitOfMeasure
+        }).ToList();
+
+        if (!string.IsNullOrEmpty(pictureFileName))
+        {
+            existingRecipe.PictureUrl = pictureFileName;
+        }
+
+        _recipeService.UpdateRecipe(existingRecipe);
+        return Ok("Recipe successfully updated");
+    }
+
 }
