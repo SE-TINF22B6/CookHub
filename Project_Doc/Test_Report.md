@@ -82,13 +82,21 @@
 
 #### Test coverage
 Backend test coverage mesured with DotCover:
+
 ![image](https://github.com/SE-TINF22B6/CookHub/assets/77683850/9a2ed0d5-ceb8-4df6-aead-ebfcb11ab06f)
 
 #### GitHub Actions Statistics
-1,069 workflow runs
-- 948 Success
-- 117 Failure
-- 4 Canceled
+out of 1,073 recorded workflow runs, there where:
+- 952 successes
+  - 489 pull requests
+  - 463 pushes
+- 117 failures
+  - 93 pull requests
+  - 24 pushes
+- 4 canceled
+  - 4 pull requests
+
+=> 87,71% success rate
 
 <br><br>
 
