@@ -50,15 +50,3 @@ To improve testability, we have implemented design principles in the backend. Fo
 ![image](https://raw.githubusercontent.com/SE-TINF22B6/CookHub/efa0b47abc95072286463ddcf41b16e0a9d15486/Project_Doc/Diagrams/component_diagram.drawio.svg)
 
 
-
-#### 3.1 Overview 
-> A summary of the architecture design -- highlights.
-
-
-
-#### 3.2 Runtime view (Tips: https://docs.arc42.org/section-6/)
-
-#### 3.3 Deployment view (Tips: https://docs.arc42.org/section-7/)
-
-#### 3.4 ... ...
-
