@@ -24,7 +24,9 @@ The lack of scalability is a consequence of the highly coupled layers. Any chang
 ##### Tactics: 
 https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md#3-nonfunctional-requirements
 ##### Testing & CI/CD:
-https://github.com/SE-TINF22B6/CookHub/discussions/45
+CI/CD: [https://github.com/SE-TINF22B6/CookHub/discussions/45](https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/CICD.md)
+
+Testing: https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/Test_Report.md
 ##### OpenAI sequence diagram:
 https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md#23-recipes-management
 
