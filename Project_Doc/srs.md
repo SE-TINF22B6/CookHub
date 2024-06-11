@@ -213,7 +213,7 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 
 ### 2.5 Data Administration
 
-> - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/37, https://github.com/SE-TINF22B6/CookHub/issues/40
+> - **user stories**: https://github.com/SE-TINF22B6/CookHub/issues/40
 > - UML diagram: https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/UML-Diagram/uml-class-diagram.drawio.svg
 > - **Preconditions**: Backend servers has to be active, DB must be connected.
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
