@@ -267,7 +267,7 @@ export default function Settings(userProfile: UserDataParams) {
                 >
                     <DialogTitle id="alert-dialog-title"
                                  className="delete-dialog-title">{"Information"}</DialogTitle>
-                    <DialogContent>
+                    <DialogContent sx={{backgroundColor:"#262525FF"}}>
                         <p id="alert-dialog-description" className="delete-dialog-description">
                             Your name was changed to
                             <strong style={{display: "block", textAlign: "center"}}>{newName}</strong>
