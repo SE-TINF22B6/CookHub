@@ -30,7 +30,7 @@ describe('test without logged in user', () => {
 
     it('should be able to start selenium', async () => {
         const title = await driver.getTitle();
-        expect(title).toEqual("React App");
+        expect(title).toEqual("CookHub");
     });
 
     it('should redirect to the home page when clicking logo', async () => {

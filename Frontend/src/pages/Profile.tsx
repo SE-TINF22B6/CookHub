@@ -9,6 +9,7 @@ import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
 
 import {RecipeData} from "../models/RecipeData";
+import {backendUrl} from "../App";
 
 
 
@@ -84,7 +85,7 @@ export default function Profile(userProfile: UserDataParams) {
                     <div id="divUserInfo">
                         <div className="AvatarHolder">
                             <img
-                                src={src ? `https://localhost:44328/images/profile-pictures/${data?.profilePicture}` : Placeholder}
+                                src={src ? `https://${backendUrl}/images/profile-pictures/${data?.profilePicture}` : Placeholder}
                                 className="Avatar" alt="avatar"/>
                         </div>
                         <div className="UsernameHolder">
@@ -117,7 +118,7 @@ export default function Profile(userProfile: UserDataParams) {
                                     return (
                                         <a className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                             <img style={{width: "4rem", height: "4rem"}}
-                                                 src={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
+                                                 src={recipe.pictureUrl ? `https://${backendUrl}/images/recipes/${recipe.pictureUrl}`: Placeholder}
                                                  alt={"rezept"}/>
                                             <h3>{recipe.name}</h3>
                                         </a>
@@ -136,7 +137,7 @@ export default function Profile(userProfile: UserDataParams) {
                                     return (
                                         <a key={index} className={"likedRecipes"} href={`myrecipes/${recipe.id}`}>
                                             <img style={{width: "4rem", height: "4rem"}}
-                                                 src={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
+                                                 src={recipe.pictureUrl ? `https://${backendUrl}/images/recipes/${recipe.pictureUrl}`: Placeholder}
                                                  alt={"rezept"}/>
                                             <h3>{recipe.name}</h3>
                                         </a>
@@ -156,7 +157,7 @@ export default function Profile(userProfile: UserDataParams) {
                             return (
                                     <a key={index} className={"likedRecipes"} href={`myrecipes/${entry.recipe.id}`}>
                                         <img style={{width: "4rem", height: "4rem"}}
-                                             src={entry.recipe.pictureUrl ? `https://localhost:44328/images/recipes/${entry.recipe.pictureUrl}`: Placeholder}
+                                             src={entry.recipe.pictureUrl ? `https://${backendUrl}/images/recipes/${entry.recipe.pictureUrl}`: Placeholder}
                                              alt={"rezept"}/>
                                         <h3>{entry.recipe.name}</h3>
                                     </a>

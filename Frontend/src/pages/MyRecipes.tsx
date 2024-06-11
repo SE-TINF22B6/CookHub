@@ -22,6 +22,7 @@ import InfoTable from "../components/InfoTable";
 import {UserDataParams} from "../models/UserDataParams";
 import {UserClient} from "../clients/UserClient";
 import DeleteIcon from "@mui/icons-material/Delete";
+import {backendUrl} from "../App";
 
 
 export default function MyRecipes(user: UserDataParams) {
@@ -157,7 +158,7 @@ export default function MyRecipes(user: UserDataParams) {
 
                 <div id={"Top-Left-Container"}>
                     <img id="RecipeImage"
-                         src={data.pictureUrl ? `https://localhost:44328/images/recipes/${data.pictureUrl}` : Placeholder}
+                         src={data.pictureUrl ? `https://${backendUrl}/images/recipes/${data.pictureUrl}` : Placeholder}
                          alt="Gute_Rahmenbedingungen"/>
                 </div>
 

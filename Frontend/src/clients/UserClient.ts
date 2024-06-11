@@ -1,30 +1,10 @@
-import {LoginDataModel} from "../models/login-data-model";
+import {backendUrl} from "../App";
 
 export class UserClient {
 
-    private readonly URL: string = 'http://localhost:5184/login';
-
-    public sendLoginRequest(email: string, password: string): Promise<string> {
-        return new Promise((resolve) => {
-            const request = new XMLHttpRequest();
-            const loginData = new LoginDataModel(email, password);
-            const loginDataJson = JSON.stringify(loginData);
-
-            request.open('POST', this.URL, true);
-
-            request.onload = () => {
-                resolve(request.response);
-            }
-
-            request.setRequestHeader('Accept', 'application/json');
-            request.setRequestHeader('Content-Type', 'application/json');
-            request.send(loginDataJson);
-        });
-    }
-
     public async isLoggedIn() {
         try {
-            const response = await fetch(`https://localhost:44328/Login/is-logged-in/`, {
+            const response = await fetch(`https://${backendUrl}/Login/is-logged-in/`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -39,7 +19,7 @@ export class UserClient {
 
     public async logOut() {
         try {
-            const response = await fetch(`https://localhost:44328/Login/log-out`, {
+            const response = await fetch(`https://${backendUrl}/Login/log-out`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -54,7 +34,7 @@ export class UserClient {
 
     public async userLogin(email: string, password: string) {
         try {
-            const response = await fetch(`https://localhost:44328/Login/`, {
+            const response = await fetch(`https://${backendUrl}/Login/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +60,7 @@ export class UserClient {
 
     public async getLikedRecipes(userId: number | undefined) {
         try {
-            const response = await fetch(`https://localhost:44328/User/${userId}/liked-recipes`, {
+            const response = await fetch(`https://${backendUrl}/User/${userId}/liked-recipes`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -95,7 +75,7 @@ export class UserClient {
 
     public async viewRecipe(recipeId: number) {
         try {
-            const response = await fetch(`https://localhost:44328/User/view-recipe/${recipeId}`, {
+            const response = await fetch(`https://${backendUrl}/User/view-recipe/${recipeId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -116,7 +96,7 @@ export class UserClient {
 
     public async getOwnRecipes() {
         try {
-            const response = await fetch(`https://localhost:44328/User/own-recipes`, {
+            const response = await fetch(`https://${backendUrl}/User/own-recipes`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -130,7 +110,7 @@ export class UserClient {
 
     public async getViewedRecipes() {
         try {
-            const response = await fetch(`https://localhost:44328/User/viewed-recipes`, {
+            const response = await fetch(`https://${backendUrl}/User/viewed-recipes`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -146,7 +126,7 @@ export class UserClient {
     public async userSignup(name: string, email: string, password: string) {
         let response;
         try {
-            response = await fetch(`https://localhost:44328/Login/register`, {
+            response = await fetch(`https://${backendUrl}/Login/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -170,7 +150,7 @@ export class UserClient {
     }
 
     public async likeRecipe(userId: number, recipeId: number) {
-        let response = await fetch(`https://localhost:44328/User/like-recipe/${userId}/${recipeId}`, {
+        let response = await fetch(`https://${backendUrl}/User/like-recipe/${userId}/${recipeId}`, {
             method: 'POST',
             credentials: 'include'
         });
@@ -179,7 +159,7 @@ export class UserClient {
     }
 
     public async unlikeRecipe(userId: number, recipeId: number) {
-        let response = await fetch(`https://localhost:44328/User/unlike-recipe/${userId}/${recipeId}`, {
+        let response = await fetch(`https://${backendUrl}/User/unlike-recipe/${userId}/${recipeId}`, {
             method: 'DELETE',
             credentials: 'include'
         });
@@ -190,7 +170,7 @@ export class UserClient {
     public async deleteAccount(password: string) {
         let response;
         try {
-            response = await fetch('https://localhost:44328/User/delete-account', {
+            response = await fetch(`https://${backendUrl}/User/delete-account`, {
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(password),
@@ -207,7 +187,7 @@ export class UserClient {
 
     async changeUsername(newName: string) {
         try {
-            const response = await fetch('https://localhost:44328/User/change-username', {
+            const response = await fetch(`https://${backendUrl}/User/change-username`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newName),
@@ -228,7 +208,7 @@ export class UserClient {
     async changeProfilePicture(imageUrl: string | null) {
         try {
             //actualy change the ProfilePicture
-            const response = await fetch('https://localhost:44328/User/change-profile-picture', {
+            const response = await fetch(`https://${backendUrl}/User/change-profile-picture`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(imageUrl),
@@ -247,7 +227,7 @@ export class UserClient {
     }
 
     async deleteProfile(password: string) {
-        const response = await fetch('https://localhost:44328/User/delete-account', {
+        const response = await fetch(`https://${backendUrl}/User/delete-account`, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(password),
@@ -261,14 +241,9 @@ export class UserClient {
         return response;
     }
 
-    catch(error: any) {
-        console.error(error);
-        return "";
-    }
-
     async changePassword(oldPassword: string, newPassword: string) {
         try {
-            const response = await fetch('https://localhost:44328/User/change-password', {
+            const response = await fetch(`https://${backendUrl}/User/change-password`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({'oldPassword': oldPassword, 'newPassword': newPassword}),

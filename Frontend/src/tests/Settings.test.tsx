@@ -1,8 +1,9 @@
 import {driver, frontendUrl, logInWithTestUser, logOut} from "../setupTests";
 import {By, Key, until} from "selenium-webdriver";
+import {backendUrl} from "../App";
 
 const createTestUser = async () => driver.executeScript(
-    `await fetch('https://localhost:44328/Login/register', {
+    `await fetch('https://${backendUrl}/Login/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({'name': 'TestUser', 'email': 'testuser@example.com', 'password': 'password.123'}),

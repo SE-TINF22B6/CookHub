@@ -5,12 +5,13 @@
 import '@testing-library/jest-dom';
 import {Browser, Builder, WebDriver} from "selenium-webdriver";
 import Chrome from "selenium-webdriver/chrome";
+import {backendUrl} from "./App";
 
 export let driver : WebDriver;
 export const frontendUrl = "https://localhost:3000";
 
 export const logInWithTestUser = async () => await driver.executeScript(`
-    await fetch('https://localhost:44328/Login/', {
+    await fetch('https://${backendUrl}/Login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({'email': 'admin@cookhub.com', 'password': 'password'}),
@@ -18,7 +19,7 @@ export const logInWithTestUser = async () => await driver.executeScript(`
     });`);
 
 export const logOut = async () => await driver.executeScript(`
-    await fetch('https://localhost:44328/Login/log-out', {
+    await fetch('https://${backendUrl}/Login/log-out', {
         method: 'GET',
         credentials: 'include',
     });`);
