@@ -18,9 +18,8 @@ The layered architecture is a software design pattern that organizes application
   
 #### 1.2 Constraints
 The lack of scalability is a consequence of the highly coupled layers. Any change in one layer can have a significant impact on other layers, potentially leading to breaking changes. This also results in a low fault tolerance.
-#### 1.3 Definitions, Acronyms and Abbreviations
-> Definitions of all terms, acronyms, and abbreviations required to properly interpret this document.
-#### 1.4 References
+
+#### 1.3 References
 ##### Tactics: 
 https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md#3-nonfunctional-requirements
 ##### Testing & CI/CD:
@@ -53,7 +52,48 @@ To improve testability, we have implemented design principles in the backend. Fo
 
 
 #### 3.1 Overview 
-> A summary of the architecture design -- highlights.  
+> A summary of the architecture design -- highlights.
+## 3.1.1 Our tech stack:
+![React, ASP.NET Core, PostgreSQL](https://github.com/SE-TINF22B6/CookHub/assets/77683850/986d59aa-00c7-491f-8740-b4a0efc1c10b)
+
+## List of all tools, platforms, techniques:
+### CI/CD:
+- _Git_ (GitHub)
+- _GitHub actions_
+
+### Project management tools:
+- _TMetric_ for time tracking
+- _draw.io_ for diagrams
+- _Figma_ for mockup designs
+
+### IDEs:
+- _WebStorm_ for Frontend/TypeScript
+- _Rider_ for Backend/C#
+- _IntelliJ_ for everything
+
+### Frontend technologies:
+- language: _TypeScript_
+- libraries: _React_, _Material UI_
+- _Locofy_ (Figma AI Converter)
+
+### Backend technologies:
+- language: _C#_
+- Frameworks & Libraries: _ASP.NET Core_ (for API calls & dependency injection), _NHibernate_ (for database/ORM-mapping), _xUnit.NET_ (for testing), _SQLite_ (for test database)
+
+### Database:
+- _PostgreSQL_
+
+### Additional Technologies:
+- _ChatGPT4_ (adventurize it prompt testing)
+- _OpenAI API_ 
+
+### Work Techniques:
+- Agile Working (SCRUM)
+- Weeklys
+- Issue Tracking
+- Usage of Kanban Board
+- Peer Review before Merge in main branch
+
 
 #### 3.2 Runtime view (Tips: https://docs.arc42.org/section-6/)
 
