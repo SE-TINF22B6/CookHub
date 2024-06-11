@@ -3,13 +3,24 @@
 ## Test Report
 
 ### 1. Introduction
-> This section of the documentation provides an overview of the software testing process adopted in our project, focusing specifically on the utilization of GitHub Actions and unit testing with TypeScript and Selenium.
 
-// TODO
+The software testing process is essential for ensuring the quality, reliability, and functionality of any software product. In our project, we have implemented a comprehensive testing strategy to validate our software, focusing on utilizing GitHub Actions and conducting unit testing with TypeScript and Selenium.
+
+#### Overview of the Software Testing Process:
+Software testing encompasses various activities aimed at identifying defects, errors, or bugs in a software application. These activities range from unit testing individual components to end-to-end testing simulating real user interactions. By systematically executing test cases, we aim to uncover issues early in the development cycle, minimizing the risk of critical defects reaching the production environment.
+
+#### Scope of Testing Activities:
+Our testing activities encompass a range of methodologies and technologies to ensure thorough validation of our software product. This includes:
+- Utilization of GitHub Actions for automating testing pipelines, ensuring that every code commit undergoes rigorous validation against predefined test cases.
+- Implementation of Jest as the primary testing framework for frontend components, enabling comprehensive unit testing to maintain high code quality and reliability.
+- Integration of xUnit.net for backend testing, facilitating efficient and organized testing of individual modules to ensure seamless interaction between system components.
+- Adoption of Selenium for end-to-end testing, simulating real user interactions to identify potential issues from a user’s perspective and ensuring robust functionality of our web applications.
+
+By adhering to these testing methodologies and leveraging advanced testing tools, we aim to uphold the quality and reliability of our software product, thereby delivering a seamless user experience to our customers.
 
 ### 2. Test Strategy
 
-#### Used technoligies:
+#### Used technologies:
 
 *GitHub Actions*
 - GitHub Actions play a pivotal role in automating our testing pipelines. Every code commit triggers a series of actions that execute automated tests, ensuring that all changes are validated against predefined test cases before integration.
@@ -44,7 +55,6 @@ This testing strategy is designed to be adaptive and scalable, able to accommoda
 <br><br>
 
 ### 3. Test Plan
-> This section outlines the specific testing tasks, timelines, and resources required to achieve the testing objectives.
 
 After the lecture about testing, we decided that:
 - For every newly implemented backend endpoint, there should be at least one success case and one fail case
@@ -100,7 +110,6 @@ We had a mixed experience with some of our testing tools:
 - Frameworks that support parameterized tests make it very easy to test a lot of different (user-)inputs without writing much additional code
 
 ### 8. Conclusion
-> This section summarizes the key findings of the testing and the overall status of the software quality.
 
 As CookHub we want to present the outcomes of our comprehensive testing efforts. Our strategy, centered around automated testing with GitHub Actions, Jest, xUnit.net, and Selenium, has effectively supported the validation of our software through continuous integration. Each code commit undergoes rigorous testing to ensure that changes are seamlessly integrated and validated against predefined test cases.
 
@@ -109,5 +118,3 @@ While we encountered challenges—such as the complexity of Selenium setup and i
 Our focus on unit, integration, and end-to-end testing has been crucial in maintaining the reliability and quality of CookHub. Unit tests, powered by Jest and xUnit.net, have allowed us to ensure that individual code modules function correctly in isolation. Integration tests have verified the harmonious interaction between different system components, while end-to-end tests conducted via Selenium have simulated real user interactions to identify potential issues from a user’s perspective.
 
 Despite some hurdles, such as frontend layout changes affecting end-to-end tests and race conditions causing occasional test failures, our structured approach has minimized the risk of significant defects reaching the production environment. These tests have been instrumental in swiftly identifying problem areas, significantly enhancing our quality assurance processes.
-
-Moving forward, our goal is to refine and expand our testing procedures to further improve stability and scalability. By continuing to leverage automated tools and focusing on critical functionalities, we aim to uphold and enhance the high standards of quality for CookHub. This adaptive approach ensures that we remain responsive to evolving project needs, ultimately delivering a reliable and user-friendly product.
