@@ -219,6 +219,48 @@ This SRS aims to be a standalone document for stakeholders to understand what Co
 > - **Postconditions**: All outgoing routes of functions has to work correctly.
 > - **Estimated efforts**: high
 
+### 2.6 Technology Stack
+![React, ASP.NET Core, PostgreSQL](https://github.com/SE-TINF22B6/CookHub/assets/77683850/986d59aa-00c7-491f-8740-b4a0efc1c10b)
+
+## List of all tools, platforms, techniques:
+### CI/CD:
+- _Git_ (GitHub)
+- _GitHub actions_
+
+### Project management tools:
+- _TMetric_ for time tracking
+- _draw.io_ for diagrams
+- _Figma_ for mockup designs
+
+### IDEs:
+- _WebStorm_ for Frontend/TypeScript
+- _Rider_ for Backend/C#
+- _IntelliJ_ for everything
+
+### Frontend technologies:
+- language: _TypeScript_
+- libraries: _React_, _Material UI_
+- _Locofy_ (Figma AI Converter)
+
+### Backend technologies:
+- language: _C#_
+- Frameworks & Libraries: _ASP.NET Core_ (for API calls & dependency injection), _NHibernate_ (for database/ORM-mapping), _xUnit.NET_ (for testing), _SQLite_ (for test database)
+
+### Database:
+- _PostgreSQL_
+
+### Additional Technologies:
+- _ChatGPT4_ (adventurize it prompt testing)
+- _OpenAI API_ 
+
+### Work Techniques:
+- Agile Working (SCRUM)
+- Weeklys
+- Issue Tracking
+- Usage of Kanban Board
+- Peer Review before Merge in main branch
+
+
 ## 3. Nonfunctional requirements
 
 ![image](https://github.com/SE-TINF22B6/CookHub/assets/115070676/265f85d0-f123-4d38-95e7-e1260036a7bd)
