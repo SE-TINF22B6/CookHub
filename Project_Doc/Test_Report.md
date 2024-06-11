@@ -8,7 +8,6 @@
 // TODO
 
 ### 2. Test Strategy
-> This section outlines our overall approach to testing within the project. It covers the methodologies, types of tests, and specific techniques we employ, alongside the rationale behind our selective testing strategy.
 
 #### Used technoligies:
 
@@ -87,18 +86,18 @@ out of 1,073 recorded workflow runs, there where:
 
 => 87,71% success rate
 
-<br><br>
-
 ### 7. Recommendations
-> This section offers suggestions for improving the testing process and the quality of the software.
 
-We noticed some things that could be improved in the tools that we used:
+We had a mixed experience with some of our testing tools:
 - Jest
-  - Jest provides an easy way to write tests in a readable way, but sometimes lacks feedback when a test failed. We often had the problem that a test got stuck at some point, and Jests error message did not include the line of code. This made it hard to find out the reason of failure.
+  - Jest provides an easy way to write tests in a readable way, but sometimes lacks feedback when a test failed. We often had the problem that a test got stuck at some point, and Jests error message did not include the line of code. This made it hard to find out the reason of failure. We would recommend jest for writing simple, readable tests; but not for easy debugging. 
 - Selenium
-  - Selenium is great once it works, but it took a long time to set it up. This is because there are many different requirements (having to run with admin privileges, no support for the newest node.js versions) and setting it up in the CI/CD pipeline also requires a lot of steps. You also have to be very careful to write tests in a way that they run reliably, and that there are no race conditions. This is a challenge because selenium only offers a limited number of ways to manually wait for certain things to load.
+  - Selenium is great once it works, but it took a long time to set it up. This is because there are many different requirements (having to run with admin privileges, no support for the newest node.js versions) and setting it up in the CI/CD pipeline also requires a lot of steps. You also have to be very careful to write tests in a way that they run reliably, and that there are no race conditions. This is a challenge because selenium only offers a limited number of ways to manually wait for certain things to load. We would only recommend Selenium for more experienced test-developers, because it can be very frustrating when used incorrectly.
 
-<br><br>
+#### General testing recommendations:
+- Writing short tests makes it easier to identify the spefic issue when something fails
+- Using setup and cleanup/teardown functions of testing frameworks makes it a lot easier to write short and clean tests
+- Frameworks that support parameterized tests make it very easy to test a lot of different (user-)inputs without writing much additional code
 
 ### 8. Conclusion
 > This section summarizes the key findings of the testing and the overall status of the software quality.
