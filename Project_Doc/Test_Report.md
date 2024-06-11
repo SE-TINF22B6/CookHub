@@ -80,6 +80,10 @@
 ### 6. Metrics
 > This section provides quantitative data on the testing process, such as the number of defects found, the defect resolution time, and the test coverage achieved.
 
+#### Test coverage
+Backend test coverage mesured with DotCover:
+![image](https://github.com/SE-TINF22B6/CookHub/assets/77683850/9a2ed0d5-ceb8-4df6-aead-ebfcb11ab06f)
+
 #### GitHub Actions Statistics
 1,069 workflow runs
 - 948 Success
