@@ -4,7 +4,7 @@
 > This template is a simplified version based on the documentation templates from IBM Rational Unified Process (RUP).
 ## 1. Introduction
 ### 1.1 Overview
-> CookHub is envisioned to be an online recipe book designed to store its own recipes in a database, offer recipe suggestions via the OpenAI API, save custom-created recipes, and generate a shopping list from an existing recipe. Additionally, the OpenAI API enables a recipe to be transformed into an adventure by wrapping the cooking instructions into an automatically generated adventure story, making cooking a real experience.
+> CookHub is envisioned to be an online recipe book designed to store its own recipes in a database and save custom-created recipes. Additionally, the OpenAI API enables a recipe to be transformed into an adventure by wrapping the cooking instructions into an automatically generated adventure story, making cooking a real experience.
 ### 1.2 Scope
 > This Software Requirements Specification (SRS) document covers the complete system of CookHub. It encompasses both functional and non-functional requirements necessary for the successful development, deployment, and operation of the platform. The document aims to provide a comprehensive understanding of the system's architecture, features, and limitations.
 
