@@ -12,6 +12,7 @@ import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import SpeedIcon from '@mui/icons-material/Speed';
 import Box from "@mui/material/Box";
 import {RecipeData} from "../models/RecipeData";
+import {backendUrl} from "../App";
 
 
 export default function FindRecipes() {
@@ -63,7 +64,7 @@ export default function FindRecipes() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
+                        image={recipe.pictureUrl ? `https://${backendUrl}/images/recipes/${recipe.pictureUrl}`: Placeholder}
                         alt="recipe"
                     />
 
@@ -115,7 +116,7 @@ export default function FindRecipes() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image={recipe.pictureUrl ? `https://localhost:44328/images/recipes/${recipe.pictureUrl}`: Placeholder}
+                        image={recipe.pictureUrl ? `https://${backendUrl}/images/recipes/${recipe.pictureUrl}`: Placeholder}
                         alt="recipe"
                     />
                     <CardContent>

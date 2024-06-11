@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "homepage": "https://3348fb0e-7b2e-49bb-ade0-a25b8fa0dcae.ka.bw-cloud-instance.org/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

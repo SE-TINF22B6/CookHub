@@ -5,6 +5,7 @@ import NotLoggedIn from "../components/NotLoggedIn";
 import { UserClient } from "../clients/UserClient";
 import { RecipeData } from "../models/RecipeData";
 import Placeholder from "../assets/fillElements/placeholder.png";
+import {backendUrl} from "../App";
 
 export default function MyRecipeLoggedIn(userData: UserDataParams) {
     let data = userData.data;
@@ -30,7 +31,7 @@ export default function MyRecipeLoggedIn(userData: UserDataParams) {
 
     const renderRecipeCards = (recipes: RecipeData[]) => (
         recipes.map((recipe, index) => {
-            const imageUrl = recipe.pictureUrl ? `url('https://localhost:44328/images/recipes/${recipe.pictureUrl}')` : `url(${Placeholder})`;
+            const imageUrl = recipe.pictureUrl ? `url('https://${backendUrl}/images/recipes/${recipe.pictureUrl}')` : `url(${Placeholder})`;
             return (
                 <div className="recipe-card-container" key={index}>
                     <a href={`/myrecipes/${recipe.id}`}>

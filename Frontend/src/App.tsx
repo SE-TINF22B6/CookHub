@@ -31,7 +31,9 @@ const AppBarConditional = () => {
     return null;      //return <Footer />
 };
 
-
+export const backendUrl = window.location.hostname === '3348fb0e-7b2e-49bb-ade0-a25b8fa0dcae.ka.bw-cloud-instance.org'
+  ? '3348fb0e-7b2e-49bb-ade0-a25b8fa0dcae.ka.bw-cloud-instance.org/api'
+  : 'localhost:44328';
 
 function App() {
 

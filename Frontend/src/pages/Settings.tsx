@@ -12,6 +12,7 @@ import {UserDataParams} from "../models/UserDataParams";
 import NotLoggedIn from "../components/NotLoggedIn";
 import {UserData} from "../models/UserData";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
+import {backendUrl} from "../App";
 
 
 export default function Settings(userProfile: UserDataParams) {
@@ -203,7 +204,7 @@ export default function Settings(userProfile: UserDataParams) {
 
                 <span className={"userPicture"}>
                     <img id="user-image"
-                         src={changedData?.profilePicture ? `https://localhost:44328/images/profile-pictures/${changedData?.profilePicture}` : Placeholder}
+                         src={changedData?.profilePicture ? `https://${backendUrl}/images/profile-pictures/${changedData?.profilePicture}` : Placeholder}
                          alt="User"/>
                 </span>
 

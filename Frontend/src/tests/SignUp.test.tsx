@@ -1,5 +1,6 @@
 import {driver, frontendUrl} from "../setupTests";
 import {By, until, WebElement} from "selenium-webdriver";
+import {backendUrl} from "../App";
 
 async function setup() : Promise<WebElement[]> {
     await driver.get(`${frontendUrl}/signup`);
@@ -31,7 +32,7 @@ describe('success case', () => {
     });
 
     afterEach(async () => await driver.executeScript(`
-        await fetch('https://localhost:44328/User/delete-account', {
+        await fetch('https://${backendUrl}/User/delete-account', {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify('password.123'),

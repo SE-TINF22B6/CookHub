@@ -1,11 +1,12 @@
 import {CreateRecipeModel} from "../models/CreateRecipeModel";
 import {RecipeData} from "../models/RecipeData";
+import {backendUrl} from "../App";
 
 export class RecipeClient {
 
     public async getRecipesBySearchTerm(searchTerm: string): Promise<RecipeData[]> {
         try {
-            const response = await fetch(`https://localhost:44328/Recipe/search/${searchTerm}`);
+            const response = await fetch(`https://${backendUrl}/Recipe/search/${searchTerm}`);
 
             if (!response.ok) {
                 throw new Error(response.statusText);
@@ -20,10 +21,9 @@ export class RecipeClient {
 
     public async getRecipeById(id: number|undefined) {
         try {
-            const response = await fetch(`https://localhost:44328/Recipe/${id}`, {
+            const response = await fetch(`https://${backendUrl}/Recipe/${id}`, {
                 credentials: 'include'
             });
-            /*const response = await fetch(`https://localhost:7274/Recipe/byname/${name}`);*/
 
             if (!response.ok) {
                 throw new Error(response.statusText);
@@ -38,7 +38,7 @@ export class RecipeClient {
 
     public async adventurizeRecipe(id: number|undefined) {
         try {
-            const response = await fetch(`https://localhost:44328/Recipe/adventurize/${id}`);
+            const response = await fetch(`https://${backendUrl}/Recipe/adventurize/${id}`);
 
             if (!response.ok) {
                 throw new Error(response.statusText);
@@ -54,7 +54,7 @@ export class RecipeClient {
 
     public async getRecipeByLikes(count: number|undefined) {
         try {
-            const response = await fetch(`https://localhost:44328/Recipe/Top/${count}`);
+            const response = await fetch(`https://${backendUrl}/Recipe/Top/${count}`);
             /*const response = await fetch(`https://localhost:7274/Recipe/byname/${name}`);*/
 
             if (!response.ok) {
@@ -70,7 +70,7 @@ export class RecipeClient {
 
     public async createRecipe(recipe: CreateRecipeModel) : Promise<number | string> {
          try {
-             const response = await fetch('https://localhost:44328/Recipe/', {
+             const response = await fetch(`https://${backendUrl}/Recipe/`, {
                  method: 'POST',
                  headers: {'Content-Type': 'application/json'},
                  credentials: 'include',
@@ -90,7 +90,7 @@ export class RecipeClient {
 
     public async deleteRecipe(id: number) : Promise<string> {
         try {
-            const response = await fetch(`https://localhost:44328/Recipe/${id}`, {
+            const response = await fetch(`https://${backendUrl}/Recipe/${id}`, {
                 method: 'DELETE',
                 credentials: 'include'
             });
@@ -108,7 +108,7 @@ export class RecipeClient {
 
     public async saveAdventureText(recipeId: number, adventureText: string): Promise<string> {
         try {
-            const response = await fetch('https://localhost:44328/Recipe/adventurize', {
+            const response = await fetch(`https://${backendUrl}/Recipe/adventurize`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 credentials: 'include',

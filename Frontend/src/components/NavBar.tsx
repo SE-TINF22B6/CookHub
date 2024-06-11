@@ -14,6 +14,7 @@ import LogoAnimated from "../assets/gifs/logo_animated.gif";
 import Avatar from "../assets/Hotdog.svg";
 import MenuListComposition from "./MenuListComposition";
 import {UserDataParams} from "../models/UserDataParams";
+import {backendUrl} from "../App";
 
 
 
@@ -107,7 +108,7 @@ export default function NavBar(loggedIn : UserDataParams) {
                     <div id={"avatarContainer"}>
                         <Link className='Avatar' to={'/profile'}>
                             {user ? (
-                                <img className="AvatarImg" src={ src ? `https://localhost:44328/images/profile-pictures/${user.profilePicture}`: Placeholder} alt={'UserAvatar'}/>
+                                <img className="AvatarImg" src={ src ? `https://${backendUrl}/images/profile-pictures/${user.profilePicture}`: Placeholder} alt={'UserAvatar'}/>
                             ) : (
                                 <img className="AvatarImg" src={Avatar} alt='UserAvatar'/>
                             )}
