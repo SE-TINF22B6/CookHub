@@ -80,6 +80,12 @@
 ### 6. Metrics
 > This section provides quantitative data on the testing process, such as the number of defects found, the defect resolution time, and the test coverage achieved.
 
+#### GitHub Actions Statistics
+1,069 workflow runs
+- 948 Success
+- 117 Failure
+- 4 Canceled
+
 <br><br>
 
 ### 7. Recommendations
