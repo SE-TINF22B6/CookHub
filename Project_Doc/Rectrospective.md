@@ -7,6 +7,17 @@ In our retrospective, we collected our thoughts about what has happened so far, 
 - We have specified the priorities to focus on during the final project phase
 - We have learned to use a Marc (the ancient one) in future projects
 
+## Summary
+
+- What helped us:
+  - Clearly defined kanban tasks, automated tests
+- What held us back:
+  - Difficulties with some technologies, limited time
+- What we could have done better:
+  - Time management, more structured meetings
+
+---
+
 Here are our notes of the mentioned points in detail:
 
 ![334467471-10fe1cc3-a0f3-4dc9-8987-411335e5488c](https://github.com/SE-TINF22B6/CookHub/assets/115070676/2b76f0e6-631b-4fcf-8e02-dd501d066e7d)
