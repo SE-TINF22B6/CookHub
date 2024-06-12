@@ -13,7 +13,6 @@ The layered architecture is a software design pattern that organizes application
 - **Modularity:** Facilitates independent development and maintenance of each layer.
 - **Simplicity:** It is easy to set up and ensures rapid development.
 - **Enhanced Security:** Security measures can be enforced at different levels within the architecture.
-- **Development Flexibility:** Parallel development becomes feasible with minimal dependencies across teams.
 - **Simplified Deployment:** Updates to one layer can often be made without affecting others.
   
 #### 1.2 Constraints
