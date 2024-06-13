@@ -4,9 +4,9 @@
 
 
 ## Project links
-* [srs.md](https://github.com/SE-TINF22B6/CookHub/blob/main/Project_Doc/srs.md)
-* [Figma -> Landing page, login page, profile page](https://www.figma.com/file/YHS8HmBRaxqjHzQbqMhtNq/CookHub?type=design&node-id=0-1&mode=design&t=vMBnJrB1Yd5jKPKg-0)
-* [Figma -> Settings page](https://www.figma.com/file/iW8TJhQ7snE6523q0IxiQS/Untitled?type=design&node-id=0-1&mode=design&t=2PGnPwCH4JaiCH0N-0)
+| 🔗 [Documents](https://github.com/SE-TINF22B6/CookHub/tree/main/Project_Doc) to our project. | Further documentation in our 🔗 [Wiki](https://github.com/SE-TINF22B6/CookHub/wiki) |
+| --- | --- |
+| ![image](https://github.com/SE-TINF22B6/CookHub/assets/113697513/cb263c59-d985-4123-8a39-1f3286b817c2) | ![image](https://github.com/SE-TINF22B6/CookHub/assets/113697513/74372df0-f1f2-43ea-8683-c6a9b6022efe) |
 
 <br><br>
 
