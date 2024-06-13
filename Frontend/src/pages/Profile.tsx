@@ -10,6 +10,7 @@ import NotLoggedIn from "../components/NotLoggedIn";
 
 import {RecipeData} from "../models/RecipeData";
 import {backendUrl} from "../App";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -22,6 +23,11 @@ export default function Profile(userProfile: UserDataParams) {
     const [ownRecipes, setOwnRecipes] = useState<Array<RecipeData>>([]);
     const [history, setHistory] = useState<Array<{recipe: RecipeData, time: string}>>([]);
 
+    const navigate = useNavigate();
+
+    const goToLogout = () => {
+        navigate('/logout');
+    };
     const handleLogOut = async () => {
         try {
             const response = await new UserClient().logOut();
@@ -96,7 +102,7 @@ export default function Profile(userProfile: UserDataParams) {
 
                     <div id={"buttonContainer"}>
 
-                        <button onClick={handleLogOut}
+                        <button onClick={goToLogout}
                                 style={{backgroundColor: "transparent", borderColor: "transparent"}}><img
                             src={logoutBTN} className="LogoutButton" alt="logout button"/></button>
 
